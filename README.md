@@ -34,6 +34,7 @@ uv run faultline demo diagnostic-pair --seed 42
 # Requires a clean worktree and writes an immutable provenance manifest:
 uv run faultline env generate --count 100 --split train --run-id gate1-pairs-v0.2
 uv run faultline curriculum analyze --run-id gate2-ep-analysis-v0.3
+uv run faultline curriculum control-audit --run-id matched-ep-control-v0.3
 uv run faultline benchmark simulator
 ```
 

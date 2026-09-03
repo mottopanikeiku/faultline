@@ -45,6 +45,13 @@ budgets. Sampling is stratified or reweighted to approximately match fault famil
 degree, layout family, horizon, and action budget. Reports include standardized marginal differences
 and EP/difficulty correlations; residual mismatches are limitations.
 
+The first controlled comparison uses matched cue blocks. Ambiguous and revealed arms reuse identical
+base pairs; both have exactly balanced cue and fault marginals, while only their cue–fault joint
+differs. The audit reports standardized mean differences for every structural and cost parameter.
+Because the revealed arm has a passive shortcut, passive difficulty is not considered matched;
+Difficulty-RL remains a separate required arm, and active-oracle return should be stratified or
+reweighted before confirmatory comparison.
+
 ## Provisional metrics
 
 Operational metrics: recovery success, sustained recovery return, time to recovery, production loss,

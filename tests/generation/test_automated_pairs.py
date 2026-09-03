@@ -76,6 +76,11 @@ def test_individual_validator_reports_positive_repair_margin() -> None:
     assert validation.valid
     assert validation.repair_margin > 0.0
     assert validation.active_expected_return > validation.passive_expected_return
+    assert validation.passive_decision_regret > 0.0
+    assert validation.normalized_ep == (
+        validation.epistemic_pressure / validation.passive_decision_regret
+    )
+    assert 0.0 < validation.normalized_ep <= 1.0
 
 
 def test_dataset_contains_reconstructable_tasks_and_validation_summary() -> None:
@@ -91,6 +96,7 @@ def test_dataset_contains_reconstructable_tasks_and_validation_summary() -> None
     assert all(task["graph"]["node_names"] for task in dataset["tasks"])
     assert summary["validated_count"] == 3
     assert summary["ep_min"] > 0.0
+    assert 0.0 < summary["normalized_ep_min"] <= summary["normalized_ep_max"] <= 1.0
 
 
 def test_versioned_split_ranges_are_disjoint_and_match_config() -> None:

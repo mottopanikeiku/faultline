@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from statistics import fmean
 
 from faultline.generation.automated import build_generated_diagnostic_pair
 from faultline.generation.diagnostic_pairs import (
@@ -28,6 +29,9 @@ class PairValidation:
     passive_expected_return: float
     active_expected_return: float
     epistemic_pressure: float
+    perfect_information_expected_return: float
+    passive_decision_regret: float
+    normalized_ep: float
     passive_recovery_probability: float
     active_recovery_probability: float
 
@@ -59,6 +63,7 @@ def validate_diagnostic_pair(
 
     repair_margin = float("inf")
     unique_repair_success = repairs_differ
+    correct_repair_returns: list[float] = []
     for world in pair.worlds:
         evaluations = tuple(evaluate_repair(pair, world, repair) for repair in repairs)
         successful = tuple(evaluation for evaluation in evaluations if evaluation.recovered)
@@ -66,6 +71,7 @@ def validate_diagnostic_pair(
             unique_repair_success = False
             repair_margin = float("-inf")
             continue
+        correct_repair_returns.append(successful[0].total_return)
         wrong_values = tuple(
             evaluation.total_return
             for evaluation in evaluations
@@ -83,6 +89,19 @@ def validate_diagnostic_pair(
     passive = solve_passive(problem)
     active = solve_active(problem, max_diagnostic_actions=2)
     epistemic_pressure = active.expected_return - passive.expected_return
+    perfect_information_expected_return = (
+        fmean(correct_repair_returns)
+        if len(correct_repair_returns) == len(pair.worlds)
+        else passive.expected_return
+    )
+    passive_decision_regret = (
+        perfect_information_expected_return - passive.expected_return
+    )
+    normalized_ep = (
+        epistemic_pressure / passive_decision_regret
+        if passive_decision_regret > 0.0
+        else 0.0
+    )
 
     reasons: list[str] = []
     if not snapshots_identical:
@@ -110,6 +129,9 @@ def validate_diagnostic_pair(
         passive_expected_return=passive.expected_return,
         active_expected_return=active.expected_return,
         epistemic_pressure=epistemic_pressure,
+        perfect_information_expected_return=perfect_information_expected_return,
+        passive_decision_regret=passive_decision_regret,
+        normalized_ep=normalized_ep,
         passive_recovery_probability=passive.recovery_probability,
         active_recovery_probability=active.recovery_probability,
     )

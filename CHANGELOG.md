@@ -43,6 +43,10 @@ listed only when backed by immutable artifacts.
   pair-dataset serialization.
 - Exact EP distribution analyzer with one-step and post-dynamics intervention value, information
   gain, parameter correlations, task-level rows, and dependency-free immutable SVG plots.
+- Stake-normalized EP based on recoverable perfect-information decision regret, with correlation
+  audit rather than silent adoption.
+- Matched cue-control blocks that reuse the identical factory, faults, reward, and fault/cue
+  marginals while changing only cue–fault dependence between ambiguous and revealed conditions.
 
 ### Research status
 

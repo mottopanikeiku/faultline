@@ -10,6 +10,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from time import perf_counter
+from typing import Any
 
 from faultline import __version__
 from faultline.artifacts import (
@@ -24,10 +25,12 @@ from faultline.artifacts import (
 )
 from faultline.env import Action, Advance, ClearBlockage, FactoryEnv, Replace
 from faultline.evaluation import (
+    CONTROL_AUDIT_VERSION,
     EP_ANALYSIS_VERSION,
     METRIC_VERSION,
     SimulatorBenchmarkConfig,
     analyze_ep_distribution,
+    analyze_matched_ep_controls,
     run_simulator_benchmark,
 )
 from faultline.generation import (
@@ -144,8 +147,24 @@ def build_parser() -> argparse.ArgumentParser:
     analyze.add_argument("--run-id")
     analyze.add_argument("--output", type=Path)
     analyze.add_argument("--ep-plot", type=Path)
+    analyze.add_argument("--normalized-plot", type=Path)
     analyze.add_argument("--intervention-plot", type=Path)
     analyze.add_argument("--manifest", type=Path)
+    control_audit = curriculum_commands.add_parser(
+        "control-audit",
+        help="audit matched ambiguous and revealed cue conditions",
+    )
+    control_audit.add_argument(
+        "--dataset",
+        type=Path,
+        default=Path(
+            "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json"
+        ),
+    )
+    control_audit.add_argument("--run-id")
+    control_audit.add_argument("--output", type=Path)
+    control_audit.add_argument("--plot", type=Path)
+    control_audit.add_argument("--manifest", type=Path)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -322,15 +341,24 @@ def _artifact_reference(path: Path, repo: Path) -> str:
         return str(resolved)
 
 
-def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
-    repo = _require_clean_repository(parser)
-    dataset_path = args.dataset if args.dataset.is_absolute() else repo / args.dataset
-    dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
+def _load_pair_dataset(
+    path: Path,
+    repo: Path,
+    parser: argparse.ArgumentParser,
+) -> tuple[Path, dict[str, Any], list[int]]:
+    dataset_path = path if path.is_absolute() else repo / path
+    dataset: dict[str, Any] = json.loads(dataset_path.read_text(encoding="utf-8"))
     if dataset["generator_version"] != GENERATOR_VERSION:
         parser.error("dataset generator version does not match this checkout")
     seeds = [int(task["seed"]) for task in dataset["tasks"]]
     if len(seeds) != dataset["count"]:
         parser.error("dataset task count is inconsistent")
+    return dataset_path, dataset, seeds
+
+
+def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    dataset_path, dataset, seeds = _load_pair_dataset(args.dataset, repo, parser)
     run_id = args.run_id or datetime.now(UTC).strftime("ep-analysis-%Y%m%dT%H%M%SZ")
     started_at = utc_timestamp()
     timer_started = perf_counter()
@@ -344,6 +372,10 @@ def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) 
     ep_plot_output = (
         args.ep_plot or repo / "artifacts" / "results" / f"{run_id}-ep.svg"
     )
+    normalized_plot_output = (
+        args.normalized_plot
+        or repo / "artifacts" / "results" / f"{run_id}-normalized-ep.svg"
+    )
     intervention_plot_output = (
         args.intervention_plot
         or repo / "artifacts" / "results" / f"{run_id}-interventions.svg"
@@ -356,6 +388,11 @@ def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) 
         [float(row["epistemic_pressure"]) for row in rows],
         title="Epistemic pressure across validated pairs",
         x_label="active expected return - passive expected return",
+    )
+    normalized_svg = render_histogram_svg(
+        [float(row["normalized_ep"]) for row in rows],
+        title="Stake-normalized epistemic pressure",
+        x_label="net active advantage / passive decision regret",
     )
     intervention_svg = render_paired_values_svg(
         [float(row["immediate_advance_decision_value"]) for row in rows],
@@ -378,6 +415,13 @@ def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) 
             "result_sha256": canonical_sha256(analysis),
             "ep_plot_path": _artifact_reference(ep_plot_output, repo),
             "ep_plot_sha256": hashlib.sha256(ep_svg.encode("utf-8")).hexdigest(),
+            "normalized_plot_path": _artifact_reference(
+                normalized_plot_output,
+                repo,
+            ),
+            "normalized_plot_sha256": hashlib.sha256(
+                normalized_svg.encode("utf-8")
+            ).hexdigest(),
             "intervention_plot_path": _artifact_reference(
                 intervention_plot_output,
                 repo,
@@ -410,6 +454,7 @@ def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) 
     )
     write_json_artifact(result_output, analysis)
     write_text_artifact(ep_plot_output, ep_svg)
+    write_text_artifact(normalized_plot_output, normalized_svg)
     write_text_artifact(intervention_plot_output, intervention_svg)
     write_manifest(manifest_output, manifest)
     ep = analysis["epistemic_pressure"]
@@ -422,7 +467,89 @@ def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) 
         f"result={result_output}"
     )
     print(f"ep_plot={ep_plot_output}")
+    print(f"normalized_plot={normalized_plot_output}")
     print(f"intervention_plot={intervention_plot_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
+def _run_control_audit(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    dataset_path, dataset, seeds = _load_pair_dataset(args.dataset, repo, parser)
+    run_id = args.run_id or datetime.now(UTC).strftime("matched-ep-control-%Y%m%dT%H%M%SZ")
+    started_at = utc_timestamp()
+    timer_started = perf_counter()
+    analysis = analyze_matched_ep_controls(seeds)
+    elapsed = perf_counter() - timer_started
+    analysis["source_dataset"] = _artifact_reference(dataset_path, repo)
+    analysis["source_dataset_sha256"] = canonical_sha256(dataset)
+    completed_at = utc_timestamp()
+
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    plot_output = args.plot or repo / "artifacts" / "results" / f"{run_id}.svg"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    rows = analysis["rows"]
+    plot = render_paired_values_svg(
+        [float(row["ambiguous_ep"]) for row in rows],
+        [float(row["revealed_ep"]) for row in rows],
+        title="EP under matched cue marginals",
+        before_label="ambiguous cue",
+        after_label="revealed cue",
+        y_label="active return - passive return",
+    )
+    metrics = {
+        key: value
+        for key, value in analysis.items()
+        if key not in {"rows", "seeds"}
+    }
+    metrics.update(
+        {
+            "elapsed_seconds": elapsed,
+            "block_analyses_per_second": len(seeds) / elapsed,
+            "result_path": _artifact_reference(result_output, repo),
+            "result_sha256": canonical_sha256(analysis),
+            "plot_path": _artifact_reference(plot_output, repo),
+            "plot_sha256": hashlib.sha256(plot.encode("utf-8")).hexdigest(),
+        }
+    )
+    config = {
+        "source_dataset": _artifact_reference(dataset_path, repo),
+        "source_dataset_sha256": canonical_sha256(dataset),
+        "block_count": len(seeds),
+        "oracle_depth": 2,
+        "cue_control_version": "binary-cue-v1",
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="matched-ep-control-audit",
+        config=config,
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version=CONTROL_AUDIT_VERSION,
+        split=str(dataset["split"]),
+        seed=seeds[0],
+        generator_version=GENERATOR_VERSION,
+        policy={"name": "exact-enumeration", "diagnostic_depth": 2},
+        reward={"varies_by_base_pair_but_matched_within_block": True},
+    )
+    write_json_artifact(result_output, analysis)
+    write_text_artifact(plot_output, plot)
+    write_manifest(manifest_output, manifest)
+    print(
+        f"blocks={len(seeds)} ambiguous_ep={analysis['ambiguous_ep']['mean']:.3f} "
+        f"revealed_ep={analysis['revealed_ep']['mean']:.3f}"
+    )
+    print(
+        "matched="
+        f"{analysis['all_fault_marginals_equal'] and analysis['all_cue_marginals_equal']} "
+        f"max_nuisance_smd={analysis['max_abs_nuisance_standardized_mean_difference']:.3f}"
+    )
+    print(f"result={result_output}")
+    print(f"plot={plot_output}")
     print(f"manifest={manifest_output}")
     return 0
 
@@ -545,6 +672,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_pair_generation(args, parser)
     if args.command == "curriculum" and args.curriculum == "analyze":
         return _run_ep_analysis(args, parser)
+    if args.command == "curriculum" and args.curriculum == "control-audit":
+        return _run_control_audit(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

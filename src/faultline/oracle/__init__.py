@@ -6,6 +6,7 @@ from faultline.oracle.active import (
     OutcomePolicy,
     action_partitions,
     solve_active,
+    solve_active_from_branches,
 )
 from faultline.oracle.belief import (
     bayes_update,
@@ -41,5 +42,6 @@ __all__ = [
     "entropy_bits",
     "normalize",
     "solve_active",
+    "solve_active_from_branches",
     "solve_passive",
 ]

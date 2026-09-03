@@ -137,11 +137,28 @@ def _solve(
     return best
 
 
+def solve_active_from_branches(
+    problem: DiagnosticProblem,
+    branches: tuple[WorldBranch, ...],
+    max_diagnostic_actions: int = 3,
+) -> OracleDecision:
+    """Solve from an externally conditioned, normalized exact belief."""
+    if not branches:
+        raise ValueError("active solver requires at least one belief branch")
+    if not 0 <= max_diagnostic_actions <= 6:
+        raise ValueError("diagnostic horizon must be between zero and six")
+    if abs(fsum(branch.probability for branch in branches) - 1.0) > _VALUE_TOLERANCE:
+        raise ValueError("belief branch probabilities must sum to one")
+    return _solve(problem, branches, max_diagnostic_actions)
+
+
 def solve_active(
     problem: DiagnosticProblem,
     max_diagnostic_actions: int = 3,
 ) -> OracleDecision:
     """Enumerate the optimal contingent diagnostic policy to the requested depth."""
-    if not 0 <= max_diagnostic_actions <= 6:
-        raise ValueError("diagnostic horizon must be between zero and six")
-    return _solve(problem, root_branches(problem), max_diagnostic_actions)
+    return solve_active_from_branches(
+        problem,
+        root_branches(problem),
+        max_diagnostic_actions,
+    )

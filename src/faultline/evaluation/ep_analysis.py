@@ -18,7 +18,7 @@ from faultline.oracle import (
 )
 from faultline.oracle.passive import root_branches
 
-EP_ANALYSIS_VERSION = "ep-distribution-v1"
+EP_ANALYSIS_VERSION = "ep-distribution-v2"
 FloatArray = NDArray[np.float64]
 
 
@@ -64,6 +64,22 @@ def _distribution(values: Sequence[float]) -> dict[str, float]:
     }
 
 
+def _correlations(
+    rows: list[dict[str, Any]],
+    target: FloatArray,
+    features: tuple[str, ...],
+) -> dict[str, dict[str, float | None]]:
+    result: dict[str, dict[str, float | None]] = {}
+    target_ranks = _ranks(target)
+    for feature in features:
+        values = np.asarray([row[feature] for row in rows], dtype=np.float64)
+        result[feature] = {
+            "pearson": _pearson(values, target),
+            "spearman": _pearson(_ranks(values), target_ranks),
+        }
+    return result
+
+
 def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
     """Regenerate and exactly analyze a fixed ordered set of pair seeds."""
     if not seeds:
@@ -102,6 +118,11 @@ def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
                 "passive_difficulty": -validation.passive_expected_return,
                 "epistemic_pressure": validation.epistemic_pressure,
                 "repair_margin": validation.repair_margin,
+                "perfect_information_expected_return": (
+                    validation.perfect_information_expected_return
+                ),
+                "passive_decision_regret": validation.passive_decision_regret,
+                "normalized_ep": validation.normalized_ep,
                 "immediate_advance_decision_value": immediate_advance.decision_value,
                 "immediate_advance_information_gain_bits": (
                     immediate_advance.information_gain_bits
@@ -114,6 +135,10 @@ def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
         )
 
     pressures = np.asarray([row["epistemic_pressure"] for row in rows], dtype=np.float64)
+    normalized_pressures = np.asarray(
+        [row["normalized_ep"] for row in rows],
+        dtype=np.float64,
+    )
     correlation_features = (
         "node_count",
         "fault_position",
@@ -125,15 +150,14 @@ def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
         "diagnostic_cost",
         "passive_difficulty",
         "repair_margin",
+        "passive_decision_regret",
     )
-    correlations: dict[str, dict[str, float | None]] = {}
-    pressure_ranks = _ranks(pressures)
-    for feature in correlation_features:
-        values = np.asarray([row[feature] for row in rows], dtype=np.float64)
-        correlations[feature] = {
-            "pearson": _pearson(values, pressures),
-            "spearman": _pearson(_ranks(values), pressure_ranks),
-        }
+    correlations = _correlations(rows, pressures, correlation_features)
+    normalized_correlations = _correlations(
+        rows,
+        normalized_pressures,
+        correlation_features,
+    )
 
     return {
         "analysis_version": EP_ANALYSIS_VERSION,
@@ -141,6 +165,12 @@ def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
         "seeds": list(seeds),
         "epistemic_pressure": _distribution(
             [float(row["epistemic_pressure"]) for row in rows]
+        ),
+        "normalized_ep": _distribution(
+            [float(row["normalized_ep"]) for row in rows]
+        ),
+        "passive_decision_regret": _distribution(
+            [float(row["passive_decision_regret"]) for row in rows]
         ),
         "passive_expected_return": _distribution(
             [float(row["passive_expected_return"]) for row in rows]
@@ -161,5 +191,6 @@ def analyze_ep_distribution(seeds: Sequence[int]) -> dict[str, Any]:
             [float(row["post_advance_inspect_information_gain_bits"]) for row in rows]
         ),
         "correlations_with_ep": correlations,
+        "correlations_with_normalized_ep": normalized_correlations,
         "rows": rows,
     }

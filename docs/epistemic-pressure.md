@@ -151,6 +151,35 @@ normalized/stratified score with substantially reduced associations. This is a p
 metric result, not evidence against active diagnosis itself. Full rows, correlations, plots, and
 provenance are in `artifacts/manifests/gate2-ep-analysis-v0.3-20260903.json` and its linked artifacts.
 
+## Scale control and matched construction
+
+Define the no-diagnostic perfect-information value \(V^*_{\mathrm{perfect}}\) by revealing the latent
+world to the terminal decision oracle at no cost. A dimensionless candidate is
+
+\[
+NEP(e)=
+\frac{V^*_{\mathrm{active}}(e)-V^*_{\mathrm{passive}}(e)}
+     {V^*_{\mathrm{perfect}}(e)-V^*_{\mathrm{passive}}(e)}.
+\]
+
+The denominator is the decision regret that perfect fault identity could recover. The score is
+defined only when that regret is positive. It separates gross repair stakes from the fraction
+recoverable after diagnostic costs. It is logged as a second axis, not substituted silently for raw
+EP; near-one saturation would make it useless for ranking.
+
+For the learning comparison, a stronger control changes epistemic structure within an exact matched
+block. Each base factory creates two ambiguous tasks whose public binary cue is constant across its
+two latent worlds (one task for each cue value), and one revealed task whose cue identifies the
+fault. Sampling the ambiguous pair of tasks uniformly and sampling the revealed task both produce
+50/50 cue and 50/50 fault marginals. Graph, fault locations, capacities, rates, preload, reward,
+horizon, and action set are the same object. Only the cue–fault joint differs. Exact evaluation must
+show positive EP for the ambiguous condition and zero EP for the revealed condition before this
+control enters RL.
+
+This controls raw scale and marginal distribution shifts. It does not automatically match passive
+difficulty: the revealed condition is deliberately solvable without diagnosis. Difficulty-RL and
+active-oracle-value stratification remain necessary controls.
+
 ## Measurements required before adoption
 
 - pair-generation acceptance and rejection reasons;

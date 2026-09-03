@@ -88,6 +88,7 @@ def build_pair_dataset(
 def summarize_generation(batch: GenerationBatch) -> dict[str, Any]:
     pressures = [validation.epistemic_pressure for validation in batch.validations]
     margins = [validation.repair_margin for validation in batch.validations]
+    normalized = [validation.normalized_ep for validation in batch.validations]
     return {
         "requested_count": len(batch.pairs),
         "validated_count": sum(validation.valid for validation in batch.validations),
@@ -97,6 +98,9 @@ def summarize_generation(batch: GenerationBatch) -> dict[str, Any]:
         "ep_min": min(pressures),
         "ep_mean": fmean(pressures),
         "ep_max": max(pressures),
+        "normalized_ep_min": min(normalized),
+        "normalized_ep_mean": fmean(normalized),
+        "normalized_ep_max": max(normalized),
         "repair_margin_min": min(margins),
         "passive_recovery_mean": fmean(
             validation.passive_recovery_probability for validation in batch.validations
