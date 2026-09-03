@@ -99,4 +99,13 @@ routine rather than uncertainty-sensitive investigation; it is neither a multi-s
 result nor causal evidence use. The immutable
 [`manifest`](artifacts/manifests/ep-pilot-30k-masked-seed00-20260903.json) records the checkpoint and
 validation traces.
+
+The frozen validation-only kill test completed all 24 preregistered runs (8 training seeds × 3
+curricula). Mean diagnostic success was 80.7% Random, 90.2% Difficulty, and 95.1% Epistemic.
+Epistemic minus Random was +14.4 points with a 95% seed-bootstrap interval of [−8.4, 43.0];
+Epistemic minus Difficulty was +4.9 [−13.3, 28.6]. Neither met the frozen criterion, so the result is
+**no preregistered curriculum-specific effect**. Epistemic policies also inspected 100% of
+revealed-cue episodes, consistent with a fixed probing routine. This stops LLM/Factorio escalation.
+See the immutable [`analysis`](artifacts/manifests/small-kill-v1-analysis.json) and
+[`seed plot`](artifacts/results/small-kill-v1-analysis.svg). The test split remains sealed.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

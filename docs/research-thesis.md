@@ -44,6 +44,20 @@ change the held-out test after inspection.
 5. Stop before language-model or Factorio work unless the small-policy result is robust across
    competent implementations and multiple seeds.
 
+## Current evidence status
+
+Gates 0–2 establish the simulator, 100 generated exact diagnostic pairs, passive ceilings, and exact
+active solutions. The frozen validation-only `small-kill-v1` comparison completed eight training
+seeds per curriculum. Epistemic mean diagnostic success was higher than Random and Difficulty, but
+both paired bootstrap intervals included zero and the Difficulty mean difference fell below the
+predeclared five-point threshold. H1 is therefore not supported by this kill test.
+
+Learned policies can execute `advance -> inspect -> conditional repair`, so representational
+inability is not the immediate explanation. Epistemic policies also probe every revealed-cue case;
+current evidence is consistent with a fixed troubleshooting routine rather than uncertainty-sensitive
+investigation. H2 remains unsupported. H3 requires the counterfactual evidence-swap evaluator. H4 was
+not tested. Per the kill gate, LLM and Factorio work is paused.
+
 ## Operational reward constraint
 
 The primary policy reward is production recovery minus time, diagnostic, repair, and false-repair

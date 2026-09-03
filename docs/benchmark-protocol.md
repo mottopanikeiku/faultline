@@ -104,6 +104,32 @@ interpretation is benchmark saturation without curriculum separation.
 This is a validation-set kill test, not the final confirmatory study. The procedural test range
 remains sealed. No missing run may be silently replaced after aggregate outcomes are inspected.
 
+### Frozen result
+
+All 24 runs completed. Seed-level mean primary endpoints were:
+
+| Curriculum | Mean | 95% training-seed bootstrap interval |
+|---|---:|---:|
+| Random | 0.807 | [0.557, 0.995] |
+| Difficulty | 0.902 | [0.710, 1.000] |
+| Epistemic | 0.951 | [0.862, 1.000] |
+
+The paired Epistemic-minus-Random difference was 0.144, interval [−0.084, 0.430]. The
+Epistemic-minus-Difficulty difference was 0.049, interval [−0.133, 0.286]. Neither met the frozen
+criterion of at least 0.05 mean improvement with a lower interval bound above zero. The prespecified
+decision is `no_preregistered_curriculum_effect`.
+
+Secondary behavior supports a cautious interpretation. Mean ambiguous recovery was 0.901 Random,
+0.950 Difficulty, and 0.951 Epistemic. Mean revealed-cue informative-inspection rates were 0.813,
+0.904, and 1.000, respectively. Epistemic training produced the highest mean diagnostic success but
+also the most indiscriminate probing. Training-seed variance was large: individual diagnostic success
+ranged from 0 to 1 in Random, 0.230 to 1 in Difficulty, and 0.645 to 1 in Epistemic.
+
+This validation result does not support escalation to LLM or Factorio stages. It also does not prove
+EP has no effect: the interval is wide, the action grammar makes a fixed probe cheap to learn, and
+the benchmark lacks no-fault episodes in this RL interface. Those are engineering/research questions,
+not grounds to reinterpret the frozen endpoint. Manifest: `artifacts/manifests/small-kill-v1-analysis.json`.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning

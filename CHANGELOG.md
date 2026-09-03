@@ -115,3 +115,10 @@ listed only when backed by immutable artifacts.
   probed every revealed episode. All three exploratory seed-0 arms therefore learned the same fixed
   troubleshooting routine by 30k; only the frozen multi-seed comparison can estimate a curriculum
   effect. Reference: `difficulty-pilot-30k-seed00-20260903`.
+- Frozen `small-kill-v1` completed 24/24 runs. Mean diagnostic success was 80.7% Random, 90.2%
+  Difficulty, and 95.1% Epistemic. Paired Epistemic differences were +14.4 points versus Random
+  (95% seed-bootstrap CI [−8.4, 43.0]) and +4.9 versus Difficulty [−13.3, 28.6].
+- Prespecified decision: `no_preregistered_curriculum_effect`. Neither comparison met the minimum
+  effect and positive-lower-bound rule. Epistemic policies probed 100% of revealed-cue episodes,
+  reinforcing the fixed-routine interpretation. LLM and Factorio stages remain closed. Reference:
+  `small-kill-v1-analysis`.
