@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+dist/
+build/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+
+# Generated experiment outputs (manifests remain trackable when explicitly added)
+artifacts/runs/
+artifacts/results/
+*.pt
+*.pth
+*.ckpt
+
+# Local secrets
+.env
+.env.*
+!.env.example
