@@ -37,4 +37,6 @@ will be retained.
 
 ## Status
 
-Repository bootstrap only. See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.
+Deterministic healthy material-flow dynamics are implemented and covered by conservation and
+replay tests. Fault, action, reward, diagnostic-pair, and learning results are not yet established.
+See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.
