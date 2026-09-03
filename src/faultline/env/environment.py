@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from dataclasses import replace as dataclass_replace
 from enum import StrEnum
 
 from faultline.env.actions import (
@@ -16,7 +17,7 @@ from faultline.env.actions import (
     Replace,
     Toggle,
 )
-from faultline.env.dynamics import advance
+from faultline.env.dynamics import step_tick
 from faultline.env.graph import FactoryGraph
 from faultline.env.observation import (
     PublicObservation,
@@ -24,12 +25,14 @@ from faultline.env.observation import (
     measure_edge,
     observe_status,
 )
+from faultline.env.reward import RewardConfig, RewardTracker
 from faultline.env.state import FactoryState
 from faultline.faults.base import LatentFault, inject_fault
 
 
 class ActionError(StrEnum):
     UNKNOWN_COMPONENT = "unknown_component"
+    EPISODE_TERMINATED = "episode_terminated"
 
 
 @dataclass(frozen=True, slots=True)
@@ -40,6 +43,8 @@ class ActionResult:
     accepted: bool
     observation: PublicObservation
     error: ActionError | None = None
+    reward: float = 0.0
+    terminated: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -56,6 +61,7 @@ class FactoryEnv:
     state: FactoryState
     check_invariants: bool = False
     history: list[Interaction] = field(default_factory=list)
+    reward_tracker: RewardTracker | None = None
 
     @classmethod
     def create(
@@ -63,18 +69,30 @@ class FactoryEnv:
         graph: FactoryGraph,
         fault: LatentFault | None = None,
         *,
+        reward_config: RewardConfig | None = None,
         check_invariants: bool = False,
     ) -> FactoryEnv:
         state = FactoryState.healthy(graph)
         if fault is not None:
             inject_fault(graph, state, fault)
-        return cls(graph=graph, state=state, check_invariants=check_invariants)
+        reward_tracker = RewardTracker(reward_config) if reward_config is not None else None
+        return cls(
+            graph=graph,
+            state=state,
+            check_invariants=check_invariants,
+            reward_tracker=reward_tracker,
+        )
 
     def observe(self) -> PublicObservation:
         return observe_status(self.state)
 
     def act(self, action: Action) -> ActionResult:
         """Execute one typed action and append exactly its public result to history."""
+        if self.reward_tracker is not None and self.reward_tracker.terminated:
+            raise RuntimeError(ActionError.EPISODE_TERMINATED.value)
+
+        repair_was_needed = self._repair_was_needed(action)
+        tick_reward = 0.0
         if isinstance(action, Inspect):
             result = self._inspect(action)
         elif isinstance(action, MeasureFlow):
@@ -88,9 +106,21 @@ class FactoryEnv:
         elif isinstance(action, ClearBlockage):
             result = self._clear_blockage(action)
         elif isinstance(action, Advance):
-            result = self._advance(action)
+            result, tick_reward = self._advance(action)
         else:
             raise TypeError(f"unsupported action type: {type(action).__name__}")
+
+        if self.reward_tracker is not None:
+            action_reward = self.reward_tracker.record_action(
+                action.kind,
+                accepted=result.accepted,
+                repair_was_needed=repair_was_needed,
+            )
+            result = dataclass_replace(
+                result,
+                reward=tick_reward + action_reward,
+                terminated=self.reward_tracker.terminated,
+            )
         self.history.append(Interaction(action=action, result=result))
         return result
 
@@ -159,17 +189,42 @@ class FactoryEnv:
             {"event": action.kind.value, "edge": action.edge, "maintenance": "completed"},
         )
 
-    def _advance(self, action: Advance) -> ActionResult:
-        transition = advance(
-            self.graph,
-            self.state,
-            action.ticks,
-            check_invariants=self.check_invariants,
-        )
+    def _advance(self, action: Advance) -> tuple[ActionResult, float]:
+        tick_reward = 0.0
+        ticks_advanced = 0
+        for _ in range(action.ticks):
+            transition = step_tick(
+                self.graph,
+                self.state,
+                check_invariants=self.check_invariants,
+            )
+            ticks_advanced += 1
+            if self.reward_tracker is not None:
+                tick_reward += self.reward_tracker.record_tick(
+                    transition.delivered,
+                    self.state.tick,
+                )
+                if self.reward_tracker.terminated:
+                    break
         observation = observe_status(self.state)
         observation["event"] = action.kind.value
-        observation["ticks_advanced"] = transition.ticks
-        return ActionResult(action.kind, True, observation)
+        observation["ticks_advanced"] = ticks_advanced
+        return ActionResult(action.kind, True, observation), tick_reward
+
+    def _repair_was_needed(self, action: Action) -> bool:
+        if isinstance(action, Replace):
+            node_index = self.graph.node_index.get(action.node)
+            return bool(
+                node_index is not None
+                and (
+                    self.state.node_failed[node_index]
+                    or self.state.node_backpressured[node_index]
+                )
+            )
+        if isinstance(action, ClearBlockage):
+            edge_index = self.graph.edge_index.get(action.edge)
+            return bool(edge_index is not None and self.state.edge_blocked[edge_index])
+        return False
 
     @staticmethod
     def _unknown(kind: ActionKind, component: str) -> ActionResult:

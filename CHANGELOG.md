@@ -20,8 +20,11 @@ listed only when backed by immutable artifacts.
   advancement actions with a public-only interaction history.
 - Observation-isolation tests that compare initially confusable latent faults and ensure repair
   responses do not reveal whether maintenance was necessary.
+- Operational throughput-minus-cost reward accounting with separate passive, diagnostic, repair,
+  false-repair, and time costs.
+- Sustained-recovery, action-limit, and tick-limit termination with recomputable episode metrics.
 
 ### Research status
 
-- Dynamics, fault families, and the operational interface are established locally; the complete
-  simulator gate and learning results are not yet established.
+- Core scalar simulator semantics are established locally; throughput benchmarking and the
+  diagnostic-pair milestone are not yet established.

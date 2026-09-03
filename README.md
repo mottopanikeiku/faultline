@@ -37,7 +37,8 @@ will be retained.
 
 ## Status
 
-Deterministic material-flow dynamics, three latent fault families, and the typed operational action
-interface are implemented with conservation, replay, fault-causality, and observation-isolation
-tests. Reward, diagnostic-pair, and learning results are not yet established.
+Deterministic material-flow dynamics, three latent fault families, typed actions, and operational
+reward accounting are implemented with conservation, replay, fault-causality, observation-isolation,
+false-repair, and sustained-recovery tests. Diagnostic-pair and learning results are not yet
+established.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.
