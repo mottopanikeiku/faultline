@@ -26,7 +26,7 @@ the preregistered kill test.
 ## Development
 
 ```bash
-uv sync --extra dev
+uv sync --extra dev --extra learning-cpu
 uv run pytest
 uv run faultline --version
 uv run faultline demo healthy --nodes 8 --ticks 10
@@ -35,6 +35,10 @@ uv run faultline demo diagnostic-pair --seed 42
 uv run faultline env generate --count 100 --split train --run-id gate1-pairs-v0.2
 uv run faultline curriculum analyze --run-id gate2-ep-analysis-v0.3
 uv run faultline curriculum control-audit --run-id matched-ep-control-v0.3
+uv run faultline train --config configs/training/small-cpu-smoke.toml \
+  --curriculum epistemic --seed 0 --dry-run
+uv run faultline train --config configs/training/small-cpu-smoke.toml \
+  --curriculum epistemic --seed 0 --run-id ep-smoke-seed-00
 uv run faultline benchmark simulator
 ```
 
@@ -82,4 +86,10 @@ Passive difficulty still differs and remains an explicit control for the RL kill
 [`intervention plot`](artifacts/results/gate2-ep-analysis-v0.3-20260903-interventions.svg),
 [`normalized-score analysis`](artifacts/manifests/gate2b-normalized-ep-v0.3-20260903.json), and
 [`matched-control audit`](artifacts/manifests/gate2c-matched-ep-control-v0.3-20260903.json).
+
+The first learned-agent path is implemented but not yet a result: a 0.9M-parameter
+permutation-aware graph encoder, GRU state, typed four-action head, recurrent PPO, matched Random /
+Difficulty / Epistemic samplers, immutable checkpoints, and paired validation evaluation. Policy
+reward is exclusively the simulator's production-minus-cost objective; no information-gain term is
+present.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

@@ -1,0 +1,31 @@
+[ppo]
+total_decision_steps = 30000
+rollout_min_steps = 1024
+parallel_envs = 32
+hidden_size = 256
+message_layers = 3
+learning_rate = 0.0003
+gamma = 0.99
+gae_lambda = 0.95
+clip_ratio = 0.2
+value_coefficient = 0.5
+entropy_coefficient = 0.01
+max_gradient_norm = 0.5
+update_epochs = 4
+minibatch_episodes = 64
+target_kl = 0.03
+device = "cpu"
+torch_threads = 6
+
+[curriculum]
+pool_offset = 10000
+pool_size = 512
+max_decision_steps = 4
+difficulty_ema = 0.05
+difficulty_temperature = 0.25
+difficulty_exploration = 0.1
+
+[evaluation]
+split = "validation"
+offset = 0
+base_pair_count = 128

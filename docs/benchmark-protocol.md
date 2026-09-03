@@ -38,6 +38,19 @@ Provisional suites:
 A regret/UED-inspired curriculum is required before a strong environment-design claim. It may follow
 the first kill test but may not be omitted from a final study.
 
+The implemented first learner uses a message-passing graph encoder, GRU, and four typed macro-level
+actions: advance dynamics, inspect the nominated component, clear its outgoing blockage, or replace
+the processor. Repair is a commitment and the simulator advances through sustained-recovery
+verification, preventing repair-reward feedback from becoming a second diagnostic channel. PPO
+replays complete padded episodes from zero recurrent state so gradients propagate through the
+diagnostic history.
+
+Training budget is counted in policy decision steps; underlying simulator ticks and episode counts
+are also recorded. Counter-based sampling makes base-pair and latent-world schedules identical across
+arms for the same seed. Random samples ambiguous/revealed conditions 50/50, Difficulty adapts that
+probability from observed failure only, and Epistemic samples ambiguous conditions. The Difficulty
+arm is intentionally strong and may converge toward the same task mix as Epistemic.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning

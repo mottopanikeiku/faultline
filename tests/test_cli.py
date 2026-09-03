@@ -33,3 +33,27 @@ def test_diagnostic_pair_demo_reports_executed_evidence(
     assert "Optimal diagnostic sequence: advance -> inspect" in output
     assert "processor.input=0.00 output=2.00" in output
     assert "processor.input=2.00 output=0.00" in output
+
+
+def test_training_dry_run_resolves_without_writing(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    assert (
+        main(
+            [
+                "train",
+                "--curriculum",
+                "epistemic",
+                "--seed",
+                "3",
+                "--max-steps",
+                "77",
+                "--dry-run",
+            ]
+        )
+        == 0
+    )
+    output = capsys.readouterr().out
+    assert '"kind": "epistemic"' in output
+    assert '"training_seed": 3' in output
+    assert '"total_decision_steps": 77' in output

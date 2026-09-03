@@ -166,6 +166,25 @@ def build_parser() -> argparse.ArgumentParser:
     control_audit.add_argument("--plot", type=Path)
     control_audit.add_argument("--manifest", type=Path)
 
+    train = commands.add_parser("train", help="train the recurrent diagnostic policy")
+    train.add_argument(
+        "--config",
+        type=Path,
+        default=Path("configs/training/small-cpu-smoke.toml"),
+    )
+    train.add_argument(
+        "--curriculum",
+        choices=("random", "difficulty", "epistemic"),
+        required=True,
+    )
+    train.add_argument("--seed", type=_nonnegative_int, required=True)
+    train.add_argument("--run-id")
+    train.add_argument("--max-steps", type=_positive_int)
+    train.add_argument("--device")
+    train.add_argument("--dry-run", action="store_true")
+    train.add_argument("--output", type=Path)
+    train.add_argument("--manifest", type=Path)
+
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
     simulator = benchmarks.add_parser("simulator", help="benchmark batched simulator throughput")
@@ -626,6 +645,155 @@ def _run_oracle_solve(args: argparse.Namespace, parser: argparse.ArgumentParser)
     return 0
 
 
+def _run_training(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    try:
+        import torch
+
+        from faultline.evaluation.policy import POLICY_EVALUATION_VERSION
+        from faultline.training.checkpoint import (
+            POLICY_VERSION,
+            save_policy_checkpoint,
+        )
+        from faultline.training.curriculum import CurriculumKind
+        from faultline.training.run import load_training_config, run_training
+    except ModuleNotFoundError as error:
+        parser.error(
+            f"training dependency {error.name!r} is missing; "
+            "run `uv sync --extra dev --extra learning-cpu`"
+        )
+
+    repo = repository_root(Path.cwd())
+    config_path = args.config if args.config.is_absolute() else repo / args.config
+    resolved = load_training_config(
+        config_path,
+        curriculum_kind=CurriculumKind(args.curriculum),
+        training_seed=args.seed,
+        max_steps=args.max_steps,
+        device=args.device,
+    )
+    resolved_config = resolved.to_dict()
+    if args.dry_run:
+        print(json.dumps(resolved_config, indent=2, sort_keys=True))
+        return 0
+    _require_clean_repository(parser)
+
+    run_id = args.run_id or (
+        f"{args.curriculum}-seed-{args.seed:02d}-"
+        + datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    )
+    started_at = utc_timestamp()
+    experiment = run_training(resolved)
+    completed_at = utc_timestamp()
+    training = experiment.training
+    evaluation = experiment.evaluation
+    result = {
+        "schema_version": 1,
+        "run_id": run_id,
+        "training_seed": args.seed,
+        "curriculum": args.curriculum,
+        "resolved_config": resolved_config,
+        "decision_steps": training.decision_steps,
+        "simulator_ticks": training.simulator_ticks,
+        "episode_count": training.episode_count,
+        "elapsed_seconds": experiment.elapsed_seconds,
+        "history": list(training.history),
+        "curriculum_state": training.curriculum_state,
+        "evaluation": evaluation,
+    }
+    checkpoint_path = repo / "artifacts" / "runs" / run_id / "policy.pt"
+    checkpoint_sha256 = save_policy_checkpoint(
+        checkpoint_path,
+        training.policy,
+        ppo_config=resolved_config["ppo"],
+        curriculum_config=resolved_config["curriculum"],
+        training_metrics={
+            "decision_steps": training.decision_steps,
+            "simulator_ticks": training.simulator_ticks,
+            "episode_count": training.episode_count,
+            "elapsed_seconds": experiment.elapsed_seconds,
+            "final_update": training.history[-1],
+            "evaluation": {
+                "ambiguous": evaluation["ambiguous"],
+                "revealed": evaluation["revealed"],
+            },
+        },
+    )
+    result["checkpoint"] = {
+        "path": _artifact_reference(checkpoint_path, repo),
+        "sha256": checkpoint_sha256,
+        "policy_version": POLICY_VERSION,
+    }
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    metrics = {
+        "decision_steps": training.decision_steps,
+        "simulator_ticks": training.simulator_ticks,
+        "episode_count": training.episode_count,
+        "elapsed_seconds": experiment.elapsed_seconds,
+        "decision_steps_per_second": (
+            training.decision_steps / experiment.elapsed_seconds
+        ),
+        "final_update": training.history[-1],
+        "validation": {
+            "version": POLICY_EVALUATION_VERSION,
+            "ambiguous": evaluation["ambiguous"],
+            "revealed": evaluation["revealed"],
+        },
+        "result_path": _artifact_reference(result_output, repo),
+        "result_sha256": canonical_sha256(result),
+        "checkpoint_path": _artifact_reference(checkpoint_path, repo),
+        "checkpoint_sha256": checkpoint_sha256,
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="small-recurrent-ppo",
+        config=resolved_config,
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version="small-policy-training-v1",
+        split="train+validation",
+        seed=args.seed,
+        generator_version=GENERATOR_VERSION,
+        policy={
+            "version": POLICY_VERSION,
+            "hidden_size": resolved.ppo.hidden_size,
+            "message_layers": resolved.ppo.message_layers,
+            "parameter_count": training.policy.parameter_count,
+            "torch_version": torch.__version__,
+            "device": resolved.ppo.device,
+        },
+        curriculum={
+            "kind": args.curriculum,
+            "matched_base_schedule": True,
+            "state": training.curriculum_state,
+        },
+        reward={
+            "operational_only": True,
+            "information_gain_term": False,
+            "varies_by_base_pair_but_matches_conditions": True,
+        },
+    )
+    write_json_artifact(result_output, result)
+    write_manifest(manifest_output, manifest)
+    print(
+        f"steps={training.decision_steps} episodes={training.episode_count} "
+        f"seconds={experiment.elapsed_seconds:.2f}"
+    )
+    print(
+        f"ambiguous_recovery={evaluation['ambiguous']['recovery_rate']:.1%} "
+        f"diagnostic_success="
+        f"{evaluation['ambiguous']['experiment_then_correct_repair_rate']:.1%}"
+    )
+    print(f"checkpoint={checkpoint_path}")
+    print(f"result={result_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_simulator_benchmark(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     config = SimulatorBenchmarkConfig(
@@ -674,6 +842,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_ep_analysis(args, parser)
     if args.command == "curriculum" and args.curriculum == "control-audit":
         return _run_control_audit(args, parser)
+    if args.command == "train":
+        return _run_training(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

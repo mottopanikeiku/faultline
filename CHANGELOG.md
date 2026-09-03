@@ -47,6 +47,14 @@ listed only when backed by immutable artifacts.
   audit rather than silent adoption.
 - Matched cue-control blocks that reuse the identical factory, faults, reward, and fault/cue
   marginals while changing only cue–fault dependence between ambiguous and revealed conditions.
+- Small graph-message-passing/GRU actor-critic (approximately 0.9M parameters at the primary
+  configuration) with typed diagnostic and repair actions.
+- Complete-episode recurrent PPO with GAE, clipped actor/value objectives, entropy regularization,
+  recurrent minibatch replay, gradient clipping, and KL early stopping.
+- Counter-based matched Random, student-failure Difficulty, and Epistemic curriculum samplers sharing
+  base-factory and latent-world schedules.
+- Versioned portable policy checkpoints, CPU/CUDA uv extras, dry-run cost control, and paired
+  validation evaluation over every world and balanced cue.
 
 ### Research status
 
@@ -77,3 +85,5 @@ listed only when backed by immutable artifacts.
   every structural/cost nuisance and equal fault/cue marginals. Ambiguous cue–fault dependence had
   mean EP 8.86 and 50% passive recovery; revealed dependence had EP 0 and 100% passive recovery.
   Reference: `gate2c-matched-ep-control-v0.3-20260903`.
+- The learned-agent code path is implemented and semantically tested; no curriculum comparison has
+  yet been run or interpreted.
