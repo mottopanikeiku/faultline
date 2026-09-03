@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-09-03T21:10:06.371684+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "difficulty",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 103
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 6,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "7b460c5570147e862e4195f1d97c4243f7c766d28835cafd65e3757b55e1efb6",
+  "curriculum": {
+    "kind": "difficulty",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 0.7048625272711636,
+      "condition_counts": {
+        "ambiguous": 15834,
+        "revealed": 8512
+      },
+      "episode_index": 24346,
+      "failure_ema": {
+        "ambiguous": 0.3286669094875032,
+        "revealed": 0.08301536818258733
+      },
+      "kind": "difficulty"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "37a802f1d186a4dd6b425b271632fee9031ac63e",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/small-kill-v1-difficulty-seed-103/policy.pt",
+    "checkpoint_sha256": "144c4ef2fb4d9e95cebc2b323d5e399287a9204988292a97f8db992530416758",
+    "decision_steps": 30065,
+    "decision_steps_per_second": 781.7541002667358,
+    "elapsed_seconds": 38.458384790999844,
+    "episode_count": 24346,
+    "final_update": {
+      "approximate_kl": 0.004648233283660375,
+      "clip_fraction": 0.09049567999318242,
+      "correct_repair_rate": 0.6455696202531646,
+      "decision_steps": 30065,
+      "entropy": 0.7443429008126259,
+      "episodes": 24346,
+      "informative_inspection_rate": 0.22784810126582278,
+      "loss": 16.29642653465271,
+      "mean_return": 3.8872151898734173,
+      "policy_loss": 0.02200066833756864,
+      "recovery_rate": 0.6455696202531646,
+      "simulator_ticks": 356061,
+      "update": 28,
+      "value_loss": 32.56373834609985
+    },
+    "result_path": "artifacts/results/small-kill-v1-difficulty-seed-103.json",
+    "result_sha256": "4dc8d8581a5bb247041ef21258cad52ca00978abf6572ac026124e5c08615523",
+    "simulator_ticks": 356061,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 0.615234375,
+        "episode_count": 512.0,
+        "experiment_then_correct_repair_rate": 0.23046875,
+        "false_repair_rate": 0.384765625,
+        "informative_inspection_rate": 0.23046875,
+        "mean_advance_count": 0.23046875,
+        "mean_decision_steps": 1.4609375,
+        "mean_inspect_count": 0.23046875,
+        "mean_return": 3.6429003906250004,
+        "recovery_rate": 0.615234375
+      },
+      "revealed": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 256.0,
+        "experiment_then_correct_repair_rate": 0.23046875,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 0.23046875,
+        "mean_advance_count": 0.23046875,
+        "mean_decision_steps": 1.4609375,
+        "mean_inspect_count": 0.23046875,
+        "mean_return": 10.70125,
+        "recovery_rate": 1.0
+      },
+      "version": "small-policy-eval-v1"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "small-kill-v1-difficulty-seed-103",
+  "schema_version": 1,
+  "seed": 103,
+  "split": "train+validation",
+  "started_at": "2026-09-03T21:09:27.913265+00:00",
+  "status": "completed"
+}
