@@ -25,6 +25,7 @@ class FactoryState:
     node_backpressured: BoolArray
     edge_blocked: BoolArray
     last_edge_flow: FloatArray
+    last_delivered: float = 0.0
     tick: int = 0
     injected_total: float = 0.0
     delivered_total: float = 0.0
@@ -59,6 +60,7 @@ class FactoryState:
             node_backpressured=self.node_backpressured.copy(),
             edge_blocked=self.edge_blocked.copy(),
             last_edge_flow=self.last_edge_flow.copy(),
+            last_delivered=self.last_delivered,
             tick=self.tick,
             injected_total=self.injected_total,
             delivered_total=self.delivered_total,

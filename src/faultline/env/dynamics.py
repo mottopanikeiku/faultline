@@ -113,6 +113,7 @@ def step_tick(
     state.tick += 1
     state.injected_total += injected
     state.delivered_total += delivered
+    state.last_delivered = delivered
 
     if check_invariants:
         validate_state(graph, state)

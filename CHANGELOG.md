@@ -16,8 +16,12 @@ listed only when backed by immutable artifacts.
   and cycle rejection.
 - Latent blocked-edge, failed-processor, and downstream-backpressure faults with causal restoration
   tests and privileged-state isolation boundaries.
+- Typed inspect, flow measurement, isolation, toggle, replacement, blockage clearing, and time
+  advancement actions with a public-only interaction history.
+- Observation-isolation tests that compare initially confusable latent faults and ensure repair
+  responses do not reveal whether maintenance was necessary.
 
 ### Research status
 
-- Healthy dynamics and three fault families are established locally; the complete simulator gate
-  and learning results are not yet established.
+- Dynamics, fault families, and the operational interface are established locally; the complete
+  simulator gate and learning results are not yet established.
