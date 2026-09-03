@@ -59,6 +59,10 @@ listed only when backed by immutable artifacts.
   inspect-before-dynamics, repeated-advance, and repeated-inspection sequences.
 - Frozen `small-kill-v1` protocol, seed-level paired bootstrap analysis, saturation decision rule,
   immutable aggregate reporting, and individual-seed plot.
+- Counterfactual diagnostic-evidence evaluator that swaps only telemetry, removes it, replays stale
+  evidence, supplies an uninformative midpoint, and randomizes valid paired outcomes.
+- Frozen validation-only `counterfactual-v1` protocol over all 24 small-kill checkpoints, with
+  eligibility-aware causal-use metrics and training-seed summaries.
 
 ### Research status
 

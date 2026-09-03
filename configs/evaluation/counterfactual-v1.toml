@@ -1,0 +1,10 @@
+protocol_id = "counterfactual-v1"
+source_study_protocol = "configs/evaluation/small-kill-v1.toml"
+evaluation_split = "validation"
+evaluation_offset = 0
+base_pair_count = 32
+randomizations_per_world = 16
+random_seed = 424242
+interventions = ["swap", "remove", "stale", "uninformative", "randomize"]
+primary_metric = "overall_causal_evidence_use_rate"
+sealed_test_split_used = false

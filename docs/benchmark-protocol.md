@@ -160,6 +160,21 @@ decision value per diagnostic cost.
 Causal metrics: repair-switch rate under paired outcome swaps, response-ablation effect, randomized-
 response degradation, probe-removal effect, and intervention/repair cost elasticity.
 
+## Counterfactual evidence protocol v1
+
+`configs/evaluation/counterfactual-v1.toml` freezes a validation-only causal analysis over all 24
+kill-test checkpoints and base-pair seeds 1,000,000–1,000,031. For policies that deterministically
+choose `advance -> inspect` in both paired worlds, the evaluator preserves graph, cue, public
+history, action mask, and recurrent state while changing only the revealed telemetry columns.
+
+Interventions are: swap the paired world's valid result; remove telemetry; replay the public
+pre-dynamics target state; provide the midpoint of both valid outcomes; and randomly draw one of the
+two valid outcomes 16 times. `causal_evidence_use_rate` requires normal correct repair, a changed
+repair under swap, and adoption of the donor world's repair. The primary combined metric,
+`overall_causal_evidence_use_rate`, assigns zero to policies that never reach the evidence decision.
+Conditional and eligibility rates are always reported separately to avoid crediting non-probing
+policies or hiding them from the denominator. The procedural test split remains sealed.
+
 ## Statistical unit
 
 Policies are evaluated on identical test scenario IDs. Comparisons are paired within training seed

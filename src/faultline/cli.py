@@ -205,6 +205,28 @@ def build_parser() -> argparse.ArgumentParser:
     small_kill.add_argument("--plot", type=Path)
     small_kill.add_argument("--manifest", type=Path)
 
+    counterfactual = commands.add_parser(
+        "counterfactual",
+        help="run causal interventions on diagnostic evidence",
+    )
+    counterfactual_commands = counterfactual.add_subparsers(dest="counterfactual")
+    counterfactual_study = counterfactual_commands.add_parser(
+        "study",
+        help="evaluate every frozen small-policy checkpoint",
+    )
+    counterfactual_study.add_argument(
+        "--protocol",
+        type=Path,
+        default=Path("configs/evaluation/counterfactual-v1.toml"),
+    )
+    counterfactual_study.add_argument(
+        "--run-id",
+        default="counterfactual-v1-analysis",
+    )
+    counterfactual_study.add_argument("--output", type=Path)
+    counterfactual_study.add_argument("--plot", type=Path)
+    counterfactual_study.add_argument("--manifest", type=Path)
+
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
     simulator = benchmarks.add_parser("simulator", help="benchmark batched simulator throughput")
@@ -883,6 +905,95 @@ def _run_kill_test_report(args: argparse.Namespace, parser: argparse.ArgumentPar
     return 0
 
 
+def _run_counterfactual_study(
+    args: argparse.Namespace,
+    parser: argparse.ArgumentParser,
+) -> int:
+    try:
+        from faultline.evaluation.counterfactual_study import (
+            COUNTERFACTUAL_STUDY_VERSION,
+            analyze_counterfactual_study,
+            load_counterfactual_protocol,
+        )
+    except ModuleNotFoundError as error:
+        parser.error(
+            f"counterfactual dependency {error.name!r} is missing; "
+            "run `uv sync --extra dev --extra learning-cpu`"
+        )
+    repo = _require_clean_repository(parser)
+    protocol_path = (
+        args.protocol if args.protocol.is_absolute() else repo / args.protocol
+    )
+    protocol = load_counterfactual_protocol(protocol_path)
+    started_at = utc_timestamp()
+    timer_started = perf_counter()
+    analysis = analyze_counterfactual_study(repo, protocol)
+    elapsed = perf_counter() - timer_started
+    completed_at = utc_timestamp()
+    run_id = args.run_id
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    plot_output = args.plot or repo / "artifacts" / "results" / f"{run_id}.svg"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    groups = {
+        arm: [
+            float(point["value"]) for point in summary["individual_training_seeds"]
+        ]
+        for arm, summary in analysis["arms"].items()
+    }
+    plot = render_group_values_svg(
+        groups,
+        title="Overall causal evidence use by curriculum",
+        y_label=protocol.primary_metric,
+    )
+    metrics = {
+        "elapsed_seconds": elapsed,
+        "arms": analysis["arms"],
+        "paired_primary_comparisons": analysis["paired_primary_comparisons"],
+        "source_run_count": len(analysis["runs"]),
+        "result_path": _artifact_reference(result_output, repo),
+        "result_sha256": canonical_sha256(analysis),
+        "plot_path": _artifact_reference(plot_output, repo),
+        "plot_sha256": hashlib.sha256(plot.encode("utf-8")).hexdigest(),
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="counterfactual-evidence-study",
+        config=asdict(protocol),
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version=COUNTERFACTUAL_STUDY_VERSION,
+        split=protocol.evaluation_split,
+        seed=protocol.random_seed,
+        generator_version=GENERATOR_VERSION,
+        policy={
+            "source_runs": [
+                {
+                    "run_id": run["run_id"],
+                    "checkpoint_sha256": run["checkpoint_sha256"],
+                }
+                for run in analysis["runs"]
+            ]
+        },
+        curriculum={"arms": list(analysis["arms"])},
+        reward={"not_used_for_counterfactual_action_selection": True},
+    )
+    write_json_artifact(result_output, analysis)
+    write_text_artifact(plot_output, plot)
+    write_manifest(manifest_output, manifest)
+    for arm, summary in analysis["arms"].items():
+        overall = summary["metrics"]["overall_causal_evidence_use_rate"]["mean"]
+        conditional = summary["metrics"]["causal_evidence_use_rate"]["mean"]
+        print(f"{arm}: overall={overall:.3f} conditional={conditional:.3f}")
+    print(f"result={result_output}")
+    print(f"plot={plot_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_simulator_benchmark(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     config = SimulatorBenchmarkConfig(
@@ -935,6 +1046,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_training(args, parser)
     if args.command == "report" and args.report == "small-kill":
         return _run_kill_test_report(args, parser)
+    if args.command == "counterfactual" and args.counterfactual == "study":
+        return _run_counterfactual_study(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":
