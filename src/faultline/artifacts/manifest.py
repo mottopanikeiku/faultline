@@ -127,6 +127,13 @@ def build_manifest(
     }
 
 
+def write_text_artifact(path: Path, content: str) -> None:
+    """Create an immutable UTF-8 text artifact."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8") as destination:
+        destination.write(content)
+
+
 def write_json_artifact(path: Path, value: object) -> None:
     """Create canonical human-readable JSON without permitting overwrite."""
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 from collections.abc import Sequence
 from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
+from time import perf_counter
 
 from faultline import __version__
 from faultline.artifacts import (
@@ -17,14 +20,18 @@ from faultline.artifacts import (
     utc_timestamp,
     write_json_artifact,
     write_manifest,
+    write_text_artifact,
 )
 from faultline.env import Action, Advance, ClearBlockage, FactoryEnv, Replace
 from faultline.evaluation import (
+    EP_ANALYSIS_VERSION,
     METRIC_VERSION,
     SimulatorBenchmarkConfig,
+    analyze_ep_distribution,
     run_simulator_benchmark,
 )
 from faultline.generation import (
+    GENERATOR_VERSION,
     build_manual_diagnostic_pair,
     build_pair_dataset,
     chain_factory,
@@ -42,7 +49,12 @@ from faultline.oracle import (
     solve_active,
     solve_passive,
 )
-from faultline.visualization import render_factory, render_timeline
+from faultline.visualization import (
+    render_factory,
+    render_histogram_svg,
+    render_paired_values_svg,
+    render_timeline,
+)
 
 
 def _positive_int(value: str) -> int:
@@ -115,6 +127,25 @@ def build_parser() -> argparse.ArgumentParser:
     solve.add_argument("--depth", type=_diagnostic_depth, default=3)
     solve.add_argument("--run-id")
     solve.add_argument("--output", type=Path)
+
+    curriculum = commands.add_parser("curriculum", help="analyze task-selection signals")
+    curriculum_commands = curriculum.add_subparsers(dest="curriculum")
+    analyze = curriculum_commands.add_parser(
+        "analyze",
+        help="analyze EP and intervention values in a saved pair dataset",
+    )
+    analyze.add_argument(
+        "--dataset",
+        type=Path,
+        default=Path(
+            "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json"
+        ),
+    )
+    analyze.add_argument("--run-id")
+    analyze.add_argument("--output", type=Path)
+    analyze.add_argument("--ep-plot", type=Path)
+    analyze.add_argument("--intervention-plot", type=Path)
+    analyze.add_argument("--manifest", type=Path)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -283,6 +314,119 @@ def _run_pair_generation(args: argparse.Namespace, parser: argparse.ArgumentPars
     return 0
 
 
+def _artifact_reference(path: Path, repo: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(repo.resolve()))
+    except ValueError:
+        return str(resolved)
+
+
+def _run_ep_analysis(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    dataset_path = args.dataset if args.dataset.is_absolute() else repo / args.dataset
+    dataset = json.loads(dataset_path.read_text(encoding="utf-8"))
+    if dataset["generator_version"] != GENERATOR_VERSION:
+        parser.error("dataset generator version does not match this checkout")
+    seeds = [int(task["seed"]) for task in dataset["tasks"]]
+    if len(seeds) != dataset["count"]:
+        parser.error("dataset task count is inconsistent")
+    run_id = args.run_id or datetime.now(UTC).strftime("ep-analysis-%Y%m%dT%H%M%SZ")
+    started_at = utc_timestamp()
+    timer_started = perf_counter()
+    analysis = analyze_ep_distribution(seeds)
+    elapsed = perf_counter() - timer_started
+    analysis["source_dataset"] = _artifact_reference(dataset_path, repo)
+    analysis["source_dataset_sha256"] = canonical_sha256(dataset)
+    completed_at = utc_timestamp()
+
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    ep_plot_output = (
+        args.ep_plot or repo / "artifacts" / "results" / f"{run_id}-ep.svg"
+    )
+    intervention_plot_output = (
+        args.intervention_plot
+        or repo / "artifacts" / "results" / f"{run_id}-interventions.svg"
+    )
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    rows = analysis["rows"]
+    ep_svg = render_histogram_svg(
+        [float(row["epistemic_pressure"]) for row in rows],
+        title="Epistemic pressure across validated pairs",
+        x_label="active expected return - passive expected return",
+    )
+    intervention_svg = render_paired_values_svg(
+        [float(row["immediate_advance_decision_value"]) for row in rows],
+        [float(row["post_advance_inspect_decision_value"]) for row in rows],
+        title="Decision value before and after diagnostic dynamics",
+        before_label="advance now",
+        after_label="inspect after advance",
+        y_label="one-step decision value",
+    )
+    metrics = {
+        key: value
+        for key, value in analysis.items()
+        if key not in {"rows", "seeds"}
+    }
+    metrics.update(
+        {
+            "elapsed_seconds": elapsed,
+            "pair_analyses_per_second": len(seeds) / elapsed,
+            "result_path": _artifact_reference(result_output, repo),
+            "result_sha256": canonical_sha256(analysis),
+            "ep_plot_path": _artifact_reference(ep_plot_output, repo),
+            "ep_plot_sha256": hashlib.sha256(ep_svg.encode("utf-8")).hexdigest(),
+            "intervention_plot_path": _artifact_reference(
+                intervention_plot_output,
+                repo,
+            ),
+            "intervention_plot_sha256": hashlib.sha256(
+                intervention_svg.encode("utf-8")
+            ).hexdigest(),
+        }
+    )
+    config = {
+        "source_dataset": _artifact_reference(dataset_path, repo),
+        "source_dataset_sha256": canonical_sha256(dataset),
+        "pair_count": len(seeds),
+        "oracle_depth": 2,
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="ep-distribution-analysis",
+        config=config,
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version=EP_ANALYSIS_VERSION,
+        split=str(dataset["split"]),
+        seed=seeds[0],
+        generator_version=GENERATOR_VERSION,
+        policy={"name": "exact-enumeration", "diagnostic_depth": 2},
+        reward={"varies_by_task": True},
+    )
+    write_json_artifact(result_output, analysis)
+    write_text_artifact(ep_plot_output, ep_svg)
+    write_text_artifact(intervention_plot_output, intervention_svg)
+    write_manifest(manifest_output, manifest)
+    ep = analysis["epistemic_pressure"]
+    print(
+        f"pairs={len(seeds)} ep_min={ep['min']:.3f} "
+        f"ep_mean={ep['mean']:.3f} ep_max={ep['max']:.3f}"
+    )
+    print(
+        f"analysis_rate={len(seeds) / elapsed:.1f} pairs/s "
+        f"result={result_output}"
+    )
+    print(f"ep_plot={ep_plot_output}")
+    print(f"intervention_plot={intervention_plot_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_oracle_solve(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     pair = build_manual_diagnostic_pair(args.seed)
@@ -399,6 +543,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_diagnostic_pair_demo(args)
     if args.command == "env" and args.env == "generate":
         return _run_pair_generation(args, parser)
+    if args.command == "curriculum" and args.curriculum == "analyze":
+        return _run_ep_analysis(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

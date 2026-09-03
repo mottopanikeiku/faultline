@@ -119,6 +119,16 @@ EP(e)\,[V^*_{\mathrm{active}}(e)-V^\pi(e)]
 is deferred until static EP selection works. Otherwise adaptation obscures whether epistemic task
 structure itself mattered.
 
+## Distribution-analysis protocol
+
+The Gate 2 analysis regenerates every recorded task seed under the manifest's generator version.
+For each pair it records EP, active and passive return, repair margin, the immediate value and
+information gain of `advance(1)`, and the value and information gain of inspecting after that
+dynamics step. It reports task-level rows, population distribution summaries, Pearson and tied-rank
+Spearman correlations with structural/cost parameters and passive-return difficulty, analysis
+throughput, and immutable SVGs. Constant features return a null correlation rather than a fabricated
+zero association.
+
 ## Measurements required before adoption
 
 - pair-generation acceptance and rejection reasons;

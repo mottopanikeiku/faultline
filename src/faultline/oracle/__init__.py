@@ -16,7 +16,12 @@ from faultline.oracle.belief import (
 from faultline.oracle.model import DiagnosticProblem, TerminalPlan
 from faultline.oracle.pairs import diagnostic_pair_problem
 from faultline.oracle.passive import TerminalValue, solve_passive
-from faultline.oracle.value_of_information import ActionValue, analyze_action, analyze_actions
+from faultline.oracle.value_of_information import (
+    ActionValue,
+    analyze_action,
+    analyze_action_at_belief,
+    analyze_actions,
+)
 
 __all__ = [
     "ActionValue",
@@ -28,6 +33,7 @@ __all__ = [
     "TerminalValue",
     "action_partitions",
     "analyze_action",
+    "analyze_action_at_belief",
     "analyze_actions",
     "bayes_update",
     "best_shared_decision_mass",

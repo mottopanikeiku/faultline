@@ -10,6 +10,7 @@ from faultline.artifacts.manifest import (
     utc_timestamp,
     write_json_artifact,
     write_manifest,
+    write_text_artifact,
 )
 
 __all__ = [
@@ -22,4 +23,5 @@ __all__ = [
     "utc_timestamp",
     "write_json_artifact",
     "write_manifest",
+    "write_text_artifact",
 ]

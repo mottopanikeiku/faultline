@@ -41,6 +41,8 @@ listed only when backed by immutable artifacts.
   evidence, positive oracle EP, and active recovery advantage.
 - Frozen `factory-pairs-v0` train, validation, and test seed ranges plus reconstructable immutable
   pair-dataset serialization.
+- Exact EP distribution analyzer with one-step and post-dynamics intervention value, information
+  gain, parameter correlations, task-level rows, and dependency-free immutable SVG plots.
 
 ### Research status
 
