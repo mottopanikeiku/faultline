@@ -9,6 +9,12 @@ validation controls curriculum/reward hyperparameters, checkpoint selection, and
 test remains sealed until the confirmatory protocol is tagged. Structural OOD suites use disjoint
 topology families, not only disjoint seeds.
 
+Version `factory-pairs-v0` reserves seeds `[0, 100000)` for training,
+`[1000000, 1010000)` for validation, and `[2000000, 2010000)` for test under
+`diagnostic-chain-v1`. The CLI intentionally exposes only train and validation generation. The
+committed definition is `configs/splits/factory-pairs-v0.json`; changing any range or generator
+semantics requires a new split version rather than editing completed artifacts.
+
 Provisional suites:
 
 - IID held-out seeds;

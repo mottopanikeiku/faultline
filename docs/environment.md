@@ -77,6 +77,20 @@ Information gain is not rewarded.
 - a repair changes dynamics only when its public target and repair type apply;
 - sustained recovery cannot be claimed from a single transient high-throughput tick.
 
+## Procedural diagnostic chains
+
+Generator `diagnostic-chain-v1` samples 4–12-node alternating processor/buffer chains, selects a
+processor location, preloads the same amount in two worlds, and assigns either a blocked outgoing
+edge or a failed processor. All public initial state is constructed before fault injection, so full
+status, node inspection, edge measurement, identifiers, and action targets are exactly equal. The
+generator varies rates, transport bottlenecks, capacities, fault positions, preload, and time and
+diagnostic costs from finite documented sets.
+
+Every retained pair is executed through both candidate repairs and an exact depth-2 solver. Retention
+requires one unique successful repair per world, two distinct outcomes after
+`advance(1) -> inspect(fault_processor)`, a passive-to-active recovery improvement, and positive net
+operational EP.
+
 ## Gate 0 performance record
 
 The homogeneous NumPy kernel was measured from clean commit `9442c6f` on a 12-logical-CPU AMD Ryzen

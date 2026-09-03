@@ -10,8 +10,8 @@ from faultline.oracle import (
     analyze_actions,
     bayes_update,
     best_shared_decision_mass,
+    diagnostic_pair_problem,
     entropy_bits,
-    manual_pair_problem,
     solve_active,
     solve_passive,
 )
@@ -31,7 +31,7 @@ def test_exact_bayesian_belief_update_and_passive_ceiling() -> None:
 
 def test_passive_oracle_matches_exhaustive_shared_repair_values() -> None:
     pair = build_manual_diagnostic_pair(42)
-    problem = manual_pair_problem(pair)
+    problem = diagnostic_pair_problem(pair)
 
     passive = solve_passive(problem)
 
@@ -43,7 +43,7 @@ def test_passive_oracle_matches_exhaustive_shared_repair_values() -> None:
 
 def test_advance_then_inspect_performs_exact_belief_separation() -> None:
     pair = build_manual_diagnostic_pair(42)
-    problem = manual_pair_problem(pair)
+    problem = diagnostic_pair_problem(pair)
     root = root_branches(problem)
 
     after_advance = action_partitions(problem, root, Advance(1))
@@ -58,7 +58,7 @@ def test_advance_then_inspect_performs_exact_belief_separation() -> None:
 
 def test_active_solver_finds_optimal_two_action_diagnostic_policy() -> None:
     pair = build_manual_diagnostic_pair(42)
-    problem = manual_pair_problem(pair)
+    problem = diagnostic_pair_problem(pair)
     passive = solve_passive(problem)
 
     depth_zero = solve_active(problem, 0)
@@ -96,12 +96,12 @@ def test_solver_value_matches_direct_enumeration_of_discovered_policy() -> None:
         assert env.reward_tracker.recovered
         returns.append(env.reward_tracker.total_reward)
 
-    oracle = solve_active(manual_pair_problem(pair), 2)
+    oracle = solve_active(diagnostic_pair_problem(pair), 2)
     assert sum(returns) / len(returns) == pytest.approx(oracle.expected_return)
 
 
 def test_single_root_actions_have_no_information_before_dynamics() -> None:
-    problem = manual_pair_problem(build_manual_diagnostic_pair(42))
+    problem = diagnostic_pair_problem(build_manual_diagnostic_pair(42))
 
     analyses = analyze_actions(problem)
 

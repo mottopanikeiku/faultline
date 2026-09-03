@@ -127,9 +127,14 @@ def build_manifest(
     }
 
 
-def write_manifest(path: Path, manifest: dict[str, Any]) -> None:
-    """Create a manifest atomically enough to reject accidental result mutation."""
+def write_json_artifact(path: Path, value: object) -> None:
+    """Create canonical human-readable JSON without permitting overwrite."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    payload = json.dumps(manifest, indent=2, sort_keys=True, allow_nan=False) + "\n"
+    payload = json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n"
     with path.open("x", encoding="utf-8") as destination:
         destination.write(payload)
+
+
+def write_manifest(path: Path, manifest: dict[str, Any]) -> None:
+    """Create a manifest without permitting accidental result mutation."""
+    write_json_artifact(path, manifest)

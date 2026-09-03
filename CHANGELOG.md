@@ -35,6 +35,12 @@ listed only when backed by immutable artifacts.
   diagnostic solver for horizons zero through six.
 - Intervention outcome partitioning, information gain, decision value, and direct-enumeration
   correctness tests for the two-world problem.
+- Deterministic `diagnostic-chain-v1` pair generator varying chain length, processor location, rates,
+  capacities, preload, and operational costs.
+- Bounded semantic validator requiring exact passive equality, disjoint unique repairs, separating
+  evidence, positive oracle EP, and active recovery advantage.
+- Frozen `factory-pairs-v0` train, validation, and test seed ranges plus reconstructable immutable
+  pair-dataset serialization.
 
 ### Research status
 

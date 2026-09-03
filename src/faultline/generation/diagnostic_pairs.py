@@ -45,6 +45,9 @@ class DiagnosticWorld:
 
 @dataclass(frozen=True, slots=True)
 class DiagnosticPair:
+    pair_id: str
+    generator_version: str
+    parameters: tuple[tuple[str, int | float | str], ...]
     seed: int
     graph: FactoryGraph
     worlds: tuple[DiagnosticWorld, DiagnosticWorld]
@@ -128,6 +131,15 @@ def build_manual_diagnostic_pair(seed: int = 42) -> DiagnosticPair:
         DiagnosticWorld("B", worlds[1].fault, worlds[1].correct_repair),
     )
     return DiagnosticPair(
+        pair_id=f"manual-{seed:016x}",
+        generator_version="manual-v1",
+        parameters=(
+            ("family", "manual_linear"),
+            ("node_count", 3),
+            ("fault_position", 1),
+            ("rate", 2.0),
+            ("preload", 2.0),
+        ),
         seed=seed,
         graph=graph,
         worlds=worlds,
@@ -194,6 +206,17 @@ def diagnostic_evidence(pair: DiagnosticPair, world: DiagnosticWorld) -> Canonic
     return _canonical(result.observation)
 
 
+def advance_inspect_evidence(
+    pair: DiagnosticPair,
+    world: DiagnosticWorld,
+) -> CanonicalObservation:
+    """Advance one tick, then inspect the evidence node without privileged state."""
+    env = create_world_env(pair, world)
+    env.act(Advance(1))
+    result = env.act(Inspect(pair.evidence_node))
+    return _canonical(result.observation)
+
+
 def run_contingent_active_policy(
     pair: DiagnosticPair,
     world: DiagnosticWorld,
@@ -204,9 +227,17 @@ def run_contingent_active_policy(
     env.act(Advance(1))
     evidence_result: ActionResult = env.act(Inspect(pair.evidence_node))
     output_buffer = float(evidence_result.observation["output_buffer"])
-    repair: RepairAction = (
-        ClearBlockage("delivery") if output_buffer > 0.0 else Replace("processor")
+    blocked_repair = next(
+        candidate.correct_repair
+        for candidate in pair.worlds
+        if isinstance(candidate.fault, BlockedEdge)
     )
+    failed_repair = next(
+        candidate.correct_repair
+        for candidate in pair.worlds
+        if isinstance(candidate.fault, FailedProcessor)
+    )
+    repair: RepairAction = blocked_repair if output_buffer > 0.0 else failed_repair
     env.act(Isolate(pair.intervention_edge, isolated=False))
     env.act(repair)
     env.act(Advance(pair.reward.max_ticks))

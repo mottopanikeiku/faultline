@@ -15,6 +15,7 @@ from faultline.artifacts import (
     git_state,
     repository_root,
     utc_timestamp,
+    write_json_artifact,
     write_manifest,
 )
 from faultline.env import Action, Advance, ClearBlockage, FactoryEnv, Replace
@@ -25,15 +26,19 @@ from faultline.evaluation import (
 )
 from faultline.generation import (
     build_manual_diagnostic_pair,
+    build_pair_dataset,
     chain_factory,
     create_world_env,
     diagnostic_evidence,
     full_passive_snapshot,
+    generate_validated_pairs,
+    get_split,
     run_contingent_active_policy,
+    summarize_generation,
 )
 from faultline.oracle import (
     analyze_actions,
-    manual_pair_problem,
+    diagnostic_pair_problem,
     solve_active,
     solve_passive,
 )
@@ -50,6 +55,13 @@ def _positive_int(value: str) -> int:
 def _nonnegative_int(value: str) -> int:
     parsed = int(value)
     if parsed < 0:
+        raise argparse.ArgumentTypeError("value must be non-negative")
+    return parsed
+
+
+def _nonnegative_float(value: str) -> float:
+    parsed = float(value)
+    if parsed < 0.0:
         raise argparse.ArgumentTypeError("value must be non-negative")
     return parsed
 
@@ -80,6 +92,21 @@ def build_parser() -> argparse.ArgumentParser:
         help="demonstrate two confusable latent worlds",
     )
     diagnostic_pair.add_argument("--seed", type=_nonnegative_int, default=42)
+
+    environment = commands.add_parser("env", help="generate and inspect factory tasks")
+    environment_commands = environment.add_subparsers(dest="env")
+    generate = environment_commands.add_parser(
+        "generate",
+        help="generate exact validated diagnostic pairs",
+    )
+    generate.add_argument("--count", type=_positive_int, default=100)
+    generate.add_argument("--split", choices=("train", "validation"), default="train")
+    generate.add_argument("--offset", type=_nonnegative_int, default=0)
+    generate.add_argument("--max-attempts", type=_positive_int)
+    generate.add_argument("--minimum-ep", type=_nonnegative_float, default=1e-9)
+    generate.add_argument("--run-id")
+    generate.add_argument("--output", type=Path)
+    generate.add_argument("--manifest", type=Path)
 
     oracle = commands.add_parser("oracle", help="solve bounded diagnostic problems")
     oracle_commands = oracle.add_subparsers(dest="oracle")
@@ -128,7 +155,7 @@ def _run_diagnostic_pair_demo(args: argparse.Namespace) -> int:
     snapshots = [
         full_passive_snapshot(create_world_env(pair, world)) for world in pair.worlds
     ]
-    problem = manual_pair_problem(pair)
+    problem = diagnostic_pair_problem(pair)
     passive_oracle = solve_passive(problem)
     active_oracle = solve_active(problem, max_diagnostic_actions=2)
     active = [run_contingent_active_policy(pair, world) for world in pair.worlds]
@@ -195,10 +222,71 @@ def _action_record(action: Action) -> dict[str, object]:
     return {"kind": action.kind.value, **asdict(action)}
 
 
+def _run_pair_generation(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    split = get_split(args.split)
+    if args.offset + args.count > split.count:
+        parser.error("requested range exceeds the immutable split")
+    run_id = args.run_id or datetime.now(UTC).strftime("diagnostic-pairs-%Y%m%dT%H%M%SZ")
+    config = {
+        "count": args.count,
+        "split": split.name,
+        "split_version": split.split_version,
+        "offset": args.offset,
+        "seed_start": split.seed_start + args.offset,
+        "max_attempts": args.max_attempts,
+        "minimum_ep": args.minimum_ep,
+    }
+    started_at = utc_timestamp()
+    batch = generate_validated_pairs(
+        args.count,
+        seed_start=split.seed_start + args.offset,
+        max_attempts=args.max_attempts,
+        minimum_ep=args.minimum_ep,
+    )
+    dataset = build_pair_dataset(batch, split, offset=args.offset)
+    dataset["dataset_id"] = run_id
+    completed_at = utc_timestamp()
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    metrics = summarize_generation(batch)
+    metrics["result_path"] = str(result_output)
+    metrics["result_sha256"] = canonical_sha256(dataset)
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="diagnostic-pair-generation",
+        config=config,
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version="diagnostic-pair-validation-v1",
+        split=split.name,
+        seed=split.seed_start + args.offset,
+        generator_version=split.generator_version,
+        reward={"varies_by_task": True},
+    )
+    write_json_artifact(result_output, dataset)
+    write_manifest(manifest_output, manifest)
+    print(
+        f"validated={len(batch.pairs)} attempts={batch.attempts} "
+        f"acceptance={batch.acceptance_rate:.1%}"
+    )
+    print(
+        f"ep_min={metrics['ep_min']:.3f} ep_mean={metrics['ep_mean']:.3f} "
+        f"ep_max={metrics['ep_max']:.3f}"
+    )
+    print(f"result={result_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_oracle_solve(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     pair = build_manual_diagnostic_pair(args.seed)
-    problem = manual_pair_problem(pair)
+    problem = diagnostic_pair_problem(pair)
     started_at = utc_timestamp()
     passive = solve_passive(problem)
     active = solve_active(problem, args.depth)
@@ -309,6 +397,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_healthy_demo(args)
     if args.command == "demo" and args.demo == "diagnostic-pair":
         return _run_diagnostic_pair_demo(args)
+    if args.command == "env" and args.env == "generate":
+        return _run_pair_generation(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

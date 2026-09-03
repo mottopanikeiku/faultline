@@ -16,9 +16,8 @@ build/
 .vscode/
 .DS_Store
 
-# Generated experiment outputs (manifests remain trackable when explicitly added)
+# Large mutable training outputs; immutable manifests and compact results remain trackable
 artifacts/runs/
-artifacts/results/
 *.pt
 *.pth
 *.ckpt

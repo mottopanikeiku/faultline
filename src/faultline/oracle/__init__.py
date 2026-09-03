@@ -13,8 +13,8 @@ from faultline.oracle.belief import (
     entropy_bits,
     normalize,
 )
-from faultline.oracle.manual import manual_pair_problem
 from faultline.oracle.model import DiagnosticProblem, TerminalPlan
+from faultline.oracle.pairs import diagnostic_pair_problem
 from faultline.oracle.passive import TerminalValue, solve_passive
 from faultline.oracle.value_of_information import ActionValue, analyze_action, analyze_actions
 
@@ -31,8 +31,8 @@ __all__ = [
     "analyze_actions",
     "bayes_update",
     "best_shared_decision_mass",
+    "diagnostic_pair_problem",
     "entropy_bits",
-    "manual_pair_problem",
     "normalize",
     "solve_active",
     "solve_passive",

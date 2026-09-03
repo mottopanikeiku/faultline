@@ -8,6 +8,7 @@ from faultline.artifacts.manifest import (
     hardware_metadata,
     repository_root,
     utc_timestamp,
+    write_json_artifact,
     write_manifest,
 )
 
@@ -19,5 +20,6 @@ __all__ = [
     "hardware_metadata",
     "repository_root",
     "utc_timestamp",
+    "write_json_artifact",
     "write_manifest",
 ]

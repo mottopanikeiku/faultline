@@ -85,6 +85,16 @@ execution of the discovered policy. Exact configuration and provenance are in
 `artifacts/manifests/exact-two-world-oracle-v0.2-20260903.json`. These are deterministic oracle
 values, not training or statistical estimates.
 
+## Procedural validation
+
+`diagnostic-chain-v1` samples a processor in an alternating linear factory and constructs two latent
+worlds: its outgoing transport is blocked, or the processor has failed. A shared preload ensures that
+advancing once and inspecting that processor yields a separating response. Retention is not based on
+construction assumptions alone: both repairs and the exact depth-2 policy tree are executed. The
+validator records exact passive-snapshot equality, repair uniqueness and margin, diagnostic outcome
+count, passive and active recovery probabilities, both expected returns, and net EP. Generation is
+bounded by a declared maximum attempt count and fails rather than returning fewer tasks.
+
 ## Candidate curriculum controls
 
 Static experiments compare Random, Difficulty, and EP selection with matched marginals over fault

@@ -1,0 +1,23 @@
+{
+  "split_version": "factory-pairs-v0",
+  "generator_version": "diagnostic-chain-v1",
+  "splits": {
+    "train": {
+      "seed_start": 0,
+      "count": 100000
+    },
+    "validation": {
+      "seed_start": 1000000,
+      "count": 10000
+    },
+    "test": {
+      "seed_start": 2000000,
+      "count": 10000
+    }
+  },
+  "policy": {
+    "train_only_for_curriculum": true,
+    "validation_for_selection": true,
+    "test_sealed_until_frozen_protocol": true
+  }
+}
