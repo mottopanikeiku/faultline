@@ -109,3 +109,7 @@ listed only when backed by immutable artifacts.
   experiment-then-correct behavior, close to the Epistemic pilot, while also probing every revealed
   episode. This single-seed result weakens a curriculum-specific interpretation and motivates the
   full paired comparison. Reference: `random-pilot-30k-seed00-20260903`.
+- Difficulty seed 0 at 30,094 steps also reached 100% ambiguous recovery and diagnostic success and
+  probed every revealed episode. All three exploratory seed-0 arms therefore learned the same fixed
+  troubleshooting routine by 30k; only the frozen multi-seed comparison can estimate a curriculum
+  effect. Reference: `difficulty-pilot-30k-seed00-20260903`.

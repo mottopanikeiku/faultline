@@ -81,6 +81,11 @@ steps, while again probing every revealed episode. The 2-point gap from the Epis
 interpretable as a curriculum effect. The result suggests that random exposure to 50% ambiguous
 tasks may already be sufficient to learn the fixed troubleshooting routine.
 
+Difficulty seed 0 likewise reached 100% ambiguous diagnostic success and probed every revealed
+episode at 30,094 steps. All three exploratory arms can therefore reach the same fixed routine at
+the proposed budget. Seed 0 is excluded from the frozen multi-seed comparison because these outcomes
+were inspected while finalizing the protocol.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning
