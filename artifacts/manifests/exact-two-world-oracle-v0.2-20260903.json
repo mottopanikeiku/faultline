@@ -1,0 +1,110 @@
+{
+  "completed_at": "2026-09-03T19:44:20.055247+00:00",
+  "config": {
+    "max_diagnostic_actions": 3,
+    "pair_seed": 42,
+    "pair_version": "manual-v1"
+  },
+  "config_sha256": "5c49126691f10ade58ec3cf3d9a06e1a6637a7ee2c57554a1fbd1dedb069d981",
+  "curriculum": null,
+  "experiment": "exact-two-world-oracle",
+  "generator_version": "manual-v1",
+  "git_commit": "8253460e6dc74ac63003500c6e551460f23f0354",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "exact-two-world-oracle-v1",
+  "metrics": {
+    "action_values": [
+      {
+        "action": {
+          "kind": "advance",
+          "ticks": 1
+        },
+        "decision_value": -0.04999999999999982,
+        "expected_return": 1.200000000000002,
+        "information_gain_bits": 0.0,
+        "outcome_count": 1,
+        "recovery_probability": 0.5
+      },
+      {
+        "action": {
+          "kind": "inspect",
+          "node": "processor"
+        },
+        "decision_value": -0.019999999999999574,
+        "expected_return": 1.2300000000000022,
+        "information_gain_bits": 0.0,
+        "outcome_count": 1,
+        "recovery_probability": 0.5
+      },
+      {
+        "action": {
+          "edge": "delivery",
+          "kind": "measure_flow"
+        },
+        "decision_value": -0.019999999999999574,
+        "expected_return": 1.2300000000000022,
+        "information_gain_bits": 0.0,
+        "outcome_count": 1,
+        "recovery_probability": 0.5
+      },
+      {
+        "action": {
+          "edge": "feed",
+          "isolated": true,
+          "kind": "isolate"
+        },
+        "decision_value": -0.5,
+        "expected_return": 0.7500000000000018,
+        "information_gain_bits": 0.0,
+        "outcome_count": 1,
+        "recovery_probability": 0.5
+      }
+    ],
+    "active_expected_return": 8.58,
+    "active_recovery_probability": 1.0,
+    "ep": 7.329999999999998,
+    "initial_snapshot_sha256": "067f9f59004ce2062ac1d046a15731499e3cf4c2a951a75c8e17a8c37118fb63",
+    "passive_expected_return": 1.2500000000000018,
+    "passive_plan": "clear_delivery",
+    "passive_recovery_probability": 0.5,
+    "root_action": {
+      "kind": "advance",
+      "ticks": 1
+    },
+    "root_decision": "diagnose"
+  },
+  "policy": {
+    "diagnostic_depth": 3,
+    "name": "exact-enumeration"
+  },
+  "reward": {
+    "diagnostic_cost": 0.25,
+    "false_repair_cost": 3.0,
+    "invalid_action_cost": 0.5,
+    "max_actions": 12,
+    "max_ticks": 12,
+    "passive_cost": 0.02,
+    "recovery_bonus": 5.0,
+    "recovery_fraction": 1.0,
+    "recovery_ticks": 3,
+    "repair_cost": 2.0,
+    "target_throughput": 2.0,
+    "throughput_value": 1.0,
+    "time_cost": 0.1
+  },
+  "run_id": "exact-two-world-oracle-v0.2-20260903",
+  "schema_version": 1,
+  "seed": 42,
+  "split": "manual-construction",
+  "started_at": "2026-09-03T19:44:19.781806+00:00",
+  "status": "completed"
+}

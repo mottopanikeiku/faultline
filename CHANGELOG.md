@@ -45,4 +45,5 @@ listed only when backed by immutable artifacts.
   reporting because the initial manifest did not recover the Linux CPU model.
 - The exact depth-2 oracle verifies a 50% passive recovery ceiling and finds a 100%-recovery
   `advance -> inspect` policy. Expected operational values are 1.25 passive and 8.58 active
-  (`EP = 7.33`). This is an oracle construction result, not a learned-policy result.
+  (`EP = 7.33`). Reference manifest: `exact-two-world-oracle-v0.2-20260903`. This is an oracle
+  construction result, not a learned-policy result.

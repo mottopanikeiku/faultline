@@ -52,6 +52,8 @@ manifest.
 The first hand-constructed pair has an exactly equal complete passive snapshot and disjoint unique
 repairs. The exact finite-world solver enumerates diagnostic policies to depth three, verifies the
 50% passive success ceiling, and finds `advance -> inspect`, which reaches 100% recovery with
-expected operational return 8.58 versus 1.25 for passive commitment (`EP = 7.33`). These are
-deterministic environment/oracle results, not curriculum or learned-policy results.
+expected operational return 8.58 versus 1.25 for passive commitment (`EP = 7.33`). The immutable
+[`exact-two-world-oracle-v0.2-20260903`](artifacts/manifests/exact-two-world-oracle-v0.2-20260903.json)
+manifest records the exact code, reward, seed, action values, and hardware. These are deterministic
+environment/oracle results, not curriculum or learned-policy results.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

@@ -81,8 +81,9 @@ sequence `advance(1) -> inspect(processor)`, followed by the posterior-optimal r
 has expected return 8.58 and 100% recovery versus 1.25 and 50% for the best shared passive
 commitment, giving \(EP=7.33\). Depth-zero and depth-one solutions equal the passive optimum;
 depth-two and depth-three solutions agree. Tests compare the solver value with direct simulator
-execution of the discovered policy. These are deterministic oracle values, not training or
-statistical estimates.
+execution of the discovered policy. Exact configuration and provenance are in
+`artifacts/manifests/exact-two-world-oracle-v0.2-20260903.json`. These are deterministic oracle
+values, not training or statistical estimates.
 
 ## Candidate curriculum controls
 
