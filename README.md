@@ -57,4 +57,12 @@ expected operational return 8.58 versus 1.25 for passive commitment (`EP = 7.33`
 [`exact-two-world-oracle-v0.2-20260903`](artifacts/manifests/exact-two-world-oracle-v0.2-20260903.json)
 manifest records the exact code, reward, seed, action values, and hardware. These are deterministic
 environment/oracle results, not curriculum or learned-policy results.
+
+Gate 1 generation produced and semantically validated 100 train-split pairs from seeds 0–99 with
+100% acceptance. Every retained task had an exact shared passive snapshot, different unique repairs,
+two diagnostic outcomes, 50% passive recovery, 100% depth-2 active recovery, and positive operational
+EP. EP ranged from 5.58 to 12.76 (mean 8.86) under task-varying costs. See the immutable
+[`manifest`](artifacts/manifests/gate1-diagnostic-pairs-v0.2-20260903.json) and reconstructable
+[`task dataset`](artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json). This establishes the
+construction mechanism only; it is not evidence that a policy can learn or generalize it.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

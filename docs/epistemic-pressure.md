@@ -95,6 +95,14 @@ validator records exact passive-snapshot equality, repair uniqueness and margin,
 count, passive and active recovery probabilities, both expected returns, and net EP. Generation is
 bounded by a declared maximum attempt count and fails rather than returning fewer tasks.
 
+The first recorded Gate 1 run evaluated train seeds 0–99 from clean commit `03a6175`. All 100
+candidates passed, for 100% acceptance; this rate is specific to the constructive v1 family and does
+not demonstrate broad search efficiency. Every pair had passive and active recovery probabilities
+0.5 and 1.0. EP ranged from 5.58 to 12.76 with mean 8.86, and the minimum correct-versus-wrong repair
+margin was 12.20. The manifest and complete reconstructable task records are
+`artifacts/manifests/gate1-diagnostic-pairs-v0.2-20260903.json` and
+`artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json`.
+
 ## Candidate curriculum controls
 
 Static experiments compare Random, Difficulty, and EP selection with matched marginals over fault

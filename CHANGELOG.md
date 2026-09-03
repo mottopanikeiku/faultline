@@ -53,3 +53,7 @@ listed only when backed by immutable artifacts.
   `advance -> inspect` policy. Expected operational values are 1.25 passive and 8.58 active
   (`EP = 7.33`). Reference manifest: `exact-two-world-oracle-v0.2-20260903`. This is an oracle
   construction result, not a learned-policy result.
+- Gate 1 generated and validated 100/100 train-split candidates (seeds 0–99). All had exact passive
+  equality, different unique repairs, two diagnostic outcomes, 50% passive recovery, 100% active
+  recovery, and positive EP. EP min/mean/max were 5.58/8.86/12.76. Reference manifest and dataset:
+  `gate1-diagnostic-pairs-v0.2-20260903`. This is a generator result, not a learned-policy result.
