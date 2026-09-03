@@ -175,6 +175,24 @@ repair under swap, and adoption of the donor world's repair. The primary combine
 Conditional and eligibility rates are always reported separately to avoid crediting non-probing
 policies or hiding them from the denominator. The procedural test split remains sealed.
 
+### Counterfactual result
+
+Mean diagnostic eligibility was 0.813 Random, 0.902 Difficulty, and 1.000 Epistemic. Conditional on
+reaching the evidence decision, causal-use rates were 0.991 (7 eligible Random seeds), 0.996, and
+0.902. The combined rates assigning zero to non-probing policies were 0.805, 0.898, and 0.902.
+Epistemic-minus-Random was 0.098 [−0.199, 0.418]; Epistemic-minus-Difficulty was 0.004
+[−0.270, 0.289]. This causal metric also shows no curriculum separation.
+
+Swapped outcomes induced the donor repair at rates 0.996 Random, 0.998 Difficulty, and 0.951
+Epistemic among eligible decisions. Randomized valid evidence produced correct repair rates of
+approximately 0.496–0.499. Removing, staling, or averaging evidence changed roughly half of repair
+choices, as expected when each manipulation drives a deterministic fallback in balanced worlds.
+
+Conclusion: most policies that learn the diagnostic sequence do use its result causally; they are not
+merely performing an ignored ritual. The Epistemic arm nonetheless probes every revealed-cue case and
+has no causal-use advantage over Difficulty. The remaining failure is selective decision relevance,
+not universal evidence blindness. Manifest: `artifacts/manifests/counterfactual-v1-analysis.json`.
+
 ## Statistical unit
 
 Policies are evaluated on identical test scenario IDs. Comparisons are paired within training seed

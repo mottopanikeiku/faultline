@@ -53,10 +53,13 @@ both paired bootstrap intervals included zero and the Difficulty mean difference
 predeclared five-point threshold. H1 is therefore not supported by this kill test.
 
 Learned policies can execute `advance -> inspect -> conditional repair`, so representational
-inability is not the immediate explanation. Epistemic policies also probe every revealed-cue case;
-current evidence is consistent with a fixed troubleshooting routine rather than uncertainty-sensitive
-investigation. H2 remains unsupported. H3 requires the counterfactual evidence-swap evaluator. H4 was
-not tested. Per the kill gate, LLM and Factorio work is paused.
+inability is not the immediate explanation. Counterfactual swaps show that most probing policies
+change to the repair supported by the swapped world; randomized evidence reduces repair accuracy to
+chance. H3 is supported for learned diagnostic routines. This behavior is not curriculum-specific:
+Difficulty and Random policies that probe have at least as high conditional causal-use rates.
+Epistemic policies also probe every revealed-cue case, so H2 remains unsupported and the current
+behavior is not selectively decision-relevant. H4 was not tested. Per the kill gate, LLM and Factorio
+work is paused.
 
 ## Operational reward constraint
 

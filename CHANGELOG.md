@@ -126,3 +126,9 @@ listed only when backed by immutable artifacts.
   effect and positive-lower-bound rule. Epistemic policies probed 100% of revealed-cue episodes,
   reinforcing the fixed-routine interpretation. LLM and Factorio stages remain closed. Reference:
   `small-kill-v1-analysis`.
+- Counterfactual study over all 24 checkpoints found conditional causal evidence-use rates of 99.1%
+  Random (7 eligible seeds), 99.6% Difficulty, and 90.2% Epistemic. Overall rates including
+  non-probing policies were 80.5%, 89.8%, and 90.2%.
+- Swapped evidence generally switched to the paired world's repair; randomized valid evidence
+  reduced repair accuracy to approximately 50%. Evidence use is real among successful routines, but
+  not curriculum-specific. Reference: `counterfactual-v1-analysis`.

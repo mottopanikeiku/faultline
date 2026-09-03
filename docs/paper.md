@@ -19,9 +19,10 @@ under Random, student-failure Difficulty, and Epistemic curricula with eight see
 held-out diagnostic success was 0.807, 0.902, and 0.951. Paired Epistemic improvements were 0.144 over
 Random (95% training-seed bootstrap interval [−0.084, 0.430]) and 0.049 over Difficulty
 ([−0.133, 0.286]). Neither met the frozen decision rule. Epistemic policies also probed every
-revealed-cue episode. The result does not establish a curriculum-specific effect and is consistent
-with learning a fixed troubleshooting routine. Counterfactual evidence-use tests remain in progress;
-language-model and Factorio stages are paused.
+revealed-cue episode. Counterfactual swaps showed that probing policies usually change repair with
+the evidence, but this causal use was not curriculum-specific. The result does not establish the
+primary curriculum effect and is consistent with learning a fixed troubleshooting routine rather
+than selectively recognizing uncertainty. Language-model and Factorio stages are paused.
 
 ## 1. Introduction
 
@@ -127,10 +128,18 @@ recognition.
 
 ## 7. Does the agent use evidence?
 
-Not yet established. Successful policies choose the expected action sequence and condition repair on
-an observation in ordinary replay. That is insufficient causal evidence. The required analysis swaps,
-removes, randomizes, and stales diagnostic results while holding the simulator world fixed. A policy
-that probes but ignores the swapped result fails this criterion.
+Counterfactual action interventions establish that successful routines usually use diagnostic
+evidence. Among checkpoints that reached the evidence decision, swapping only telemetry changed the
+repair toward the paired world's repair with conditional causal-use rates 0.991 Random, 0.996
+Difficulty, and 0.902 Epistemic. Overall rates including non-probing policies were 0.805, 0.898, and
+0.902. Randomizing between the two valid outcomes reduced correct repair to approximately 0.5.
+Removing, staling, or averaging evidence changed approximately half of decisions.
+
+This supports causal evidence use in learned routines but not a curriculum-specific advantage.
+Epistemic policies were always eligible because they always probed, yet one seed used evidence
+inconsistently; Difficulty policies had comparable overall causal use and higher conditional use.
+The learned behavior therefore has two separable properties: many policies condition repair on the
+probe result, but they do not reliably decide whether probing is necessary.
 
 ## 8. Language-agent and Factorio transfer
 
@@ -151,8 +160,9 @@ transferable experiment-before-action behavior.
 ## 10. Conclusion
 
 Faultline establishes fast deterministic factory dynamics, exact diagnostic pairs, an exact active
-oracle, matched epistemic controls, and learned diagnostic routines. The first frozen curriculum test
-does not establish that Epistemic training outperforms Random or Difficulty training. It instead
-identifies two immediate research problems: seed instability and policies that probe even when
-passive evidence is sufficient. Counterfactual evidence manipulation is the next gate; larger models
-are not.
+oracle, matched epistemic controls, learned diagnostic routines, and causal evidence-use
+interventions. Most probing policies use the evidence, but the first frozen curriculum test does not
+establish that Epistemic training outperforms Random or Difficulty training, and Epistemic policies
+probe even when a passive cue suffices. Larger models are not the next step. The immediate research
+problems are seed instability, no-fault/stronger anti-probe controls, and curricula that teach when
+information has decision value rather than a universal troubleshooting script.

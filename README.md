@@ -110,4 +110,12 @@ Epistemic minus Difficulty was +4.9 [−13.3, 28.6]. Neither met the frozen crit
 revealed-cue episodes, consistent with a fixed probing routine. This stops LLM/Factorio escalation.
 See the immutable [`analysis`](artifacts/manifests/small-kill-v1-analysis.json) and
 [`seed plot`](artifacts/results/small-kill-v1-analysis.svg). The test split remains sealed.
+
+Counterfactual swaps show that probing policies generally use the result: conditional causal
+evidence-use rates were 99.1% Random, 99.6% Difficulty, and 90.2% Epistemic. Including policies that
+never reached an evidence decision, rates were 80.5%, 89.8%, and 90.2%. Randomizing paired evidence
+reduced correct repair to approximately 50%. Thus learned diagnostic routines usually condition on
+evidence, but Epistemic training did not uniquely cause this and still probed indiscriminately.
+See the [`causal manifest`](artifacts/manifests/counterfactual-v1-analysis.json) and
+[`seed plot`](artifacts/results/counterfactual-v1-analysis.svg).
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

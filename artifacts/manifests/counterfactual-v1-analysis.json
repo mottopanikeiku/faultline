@@ -1,0 +1,701 @@
+{
+  "completed_at": "2026-09-03T21:36:49.886961+00:00",
+  "config": {
+    "base_pair_count": 32,
+    "evaluation_offset": 0,
+    "evaluation_split": "validation",
+    "interventions": [
+      "swap",
+      "remove",
+      "stale",
+      "uninformative",
+      "randomize"
+    ],
+    "primary_metric": "overall_causal_evidence_use_rate",
+    "protocol_id": "counterfactual-v1",
+    "random_seed": 424242,
+    "randomizations_per_world": 16,
+    "source_study_protocol": "configs/evaluation/small-kill-v1.toml"
+  },
+  "config_sha256": "a53ff0db591f4c9436b36a46a1a8d60933e637dea364c8fd2742112a493492be",
+  "curriculum": {
+    "arms": [
+      "random",
+      "difficulty",
+      "epistemic"
+    ]
+  },
+  "experiment": "counterfactual-evidence-study",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "6fbdfe66a23d8b1909a0aa378a6b023f28cdd3fc",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "counterfactual-study-v1",
+  "metrics": {
+    "arms": {
+      "difficulty": {
+        "individual_training_seeds": [
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 100,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 101,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 102,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 0.21875,
+            "seed": 103,
+            "value": 0.21875
+          },
+          {
+            "conditional_causal_use": 0.96875,
+            "eligible": 1.0,
+            "seed": 104,
+            "value": 0.96875
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 105,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 106,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 107,
+            "value": 1.0
+          }
+        ],
+        "metrics": {
+          "causal_evidence_use_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.99609375,
+              "lower": 0.98828125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.99609375
+          },
+          "diagnostic_eligibility_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.70703125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90234375
+          },
+          "normal_correct_repair_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.998046875,
+              "lower": 0.994140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.998046875
+          },
+          "overall_causal_evidence_use_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.8984375,
+              "lower": 0.703125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.8984375
+          },
+          "randomized_correct_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.49862234933035715,
+              "lower": 0.49639892578125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5028860909598214
+            },
+            "mean": 0.49862234933035715
+          },
+          "removal_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.498046875,
+              "lower": 0.494140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.498046875
+          },
+          "stale_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.498046875,
+              "lower": 0.494140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.498046875
+          },
+          "swap_donor_repair_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.998046875,
+              "lower": 0.994140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.998046875
+          },
+          "swap_repair_switch_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.99609375,
+              "lower": 0.98828125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.99609375
+          },
+          "uninformative_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.498046875,
+              "lower": 0.494140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.498046875
+          }
+        }
+      },
+      "epistemic": {
+        "individual_training_seeds": [
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 100,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 0.28125,
+            "eligible": 1.0,
+            "seed": 101,
+            "value": 0.28125
+          },
+          {
+            "conditional_causal_use": 0.9375,
+            "eligible": 1.0,
+            "seed": 102,
+            "value": 0.9375
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 103,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 104,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 105,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 106,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 107,
+            "value": 1.0
+          }
+        ],
+        "metrics": {
+          "causal_evidence_use_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.72265625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90234375
+          },
+          "diagnostic_eligibility_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 1.0,
+              "lower": 1.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 1.0
+          },
+          "normal_correct_repair_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.951171875,
+              "lower": 0.861328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.951171875
+          },
+          "overall_causal_evidence_use_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.72265625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90234375
+          },
+          "randomized_correct_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.49664306640625,
+              "lower": 0.4962158203125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.49713134765625
+            },
+            "mean": 0.49664306640625
+          },
+          "removal_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.451171875,
+              "lower": 0.361328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.451171875
+          },
+          "stale_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.451171875,
+              "lower": 0.361328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.451171875
+          },
+          "swap_donor_repair_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.951171875,
+              "lower": 0.861328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.951171875
+          },
+          "swap_repair_switch_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.72265625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90234375
+          },
+          "uninformative_change_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.451171875,
+              "lower": 0.361328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.451171875
+          }
+        }
+      },
+      "random": {
+        "individual_training_seeds": [
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 0.5,
+            "seed": 100,
+            "value": 0.5
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 101,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": null,
+            "eligible": 0.0,
+            "seed": 102,
+            "value": 0.0
+          },
+          {
+            "conditional_causal_use": 0.96875,
+            "eligible": 1.0,
+            "seed": 103,
+            "value": 0.96875
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 104,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 0.96875,
+            "eligible": 1.0,
+            "seed": 105,
+            "value": 0.96875
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 106,
+            "value": 1.0
+          },
+          {
+            "conditional_causal_use": 1.0,
+            "eligible": 1.0,
+            "seed": 107,
+            "value": 1.0
+          }
+        ],
+        "metrics": {
+          "causal_evidence_use_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.9910714285714286,
+              "lower": 0.9821428571428571,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 1.0
+            },
+            "mean": 0.9910714285714286
+          },
+          "diagnostic_eligibility_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.8125,
+              "lower": 0.5625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.8125
+          },
+          "normal_correct_repair_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.9955357142857143,
+              "lower": 0.9910714285714286,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 1.0
+            },
+            "mean": 0.9955357142857143
+          },
+          "overall_causal_evidence_use_rate": {
+            "available_training_seeds": 8,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.8046875,
+              "lower": 0.5546875,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.9921875
+            },
+            "mean": 0.8046875
+          },
+          "randomized_correct_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.49623325892857145,
+              "lower": 0.49546595982142855,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 0.4970005580357143
+            },
+            "mean": 0.49623325892857145
+          },
+          "removal_change_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.4955357142857143,
+              "lower": 0.49107142857142855,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 0.5
+            },
+            "mean": 0.4955357142857143
+          },
+          "stale_change_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.4955357142857143,
+              "lower": 0.49107142857142855,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 0.5
+            },
+            "mean": 0.4955357142857143
+          },
+          "swap_donor_repair_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.9955357142857143,
+              "lower": 0.9888392857142857,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 1.0
+            },
+            "mean": 0.9955357142857143
+          },
+          "swap_repair_switch_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.9910714285714286,
+              "lower": 0.9821428571428571,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 1.0
+            },
+            "mean": 0.9910714285714286
+          },
+          "uninformative_change_rate": {
+            "available_training_seeds": 7,
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.4955357142857143,
+              "lower": 0.49107142857142855,
+              "resamples": 10000,
+              "unit_count": 7,
+              "upper": 0.5
+            },
+            "mean": 0.4955357142857143
+          }
+        }
+      }
+    },
+    "elapsed_seconds": 15.728828809998959,
+    "paired_primary_comparisons": {
+      "epistemic-difficulty": {
+        "confidence_level": 0.95,
+        "estimate": 0.00390625,
+        "lower": -0.26953125,
+        "resamples": 10000,
+        "unit_count": 8,
+        "upper": 0.2890625
+      },
+      "epistemic-random": {
+        "confidence_level": 0.95,
+        "estimate": 0.09765625,
+        "lower": -0.19921875,
+        "resamples": 10000,
+        "unit_count": 8,
+        "upper": 0.41796875
+      }
+    },
+    "plot_path": "artifacts/results/counterfactual-v1-analysis.svg",
+    "plot_sha256": "be3fdc333d37f2c3747463f96318ae9c347681b09476146a84d7f1a0efec6cdd",
+    "result_path": "artifacts/results/counterfactual-v1-analysis.json",
+    "result_sha256": "f03581e6938ee42925930c9b8b7176dd04f8e85bc8bb98b72c490ab30265d16d",
+    "source_run_count": 24
+  },
+  "policy": {
+    "source_runs": [
+      {
+        "checkpoint_sha256": "7beef5c2080476e434e6b44ab9ccf06c27955aeacb0341764b319265c1eed9b1",
+        "run_id": "small-kill-v1-random-seed-100"
+      },
+      {
+        "checkpoint_sha256": "74c5aee682ee3c9b9b11b982b72e988940bce3c86e12f0adb79cd0311f0d8ef5",
+        "run_id": "small-kill-v1-random-seed-101"
+      },
+      {
+        "checkpoint_sha256": "f3ed908f0920bda9ec31d3f638ce8f472911c13d7766c379c7be9f30a95b1518",
+        "run_id": "small-kill-v1-random-seed-102"
+      },
+      {
+        "checkpoint_sha256": "591c9c15843b57f8f05b0e461014418576b41c603ba53072a1220385b94709a9",
+        "run_id": "small-kill-v1-random-seed-103"
+      },
+      {
+        "checkpoint_sha256": "ef9927e1c2e7c426f34bc585bb6ae8a51647c5481040c5bc17a854989bcc0f06",
+        "run_id": "small-kill-v1-random-seed-104"
+      },
+      {
+        "checkpoint_sha256": "a82a32d21856f6f50eacbb73ded62a957edde7c9b52c183c61d9ed835bda1798",
+        "run_id": "small-kill-v1-random-seed-105"
+      },
+      {
+        "checkpoint_sha256": "17f5e3cc7914d1306455125da0f690a93f83aafaf03c91cb1d2b855957eedc85",
+        "run_id": "small-kill-v1-random-seed-106"
+      },
+      {
+        "checkpoint_sha256": "274799de320332e34e6c38bfc0af5ef71bbe5e3a168f1c837b8e601e64de3408",
+        "run_id": "small-kill-v1-random-seed-107"
+      },
+      {
+        "checkpoint_sha256": "f9570e625a590f89478c08444bcf0c76a80607652a8a70427828eb850262d154",
+        "run_id": "small-kill-v1-difficulty-seed-100"
+      },
+      {
+        "checkpoint_sha256": "71d3c1a22a725c5ee384cc8cf666db10cb0ee8496f2e460702c5682b0e54270a",
+        "run_id": "small-kill-v1-difficulty-seed-101"
+      },
+      {
+        "checkpoint_sha256": "7ebe2af35813b5030be22ba918784e4c88f3c953779008fb3a335f98ad971d88",
+        "run_id": "small-kill-v1-difficulty-seed-102"
+      },
+      {
+        "checkpoint_sha256": "144c4ef2fb4d9e95cebc2b323d5e399287a9204988292a97f8db992530416758",
+        "run_id": "small-kill-v1-difficulty-seed-103"
+      },
+      {
+        "checkpoint_sha256": "0bb6f014ae672cc1e9931e4aab6006fc4d1109e6140f95b5d50c6d85bfce5ed5",
+        "run_id": "small-kill-v1-difficulty-seed-104"
+      },
+      {
+        "checkpoint_sha256": "c41b13703cc4175b1fee299d966a3e7150d771a9abcd5781197319be6a0a2af7",
+        "run_id": "small-kill-v1-difficulty-seed-105"
+      },
+      {
+        "checkpoint_sha256": "ffa800815d533c3eed620b3aa7f9fceff1a468b96f3d3fedb46f8ad65dc9449d",
+        "run_id": "small-kill-v1-difficulty-seed-106"
+      },
+      {
+        "checkpoint_sha256": "e877cc510bd4f3835f1d9e88b035a59784fe689524be4125ba2f71ab01d65266",
+        "run_id": "small-kill-v1-difficulty-seed-107"
+      },
+      {
+        "checkpoint_sha256": "bee2445de438338e7fcbb6e26489e95ec537e97c5a7258c980433042360b6505",
+        "run_id": "small-kill-v1-epistemic-seed-100"
+      },
+      {
+        "checkpoint_sha256": "edbd43e526408cb0a90d3c73acb786614657614b0c31d2ded0cd90202eefcec4",
+        "run_id": "small-kill-v1-epistemic-seed-101"
+      },
+      {
+        "checkpoint_sha256": "4619e75ed6f203d53983204c8ab82708571004a4bef6876926e7b751b23f0b64",
+        "run_id": "small-kill-v1-epistemic-seed-102"
+      },
+      {
+        "checkpoint_sha256": "7bfb9b248f2ee8a206d5e63c2261324fc5b770cda6f2bda41837cee98e75f5f2",
+        "run_id": "small-kill-v1-epistemic-seed-103"
+      },
+      {
+        "checkpoint_sha256": "85378540b54c315afa5fa504ec6760b67b88608e119deb5008f82a59170d58e8",
+        "run_id": "small-kill-v1-epistemic-seed-104"
+      },
+      {
+        "checkpoint_sha256": "5d1379005c788697a92841a8900fa15aa26a9cfa773349454474549ceeebbabb",
+        "run_id": "small-kill-v1-epistemic-seed-105"
+      },
+      {
+        "checkpoint_sha256": "3172d2b8e4f8e95b97db19ccefe94d0f4411a46c574d56db2e2ee09a72cad215",
+        "run_id": "small-kill-v1-epistemic-seed-106"
+      },
+      {
+        "checkpoint_sha256": "61f870cd0c21b2de0812998c04a7bf7ed85e9b522bd99b0be0eb3a2b9d5f7e26",
+        "run_id": "small-kill-v1-epistemic-seed-107"
+      }
+    ]
+  },
+  "reward": {
+    "not_used_for_counterfactual_action_selection": true
+  },
+  "run_id": "counterfactual-v1-analysis",
+  "schema_version": 1,
+  "seed": 424242,
+  "split": "validation",
+  "started_at": "2026-09-03T21:36:34.158113+00:00",
+  "status": "completed"
+}
