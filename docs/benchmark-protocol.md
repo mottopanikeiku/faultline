@@ -76,6 +76,11 @@ a successful fixed troubleshooting routine, but the pilot does not yet show that
 information is needed. The result justifies the matched multi-arm kill test and counterfactual
 analysis; it does not establish the central hypothesis.
 
+The matched Random seed-0 pilot reached 98.0% ambiguous recovery and diagnostic success at 30,089
+steps, while again probing every revealed episode. The 2-point gap from the Epistemic seed is not
+interpretable as a curriculum effect. The result suggests that random exposure to 50% ambiguous
+tasks may already be sufficient to learn the fixed troubleshooting routine.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning

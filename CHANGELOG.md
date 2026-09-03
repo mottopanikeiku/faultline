@@ -105,3 +105,7 @@ listed only when backed by immutable artifacts.
   episodes, demonstrating over-probing rather than uncertainty sensitivity. This is a positive
   single-seed learning primitive with a material limitation, not a curriculum result. Reference:
   `ep-pilot-30k-masked-seed00-20260903`.
+- Matched Random seed 0 at 30,089 steps achieved 98.0% ambiguous recovery and 98.0%
+  experiment-then-correct behavior, close to the Epistemic pilot, while also probing every revealed
+  episode. This single-seed result weakens a curriculum-specific interpretation and motivates the
+  full paired comparison. Reference: `random-pilot-30k-seed00-20260903`.
