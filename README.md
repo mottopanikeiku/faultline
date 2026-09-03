@@ -120,4 +120,11 @@ reduced correct repair to approximately 50%. Thus learned diagnostic routines us
 evidence, but Epistemic training did not uniquely cause this and still probed indiscriminately.
 See the [`causal manifest`](artifacts/manifests/counterfactual-v1-analysis.json) and
 [`seed plot`](artifacts/results/counterfactual-v1-analysis.svg).
+
+Removing diagnostic actions forced every arm to the 50% passive ceiling; mean recovery drops were
+40.2, 44.9, and 45.1 points. On development-only 13–20-node OOD chains, recovery was 90.6% Random,
+95.1% Difficulty, and 98.0% Epistemic. Probe and repair cost multipliers changed returns but changed
+no action trace because v1 policies do not observe reward coefficients. That is a measured interface
+limitation, not cost-rational behavior. See the
+[`behavioral-controls manifest`](artifacts/manifests/behavioral-controls-v1-analysis.json).
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

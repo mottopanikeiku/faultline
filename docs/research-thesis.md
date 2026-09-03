@@ -58,8 +58,11 @@ change to the repair supported by the swapped world; randomized evidence reduces
 chance. H3 is supported for learned diagnostic routines. This behavior is not curriculum-specific:
 Difficulty and Random policies that probe have at least as high conditional causal-use rates.
 Epistemic policies also probe every revealed-cue case, so H2 remains unsupported and the current
-behavior is not selectively decision-relevant. H4 was not tested. Per the kill gate, LLM and Factorio
-work is paused.
+behavior is not selectively decision-relevant. Development OOD results on larger linear chains are
+positive but do not test a new topology family or sealed data, so H4 remains unsupported. Diagnostic
+action ablation returns all arms to the passive ceiling. Cost sensitivity cannot be assessed because
+v1 observations omit costs; measured action invariance records that interface limitation. Per the
+kill gate, LLM and Factorio work is paused.
 
 ## Operational reward constraint
 

@@ -135,3 +135,10 @@ listed only when backed by immutable artifacts.
 - Swapped evidence generally switched to the paired world's repair; randomized valid evidence
   reduced repair accuracy to approximately 50%. Evidence use is real among successful routines, but
   not curriculum-specific. Reference: `counterfactual-v1-analysis`.
+- Diagnostic-action ablation reduced every arm to exactly 50% ambiguous recovery; mean drops were
+  40.2, 44.9, and 45.1 points for Random, Difficulty, and Epistemic.
+- Development OOD recovery on 13–20-node unseen-range chains was 90.6%, 95.1%, and 98.0%; diagnostic
+  success was 81.3%, 90.2%, and 98.0%. This is not sealed-test evidence.
+- Probe and repair cost sweeps changed returns but changed zero action traces in every checkpoint.
+  Cost coefficients are absent from v1 policy observations, so this records an interface limitation,
+  not rational cost insensitivity. Reference: `behavioral-controls-v1-analysis`.

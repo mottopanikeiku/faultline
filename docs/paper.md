@@ -141,6 +141,17 @@ inconsistently; Difficulty policies had comparable overall causal use and higher
 The learned behavior therefore has two separable properties: many policies condition repair on the
 probe result, but they do not reliably decide whether probing is necessary.
 
+Removing diagnostic actions reduced every policy to the 0.5 passive recovery ceiling. Mean recovery
+drops were 0.402 Random, 0.449 Difficulty, and 0.451 Epistemic. On development-only 13–20-node
+chains with unseen numeric ranges, mean recovery was 0.906, 0.951, and 0.980; diagnostic success was
+0.813, 0.902, and 0.980. This suggests the learned routine can extend to larger linear chains, but it
+does not establish new-topology or sealed-test generalization.
+
+Multiplying probe-related and repair-related costs changed operational return but changed no action
+trace. This is not evidence of irrational policies: v1 observations omit reward coefficients, making
+cost-conditioned behavior impossible. The interface must change before a meaningful cost-sensitivity
+study.
+
 ## 8. Language-agent and Factorio transfer
 
 Not run. The frozen small-policy kill test did not establish a curriculum-specific effect and exposed
@@ -152,10 +163,12 @@ paused.
 The first generator uses linear chains and two single faults. The policy is told the nominated
 component, reducing diagnosis to cause selection rather than fault localization. Public action masks
 encode tool ordering. The revealed control is passively easier. The current validation uses the same
-structural generator family, not the sealed test set or topology OOD. Eight training seeds leave wide
-intervals. PPO may contribute substantial seed instability. No no-fault episodes enter the current RL
-interface, so routine probing is weakly challenged. These constraints prevent broad claims about
-transferable experiment-before-action behavior.
+structural generator family, not the sealed test set or a new topology family. Development OOD only
+extends linear-chain size and numeric ranges. Eight training seeds leave wide intervals. PPO may
+contribute substantial seed instability. Reward coefficients are absent from policy observations,
+precluding cost adaptation. No no-fault episodes enter the current RL interface, so routine probing
+is weakly challenged. These constraints prevent broad claims about transferable
+experiment-before-action behavior.
 
 ## 10. Conclusion
 

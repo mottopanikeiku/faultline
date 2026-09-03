@@ -204,6 +204,25 @@ limitation, not evidence of irrational cost processing. OOD chains contain 13–
 ranges absent from training, while retaining the exact two-world causal construction. This is a
 development OOD suite, not the sealed test set.
 
+### Behavioral-control result
+
+With diagnostic actions removed, ambiguous recovery was exactly 0.5 for every checkpoint and arm.
+Relative to the matched 32-pair baseline, mean recovery drops were 0.402 Random [0.277, 0.496],
+0.449 Difficulty [0.352, 0.500], and 0.451 Epistemic [0.361, 0.500]. Successful performance therefore
+depends on access to the diagnostic sequence rather than a hidden direct-repair advantage.
+
+Development OOD ambiguous recovery was 0.906 Random [0.781, 1.000], 0.951 Difficulty
+[0.854, 1.000], and 0.980 Epistemic [0.941, 1.000]. Corresponding diagnostic success was 0.813,
+0.902, and 0.980. These larger-chain/unseen-range results show limited transfer of the routine, not
+transfer to a new topology family or the sealed test set.
+
+Every probe- and repair-cost multiplier produced an action-trace change rate of exactly zero for all
+24 checkpoints. Returns changed. Since reward coefficients are absent from policy observations, the
+invariance is guaranteed by the interface and exposes a v1 design flaw. A future cost-sensitivity
+study must add costs to the public state and retrain all arms; retrofitting them only at evaluation
+would not test learned rationality. Manifest:
+`artifacts/manifests/behavioral-controls-v1-analysis.json`.
+
 ## Statistical unit
 
 Policies are evaluated on identical test scenario IDs. Comparisons are paired within training seed

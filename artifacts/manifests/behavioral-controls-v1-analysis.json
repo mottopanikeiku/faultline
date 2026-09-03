@@ -1,0 +1,670 @@
+{
+  "completed_at": "2026-09-03T21:51:04.955126+00:00",
+  "config": {
+    "iid_base_pair_count": 32,
+    "iid_offset": 0,
+    "iid_split": "validation",
+    "ood_generator_version": "diagnostic-chain-ood-v1",
+    "ood_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "probe_cost_multipliers": [
+      0.25,
+      1.0,
+      4.0
+    ],
+    "protocol_id": "behavioral-controls-v1",
+    "repair_cost_multipliers": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "source_study_protocol": "configs/evaluation/small-kill-v1.toml"
+  },
+  "config_sha256": "44ee22aa33b13e20405ab1a68db534b142d1b61fd515b8501a42d651da285297",
+  "curriculum": {
+    "arms": [
+      "random",
+      "difficulty",
+      "epistemic"
+    ]
+  },
+  "experiment": "behavioral-control-study",
+  "generator_version": "diagnostic-chain-v1+diagnostic-chain-ood-v1",
+  "git_commit": "fa43767a98505d703ef4b76d0559e8d3c623d8fe",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "behavioral-control-study-v1",
+  "metrics": {
+    "arms": {
+      "difficulty": {
+        "individual_training_seeds": [
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 100
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 101
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 102
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.109375,
+            "baseline_ambiguous_recovery": 0.609375,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 0.609375,
+            "ood_diagnostic_success": 0.21875,
+            "seed": 103
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.484375,
+            "baseline_ambiguous_recovery": 0.984375,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 104
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 105
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 106
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 107
+          }
+        ],
+        "metrics": {
+          "ablated_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.5,
+              "lower": 0.5,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.5
+          },
+          "ablation_recovery_drop": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.44921875,
+              "lower": 0.3515625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.44921875
+          },
+          "baseline_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.94921875,
+              "lower": 0.8515625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.94921875
+          },
+          "max_probe_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "max_repair_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "ood_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.951171875,
+              "lower": 0.853515625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.951171875
+          },
+          "ood_diagnostic_success": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.70703125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90234375
+          }
+        }
+      },
+      "epistemic": {
+        "individual_training_seeds": [
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 100
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.140625,
+            "baseline_ambiguous_recovery": 0.640625,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 0.84375,
+            "ood_diagnostic_success": 0.84375,
+            "seed": 101
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.46875,
+            "baseline_ambiguous_recovery": 0.96875,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 102
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 103
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 104
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 105
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 106
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 107
+          }
+        ],
+        "metrics": {
+          "ablated_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.5,
+              "lower": 0.5,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.5
+          },
+          "ablation_recovery_drop": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.451171875,
+              "lower": 0.361328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.451171875
+          },
+          "baseline_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.951171875,
+              "lower": 0.861328125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.951171875
+          },
+          "max_probe_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "max_repair_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "ood_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.98046875,
+              "lower": 0.94140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.98046875
+          },
+          "ood_diagnostic_success": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.98046875,
+              "lower": 0.94140625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.98046875
+          }
+        }
+      },
+      "random": {
+        "individual_training_seeds": [
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.25,
+            "baseline_ambiguous_recovery": 0.75,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 0.75,
+            "ood_diagnostic_success": 0.5,
+            "seed": 100
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 101
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.0,
+            "baseline_ambiguous_recovery": 0.5,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 0.5,
+            "ood_diagnostic_success": 0.0,
+            "seed": 102
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.484375,
+            "baseline_ambiguous_recovery": 0.984375,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 103
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 104
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.484375,
+            "baseline_ambiguous_recovery": 0.984375,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 105
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 106
+          },
+          {
+            "ablated_ambiguous_recovery": 0.5,
+            "ablation_recovery_drop": 0.5,
+            "baseline_ambiguous_recovery": 1.0,
+            "max_probe_cost_trace_change": 0.0,
+            "max_repair_cost_trace_change": 0.0,
+            "ood_ambiguous_recovery": 1.0,
+            "ood_diagnostic_success": 1.0,
+            "seed": 107
+          }
+        ],
+        "metrics": {
+          "ablated_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.5,
+              "lower": 0.5,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.5
+            },
+            "mean": 0.5
+          },
+          "ablation_recovery_drop": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.40234375,
+              "lower": 0.27734375,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.49609375
+            },
+            "mean": 0.40234375
+          },
+          "baseline_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90234375,
+              "lower": 0.7772949218750005,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.99609375
+            },
+            "mean": 0.90234375
+          },
+          "max_probe_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "max_repair_cost_trace_change": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.0,
+              "lower": 0.0,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 0.0
+            },
+            "mean": 0.0
+          },
+          "ood_ambiguous_recovery": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.90625,
+              "lower": 0.78125,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.90625
+          },
+          "ood_diagnostic_success": {
+            "bootstrap": {
+              "confidence_level": 0.95,
+              "estimate": 0.8125,
+              "lower": 0.5625,
+              "resamples": 10000,
+              "unit_count": 8,
+              "upper": 1.0
+            },
+            "mean": 0.8125
+          }
+        }
+      }
+    },
+    "elapsed_seconds": 57.336577089001366,
+    "plot_path": "artifacts/results/behavioral-controls-v1-analysis.svg",
+    "plot_sha256": "f2ac5f4a93d09271af0aa125f5fb30984b9edbefdc9eba387ecb5a288264202d",
+    "result_path": "artifacts/results/behavioral-controls-v1-analysis.json",
+    "result_sha256": "64eda5c9bea8e6746d1326ca5a2638c481044431032dfaff11fe58df5dc77bdc",
+    "source_run_count": 24
+  },
+  "policy": {
+    "source_runs": [
+      {
+        "checkpoint_sha256": "7beef5c2080476e434e6b44ab9ccf06c27955aeacb0341764b319265c1eed9b1",
+        "run_id": "small-kill-v1-random-seed-100"
+      },
+      {
+        "checkpoint_sha256": "74c5aee682ee3c9b9b11b982b72e988940bce3c86e12f0adb79cd0311f0d8ef5",
+        "run_id": "small-kill-v1-random-seed-101"
+      },
+      {
+        "checkpoint_sha256": "f3ed908f0920bda9ec31d3f638ce8f472911c13d7766c379c7be9f30a95b1518",
+        "run_id": "small-kill-v1-random-seed-102"
+      },
+      {
+        "checkpoint_sha256": "591c9c15843b57f8f05b0e461014418576b41c603ba53072a1220385b94709a9",
+        "run_id": "small-kill-v1-random-seed-103"
+      },
+      {
+        "checkpoint_sha256": "ef9927e1c2e7c426f34bc585bb6ae8a51647c5481040c5bc17a854989bcc0f06",
+        "run_id": "small-kill-v1-random-seed-104"
+      },
+      {
+        "checkpoint_sha256": "a82a32d21856f6f50eacbb73ded62a957edde7c9b52c183c61d9ed835bda1798",
+        "run_id": "small-kill-v1-random-seed-105"
+      },
+      {
+        "checkpoint_sha256": "17f5e3cc7914d1306455125da0f690a93f83aafaf03c91cb1d2b855957eedc85",
+        "run_id": "small-kill-v1-random-seed-106"
+      },
+      {
+        "checkpoint_sha256": "274799de320332e34e6c38bfc0af5ef71bbe5e3a168f1c837b8e601e64de3408",
+        "run_id": "small-kill-v1-random-seed-107"
+      },
+      {
+        "checkpoint_sha256": "f9570e625a590f89478c08444bcf0c76a80607652a8a70427828eb850262d154",
+        "run_id": "small-kill-v1-difficulty-seed-100"
+      },
+      {
+        "checkpoint_sha256": "71d3c1a22a725c5ee384cc8cf666db10cb0ee8496f2e460702c5682b0e54270a",
+        "run_id": "small-kill-v1-difficulty-seed-101"
+      },
+      {
+        "checkpoint_sha256": "7ebe2af35813b5030be22ba918784e4c88f3c953779008fb3a335f98ad971d88",
+        "run_id": "small-kill-v1-difficulty-seed-102"
+      },
+      {
+        "checkpoint_sha256": "144c4ef2fb4d9e95cebc2b323d5e399287a9204988292a97f8db992530416758",
+        "run_id": "small-kill-v1-difficulty-seed-103"
+      },
+      {
+        "checkpoint_sha256": "0bb6f014ae672cc1e9931e4aab6006fc4d1109e6140f95b5d50c6d85bfce5ed5",
+        "run_id": "small-kill-v1-difficulty-seed-104"
+      },
+      {
+        "checkpoint_sha256": "c41b13703cc4175b1fee299d966a3e7150d771a9abcd5781197319be6a0a2af7",
+        "run_id": "small-kill-v1-difficulty-seed-105"
+      },
+      {
+        "checkpoint_sha256": "ffa800815d533c3eed620b3aa7f9fceff1a468b96f3d3fedb46f8ad65dc9449d",
+        "run_id": "small-kill-v1-difficulty-seed-106"
+      },
+      {
+        "checkpoint_sha256": "e877cc510bd4f3835f1d9e88b035a59784fe689524be4125ba2f71ab01d65266",
+        "run_id": "small-kill-v1-difficulty-seed-107"
+      },
+      {
+        "checkpoint_sha256": "bee2445de438338e7fcbb6e26489e95ec537e97c5a7258c980433042360b6505",
+        "run_id": "small-kill-v1-epistemic-seed-100"
+      },
+      {
+        "checkpoint_sha256": "edbd43e526408cb0a90d3c73acb786614657614b0c31d2ded0cd90202eefcec4",
+        "run_id": "small-kill-v1-epistemic-seed-101"
+      },
+      {
+        "checkpoint_sha256": "4619e75ed6f203d53983204c8ab82708571004a4bef6876926e7b751b23f0b64",
+        "run_id": "small-kill-v1-epistemic-seed-102"
+      },
+      {
+        "checkpoint_sha256": "7bfb9b248f2ee8a206d5e63c2261324fc5b770cda6f2bda41837cee98e75f5f2",
+        "run_id": "small-kill-v1-epistemic-seed-103"
+      },
+      {
+        "checkpoint_sha256": "85378540b54c315afa5fa504ec6760b67b88608e119deb5008f82a59170d58e8",
+        "run_id": "small-kill-v1-epistemic-seed-104"
+      },
+      {
+        "checkpoint_sha256": "5d1379005c788697a92841a8900fa15aa26a9cfa773349454474549ceeebbabb",
+        "run_id": "small-kill-v1-epistemic-seed-105"
+      },
+      {
+        "checkpoint_sha256": "3172d2b8e4f8e95b97db19ccefe94d0f4411a46c574d56db2e2ee09a72cad215",
+        "run_id": "small-kill-v1-epistemic-seed-106"
+      },
+      {
+        "checkpoint_sha256": "61f870cd0c21b2de0812998c04a7bf7ed85e9b522bd99b0be0eb3a2b9d5f7e26",
+        "run_id": "small-kill-v1-epistemic-seed-107"
+      }
+    ]
+  },
+  "reward": {
+    "cost_sweeps": true,
+    "costs_observed_by_policy": false
+  },
+  "run_id": "behavioral-controls-v1-analysis",
+  "schema_version": 1,
+  "seed": 0,
+  "split": "validation",
+  "started_at": "2026-09-03T21:50:07.618529+00:00",
+  "status": "completed"
+}
