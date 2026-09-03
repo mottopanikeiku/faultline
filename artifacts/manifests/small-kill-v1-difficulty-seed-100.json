@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-09-03T21:00:44.369377+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "difficulty",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 100
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 6,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "f16202775649da5e2867c5c1e867b8092edc5be263d4380f6ca2901ac72105e4",
+  "curriculum": {
+    "kind": "difficulty",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 0.5157478562589634,
+      "condition_counts": {
+        "ambiguous": 10329,
+        "revealed": 7382
+      },
+      "episode_index": 17711,
+      "failure_ema": {
+        "ambiguous": 0.018675158828544133,
+        "revealed": 0.0011703925939588395
+      },
+      "kind": "difficulty"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "71cab08a81d18e593de153f8bb8140991c7e2d11",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/small-kill-v1-difficulty-seed-100/policy.pt",
+    "checkpoint_sha256": "f9570e625a590f89478c08444bcf0c76a80607652a8a70427828eb850262d154",
+    "decision_steps": 30094,
+    "decision_steps_per_second": 912.1591423641969,
+    "elapsed_seconds": 32.992049964001126,
+    "episode_count": 17711,
+    "final_update": {
+      "approximate_kl": 0.013248350776848383,
+      "clip_fraction": 0.021491445717401803,
+      "correct_repair_rate": 0.966824644549763,
+      "decision_steps": 30094,
+      "entropy": 0.06566357612609863,
+      "episodes": 17711,
+      "informative_inspection_rate": 0.990521327014218,
+      "loss": 7.893280029296875,
+      "mean_return": 9.721658767772512,
+      "policy_loss": 0.08164926199242473,
+      "recovery_rate": 0.966824644549763,
+      "simulator_ticks": 245679,
+      "update": 27,
+      "value_loss": 15.624574899673462
+    },
+    "result_path": "artifacts/results/small-kill-v1-difficulty-seed-100.json",
+    "result_sha256": "0ae7f02cb6150cef4711f74ec5a0580eecc25efc9e0900b56254b7829280aa45",
+    "simulator_ticks": 245679,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 512.0,
+        "experiment_then_correct_repair_rate": 1.0,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 10.589765625,
+        "recovery_rate": 1.0
+      },
+      "revealed": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 256.0,
+        "experiment_then_correct_repair_rate": 1.0,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 10.589765625,
+        "recovery_rate": 1.0
+      },
+      "version": "small-policy-eval-v1"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "small-kill-v1-difficulty-seed-100",
+  "schema_version": 1,
+  "seed": 100,
+  "split": "train+validation",
+  "started_at": "2026-09-03T21:00:11.377301+00:00",
+  "status": "completed"
+}
