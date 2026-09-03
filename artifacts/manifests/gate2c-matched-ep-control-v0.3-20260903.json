@@ -1,0 +1,87 @@
+{
+  "completed_at": "2026-09-03T20:18:54.952592+00:00",
+  "config": {
+    "block_count": 100,
+    "cue_control_version": "binary-cue-v1",
+    "oracle_depth": 2,
+    "source_dataset": "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json",
+    "source_dataset_sha256": "cf49fb420f0d0f710ecd0eedd336f5118a60a343e2ba74516d23a0431894acd0"
+  },
+  "config_sha256": "1095b8b1f70a19705574c26110464331da62915c89e59d61b414397afbcbd0a6",
+  "curriculum": null,
+  "experiment": "matched-ep-control-audit",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "2da87dcada5bf7f0aea89980116da29fb52ed73f",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "matched-ep-control-v1",
+  "metrics": {
+    "all_cue_fault_joints_differ": true,
+    "all_cue_marginals_equal": true,
+    "all_fault_marginals_equal": true,
+    "ambiguous_active_recovery_mean": 1.0,
+    "ambiguous_ep": {
+      "max": 12.755000000000006,
+      "mean": 8.861624999999998,
+      "median": 8.692499999999995,
+      "min": 5.579999999999999,
+      "q25": 7.798749999999996,
+      "q75": 9.804999999999998,
+      "std_population": 1.4431015372713742
+    },
+    "ambiguous_passive_recovery_mean": 0.5,
+    "analysis_version": "matched-ep-control-v1",
+    "block_analyses_per_second": 2.6979781010897605,
+    "count": 100,
+    "elapsed_seconds": 37.064793060999364,
+    "max_abs_nuisance_standardized_mean_difference": 0.0,
+    "nuisance_standardized_mean_differences": {
+      "capacity_multiple": 0.0,
+      "diagnostic_cost": 0.0,
+      "fault_position": 0.0,
+      "node_count": 0.0,
+      "preload": 0.0,
+      "rate": 0.0,
+      "time_cost": 0.0,
+      "transport_rate": 0.0
+    },
+    "plot_path": "artifacts/results/gate2c-matched-ep-control-v0.3-20260903.svg",
+    "plot_sha256": "f7878bf0ea04540d17dbdb9251150ca7520735e7fadde384d95f770d22bdf75a",
+    "result_path": "artifacts/results/gate2c-matched-ep-control-v0.3-20260903.json",
+    "result_sha256": "23ce99e96def2d2c870b6908b93cf533b77748fc5ffbfbb59d866c742a187c9e",
+    "revealed_active_recovery_mean": 1.0,
+    "revealed_ep": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "q25": 0.0,
+      "q75": 0.0,
+      "std_population": 0.0
+    },
+    "revealed_passive_recovery_mean": 1.0,
+    "source_dataset": "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json",
+    "source_dataset_sha256": "cf49fb420f0d0f710ecd0eedd336f5118a60a343e2ba74516d23a0431894acd0"
+  },
+  "policy": {
+    "diagnostic_depth": 2,
+    "name": "exact-enumeration"
+  },
+  "reward": {
+    "varies_by_base_pair_but_matched_within_block": true
+  },
+  "run_id": "gate2c-matched-ep-control-v0.3-20260903",
+  "schema_version": 1,
+  "seed": 0,
+  "split": "train",
+  "started_at": "2026-09-03T20:18:17.884629+00:00",
+  "status": "completed"
+}

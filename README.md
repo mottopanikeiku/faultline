@@ -70,11 +70,16 @@ construction mechanism only; it is not evidence that a policy can learn or gener
 
 Gate 2 analysis confirms that information becomes decision-relevant only after dynamics: immediate
 `advance(1)` has zero information gain and mean one-step decision value −0.11, while the subsequent
-inspection has exactly 1 bit of information and mean decision value 8.97. The raw EP score is not
-ready for curriculum selection: it correlates strongly with repair margin (Pearson 0.94) and
-transport rate (0.76), plus moderately with graph size (0.49). This measured confound must be
-controlled before the RL kill test. See the
-[`analysis manifest`](artifacts/manifests/gate2-ep-analysis-v0.3-20260903.json),
-[`EP histogram`](artifacts/results/gate2-ep-analysis-v0.3-20260903-ep.svg), and
-[`intervention plot`](artifacts/results/gate2-ep-analysis-v0.3-20260903-interventions.svg).
+inspection has exactly 1 bit of information and mean decision value 8.97. Raw EP is confounded with
+repair margin (Pearson 0.94) and transport rate (0.76). Stake normalization removes those linear
+associations but saturates (mean 0.973; 75% of tasks above 0.984), so it is not adopted as a ranker.
+Instead, the controlled task family reuses each identical base factory while changing only
+cue–fault dependence. Across 100 blocks, structural/cost standardized differences were exactly zero,
+fault and cue marginals matched, ambiguous EP averaged 8.86, and revealed-cue EP was exactly zero.
+Passive difficulty still differs and remains an explicit control for the RL kill test. See the
+[`raw-score analysis`](artifacts/manifests/gate2-ep-analysis-v0.3-20260903.json),
+[`EP histogram`](artifacts/results/gate2-ep-analysis-v0.3-20260903-ep.svg),
+[`intervention plot`](artifacts/results/gate2-ep-analysis-v0.3-20260903-interventions.svg),
+[`normalized-score analysis`](artifacts/manifests/gate2b-normalized-ep-v0.3-20260903.json), and
+[`matched-control audit`](artifacts/manifests/gate2c-matched-ep-control-v0.3-20260903.json).
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

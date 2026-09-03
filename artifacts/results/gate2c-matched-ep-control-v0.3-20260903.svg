@@ -1,0 +1,311 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480" role="img" aria-label="EP under matched cue marginals">
+<style>text{font-family:ui-monospace,monospace;fill:#172033}.axis{stroke:#526078;stroke-width:1}.grid{stroke:#dce2eb;stroke-width:1}.bar{fill:#3767d6}.point{fill:#d04b40}.link{stroke:#8793a8;stroke-opacity:.35}</style>
+<text x="400.0" y="30" text-anchor="middle" font-size="20">EP under matched cue marginals</text>
+<line class="grid" x1="95.0" y1="390.17" x2="745.0" y2="390.17"/>
+<line class="axis" x1="95.0" y1="55.0" x2="95.0" y2="415.0"/>
+<line class="link" x1="257.50" y1="183.24" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="183.24" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="138.83" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="138.83" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="200.88" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="200.88" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="205.13" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="205.13" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="89.56" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="89.56" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="199.05" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="199.05" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="180.19" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="180.19" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="104.16" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="104.16" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="180.80" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="180.80" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="140.66" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="140.66" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="185.36" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="185.36" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="193.27" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="193.27" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="129.71" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="129.71" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="79.83" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="79.83" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="167.12" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="167.12" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="132.44" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="132.44" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="152.82" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="152.82" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="199.05" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="199.05" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="172.29" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="172.29" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="176.54" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="176.54" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="196.31" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="196.31" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="188.71" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="188.71" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="170.16" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="170.16" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="222.47" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="222.47" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="196.92" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="196.92" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="189.32" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="189.32" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="173.50" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="173.50" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="207.87" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="207.87" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="167.42" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="167.42" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="181.41" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="181.41" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="234.64" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="234.64" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="182.02" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="182.02" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="168.03" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="168.03" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="177.15" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="177.15" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="254.40" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="254.40" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="211.82" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="211.82" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="197.23" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="197.23" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="153.43" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="153.43" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="221.86" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="221.86" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="182.63" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="182.63" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="208.78" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="208.78" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="129.71" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="129.71" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="196.31" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="196.31" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="194.18" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="194.18" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="172.29" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="172.29" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="104.16" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="104.16" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="210.91" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="210.91" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="201.79" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="201.79" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="217.30" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="217.30" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="224.60" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="224.60" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="136.09" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="136.09" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="164.38" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="164.38" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="157.38" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="157.38" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="168.64" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="168.64" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="209.39" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="209.39" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="119.37" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="119.37" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="198.14" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="198.14" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="175.33" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="175.33" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="192.36" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="192.36" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="124.23" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="124.23" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="227.94" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="227.94" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="128.49" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="128.49" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="163.77" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="163.77" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="125.45" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="125.45" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="133.36" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="133.36" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="205.13" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="205.13" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="161.95" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="161.95" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="167.42" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="167.42" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="147.96" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="147.96" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="193.58" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="193.58" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="193.58" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="193.58" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="138.83" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="138.83" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="162.86" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="162.86" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="147.04" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="147.04" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="186.88" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="186.88" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="209.09" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="209.09" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="143.09" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="143.09" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="185.06" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="185.06" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="208.17" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="208.17" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="157.08" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="157.08" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="202.70" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="202.70" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="211.82" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="211.82" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="129.10" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="129.10" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="171.68" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="171.68" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="200.27" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="200.27" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="163.77" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="163.77" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="210.00" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="210.00" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="197.83" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="197.83" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="137.61" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="137.61" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="177.15" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="177.15" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="211.82" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="211.82" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="162.55" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="162.55" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="143.70" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="143.70" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="132.44" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="132.44" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="219.12" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="219.12" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="210.61" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="210.61" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="93.82" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="93.82" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="229.46" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="229.46" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="158.30" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="158.30" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<line class="link" x1="257.50" y1="111.76" x2="582.50" y2="390.17"/>
+<circle class="point" cx="257.50" cy="111.76" r="2.4"/>
+<circle class="point" cx="582.50" cy="390.17" r="2.4"/>
+<text x="257.50" y="440.0" text-anchor="middle" font-size="13">ambiguous cue</text>
+<text x="582.50" y="440.0" text-anchor="middle" font-size="13">revealed cue</text>
+<text x="22" y="235.0" text-anchor="middle" font-size="14" transform="rotate(-90 22 235.0)">active return - passive return</text>
+<text x="87.0" y="59.0" text-anchor="end" font-size="11">13.78</text>
+<text x="87.0" y="415.0" text-anchor="end" font-size="11">-1.02</text>
+</svg>

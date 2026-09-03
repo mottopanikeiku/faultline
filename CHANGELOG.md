@@ -70,3 +70,10 @@ listed only when backed by immutable artifacts.
   rate (0.76), rate (0.67), graph size (0.49), and the current passive-difficulty proxy (−0.56).
   Raw EP is therefore not accepted as an uncontrolled curriculum score. Reference:
   `gate2-ep-analysis-v0.3-20260903`.
+- Negative follow-up: stake-normalized EP removed large Pearson associations with repair margin
+  (0.047), transport rate (−0.113), and nominal rate (−0.074), but saturated near one (mean 0.973;
+  Q1 0.984) and retained rank associations. It is logged, not adopted as a curriculum ranker.
+- Matched-control audit over 100 identical base blocks produced zero standardized differences for
+  every structural/cost nuisance and equal fault/cue marginals. Ambiguous cue–fault dependence had
+  mean EP 8.86 and 50% passive recovery; revealed dependence had EP 0 and 100% passive recovery.
+  Reference: `gate2c-matched-ep-control-v0.3-20260903`.

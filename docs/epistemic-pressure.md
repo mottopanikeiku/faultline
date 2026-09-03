@@ -180,6 +180,25 @@ This controls raw scale and marginal distribution shifts. It does not automatica
 difficulty: the revealed condition is deliberately solvable without diagnosis. Difficulty-RL and
 active-oracle-value stratification remain necessary controls.
 
+The measured normalization run confirms both its use and its limitation. \(NEP\) ranged from 0.801
+to 0.998 with mean 0.973 and first quartile 0.984. Pearson correlations with repair margin,
+transport rate, and nominal rate fell to 0.047, −0.113, and −0.074, respectively, but the score
+saturated and retained tied-rank correlations with fault position (0.76) and repair margin (0.63).
+Decision: retain \(NEP\) as a diagnostic efficiency statistic, not a task-ranking curriculum.
+
+The matched-control audit then evaluated all 100 base pairs. Every block had equal fault and cue
+marginals and identical structural/cost features (maximum absolute standardized mean difference
+0.0), while every cue–fault joint differed by construction. Ambiguous tasks retained mean EP 8.86,
+50% passive recovery, and 100% active recovery. Revealed tasks had EP exactly 0 and both passive and
+active recovery of 100%. This resolves the raw-scale selection confound for the first learning
+comparison by selecting conditions within matched blocks rather than ranking unrelated tasks.
+Artifacts: `artifacts/manifests/gate2b-normalized-ep-v0.3-20260903.json` and
+`artifacts/manifests/gate2c-matched-ep-control-v0.3-20260903.json`.
+
+The remaining difficulty confound is explicit: revealed tasks are passively easier. The kill test
+therefore requires a Difficulty-RL arm and paired reporting against active-oracle value; the matched
+audit alone does not discharge that control.
+
 ## Measurements required before adoption
 
 - pair-generation acceptance and rejection reasons;

@@ -52,6 +52,10 @@ Because the revealed arm has a passive shortcut, passive difficulty is not consi
 Difficulty-RL remains a separate required arm, and active-oracle return should be stratified or
 reweighted before confirmatory comparison.
 
+The 100-block pretraining audit passed the exact marginal checks: maximum absolute structural/cost
+standardized mean difference was 0.0, and both cue and fault marginals matched. Ambiguous and
+revealed EP means were 8.86 and 0.0. The audit does not claim matched passive difficulty.
+
 ## Provisional metrics
 
 Operational metrics: recovery success, sustained recovery return, time to recovery, production loss,
