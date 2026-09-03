@@ -66,4 +66,14 @@ EP. EP ranged from 5.58 to 12.76 (mean 8.86) under task-varying costs. See the i
 [`manifest`](artifacts/manifests/gate1-diagnostic-pairs-v0.2-20260903.json) and reconstructable
 [`task dataset`](artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json). This establishes the
 construction mechanism only; it is not evidence that a policy can learn or generalize it.
+
+Gate 2 analysis confirms that information becomes decision-relevant only after dynamics: immediate
+`advance(1)` has zero information gain and mean one-step decision value −0.11, while the subsequent
+inspection has exactly 1 bit of information and mean decision value 8.97. The raw EP score is not
+ready for curriculum selection: it correlates strongly with repair margin (Pearson 0.94) and
+transport rate (0.76), plus moderately with graph size (0.49). This measured confound must be
+controlled before the RL kill test. See the
+[`analysis manifest`](artifacts/manifests/gate2-ep-analysis-v0.3-20260903.json),
+[`EP histogram`](artifacts/results/gate2-ep-analysis-v0.3-20260903-ep.svg), and
+[`intervention plot`](artifacts/results/gate2-ep-analysis-v0.3-20260903-interventions.svg).
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

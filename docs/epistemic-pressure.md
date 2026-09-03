@@ -129,6 +129,28 @@ Spearman correlations with structural/cost parameters and passive-return difficu
 throughput, and immutable SVGs. Constant features return a null correlation rather than a fabricated
 zero association.
 
+## Gate 2 result and negative finding
+
+For the 100 recorded pairs, immediate `advance(1)` produced no world separation: information gain
+was exactly 0 bits and one-step decision value ranged from −1.125 to numerical zero (mean −0.110).
+After that dynamics step, inspecting the fault processor perfectly separated the equiprobable worlds:
+information gain was exactly 1 bit and decision value ranged from 5.83 to 12.76 (mean 8.97). This
+distinguishes an initially costly, uninformative transition from the later measurement that changes
+the repair decision.
+
+Raw EP is confounded in `diagnostic-chain-v1`. Its Pearson correlations were 0.94 with repair margin,
+0.76 with transport rate, 0.67 with nominal rate, 0.57 with preload, 0.52 with fault position, and
+0.49 with node count. Correlation with the current passive-difficulty proxy (negative passive return)
+was −0.56: high-EP tasks were not simply harder by that proxy, but the score strongly tracked stakes
+and scale. Diagnostic cost had near-zero correlation because the exact policy uses time advance and
+passive inspection rather than the separately priced isolation action.
+
+Decision: do not feed raw EP ranks into RL and attribute differences to epistemic structure. The next
+curriculum implementation must either match these marginals/repair stakes across arms or validate a
+normalized/stratified score with substantially reduced associations. This is a preserved negative
+metric result, not evidence against active diagnosis itself. Full rows, correlations, plots, and
+provenance are in `artifacts/manifests/gate2-ep-analysis-v0.3-20260903.json` and its linked artifacts.
+
 ## Measurements required before adoption
 
 - pair-generation acceptance and rejection reasons;

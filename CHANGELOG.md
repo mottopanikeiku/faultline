@@ -59,3 +59,10 @@ listed only when backed by immutable artifacts.
   equality, different unique repairs, two diagnostic outcomes, 50% passive recovery, 100% active
   recovery, and positive EP. EP min/mean/max were 5.58/8.86/12.76. Reference manifest and dataset:
   `gate1-diagnostic-pairs-v0.2-20260903`. This is a generator result, not a learned-policy result.
+- Gate 2 confirms a temporal information-value distinction: immediate advance has 0 bits of
+  information and mean one-step decision value −0.11; inspect-after-advance has exactly 1 bit and
+  mean decision value 8.97.
+- Negative methodological result: raw EP correlates with repair margin (Pearson 0.94), transport
+  rate (0.76), rate (0.67), graph size (0.49), and the current passive-difficulty proxy (−0.56).
+  Raw EP is therefore not accepted as an uncontrolled curriculum score. Reference:
+  `gate2-ep-analysis-v0.3-20260903`.
