@@ -30,6 +30,7 @@ uv sync --extra dev
 uv run pytest
 uv run faultline --version
 uv run faultline demo healthy --nodes 8 --ticks 10
+uv run faultline demo diagnostic-pair --seed 42
 # Requires a clean worktree and writes an immutable provenance manifest:
 uv run faultline benchmark simulator
 ```
@@ -46,5 +47,11 @@ isolation, and sustained recovery. On the recorded local CPU, the 16-node batch 
 median rates of 3.83M, 4.73M, and 4.41M environment steps/s at batch sizes 1k, 4k, and 16k
 respectively (200 ticks, 3 repeats). See the immutable
 [`simulator-throughput-v0.1-20260903`](artifacts/manifests/simulator-throughput-v0.1-20260903.json)
-manifest. Diagnostic-pair and learning results are not yet established.
+manifest.
+
+The first hand-constructed pair now has an exactly equal complete passive snapshot, disjoint unique
+repairs, and a shared isolation intervention whose public response distinguishes both worlds. The
+executed contingent policy recovers both worlds; a policy forced to choose one shared repair succeeds
+in one of two equally likely worlds. These deterministic checks do not establish a curriculum or
+learning result.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

@@ -54,6 +54,25 @@ Raw entropy reduction is logged separately. A probe can be informative yet have 
 when every posterior supports the same repair. Faultline should preferentially test the latter
 distinction.
 
+## First manual construction
+
+The seed-42 manual pair uses the same three-node factory state in both worlds. World A has a blocked
+processor-to-sink edge; World B has a failed processor. Their status, every node inspection, and every
+edge measurement are byte-for-byte equal before a dynamical action. Their only successful candidate
+repairs differ.
+
+Isolating the source-to-processor feed and advancing one tick yields:
+
+- blocked-output world: processor input 0, output 2;
+- failed-processor world: processor input 2, output 0.
+
+A policy branching only on that public output-buffer measurement selects the correct repair and
+recovers both worlds. Under the configured operational reward, its expected return is 8.08 versus
+1.25 for the best shared immediate repair, a demonstrated lower-bound gap of 6.83. The corresponding
+success rates are 100% and 50%. These values come from deterministic execution, not training or
+statistical estimation. At this stage the active policy is a verified construction, not yet an
+exhaustively optimal oracle.
+
 ## Candidate curriculum controls
 
 Static experiments compare Random, Difficulty, and EP selection with matched marginals over fault

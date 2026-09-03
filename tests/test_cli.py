@@ -19,3 +19,15 @@ def test_healthy_demo_renders_actual_episode(capsys: pytest.CaptureFixture[str])
     assert "NODES" in output
     assert "EDGES" in output
     assert "TIMELINE" in output
+
+
+def test_diagnostic_pair_demo_reports_executed_evidence(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    assert main(["demo", "diagnostic-pair", "--seed", "42"]) == 0
+    output = capsys.readouterr().out
+    assert "Initial complete passive observations: IDENTICAL" in output
+    assert "Best passive repair success: 50%" in output
+    assert "Evidence-contingent success: 100%" in output
+    assert "processor.input=0.00 output=2.00" in output
+    assert "processor.input=2.00 output=0.00" in output

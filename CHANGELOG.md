@@ -29,6 +29,8 @@ listed only when backed by immutable artifacts.
   debug mode.
 - Reproducible simulator-throughput benchmark and immutable schema-v1 manifests recording exact Git
   state, canonical config hash, hardware, timestamps, and metric version.
+- First manual diagnostic pair with an exact complete-passive-snapshot equality check, disjoint
+  successful repairs, a separating isolation experiment, and an evidence-contingent recovery policy.
 
 ### Research status
 
@@ -37,4 +39,6 @@ listed only when backed by immutable artifacts.
   repeats. Reference manifest: `simulator-throughput-v0.1-20260903`.
 - The earlier `simulator-throughput-local-20260903` artifact is retained but superseded for hardware
   reporting because the initial manifest did not recover the Linux CPU model.
-- No diagnostic-pair or learning result has been established.
+- The manual pair deterministically gives a 50% shared-repair success ceiling and 100%
+  evidence-contingent success across its two worlds. This is an environment construction result, not
+  a learned-policy result; exhaustive active optimality is not yet established.

@@ -4,24 +4,34 @@ from __future__ import annotations
 
 import argparse
 from collections.abc import Sequence
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
 from faultline import __version__
 from faultline.artifacts import (
     build_manifest,
+    canonical_sha256,
     git_state,
     repository_root,
     utc_timestamp,
     write_manifest,
 )
-from faultline.env import Advance, FactoryEnv
+from faultline.env import Advance, ClearBlockage, FactoryEnv, Replace
 from faultline.evaluation import (
     METRIC_VERSION,
     SimulatorBenchmarkConfig,
     run_simulator_benchmark,
 )
-from faultline.generation import chain_factory
+from faultline.generation import (
+    build_manual_diagnostic_pair,
+    chain_factory,
+    create_world_env,
+    diagnostic_evidence,
+    evaluate_repair,
+    full_passive_snapshot,
+    run_contingent_active_policy,
+)
 from faultline.visualization import render_factory, render_timeline
 
 
@@ -53,6 +63,11 @@ def build_parser() -> argparse.ArgumentParser:
     healthy.add_argument("--nodes", type=_positive_int, default=8)
     healthy.add_argument("--ticks", type=_positive_int, default=10)
     healthy.add_argument("--debug", action="store_true")
+    diagnostic_pair = demos.add_parser(
+        "diagnostic-pair",
+        help="demonstrate two confusable latent worlds",
+    )
+    diagnostic_pair.add_argument("--seed", type=_nonnegative_int, default=42)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -79,6 +94,59 @@ def _run_healthy_demo(args: argparse.Namespace) -> int:
     print(render_factory(graph, env.state, debug=args.debug))
     print()
     print(render_timeline(env.history))
+    return 0
+
+
+def _format_repair(repair: ClearBlockage | Replace) -> str:
+    if isinstance(repair, ClearBlockage):
+        return f"clear_blockage({repair.edge})"
+    return f"replace({repair.node})"
+
+
+def _run_diagnostic_pair_demo(args: argparse.Namespace) -> int:
+    pair = build_manual_diagnostic_pair(args.seed)
+    snapshots = [
+        full_passive_snapshot(create_world_env(pair, world)) for world in pair.worlds
+    ]
+    candidates = (ClearBlockage("delivery"), Replace("processor"))
+    passive_values = [
+        sum(evaluate_repair(pair, world, repair).total_return for world in pair.worlds)
+        / len(pair.worlds)
+        for repair in candidates
+    ]
+    active = [run_contingent_active_policy(pair, world) for world in pair.worlds]
+    evidence = [dict(diagnostic_evidence(pair, world)) for world in pair.worlds]
+
+    print(f"FAULTLINE DIAGNOSTIC PAIR seed={pair.seed}")
+    comparison = "IDENTICAL" if snapshots[0] == snapshots[1] else "DIFFERENT"
+    print(f"Initial complete passive observations: {comparison}")
+    print(f"snapshot_sha256={canonical_sha256(asdict(snapshots[0]))}")
+    print()
+    for index, world in enumerate(pair.worlds):
+        print(
+            f"WORLD {world.label}: latent={world.fault.kind.value}({world.fault.component}) "
+            f"optimal_repair={_format_repair(world.correct_repair)}"
+        )
+        print(
+            f"  after isolate({pair.intervention_edge}) + advance(1): "
+            f"{pair.evidence_node}.input={evidence[index]['input_buffer']:.2f} "
+            f"output={evidence[index]['output_buffer']:.2f}"
+        )
+        print(
+            f"  contingent_repair={_format_repair(active[index].selected_repair)} "
+            f"recovered={active[index].recovered} return={active[index].total_return:.2f}"
+        )
+    print()
+    print("Best passive repair success: 50%")
+    print(f"Best passive expected return: {max(passive_values):.2f}")
+    print(
+        "Evidence-contingent success: "
+        f"{sum(result.recovered for result in active) / len(active):.0%}"
+    )
+    print(
+        "Evidence-contingent expected return: "
+        f"{sum(result.total_return for result in active) / len(active):.2f}"
+    )
     return 0
 
 
@@ -125,6 +193,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "demo" and args.demo == "healthy":
         return _run_healthy_demo(args)
+    if args.command == "demo" and args.demo == "diagnostic-pair":
+        return _run_diagnostic_pair_demo(args)
     if args.command == "benchmark" and args.benchmark == "simulator":
         return _run_simulator_benchmark(args, parser)
     parser.print_help()
