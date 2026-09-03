@@ -20,9 +20,10 @@ held-out diagnostic success was 0.807, 0.902, and 0.951. Paired Epistemic improv
 Random (95% training-seed bootstrap interval [−0.084, 0.430]) and 0.049 over Difficulty
 ([−0.133, 0.286]). Neither met the frozen decision rule. Epistemic policies also probed every
 revealed-cue episode. Counterfactual swaps showed that probing policies usually change repair with
-the evidence, but this causal use was not curriculum-specific. The result does not establish the
-primary curriculum effect and is consistent with learning a fixed troubleshooting routine rather
-than selectively recognizing uncertainty. Language-model and Factorio stages are paused.
+the evidence, but this causal use was not curriculum-specific. Because cue reliability and costs are
+absent from v1 policy observations, the revealed condition cannot establish whether policies
+selectively recognize uncertainty. The primary curriculum effect is unsupported; language-model and
+Factorio stages are paused.
 
 ## 1. Introduction
 
@@ -123,8 +124,9 @@ The Epistemic-minus-Random paired mean was 0.144 [−0.084, 0.430]. Epistemic-mi
 Training variance was large. Diagnostic success ranged from 0 to 1 for Random, 0.230 to 1 for
 Difficulty, and 0.645 to 1 for Epistemic. Mean ambiguous recovery was 0.901, 0.950, and 0.951.
 Epistemic policies inspected 1.000 of revealed-cue episodes versus 0.813 Random and 0.904 Difficulty.
-The Epistemic arm's higher diagnostic rate therefore did not demonstrate selective uncertainty
-recognition.
+This does not demonstrate irrational over-probing: the current observation does not identify whether
+the cue is reliable in a particular episode. It does show that Epistemic training learned a fixed
+probe-first policy.
 
 ## 7. Does the agent use evidence?
 
@@ -139,7 +141,7 @@ This supports causal evidence use in learned routines but not a curriculum-speci
 Epistemic policies were always eligible because they always probed, yet one seed used evidence
 inconsistently; Difficulty policies had comparable overall causal use and higher conditional use.
 The learned behavior therefore has two separable properties: many policies condition repair on the
-probe result, but they do not reliably decide whether probing is necessary.
+probe result, while selective probing cannot be assessed until reliability and costs are observable.
 
 Removing diagnostic actions reduced every policy to the 0.5 passive recovery ceiling. Mean recovery
 drops were 0.402 Random, 0.449 Difficulty, and 0.451 Epistemic. On development-only 13–20-node
@@ -154,9 +156,9 @@ study.
 
 ## 8. Language-agent and Factorio transfer
 
-Not run. The frozen small-policy kill test did not establish a curriculum-specific effect and exposed
-indiscriminate probing. Per the project gate, language-model training and Factorio validation remain
-paused.
+Not run. The frozen small-policy kill test did not establish a curriculum-specific effect, and the
+v1 interface cannot test selective cost- or reliability-sensitive probing. Per the project gate,
+language-model training and Factorio validation remain paused.
 
 ## 9. Limitations
 

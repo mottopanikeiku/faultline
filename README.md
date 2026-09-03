@@ -97,10 +97,10 @@ head, recurrent PPO, matched Random / Difficulty / Epistemic samplers, immutable
 paired validation. Policy reward is exclusively production minus operational cost. Deliberately
 small 2k- and 10k-step Epistemic pilots collapsed to immediate fixed repair. At the declared 30k-step
 pilot budget, seed 0 reached 100% ambiguous recovery and 100% experiment-then-correct behavior on 128
-held-out validation base pairs. It also probed 100% of revealed-cue episodes, where probing is
-unnecessary. This is the first positive learning primitive, but it may be a fixed troubleshooting
-routine rather than uncertainty-sensitive investigation; it is neither a multi-seed curriculum
-result nor causal evidence use. The immutable
+held-out validation base pairs. It also probed 100% of revealed-cue episodes. The cue is sufficient
+to an oracle, but v1 does not tell the policy whether the current cue mapping is reliable, so this
+cannot by itself establish irrational over-probing. It is the first positive learning primitive, not
+a multi-seed curriculum result or causal evidence-use result. The immutable
 [`manifest`](artifacts/manifests/ep-pilot-30k-masked-seed00-20260903.json) records the checkpoint and
 validation traces.
 
@@ -109,7 +109,8 @@ curricula). Mean diagnostic success was 80.7% Random, 90.2% Difficulty, and 95.1
 Epistemic minus Random was +14.4 points with a 95% seed-bootstrap interval of [−8.4, 43.0];
 Epistemic minus Difficulty was +4.9 [−13.3, 28.6]. Neither met the frozen criterion, so the result is
 **no preregistered curriculum-specific effect**. Epistemic policies also inspected 100% of
-revealed-cue episodes, consistent with a fixed probing routine. This stops LLM/Factorio escalation.
+revealed-cue episodes, consistent with a fixed probing routine but not a valid cost-rationality test
+because cue reliability is unobserved. This stops LLM/Factorio escalation.
 See the immutable [`analysis`](artifacts/manifests/small-kill-v1-analysis.json) and
 [`seed plot`](artifacts/results/small-kill-v1-analysis.svg). The test split remains sealed.
 
@@ -117,7 +118,8 @@ Counterfactual swaps show that probing policies generally use the result: condit
 evidence-use rates were 99.1% Random, 99.6% Difficulty, and 90.2% Epistemic. Including policies that
 never reached an evidence decision, rates were 80.5%, 89.8%, and 90.2%. Randomizing paired evidence
 reduced correct repair to approximately 50%. Thus learned diagnostic routines usually condition on
-evidence, but Epistemic training did not uniquely cause this and still probed indiscriminately.
+evidence, but Epistemic training did not uniquely cause this. Selective probing remains untested
+because neither cue reliability nor costs are policy inputs.
 See the [`causal manifest`](artifacts/manifests/counterfactual-v1-analysis.json) and
 [`seed plot`](artifacts/results/counterfactual-v1-analysis.svg).
 

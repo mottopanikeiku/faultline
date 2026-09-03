@@ -142,3 +142,7 @@ listed only when backed by immutable artifacts.
 - Probe and repair cost sweeps changed returns but changed zero action traces in every checkpoint.
   Cost coefficients are absent from v1 policy observations, so this records an interface limitation,
   not rational cost insensitivity. Reference: `behavioral-controls-v1-analysis`.
+- Interpretation correction: the revealed/ambiguous condition and reward coefficients are not
+  policy-visible in v1. Probing revealed episodes therefore demonstrates a fixed routine but cannot
+  establish irrational over-probing or failure to recognize observable reliability. The prior
+  shorthand interpretation is superseded, not erased from history.

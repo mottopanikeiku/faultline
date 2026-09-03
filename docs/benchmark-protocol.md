@@ -71,10 +71,10 @@ rollout but disappeared under argmax evaluation. Action grammar alone is therefo
 
 Continuing the same configuration to 30,091 steps changed the result: seed 0 achieved 100%
 deterministic ambiguous recovery and experiment-then-correct behavior over 128 validation base
-pairs. The policy also advanced and inspected in 100% of revealed-cue episodes. Therefore it learned
-a successful fixed troubleshooting routine, but the pilot does not yet show that it detects when
-information is needed. The result justifies the matched multi-arm kill test and counterfactual
-analysis; it does not establish the central hypothesis.
+pairs. The policy also advanced and inspected in 100% of revealed-cue episodes. This demonstrates a
+fixed successful routine. It does not establish whether the policy detects when information is
+needed: the v1 observation never identifies whether the current cue mapping is reliable. The result
+justifies the matched multi-arm kill test and counterfactual analysis, not the central hypothesis.
 
 The matched Random seed-0 pilot reached 98.0% ambiguous recovery and diagnostic success at 30,089
 steps, while again probing every revealed episode. The 2-point gap from the Epistemic seed is not
@@ -121,9 +121,10 @@ decision is `no_preregistered_curriculum_effect`.
 
 Secondary behavior supports a cautious interpretation. Mean ambiguous recovery was 0.901 Random,
 0.950 Difficulty, and 0.951 Epistemic. Mean revealed-cue informative-inspection rates were 0.813,
-0.904, and 1.000, respectively. Epistemic training produced the highest mean diagnostic success but
-also the most indiscriminate probing. Training-seed variance was large: individual diagnostic success
-ranged from 0 to 1 in Random, 0.230 to 1 in Difficulty, and 0.645 to 1 in Epistemic.
+0.904, and 1.000. This shows different fixed probing frequencies, not rational over-probing:
+condition-level cue reliability is not observable within an episode. Training-seed variance was
+large: individual diagnostic success ranged from 0 to 1 in Random, 0.230 to 1 in Difficulty, and
+0.645 to 1 in Epistemic.
 
 This validation result does not support escalation to LLM or Factorio stages. It also does not prove
 EP has no effect: the interval is wide, the action grammar makes a fixed probe cheap to learn, and
@@ -189,9 +190,10 @@ approximately 0.496–0.499. Removing, staling, or averaging evidence changed ro
 choices, as expected when each manipulation drives a deterministic fallback in balanced worlds.
 
 Conclusion: most policies that learn the diagnostic sequence do use its result causally; they are not
-merely performing an ignored ritual. The Epistemic arm nonetheless probes every revealed-cue case and
-has no causal-use advantage over Difficulty. The remaining failure is selective decision relevance,
-not universal evidence blindness. Manifest: `artifacts/manifests/counterfactual-v1-analysis.json`.
+merely performing an ignored ritual. The Epistemic arm probes every revealed-cue case and has no
+causal-use advantage over Difficulty. This does not isolate selective decision relevance because the
+policy cannot observe cue reliability or costs. The established result is causal evidence use, not
+universal uncertainty recognition. Manifest: `artifacts/manifests/counterfactual-v1-analysis.json`.
 
 ## Behavioral controls v1
 
