@@ -2,17 +2,21 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from statistics import fmean
 from typing import Any
 
 import torch
 
 from faultline.agents.recurrent import GraphRecurrentPolicy
-from faultline.generation import CueCondition, build_generated_diagnostic_pair
+from faultline.generation import (
+    CueCondition,
+    DiagnosticPair,
+    build_generated_diagnostic_pair,
+)
 from faultline.training.rl_env import DiagnosticEpisode, EpisodeSummary, PolicyObservation
 
-POLICY_EVALUATION_VERSION = "small-policy-eval-v1"
+POLICY_EVALUATION_VERSION = "small-policy-eval-v2"
 
 
 def _policy_step(
@@ -37,24 +41,40 @@ def _policy_step(
     return int(action.item()), next_hidden
 
 
+def _disable_diagnostics(observation: PolicyObservation) -> PolicyObservation:
+    action_mask = observation.action_mask.copy()
+    action_mask[:2] = False
+    return PolicyObservation(
+        nodes=observation.nodes,
+        adjacency=observation.adjacency,
+        node_mask=observation.node_mask,
+        global_features=observation.global_features,
+        action_mask=action_mask,
+    )
+
+
 def _run_episode(
     policy: GraphRecurrentPolicy,
     episode: DiagnosticEpisode,
     device: torch.device,
+    disable_diagnostics: bool,
 ) -> tuple[EpisodeSummary, list[int]]:
     hidden = policy.initial_hidden(1, device)
     actions: list[int] = []
     summary: EpisodeSummary | None = None
     while summary is None:
-        action, hidden = _policy_step(policy, episode.observe(), hidden, device)
+        observation = episode.observe()
+        if disable_diagnostics:
+            observation = _disable_diagnostics(observation)
+        action, hidden = _policy_step(policy, observation, hidden, device)
         actions.append(action)
         _, _, _, summary = episode.step(action)
     return summary, actions
 
 
-def _aggregate(summaries: list[EpisodeSummary]) -> dict[str, float]:
+def _aggregate(summaries: list[EpisodeSummary]) -> dict[str, float | int]:
     return {
-        "episode_count": float(len(summaries)),
+        "episode_count": len(summaries),
         "mean_return": fmean(summary.total_reward for summary in summaries),
         "recovery_rate": fmean(summary.recovered for summary in summaries),
         "correct_repair_rate": fmean(summary.correct_repair for summary in summaries),
@@ -81,6 +101,9 @@ def evaluate_policy(
     seeds: Sequence[int],
     *,
     device: str = "cpu",
+    pair_builder: Callable[[int], DiagnosticPair] = build_generated_diagnostic_pair,
+    pair_transform: Callable[[DiagnosticPair], DiagnosticPair] | None = None,
+    disable_diagnostics: bool = False,
 ) -> dict[str, Any]:
     """Evaluate every world and balanced cue on held-out base-pair seeds."""
     if not seeds:
@@ -94,7 +117,9 @@ def evaluate_policy(
     }
     rows: list[dict[str, Any]] = []
     for seed in seeds:
-        pair = build_generated_diagnostic_pair(seed)
+        pair = pair_builder(seed)
+        if pair_transform is not None:
+            pair = pair_transform(pair)
         for condition in (CueCondition.AMBIGUOUS, CueCondition.REVEALED):
             for world_index in (0, 1):
                 cues = (0, 1) if condition is CueCondition.AMBIGUOUS else (
@@ -104,7 +129,12 @@ def evaluate_policy(
                 )
                 for cue in cues:
                     episode = DiagnosticEpisode(pair, condition, world_index, cue)
-                    summary, actions = _run_episode(policy, episode, torch_device)
+                    summary, actions = _run_episode(
+                        policy,
+                        episode,
+                        torch_device,
+                        disable_diagnostics,
+                    )
                     condition_summaries[condition].append(summary)
                     rows.append(
                         {
@@ -126,6 +156,8 @@ def evaluate_policy(
     return {
         "evaluation_version": POLICY_EVALUATION_VERSION,
         "base_pair_count": len(seeds),
+        "diagnostics_disabled": disable_diagnostics,
+        "pair_builder": pair_builder.__name__,
         "seeds": list(seeds),
         "ambiguous": _aggregate(condition_summaries[CueCondition.AMBIGUOUS]),
         "revealed": _aggregate(condition_summaries[CueCondition.REVEALED]),

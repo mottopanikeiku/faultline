@@ -226,6 +226,22 @@ def build_parser() -> argparse.ArgumentParser:
     counterfactual_study.add_argument("--output", type=Path)
     counterfactual_study.add_argument("--plot", type=Path)
     counterfactual_study.add_argument("--manifest", type=Path)
+    behavioral_controls = counterfactual_commands.add_parser(
+        "controls",
+        help="evaluate probe ablation, cost shifts, and development OOD",
+    )
+    behavioral_controls.add_argument(
+        "--protocol",
+        type=Path,
+        default=Path("configs/evaluation/behavioral-controls-v1.toml"),
+    )
+    behavioral_controls.add_argument(
+        "--run-id",
+        default="behavioral-controls-v1-analysis",
+    )
+    behavioral_controls.add_argument("--output", type=Path)
+    behavioral_controls.add_argument("--plot", type=Path)
+    behavioral_controls.add_argument("--manifest", type=Path)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -994,6 +1010,101 @@ def _run_counterfactual_study(
     return 0
 
 
+def _run_behavioral_controls(
+    args: argparse.Namespace,
+    parser: argparse.ArgumentParser,
+) -> int:
+    try:
+        from faultline.evaluation.behavioral_study import (
+            BEHAVIORAL_STUDY_VERSION,
+            analyze_behavioral_study,
+            load_behavioral_protocol,
+        )
+    except ModuleNotFoundError as error:
+        parser.error(
+            f"behavioral-control dependency {error.name!r} is missing; "
+            "run `uv sync --extra dev --extra learning-cpu`"
+        )
+    repo = _require_clean_repository(parser)
+    protocol_path = (
+        args.protocol if args.protocol.is_absolute() else repo / args.protocol
+    )
+    protocol = load_behavioral_protocol(protocol_path)
+    started_at = utc_timestamp()
+    timer_started = perf_counter()
+    analysis = analyze_behavioral_study(repo, protocol)
+    elapsed = perf_counter() - timer_started
+    completed_at = utc_timestamp()
+    run_id = args.run_id
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    plot_output = args.plot or repo / "artifacts" / "results" / f"{run_id}.svg"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    groups = {
+        arm: [
+            float(point["ablation_recovery_drop"])
+            for point in summary["individual_training_seeds"]
+        ]
+        for arm, summary in analysis["arms"].items()
+    }
+    plot = render_group_values_svg(
+        groups,
+        title="Recovery loss when diagnostic actions are removed",
+        y_label="ambiguous recovery drop",
+    )
+    metrics = {
+        "elapsed_seconds": elapsed,
+        "arms": analysis["arms"],
+        "source_run_count": len(analysis["runs"]),
+        "result_path": _artifact_reference(result_output, repo),
+        "result_sha256": canonical_sha256(analysis),
+        "plot_path": _artifact_reference(plot_output, repo),
+        "plot_sha256": hashlib.sha256(plot.encode("utf-8")).hexdigest(),
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="behavioral-control-study",
+        config=asdict(protocol),
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version=BEHAVIORAL_STUDY_VERSION,
+        split=protocol.iid_split,
+        seed=protocol.ood_seeds[0],
+        generator_version=f"{GENERATOR_VERSION}+{protocol.ood_generator_version}",
+        policy={
+            "source_runs": [
+                {
+                    "run_id": run["run_id"],
+                    "checkpoint_sha256": run["checkpoint_sha256"],
+                }
+                for run in analysis["runs"]
+            ]
+        },
+        curriculum={"arms": list(analysis["arms"])},
+        reward={
+            "cost_sweeps": True,
+            "costs_observed_by_policy": False,
+        },
+    )
+    write_json_artifact(result_output, analysis)
+    write_text_artifact(plot_output, plot)
+    write_manifest(manifest_output, manifest)
+    for arm, summary in analysis["arms"].items():
+        metrics_by_name = summary["metrics"]
+        print(
+            f"{arm}: ablation_drop="
+            f"{metrics_by_name['ablation_recovery_drop']['mean']:.3f} "
+            f"ood_recovery={metrics_by_name['ood_ambiguous_recovery']['mean']:.3f}"
+        )
+    print(f"result={result_output}")
+    print(f"plot={plot_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_simulator_benchmark(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     config = SimulatorBenchmarkConfig(
@@ -1048,6 +1159,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_kill_test_report(args, parser)
     if args.command == "counterfactual" and args.counterfactual == "study":
         return _run_counterfactual_study(args, parser)
+    if args.command == "counterfactual" and args.counterfactual == "controls":
+        return _run_behavioral_controls(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

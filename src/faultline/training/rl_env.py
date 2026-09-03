@@ -12,7 +12,7 @@ from faultline.env import Advance, ClearBlockage, Inspect, Replace
 from faultline.faults import BlockedEdge
 from faultline.generation import CueCondition, DiagnosticPair, create_world_env
 
-MAX_NODES = 12
+MAX_NODES = 20
 NODE_FEATURE_DIM = 12
 GLOBAL_FEATURE_DIM = 10
 ACTION_COUNT = 4

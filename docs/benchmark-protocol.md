@@ -193,6 +193,17 @@ merely performing an ignored ritual. The Epistemic arm nonetheless probes every 
 has no causal-use advantage over Difficulty. The remaining failure is selective decision relevance,
 not universal evidence blindness. Manifest: `artifacts/manifests/counterfactual-v1-analysis.json`.
 
+## Behavioral controls v1
+
+`configs/evaluation/behavioral-controls-v1.toml` evaluates all 24 checkpoints on 32 validation base
+pairs and 16 development-only OOD chains. Diagnostic-action ablation masks `advance` and `inspect`
+without changing graph or latent world. Cost sweeps multiply probe-related costs by 0.25, 1, and 4,
+and repair/false-repair costs by 0.5, 1, and 2. The current policy input does not contain reward
+coefficients, so action-trace invariance is expected and explicitly measured; this is a design
+limitation, not evidence of irrational cost processing. OOD chains contain 13–20 nodes and numeric
+ranges absent from training, while retaining the exact two-world causal construction. This is a
+development OOD suite, not the sealed test set.
+
 ## Statistical unit
 
 Policies are evaluated on identical test scenario IDs. Comparisons are paired within training seed

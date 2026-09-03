@@ -35,6 +35,7 @@ from faultline.generation.diagnostic_pairs import (
     run_contingent_active_policy,
 )
 from faultline.generation.layouts import chain_factory
+from faultline.generation.ood import OOD_GENERATOR_VERSION, build_ood_diagnostic_pair
 from faultline.generation.splits import SPLIT_VERSION, SPLITS, SplitDefinition, get_split
 from faultline.generation.validation import (
     GenerationBatch,
@@ -45,6 +46,7 @@ from faultline.generation.validation import (
 
 __all__ = [
     "GENERATOR_VERSION",
+    "OOD_GENERATOR_VERSION",
     "PAIR_DATASET_SCHEMA_VERSION",
     "SPLITS",
     "SPLIT_VERSION",
@@ -65,6 +67,7 @@ __all__ = [
     "build_generated_diagnostic_pair",
     "build_manual_diagnostic_pair",
     "build_matched_ep_block",
+    "build_ood_diagnostic_pair",
     "build_pair_dataset",
     "chain_factory",
     "create_world_env",

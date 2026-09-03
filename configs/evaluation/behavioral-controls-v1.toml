@@ -1,0 +1,10 @@
+protocol_id = "behavioral-controls-v1"
+source_study_protocol = "configs/evaluation/small-kill-v1.toml"
+iid_split = "validation"
+iid_offset = 0
+iid_base_pair_count = 32
+ood_generator_version = "diagnostic-chain-ood-v1"
+ood_seeds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+probe_cost_multipliers = [0.25, 1.0, 4.0]
+repair_cost_multipliers = [0.5, 1.0, 2.0]
+sealed_test_split_used = false

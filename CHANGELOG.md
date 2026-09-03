@@ -63,6 +63,9 @@ listed only when backed by immutable artifacts.
   evidence, supplies an uninformative midpoint, and randomizes valid paired outcomes.
 - Frozen validation-only `counterfactual-v1` protocol over all 24 small-kill checkpoints, with
   eligibility-aware causal-use metrics and training-seed summaries.
+- Probe-action ablation, probe/repair cost sweeps, and `diagnostic-chain-ood-v1` evaluation on
+  13–20-node chains with unseen rates, bottlenecks, capacities, preload, and costs.
+- Frozen `behavioral-controls-v1` development protocol across all 24 checkpoints.
 
 ### Research status
 
