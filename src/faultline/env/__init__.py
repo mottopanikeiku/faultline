@@ -22,6 +22,7 @@ from faultline.env.reward import (
     TerminationReason,
 )
 from faultline.env.state import FactoryState
+from faultline.env.vectorized import BatchTransition, VectorizedState, step_batch
 
 __all__ = [
     "Action",
@@ -29,6 +30,7 @@ __all__ = [
     "ActionKind",
     "ActionResult",
     "Advance",
+    "BatchTransition",
     "ClearBlockage",
     "Edge",
     "EpisodeMetrics",
@@ -48,6 +50,8 @@ __all__ = [
     "TerminationReason",
     "Toggle",
     "Transition",
+    "VectorizedState",
     "advance",
+    "step_batch",
     "step_tick",
 ]

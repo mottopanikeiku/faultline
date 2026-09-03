@@ -23,8 +23,10 @@ listed only when backed by immutable artifacts.
 - Operational throughput-minus-cost reward accounting with separate passive, diagnostic, repair,
   false-repair, and time costs.
 - Sustained-recovery, action-limit, and tick-limit termination with recomputable episode metrics.
+- Homogeneous NumPy-batched state and stepping kernel with active-row masks, exact scalar
+  equivalence tests, per-row conservation checks, and deterministic fault recovery.
 
 ### Research status
 
-- Core scalar simulator semantics are established locally; throughput benchmarking and the
+- Scalar and batched simulator semantics are established locally; measured throughput and the
   diagnostic-pair milestone are not yet established.
