@@ -41,6 +41,14 @@ If a shared public history leaves posterior \(b(z)\) and terminal decision \(a\)
 For two equally likely worlds with disjoint unique correct repairs, this bound is \(1/2\). The claim
 is elementary; its purpose is to certify benchmark behavior, not to assert theoretical novelty.
 
+**Proof sketch.** A randomized passive policy chooses a distribution \(q(a)\) shared across latent
+worlds. Its success is
+\(\sum_a q(a)\sum_{z\in S_a}b(z)\), a convex combination bounded by the largest inner sum.
+A deterministic policy attains that bound. For two equally probable worlds whose successful-action
+sets are disjoint, each inner sum is at most \(1/2\). A separating intervention can move the
+posterior to a point mass in each outcome branch, after which the corresponding repair succeeds;
+its return advantage still depends on intervention and delay costs.
+
 ## Intervention value
 
 For intervention \(i\) with outcome \(o\), posterior \(b_{i,o}\), and operational cost \(C(i)\),
@@ -67,11 +75,14 @@ Isolating the source-to-processor feed and advancing one tick yields:
 - failed-processor world: processor input 2, output 0.
 
 A policy branching only on that public output-buffer measurement selects the correct repair and
-recovers both worlds. Under the configured operational reward, its expected return is 8.08 versus
-1.25 for the best shared immediate repair, a demonstrated lower-bound gap of 6.83. The corresponding
-success rates are 100% and 50%. These values come from deterministic execution, not training or
-statistical estimation. At this stage the active policy is a verified construction, not yet an
-exhaustively optimal oracle.
+recovers both worlds with expected return 8.08. The exact solver additionally enumerates every
+contingent policy over the bounded diagnostic action set through depth three. It finds the cheaper
+sequence `advance(1) -> inspect(processor)`, followed by the posterior-optimal repair. This policy
+has expected return 8.58 and 100% recovery versus 1.25 and 50% for the best shared passive
+commitment, giving \(EP=7.33\). Depth-zero and depth-one solutions equal the passive optimum;
+depth-two and depth-three solutions agree. Tests compare the solver value with direct simulator
+execution of the discovered policy. These are deterministic oracle values, not training or
+statistical estimates.
 
 ## Candidate curriculum controls
 

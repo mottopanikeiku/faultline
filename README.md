@@ -49,9 +49,9 @@ respectively (200 ticks, 3 repeats). See the immutable
 [`simulator-throughput-v0.1-20260903`](artifacts/manifests/simulator-throughput-v0.1-20260903.json)
 manifest.
 
-The first hand-constructed pair now has an exactly equal complete passive snapshot, disjoint unique
-repairs, and a shared isolation intervention whose public response distinguishes both worlds. The
-executed contingent policy recovers both worlds; a policy forced to choose one shared repair succeeds
-in one of two equally likely worlds. These deterministic checks do not establish a curriculum or
-learning result.
+The first hand-constructed pair has an exactly equal complete passive snapshot and disjoint unique
+repairs. The exact finite-world solver enumerates diagnostic policies to depth three, verifies the
+50% passive success ceiling, and finds `advance -> inspect`, which reaches 100% recovery with
+expected operational return 8.58 versus 1.25 for passive commitment (`EP = 7.33`). These are
+deterministic environment/oracle results, not curriculum or learned-policy results.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

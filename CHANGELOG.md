@@ -31,6 +31,10 @@ listed only when backed by immutable artifacts.
   state, canonical config hash, hardware, timestamps, and metric version.
 - First manual diagnostic pair with an exact complete-passive-snapshot equality check, disjoint
   successful repairs, a separating isolation experiment, and an evidence-contingent recovery policy.
+- Exact finite-world Bayesian belief utilities, terminal repair enumeration, and contingent active
+  diagnostic solver for horizons zero through six.
+- Intervention outcome partitioning, information gain, decision value, and direct-enumeration
+  correctness tests for the two-world problem.
 
 ### Research status
 
@@ -39,6 +43,6 @@ listed only when backed by immutable artifacts.
   repeats. Reference manifest: `simulator-throughput-v0.1-20260903`.
 - The earlier `simulator-throughput-local-20260903` artifact is retained but superseded for hardware
   reporting because the initial manifest did not recover the Linux CPU model.
-- The manual pair deterministically gives a 50% shared-repair success ceiling and 100%
-  evidence-contingent success across its two worlds. This is an environment construction result, not
-  a learned-policy result; exhaustive active optimality is not yet established.
+- The exact depth-2 oracle verifies a 50% passive recovery ceiling and finds a 100%-recovery
+  `advance -> inspect` policy. Expected operational values are 1.25 passive and 8.58 active
+  (`EP = 7.33`). This is an oracle construction result, not a learned-policy result.

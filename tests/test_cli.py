@@ -29,5 +29,7 @@ def test_diagnostic_pair_demo_reports_executed_evidence(
     assert "Initial complete passive observations: IDENTICAL" in output
     assert "Best passive repair success: 50%" in output
     assert "Evidence-contingent success: 100%" in output
+    assert "Exact active oracle: success=100% return=8.58 EP=7.33" in output
+    assert "Optimal diagnostic sequence: advance -> inspect" in output
     assert "processor.input=0.00 output=2.00" in output
     assert "processor.input=2.00 output=0.00" in output

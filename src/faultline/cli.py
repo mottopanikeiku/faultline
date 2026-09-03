@@ -17,7 +17,7 @@ from faultline.artifacts import (
     utc_timestamp,
     write_manifest,
 )
-from faultline.env import Advance, ClearBlockage, FactoryEnv, Replace
+from faultline.env import Action, Advance, ClearBlockage, FactoryEnv, Replace
 from faultline.evaluation import (
     METRIC_VERSION,
     SimulatorBenchmarkConfig,
@@ -28,9 +28,14 @@ from faultline.generation import (
     chain_factory,
     create_world_env,
     diagnostic_evidence,
-    evaluate_repair,
     full_passive_snapshot,
     run_contingent_active_policy,
+)
+from faultline.oracle import (
+    analyze_actions,
+    manual_pair_problem,
+    solve_active,
+    solve_passive,
 )
 from faultline.visualization import render_factory, render_timeline
 
@@ -46,6 +51,13 @@ def _nonnegative_int(value: str) -> int:
     parsed = int(value)
     if parsed < 0:
         raise argparse.ArgumentTypeError("value must be non-negative")
+    return parsed
+
+
+def _diagnostic_depth(value: str) -> int:
+    parsed = int(value)
+    if not 0 <= parsed <= 6:
+        raise argparse.ArgumentTypeError("diagnostic depth must be between zero and six")
     return parsed
 
 
@@ -68,6 +80,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="demonstrate two confusable latent worlds",
     )
     diagnostic_pair.add_argument("--seed", type=_nonnegative_int, default=42)
+
+    oracle = commands.add_parser("oracle", help="solve bounded diagnostic problems")
+    oracle_commands = oracle.add_subparsers(dest="oracle")
+    solve = oracle_commands.add_parser("solve", help="solve the exact manual two-world problem")
+    solve.add_argument("--seed", type=_nonnegative_int, default=42)
+    solve.add_argument("--depth", type=_diagnostic_depth, default=3)
+    solve.add_argument("--run-id")
+    solve.add_argument("--output", type=Path)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -108,12 +128,9 @@ def _run_diagnostic_pair_demo(args: argparse.Namespace) -> int:
     snapshots = [
         full_passive_snapshot(create_world_env(pair, world)) for world in pair.worlds
     ]
-    candidates = (ClearBlockage("delivery"), Replace("processor"))
-    passive_values = [
-        sum(evaluate_repair(pair, world, repair).total_return for world in pair.worlds)
-        / len(pair.worlds)
-        for repair in candidates
-    ]
+    problem = manual_pair_problem(pair)
+    passive_oracle = solve_passive(problem)
+    active_oracle = solve_active(problem, max_diagnostic_actions=2)
     active = [run_contingent_active_policy(pair, world) for world in pair.worlds]
     evidence = [dict(diagnostic_evidence(pair, world)) for world in pair.worlds]
 
@@ -137,8 +154,8 @@ def _run_diagnostic_pair_demo(args: argparse.Namespace) -> int:
             f"recovered={active[index].recovered} return={active[index].total_return:.2f}"
         )
     print()
-    print("Best passive repair success: 50%")
-    print(f"Best passive expected return: {max(passive_values):.2f}")
+    print(f"Best passive repair success: {passive_oracle.recovery_probability:.0%}")
+    print(f"Best passive expected return: {passive_oracle.expected_return:.2f}")
     print(
         "Evidence-contingent success: "
         f"{sum(result.recovered for result in active) / len(active):.0%}"
@@ -147,14 +164,111 @@ def _run_diagnostic_pair_demo(args: argparse.Namespace) -> int:
         "Evidence-contingent expected return: "
         f"{sum(result.total_return for result in active) / len(active):.2f}"
     )
+    print(
+        f"Exact active oracle: success={active_oracle.recovery_probability:.0%} "
+        f"return={active_oracle.expected_return:.2f} "
+        f"EP={active_oracle.expected_return - passive_oracle.expected_return:.2f}"
+    )
+    first_action = active_oracle.diagnostic_action
+    second_action = (
+        active_oracle.outcomes[0].decision.diagnostic_action
+        if active_oracle.outcomes
+        else None
+    )
+    if first_action is not None and second_action is not None:
+        print(
+            f"Optimal diagnostic sequence: {first_action.kind.value} "
+            f"-> {second_action.kind.value}"
+        )
+    return 0
+
+
+def _require_clean_repository(parser: argparse.ArgumentParser) -> Path:
+    repo = repository_root(Path.cwd())
+    _, dirty = git_state(repo)
+    if dirty:
+        parser.error("measured runs require a clean Git worktree")
+    return repo
+
+
+def _action_record(action: Action) -> dict[str, object]:
+    return {"kind": action.kind.value, **asdict(action)}
+
+
+def _run_oracle_solve(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    pair = build_manual_diagnostic_pair(args.seed)
+    problem = manual_pair_problem(pair)
+    started_at = utc_timestamp()
+    passive = solve_passive(problem)
+    active = solve_active(problem, args.depth)
+    action_values = analyze_actions(problem)
+    completed_at = utc_timestamp()
+    snapshot = full_passive_snapshot(create_world_env(pair, pair.worlds[0]))
+    metrics = {
+        "passive_expected_return": passive.expected_return,
+        "passive_recovery_probability": passive.recovery_probability,
+        "passive_plan": passive.plan.name,
+        "active_expected_return": active.expected_return,
+        "active_recovery_probability": active.recovery_probability,
+        "ep": active.expected_return - passive.expected_return,
+        "root_decision": active.kind.value,
+        "root_action": (
+            _action_record(active.diagnostic_action)
+            if active.diagnostic_action is not None
+            else None
+        ),
+        "initial_snapshot_sha256": canonical_sha256(asdict(snapshot)),
+        "action_values": [
+            {
+                "action": _action_record(value.action),
+                "expected_return": value.expected_return,
+                "recovery_probability": value.recovery_probability,
+                "decision_value": value.decision_value,
+                "information_gain_bits": value.information_gain_bits,
+                "outcome_count": value.outcome_count,
+            }
+            for value in action_values
+        ],
+    }
+    config = {
+        "pair_seed": pair.seed,
+        "pair_version": "manual-v1",
+        "max_diagnostic_actions": args.depth,
+    }
+    run_id = args.run_id or datetime.now(UTC).strftime("two-world-oracle-%Y%m%dT%H%M%SZ")
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="exact-two-world-oracle",
+        config=config,
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version="exact-two-world-oracle-v1",
+        split="manual-construction",
+        seed=pair.seed,
+        generator_version="manual-v1",
+        policy={"name": "exact-enumeration", "diagnostic_depth": args.depth},
+        reward=asdict(pair.reward),
+    )
+    output = args.output or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    write_manifest(output, manifest)
+    print(
+        f"passive_return={passive.expected_return:.2f} "
+        f"active_return={active.expected_return:.2f} "
+        f"ep={active.expected_return - passive.expected_return:.2f}"
+    )
+    print(
+        f"passive_success={passive.recovery_probability:.0%} "
+        f"active_success={active.recovery_probability:.0%}"
+    )
+    print(f"manifest={output}")
     return 0
 
 
 def _run_simulator_benchmark(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
-    repo = repository_root(Path.cwd())
-    _, dirty = git_state(repo)
-    if dirty:
-        parser.error("simulator benchmarks require a clean Git worktree")
+    repo = _require_clean_repository(parser)
     config = SimulatorBenchmarkConfig(
         batch_sizes=tuple(args.batch_sizes),
         node_count=args.nodes,
@@ -195,6 +309,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_healthy_demo(args)
     if args.command == "demo" and args.demo == "diagnostic-pair":
         return _run_diagnostic_pair_demo(args)
+    if args.command == "oracle" and args.oracle == "solve":
+        return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":
         return _run_simulator_benchmark(args, parser)
     parser.print_help()

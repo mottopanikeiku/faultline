@@ -83,6 +83,18 @@ class FactoryEnv:
             reward_tracker=reward_tracker,
         )
 
+    def clone(self) -> FactoryEnv:
+        """Deep-copy mutable episode state for oracle and counterfactual branches."""
+        return dataclass_replace(
+            self,
+            state=self.state.clone(),
+            history=list(self.history),
+            reward_tracker=(
+                self.reward_tracker.clone() if self.reward_tracker is not None else None
+            ),
+        )
+
+
     def observe(self) -> PublicObservation:
         return observe_status(self.state)
 

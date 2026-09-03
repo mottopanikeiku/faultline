@@ -97,6 +97,10 @@ def build_manifest(
     split: str = "not_applicable",
     status: str = "completed",
     seed: int | None = None,
+    generator_version: str | None = None,
+    policy: dict[str, Any] | None = None,
+    curriculum: dict[str, Any] | None = None,
+    reward: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Construct a schema-v1 manifest from observed run data and repository state."""
     commit, dirty = git_state(repo)
@@ -112,10 +116,10 @@ def build_manifest(
         "config_sha256": canonical_sha256(config),
         "split": split,
         "seed": seed,
-        "generator_version": None,
-        "policy": None,
-        "curriculum": None,
-        "reward": None,
+        "generator_version": generator_version,
+        "policy": policy,
+        "curriculum": curriculum,
+        "reward": reward,
         "hardware": hardware_metadata(),
         "status": status,
         "metric_version": metric_version,

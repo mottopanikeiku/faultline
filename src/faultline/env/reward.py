@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from enum import StrEnum
 
 import numpy as np
@@ -95,6 +95,11 @@ class RewardTracker:
     recovered: bool = False
     terminated: bool = False
     termination_reason: TerminationReason | None = None
+
+    def clone(self) -> RewardTracker:
+        """Copy all accounting state for an exact counterfactual branch."""
+        return replace(self)
+
 
     def record_action(
         self,
