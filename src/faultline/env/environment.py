@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from dataclasses import replace as dataclass_replace
 from enum import StrEnum
+from typing import TYPE_CHECKING
 
 from faultline.env.actions import (
     Action,
@@ -27,7 +28,9 @@ from faultline.env.observation import (
 )
 from faultline.env.reward import RewardConfig, RewardTracker
 from faultline.env.state import FactoryState
-from faultline.faults.base import LatentFault, inject_fault
+
+if TYPE_CHECKING:
+    from faultline.faults.base import LatentFault
 
 
 class ActionError(StrEnum):
@@ -74,7 +77,7 @@ class FactoryEnv:
     ) -> FactoryEnv:
         state = FactoryState.healthy(graph)
         if fault is not None:
-            inject_fault(graph, state, fault)
+            fault.inject(graph, state)
         reward_tracker = RewardTracker(reward_config) if reward_config is not None else None
         return cls(
             graph=graph,
