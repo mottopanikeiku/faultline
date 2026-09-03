@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-09-03T20:59:43.671672+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "random",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 100
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 6,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "a28c61859c2472fdad6c5c5cf0eb0cbbbe2a402c393641ff8c02dbb72a3d42bf",
+  "curriculum": {
+    "kind": "random",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 0.5,
+      "condition_counts": {
+        "ambiguous": 11407,
+        "revealed": 11470
+      },
+      "episode_index": 22877,
+      "failure_ema": {
+        "ambiguous": 0.5,
+        "revealed": 0.5
+      },
+      "kind": "random"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "aa7d109be01caf607b9e029e2a0daa5b4ff07fba",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/small-kill-v1-random-seed-100/policy.pt",
+    "checkpoint_sha256": "7beef5c2080476e434e6b44ab9ccf06c27955aeacb0341764b319265c1eed9b1",
+    "decision_steps": 30056,
+    "decision_steps_per_second": 855.2001703521582,
+    "elapsed_seconds": 35.144988322001154,
+    "episode_count": 22877,
+    "final_update": {
+      "approximate_kl": 0.01589053113443347,
+      "clip_fraction": 0.23018326610326767,
+      "correct_repair_rate": 0.7578616352201258,
+      "decision_steps": 30056,
+      "entropy": 0.684770079759451,
+      "episodes": 22877,
+      "informative_inspection_rate": 0.25157232704402516,
+      "loss": 12.11277382190411,
+      "mean_return": 6.117727987421384,
+      "policy_loss": -0.03149914906288569,
+      "recovery_rate": 0.7578616352201258,
+      "simulator_ticks": 319235,
+      "update": 27,
+      "value_loss": 24.302240958580605
+    },
+    "result_path": "artifacts/results/small-kill-v1-random-seed-100.json",
+    "result_sha256": "4f7e69f51181ee5ba8c61f5264f0315c2afe5bb4d6f287d69df372495db0e696",
+    "simulator_ticks": 319235,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 0.75,
+        "episode_count": 512.0,
+        "experiment_then_correct_repair_rate": 0.5,
+        "false_repair_rate": 0.25,
+        "informative_inspection_rate": 0.5,
+        "mean_advance_count": 0.546875,
+        "mean_decision_steps": 2.046875,
+        "mean_inspect_count": 0.5,
+        "mean_return": 6.16822265625,
+        "recovery_rate": 0.75
+      },
+      "revealed": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 256.0,
+        "experiment_then_correct_repair_rate": 0.5,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 0.5,
+        "mean_advance_count": 0.546875,
+        "mean_decision_steps": 2.046875,
+        "mean_inspect_count": 0.5,
+        "mean_return": 10.688828125,
+        "recovery_rate": 1.0
+      },
+      "version": "small-policy-eval-v1"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "small-kill-v1-random-seed-100",
+  "schema_version": 1,
+  "seed": 100,
+  "split": "train+validation",
+  "started_at": "2026-09-03T20:59:08.526653+00:00",
+  "status": "completed"
+}
