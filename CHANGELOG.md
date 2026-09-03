@@ -32,5 +32,9 @@ listed only when backed by immutable artifacts.
 
 ### Research status
 
-- Scalar and batched simulator semantics are established locally; measured throughput and the
-  diagnostic-pair milestone are not yet established.
+- Gate 0 local benchmark established median throughput of 3.83M, 4.73M, and 4.41M environment
+  steps/s for 1k, 4k, and 16k batches of a 16-node graph, respectively, over 200 ticks and three
+  repeats. Reference manifest: `simulator-throughput-v0.1-20260903`.
+- The earlier `simulator-throughput-local-20260903` artifact is retained but superseded for hardware
+  reporting because the initial manifest did not recover the Linux CPU model.
+- No diagnostic-pair or learning result has been established.

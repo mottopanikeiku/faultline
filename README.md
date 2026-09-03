@@ -40,9 +40,11 @@ will be retained.
 
 ## Status
 
-Deterministic scalar and NumPy-batched material-flow dynamics, three latent fault families, typed
-actions, and operational reward accounting are implemented with scalar/batch equivalence,
-conservation, replay, fault-causality, observation-isolation, false-repair, and sustained-recovery
-tests. Throughput has not yet been benchmarked; diagnostic-pair and learning results are not yet
-established.
+Gate 0 simulator semantics are implemented and tested: deterministic scalar and NumPy-batched
+material flow, three latent fault families, typed actions, operational reward, observation
+isolation, and sustained recovery. On the recorded local CPU, the 16-node batch kernel measured
+median rates of 3.83M, 4.73M, and 4.41M environment steps/s at batch sizes 1k, 4k, and 16k
+respectively (200 ticks, 3 repeats). See the immutable
+[`simulator-throughput-v0.1-20260903`](artifacts/manifests/simulator-throughput-v0.1-20260903.json)
+manifest. Diagnostic-pair and learning results are not yet established.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

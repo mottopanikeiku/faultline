@@ -1,0 +1,77 @@
+{
+  "completed_at": "2026-09-03T19:28:19.842278+00:00",
+  "config": {
+    "batch_sizes": [
+      1000,
+      4000,
+      16000
+    ],
+    "node_count": 16,
+    "repeats": 3,
+    "ticks": 200,
+    "warmup_ticks": 10
+  },
+  "config_sha256": "96cd4c4c2b818d3502770ed6094e3350a33fb2646ec71bccd90d723fb305c6f1",
+  "curriculum": null,
+  "experiment": "simulator-throughput",
+  "generator_version": null,
+  "git_commit": "9442c6f2e2adc6a3452636844421e8f6189bf5fd",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "simulator-throughput-v1",
+  "metrics": {
+    "batches": [
+      {
+        "batch_size": 1000,
+        "environment_steps": 200000,
+        "steps_per_second_median": 3828140.530919484,
+        "steps_per_second_samples": [
+          3093123.8125840053,
+          3828140.530919484,
+          3967024.3481676914
+        ]
+      },
+      {
+        "batch_size": 4000,
+        "environment_steps": 800000,
+        "steps_per_second_median": 4730487.2589526605,
+        "steps_per_second_samples": [
+          4730487.2589526605,
+          4450481.126487726,
+          5224613.480693744
+        ]
+      },
+      {
+        "batch_size": 16000,
+        "environment_steps": 3200000,
+        "steps_per_second_median": 4412763.992106802,
+        "steps_per_second_samples": [
+          4412763.992106802,
+          4108480.3300432586,
+          5369426.033448127
+        ]
+      }
+    ],
+    "edge_count": 15,
+    "metric_version": "simulator-throughput-v1",
+    "node_count": 16,
+    "repeats": 3,
+    "ticks_per_repeat": 200
+  },
+  "policy": null,
+  "reward": null,
+  "run_id": "simulator-throughput-v0.1-20260903",
+  "schema_version": 1,
+  "seed": null,
+  "split": "not_applicable",
+  "started_at": "2026-09-03T19:28:16.922648+00:00",
+  "status": "completed"
+}

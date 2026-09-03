@@ -76,3 +76,12 @@ Information gain is not rewarded.
 - disabling or blocking a component cannot increase its own effective capacity;
 - a repair changes dynamics only when its public target and repair type apply;
 - sustained recovery cannot be claimed from a single transient high-throughput tick.
+
+## Gate 0 performance record
+
+The homogeneous NumPy kernel was measured from clean commit `9442c6f` on a 12-logical-CPU AMD Ryzen
+AI 5 PRO 340 using Python 3.13.15 and NumPy 2.4.6. For a 16-node/15-edge chain over 200 measured
+ticks and three repeats, median rates were 3.83M, 4.73M, and 4.41M environment steps/s at batch
+sizes 1k, 4k, and 16k. These are local throughput measurements, not cross-hardware claims. Raw
+samples and complete provenance are stored in
+`artifacts/manifests/simulator-throughput-v0.1-20260903.json`.
