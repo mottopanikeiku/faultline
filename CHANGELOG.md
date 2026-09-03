@@ -89,3 +89,8 @@ listed only when backed by immutable artifacts.
   smoke policy chose immediate fixed repair, yielding 50% ambiguous recovery, 50% false repairs, and
   0% experiment-then-correct behavior. This is a preserved negative pipeline smoke, not the
   multi-seed kill test. Reference: `small-ep-smoke-seed00-20260903`.
+- A 10k-step primary-size Epistemic pilot at the same code commit also collapsed to immediate fixed
+  repair: 50% ambiguous recovery and 0% experiment-then-correct behavior. Training entropy remained
+  1.26, but informative inspections were rare and disappeared under deterministic evaluation. This
+  preserves the failure before changing public action-sequence masks. Reference:
+  `ep-pilot-10k-seed00-20260903`.

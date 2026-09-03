@@ -56,6 +56,13 @@ collapsed to immediate fixed repair: 50% ambiguous validation recovery and no di
 This establishes end-to-end collection, optimization, checkpointing, and evaluation only. It is not
 evidence for or against the curriculum hypothesis and does not count as a tuned seed.
 
+A subsequent 10,054-step pilot with the primary 929,541-parameter model produced the same deterministic
+failure: 50% ambiguous recovery and zero experiment-then-correct behavior. Random rollout discovery
+of `advance -> inspect -> conditional repair` was too sparse under the unrestricted four-action
+grammar. This result is preserved before testing public, latent-independent action masks that remove
+meaningless inspect-before-dynamics and repeated-probe sequences. Such masks constrain tool syntax;
+they do not force diagnosis because both immediate repairs remain valid at every decision.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning
