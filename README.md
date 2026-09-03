@@ -29,6 +29,9 @@ the preregistered kill test.
 uv sync --extra dev
 uv run pytest
 uv run faultline --version
+uv run faultline demo healthy --nodes 8 --ticks 10
+# Requires a clean worktree and writes an immutable provenance manifest:
+uv run faultline benchmark simulator
 ```
 
 The evolving scientific specification is in [`docs/research-thesis.md`](docs/research-thesis.md).

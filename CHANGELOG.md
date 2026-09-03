@@ -25,6 +25,10 @@ listed only when backed by immutable artifacts.
 - Sustained-recovery, action-limit, and tick-limit termination with recomputable episode metrics.
 - Homogeneous NumPy-batched state and stepping kernel with active-row masks, exact scalar
   equivalence tests, per-row conservation checks, and deterministic fault recovery.
+- Text factory and public interaction-timeline renderer with latent markers gated behind explicit
+  debug mode.
+- Reproducible simulator-throughput benchmark and immutable schema-v1 manifests recording exact Git
+  state, canonical config hash, hardware, timestamps, and metric version.
 
 ### Research status
 
