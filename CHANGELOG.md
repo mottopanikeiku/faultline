@@ -55,6 +55,8 @@ listed only when backed by immutable artifacts.
   base-factory and latent-world schedules.
 - Versioned portable policy checkpoints, CPU/CUDA uv extras, dry-run cost control, and paired
   validation evaluation over every world and balanced cue.
+- Public-history-only action masks that keep both repairs available while removing meaningless
+  inspect-before-dynamics, repeated-advance, and repeated-inspection sequences.
 
 ### Research status
 

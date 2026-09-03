@@ -142,6 +142,19 @@ class DiagnosticEpisode:
             adjacency[target, source] = 1.0
         return adjacency
 
+    def _current_action_mask(self) -> BoolArray:
+        mask = np.zeros(ACTION_COUNT, dtype=np.bool_)
+        if self.terminated:
+            return mask
+        mask[DiagnosticAction.CLEAR_BLOCKAGE] = True
+        mask[DiagnosticAction.REPLACE_PROCESSOR] = True
+        if self.advance_count == 0:
+            mask[DiagnosticAction.ADVANCE] = True
+        elif not self.informative_inspection:
+            mask[DiagnosticAction.INSPECT] = True
+        return mask
+
+
     def observe(self) -> PolicyObservation:
         nodes = self._node_features.copy()
         nodes[:, 9] = self._telemetry_mask
@@ -163,7 +176,7 @@ class DiagnosticEpisode:
             adjacency=self._adjacency,
             node_mask=self._node_mask,
             global_features=global_features,
-            action_mask=np.ones(ACTION_COUNT, dtype=np.bool_),
+            action_mask=self._current_action_mask(),
         )
 
     def step(
@@ -173,6 +186,8 @@ class DiagnosticEpisode:
         if self.terminated:
             raise RuntimeError("episode already terminated")
         action = DiagnosticAction(action)
+        if not self._current_action_mask()[action]:
+            raise ValueError(f"action {action.name.lower()} is unavailable at this public history")
         self._last_action = int(action)
         self.decision_steps += 1
         reward = 0.0

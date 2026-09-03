@@ -24,6 +24,10 @@ def test_ambiguous_worlds_have_identical_initial_policy_observation() -> None:
         right_observation.global_features,
     )
     assert not left_observation.nodes[:, 9].any()
+    np.testing.assert_array_equal(
+        left_observation.action_mask,
+        np.asarray([True, False, True, True]),
+    )
 
 
 def test_advance_inspect_repair_recovers_each_latent_world() -> None:
@@ -108,8 +112,17 @@ def test_decision_step_limit_forces_operational_timeout() -> None:
         max_decision_steps=2,
     )
 
-    episode.step(DiagnosticAction.INSPECT)
-    _, _, done, summary = episode.step(DiagnosticAction.INSPECT)
+    after_advance, _, done, _ = episode.step(DiagnosticAction.ADVANCE)
+    assert not done
+    np.testing.assert_array_equal(
+        after_advance.action_mask,
+        np.asarray([False, True, True, True]),
+    )
+    after_inspect, _, done, summary = episode.step(DiagnosticAction.INSPECT)
+    np.testing.assert_array_equal(
+        after_inspect.action_mask,
+        np.asarray([False, False, False, False]),
+    )
 
     assert done
     assert summary is not None

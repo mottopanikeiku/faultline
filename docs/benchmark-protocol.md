@@ -59,9 +59,10 @@ evidence for or against the curriculum hypothesis and does not count as a tuned 
 A subsequent 10,054-step pilot with the primary 929,541-parameter model produced the same deterministic
 failure: 50% ambiguous recovery and zero experiment-then-correct behavior. Random rollout discovery
 of `advance -> inspect -> conditional repair` was too sparse under the unrestricted four-action
-grammar. This result is preserved before testing public, latent-independent action masks that remove
-meaningless inspect-before-dynamics and repeated-probe sequences. Such masks constrain tool syntax;
-they do not force diagnosis because both immediate repairs remain valid at every decision.
+grammar. This result is preserved before introducing public, latent-independent action masks.
+The revised grammar removes meaningless inspect-before-dynamics and repeated-probe sequences while
+keeping both immediate repairs valid at every decision; it constrains tool syntax without forcing
+diagnosis.
 
 ## Matched comparison
 
