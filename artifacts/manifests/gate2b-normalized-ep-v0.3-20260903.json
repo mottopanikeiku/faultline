@@ -1,0 +1,227 @@
+{
+  "completed_at": "2026-09-03T20:17:47.939854+00:00",
+  "config": {
+    "oracle_depth": 2,
+    "pair_count": 100,
+    "source_dataset": "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json",
+    "source_dataset_sha256": "cf49fb420f0d0f710ecd0eedd336f5118a60a343e2ba74516d23a0431894acd0"
+  },
+  "config_sha256": "5614077264eac62ae7bd60afd9b8f2ae3e0324b313c767f3b13fd56d2a47b5c6",
+  "curriculum": null,
+  "experiment": "ep-distribution-analysis",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "d2676835f0d0c32bdd79f8cef627a6fad2ee3a29",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "ep-distribution-v2",
+  "metrics": {
+    "active_expected_return": {
+      "max": 16.03,
+      "mean": 10.632,
+      "median": 10.454999999999998,
+      "min": 5.98,
+      "q25": 8.786249999999999,
+      "q75": 12.4175,
+      "std_population": 2.4141190939968142
+    },
+    "analysis_version": "ep-distribution-v2",
+    "correlations_with_ep": {
+      "capacity_multiple": {
+        "pearson": -0.17147507308421142,
+        "spearman": -0.14757083362701606
+      },
+      "diagnostic_cost": {
+        "pearson": -0.002331395709777304,
+        "spearman": -0.019402129077038463
+      },
+      "fault_position": {
+        "pearson": 0.5222607552601387,
+        "spearman": 0.4976484734744305
+      },
+      "node_count": {
+        "pearson": 0.49340161809091787,
+        "spearman": 0.45891239417126034
+      },
+      "passive_decision_regret": {
+        "pearson": 0.9396225399047559,
+        "spearman": 0.9259439283909304
+      },
+      "passive_difficulty": {
+        "pearson": -0.5588240073571612,
+        "spearman": -0.5693437227176839
+      },
+      "preload": {
+        "pearson": 0.5724963047018287,
+        "spearman": 0.5392405336471952
+      },
+      "rate": {
+        "pearson": 0.6732227651294757,
+        "spearman": 0.6852037742118884
+      },
+      "repair_margin": {
+        "pearson": 0.9396225399047559,
+        "spearman": 0.9259439283909304
+      },
+      "time_cost": {
+        "pearson": 0.2624272787278043,
+        "spearman": 0.22487449185717803
+      },
+      "transport_rate": {
+        "pearson": 0.7565029945323347,
+        "spearman": 0.7509132144059474
+      }
+    },
+    "correlations_with_normalized_ep": {
+      "capacity_multiple": {
+        "pearson": -0.10368790347459685,
+        "spearman": -0.14697209249602253
+      },
+      "diagnostic_cost": {
+        "pearson": 0.11579006435665429,
+        "spearman": 0.016756245211789516
+      },
+      "fault_position": {
+        "pearson": 0.5143110744643146,
+        "spearman": 0.7567477392590286
+      },
+      "node_count": {
+        "pearson": 0.3899667805419009,
+        "spearman": 0.513750334316213
+      },
+      "passive_decision_regret": {
+        "pearson": 0.04700160231684479,
+        "spearman": 0.6301633736920216
+      },
+      "passive_difficulty": {
+        "pearson": 0.13886393377907172,
+        "spearman": -0.32225175975568665
+      },
+      "preload": {
+        "pearson": 0.042251953149090096,
+        "spearman": 0.22969759056315942
+      },
+      "rate": {
+        "pearson": -0.07398953002003925,
+        "spearman": 0.3318209290480457
+      },
+      "repair_margin": {
+        "pearson": 0.04700160231684479,
+        "spearman": 0.6301633736920216
+      },
+      "time_cost": {
+        "pearson": 0.02399311932209889,
+        "spearman": 0.11410639624058949
+      },
+      "transport_rate": {
+        "pearson": -0.11302989069677619,
+        "spearman": 0.37741785466900624
+      }
+    },
+    "count": 100,
+    "elapsed_seconds": 14.672291467999457,
+    "ep_plot_path": "artifacts/results/gate2b-normalized-ep-v0.3-20260903-ep.svg",
+    "ep_plot_sha256": "db6ff50b240a85cd604f9955b1b6e3d94f88d7bdcd3445621a940d21f50f5244",
+    "epistemic_pressure": {
+      "max": 12.755000000000006,
+      "mean": 8.861624999999998,
+      "median": 8.692499999999995,
+      "min": 5.579999999999999,
+      "q25": 7.798749999999996,
+      "q75": 9.804999999999998,
+      "std_population": 1.4431015372713742
+    },
+    "immediate_advance_decision_value": {
+      "max": 8.881784197001252e-16,
+      "mean": -0.10987499999999997,
+      "median": 0.0,
+      "min": -1.125,
+      "q25": -0.056250000000000355,
+      "q75": 0.0,
+      "std_population": 0.24697099399524636
+    },
+    "immediate_advance_information_gain_bits": {
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "q25": 0.0,
+      "q75": 0.0,
+      "std_population": 0.0
+    },
+    "intervention_plot_path": "artifacts/results/gate2b-normalized-ep-v0.3-20260903-interventions.svg",
+    "intervention_plot_sha256": "3650e0e06ab160cde4c7c1972370540a74dac7ca5ed0664f574821486a7e5c28",
+    "normalized_ep": {
+      "max": 0.9984344422700587,
+      "mean": 0.9732872391830213,
+      "median": 0.9976011508721452,
+      "min": 0.800877192982456,
+      "q25": 0.9836518145008544,
+      "q75": 0.9979500295101318,
+      "std_population": 0.052547534666075126
+    },
+    "normalized_plot_path": "artifacts/results/gate2b-normalized-ep-v0.3-20260903-normalized-ep.svg",
+    "normalized_plot_sha256": "99b37ff424166d494c3734ee9b4ff672522fe33a3b6b5922ffffa661508227ce",
+    "pair_analyses_per_second": 6.815567985280409,
+    "passive_decision_regret": {
+      "max": 12.775000000000006,
+      "mean": 9.101374999999999,
+      "median": 9.0,
+      "min": 6.099999999999999,
+      "q25": 7.971874999999999,
+      "q75": 10.112499999999994,
+      "std_population": 1.365628169332708
+    },
+    "passive_expected_return": {
+      "max": 5.0000000000000036,
+      "mean": 1.7703750000000005,
+      "median": 1.8437499999999987,
+      "min": -1.4250000000000047,
+      "q25": 0.8562499999999991,
+      "q75": 2.6031250000000017,
+      "std_population": 1.2901703557573325
+    },
+    "post_advance_inspect_decision_value": {
+      "max": 12.755000000000006,
+      "mean": 8.971499999999999,
+      "median": 8.8425,
+      "min": 5.829999999999999,
+      "q25": 7.855000000000002,
+      "q75": 9.964375000000004,
+      "std_population": 1.3830207879854892
+    },
+    "post_advance_inspect_information_gain_bits": {
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "q25": 1.0,
+      "q75": 1.0,
+      "std_population": 0.0
+    },
+    "result_path": "artifacts/results/gate2b-normalized-ep-v0.3-20260903.json",
+    "result_sha256": "d1fefbdc8e7d7e22f9dc5f23a9dc91d78dd3f19dfa295bb2d5ab9f7477ca2b26",
+    "source_dataset": "artifacts/results/gate1-diagnostic-pairs-v0.2-20260903.json",
+    "source_dataset_sha256": "cf49fb420f0d0f710ecd0eedd336f5118a60a343e2ba74516d23a0431894acd0"
+  },
+  "policy": {
+    "diagnostic_depth": 2,
+    "name": "exact-enumeration"
+  },
+  "reward": {
+    "varies_by_task": true
+  },
+  "run_id": "gate2b-normalized-ep-v0.3-20260903",
+  "schema_version": 1,
+  "seed": 0,
+  "split": "train",
+  "started_at": "2026-09-03T20:17:33.265969+00:00",
+  "status": "completed"
+}
