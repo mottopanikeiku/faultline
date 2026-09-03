@@ -69,6 +69,13 @@ no experiment-then-correct behavior. Stochastic informative inspection averaged 
 rollout but disappeared under argmax evaluation. Action grammar alone is therefore insufficient at
 10k steps; reward-scale/value-loss and entropy settings require validation before the kill test.
 
+Continuing the same configuration to 30,091 steps changed the result: seed 0 achieved 100%
+deterministic ambiguous recovery and experiment-then-correct behavior over 128 validation base
+pairs. The policy also advanced and inspected in 100% of revealed-cue episodes. Therefore it learned
+a successful fixed troubleshooting routine, but the pilot does not yet show that it detects when
+information is needed. The result justifies the matched multi-arm kill test and counterfactual
+analysis; it does not establish the central hypothesis.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning

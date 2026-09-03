@@ -100,3 +100,8 @@ listed only when backed by immutable artifacts.
   recovery and 0% experiment-then-correct behavior. Masks increased stochastic informative
   inspection only transiently and were insufficient at this budget. Reference:
   `ep-pilot-10k-masked-seed00-20260903`.
+- At 30,091 steps, the same masked Epistemic seed reached 100% ambiguous validation recovery and
+  100% experiment-then-correct behavior over 128 base pairs. It also probed 100% of revealed-cue
+  episodes, demonstrating over-probing rather than uncertainty sensitivity. This is a positive
+  single-seed learning primitive with a material limitation, not a curriculum result. Reference:
+  `ep-pilot-30k-masked-seed00-20260903`.
