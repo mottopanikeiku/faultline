@@ -96,3 +96,7 @@ listed only when backed by immutable artifacts.
   1.26, but informative inspections were rare and disappeared under deterministic evaluation. This
   preserves the failure before changing public action-sequence masks. Reference:
   `ep-pilot-10k-seed00-20260903`.
+- The latent-independent mask pilot at 10k steps still chose immediate fixed repair: 50% ambiguous
+  recovery and 0% experiment-then-correct behavior. Masks increased stochastic informative
+  inspection only transiently and were insufficient at this budget. Reference:
+  `ep-pilot-10k-masked-seed00-20260903`.

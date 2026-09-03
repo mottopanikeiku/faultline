@@ -64,6 +64,11 @@ The revised grammar removes meaningless inspect-before-dynamics and repeated-pro
 keeping both immediate repairs valid at every decision; it constrains tool syntax without forcing
 diagnosis.
 
+With that mask, a separate 10,043-step pilot still produced 50% deterministic ambiguous recovery and
+no experiment-then-correct behavior. Stochastic informative inspection averaged 6.5% in its final
+rollout but disappeared under argmax evaluation. Action grammar alone is therefore insufficient at
+10k steps; reward-scale/value-loss and entropy settings require validation before the kill test.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning
