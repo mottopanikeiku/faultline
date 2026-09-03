@@ -57,6 +57,8 @@ listed only when backed by immutable artifacts.
   validation evaluation over every world and balanced cue.
 - Public-history-only action masks that keep both repairs available while removing meaningless
   inspect-before-dynamics, repeated-advance, and repeated-inspection sequences.
+- Frozen `small-kill-v1` protocol, seed-level paired bootstrap analysis, saturation decision rule,
+  immutable aggregate reporting, and individual-seed plot.
 
 ### Research status
 

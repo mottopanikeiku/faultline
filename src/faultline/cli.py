@@ -27,10 +27,13 @@ from faultline.env import Action, Advance, ClearBlockage, FactoryEnv, Replace
 from faultline.evaluation import (
     CONTROL_AUDIT_VERSION,
     EP_ANALYSIS_VERSION,
+    KILL_TEST_ANALYSIS_VERSION,
     METRIC_VERSION,
     SimulatorBenchmarkConfig,
     analyze_ep_distribution,
+    analyze_kill_test,
     analyze_matched_ep_controls,
+    load_kill_test_protocol,
     run_simulator_benchmark,
 )
 from faultline.generation import (
@@ -54,6 +57,7 @@ from faultline.oracle import (
 )
 from faultline.visualization import (
     render_factory,
+    render_group_values_svg,
     render_histogram_svg,
     render_paired_values_svg,
     render_timeline,
@@ -184,6 +188,22 @@ def build_parser() -> argparse.ArgumentParser:
     train.add_argument("--dry-run", action="store_true")
     train.add_argument("--output", type=Path)
     train.add_argument("--manifest", type=Path)
+
+    report = commands.add_parser("report", help="aggregate frozen research studies")
+    report_commands = report.add_subparsers(dest="report")
+    small_kill = report_commands.add_parser(
+        "small-kill",
+        help="analyze the frozen recurrent-policy kill test",
+    )
+    small_kill.add_argument(
+        "--protocol",
+        type=Path,
+        default=Path("configs/evaluation/small-kill-v1.toml"),
+    )
+    small_kill.add_argument("--run-id", default="small-kill-v1-analysis")
+    small_kill.add_argument("--output", type=Path)
+    small_kill.add_argument("--plot", type=Path)
+    small_kill.add_argument("--manifest", type=Path)
 
     benchmark = commands.add_parser("benchmark", help="run measured local benchmarks")
     benchmarks = benchmark.add_subparsers(dest="benchmark")
@@ -794,6 +814,75 @@ def _run_training(args: argparse.Namespace, parser: argparse.ArgumentParser) -> 
     return 0
 
 
+def _run_kill_test_report(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
+    repo = _require_clean_repository(parser)
+    protocol_path = (
+        args.protocol if args.protocol.is_absolute() else repo / args.protocol
+    )
+    protocol = load_kill_test_protocol(protocol_path)
+    started_at = utc_timestamp()
+    analysis = analyze_kill_test(repo, protocol)
+    completed_at = utc_timestamp()
+    run_id = args.run_id
+    result_output = args.output or repo / "artifacts" / "results" / f"{run_id}.json"
+    plot_output = args.plot or repo / "artifacts" / "results" / f"{run_id}.svg"
+    manifest_output = (
+        args.manifest or repo / "artifacts" / "manifests" / f"{run_id}.json"
+    )
+    groups = {
+        arm: [float(point["value"]) for point in summary["individual_seeds"]]
+        for arm, summary in analysis["arms"].items()
+    }
+    plot = render_group_values_svg(
+        groups,
+        title="Held-out diagnostic success by training curriculum",
+        y_label=analysis["primary_metric"],
+    )
+    metrics = {
+        "decision": analysis["decision"],
+        "supports_curriculum_specific_effect": analysis[
+            "supports_curriculum_specific_effect"
+        ],
+        "all_arms_saturated": analysis["all_arms_saturated"],
+        "arms": analysis["arms"],
+        "paired_comparisons": analysis["paired_comparisons"],
+        "source_run_count": len(analysis["source_runs"]),
+        "result_path": _artifact_reference(result_output, repo),
+        "result_sha256": canonical_sha256(analysis),
+        "plot_path": _artifact_reference(plot_output, repo),
+        "plot_sha256": hashlib.sha256(plot.encode("utf-8")).hexdigest(),
+    }
+    manifest = build_manifest(
+        repo=repo,
+        run_id=run_id,
+        experiment="small-policy-kill-test-analysis",
+        config=analysis["protocol"],
+        metrics=metrics,
+        started_at=started_at,
+        completed_at=completed_at,
+        metric_version=KILL_TEST_ANALYSIS_VERSION,
+        split="validation",
+        seed=protocol.bootstrap_seed,
+        generator_version=GENERATOR_VERSION,
+        policy={"source_runs": analysis["source_runs"]},
+        curriculum={"arms": list(protocol.arms), "matched_base_schedule": True},
+        reward={"operational_only": True, "information_gain_term": False},
+    )
+    write_json_artifact(result_output, analysis)
+    write_text_artifact(plot_output, plot)
+    write_manifest(manifest_output, manifest)
+    print(f"decision={analysis['decision']}")
+    for name, estimate in analysis["paired_comparisons"].items():
+        print(
+            f"{name}={estimate['estimate']:.3f} "
+            f"CI[{estimate['lower']:.3f},{estimate['upper']:.3f}]"
+        )
+    print(f"result={result_output}")
+    print(f"plot={plot_output}")
+    print(f"manifest={manifest_output}")
+    return 0
+
+
 def _run_simulator_benchmark(args: argparse.Namespace, parser: argparse.ArgumentParser) -> int:
     repo = _require_clean_repository(parser)
     config = SimulatorBenchmarkConfig(
@@ -844,6 +933,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_control_audit(args, parser)
     if args.command == "train":
         return _run_training(args, parser)
+    if args.command == "report" and args.report == "small-kill":
+        return _run_kill_test_report(args, parser)
     if args.command == "oracle" and args.oracle == "solve":
         return _run_oracle_solve(args, parser)
     if args.command == "benchmark" and args.benchmark == "simulator":

@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import pytest
 
-from faultline.visualization import render_histogram_svg, render_paired_values_svg
+from faultline.visualization import (
+    render_group_values_svg,
+    render_histogram_svg,
+    render_paired_values_svg,
+)
 
 
 def test_histogram_svg_contains_observed_counts_and_labels() -> None:
@@ -34,6 +38,19 @@ def test_paired_plot_preserves_each_task_point() -> None:
     assert svg.count('<line class="link"') == 3
     assert svg.count('<circle class="point"') == 6
     assert "decision value" in svg
+
+
+def test_group_plot_preserves_replicates_and_means() -> None:
+    svg = render_group_values_svg(
+        {"Random": [0.4, 0.6], "Difficulty": [0.7, 0.8], "EP": [0.9, 1.0]},
+        title="Seed-level endpoint",
+        y_label="success",
+    )
+
+    assert svg.count('<circle class="point"') == 6
+    assert "Random" in svg
+    assert "Difficulty" in svg
+    assert "EP" in svg
 
 
 def test_plot_inputs_are_validated() -> None:

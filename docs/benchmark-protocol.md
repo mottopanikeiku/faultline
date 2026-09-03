@@ -1,6 +1,6 @@
 # Benchmark protocol
 
-Status: exploratory draft. No final test split or primary analysis is frozen yet.
+Status: small-policy kill-test v1 frozen on validation; final held-out test protocol remains unfrozen.
 
 ## Split discipline
 
@@ -85,6 +85,24 @@ Difficulty seed 0 likewise reached 100% ambiguous diagnostic success and probed 
 episode at 30,094 steps. All three exploratory arms can therefore reach the same fixed routine at
 the proposed budget. Seed 0 is excluded from the frozen multi-seed comparison because these outcomes
 were inspected while finalizing the protocol.
+
+## Frozen small-policy kill test v1
+
+`configs/evaluation/small-kill-v1.toml` freezes this exploratory kill test before any seed 100–107
+run. It uses training seeds 100–107; Random, Difficulty, and Epistemic arms; the 929,541-parameter
+policy; the `small-kill.toml` 30k decision-step target; and validation base-pair seeds
+1,000,000–1,000,127. Exploratory seed 0 is excluded.
+
+The primary endpoint is deterministic ambiguous
+`experiment_then_correct_repair_rate`. Primary paired comparisons are Epistemic minus Random and
+Epistemic minus Difficulty at the training-seed level. Reports include all seed points and 95%
+percentile bootstrap intervals from 10,000 resamples with bootstrap seed 20260903. A
+curriculum-specific effect requires both a mean improvement of at least five percentage points and
+a lower interval bound above zero for both comparisons. If every arm exceeds 95%, the prespecified
+interpretation is benchmark saturation without curriculum separation.
+
+This is a validation-set kill test, not the final confirmatory study. The procedural test range
+remains sealed. No missing run may be silently replaced after aggregate outcomes are inspected.
 
 ## Matched comparison
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from html import escape
 
 import numpy as np
@@ -126,6 +126,65 @@ def render_paired_values_svg(
             f"{escape(after_label)}</text>",
             f'<text x="22" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-size="14" '
             f'transform="rotate(-90 22 {(top + bottom) / 2:.1f})">{escape(y_label)}</text>',
+            f'<text x="{left - 8}" y="{top + 4}" text-anchor="end" font-size="11">'
+            f"{value_max:.2f}</text>",
+            f'<text x="{left - 8}" y="{bottom}" text-anchor="end" font-size="11">'
+            f"{value_min:.2f}</text>",
+            "</svg>",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def render_group_values_svg(
+    groups: Mapping[str, Sequence[float]],
+    *,
+    title: str,
+    y_label: str,
+    width: int = 800,
+    height: int = 480,
+) -> str:
+    """Render every replicate and its mean for two or more named groups."""
+    if len(groups) < 2 or any(not values for values in groups.values()):
+        raise ValueError("group plot requires at least two non-empty groups")
+    flattened = [float(value) for values in groups.values() for value in values]
+    value_min = min(0.0, min(flattened))
+    value_max = max(1.0, max(flattened))
+    padding = 0.06 * max(value_max - value_min, 1e-9)
+    value_min -= padding
+    value_max += padding
+    left, right, top, bottom = 90.0, width - 40.0, 55.0, height - 65.0
+
+    def y_coordinate(value: float) -> float:
+        return bottom - (value - value_min) / (value_max - value_min) * (bottom - top)
+
+    lines = _svg_header(width, height, title)
+    lines.append(f'<line class="axis" x1="{left}" y1="{top}" x2="{left}" y2="{bottom}"/>')
+    labels = tuple(groups)
+    spacing = (right - left) / len(labels)
+    for group_index, label in enumerate(labels):
+        x = left + spacing * (group_index + 0.5)
+        values = groups[label]
+        for value_index, value in enumerate(values):
+            jitter = ((value_index % 5) - 2) * 3.0
+            lines.append(
+                f'<circle class="point" cx="{x + jitter:.2f}" '
+                f'cy="{y_coordinate(float(value)):.2f}" r="3.2"/>'
+            )
+        mean = sum(float(value) for value in values) / len(values)
+        mean_y = y_coordinate(mean)
+        lines.append(
+            f'<line x1="{x - 20:.2f}" y1="{mean_y:.2f}" x2="{x + 20:.2f}" '
+            f'y2="{mean_y:.2f}" stroke="#172033" stroke-width="3"/>'
+        )
+        lines.append(
+            f'<text x="{x:.2f}" y="{bottom + 25}" text-anchor="middle" font-size="13">'
+            f"{escape(label)}</text>"
+        )
+    lines.extend(
+        [
+            f'<text x="20" y="{(top + bottom) / 2:.1f}" text-anchor="middle" font-size="14" '
+            f'transform="rotate(-90 20 {(top + bottom) / 2:.1f})">{escape(y_label)}</text>',
             f'<text x="{left - 8}" y="{top + 4}" text-anchor="end" font-size="11">'
             f"{value_max:.2f}</text>",
             f'<text x="{left - 8}" y="{bottom}" text-anchor="end" font-size="11">'

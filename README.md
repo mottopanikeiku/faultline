@@ -39,6 +39,7 @@ uv run faultline train --config configs/training/small-cpu-smoke.toml \
   --curriculum epistemic --seed 0 --dry-run
 uv run faultline train --config configs/training/small-cpu-smoke.toml \
   --curriculum epistemic --seed 0 --run-id ep-smoke-seed-00
+uv run faultline report small-kill --protocol configs/evaluation/small-kill-v1.toml
 uv run faultline benchmark simulator
 ```
 
