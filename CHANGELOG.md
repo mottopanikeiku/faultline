@@ -14,8 +14,10 @@ listed only when backed by immutable artifacts.
   material-flow dynamics.
 - Semantic tests for conservation, staged causal propagation, deterministic replay, state branching,
   and cycle rejection.
+- Latent blocked-edge, failed-processor, and downstream-backpressure faults with causal restoration
+  tests and privileged-state isolation boundaries.
 
 ### Research status
 
-- Healthy-factory dynamics are established locally; the complete simulator gate and learning
-  results are not yet established.
+- Healthy dynamics and three fault families are established locally; the complete simulator gate
+  and learning results are not yet established.

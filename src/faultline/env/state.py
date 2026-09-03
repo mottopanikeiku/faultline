@@ -21,6 +21,9 @@ class FactoryState:
     outputs: FloatArray
     node_enabled: BoolArray
     edge_enabled: BoolArray
+    node_failed: BoolArray
+    node_backpressured: BoolArray
+    edge_blocked: BoolArray
     last_edge_flow: FloatArray
     tick: int = 0
     injected_total: float = 0.0
@@ -35,6 +38,9 @@ class FactoryState:
             outputs=graph.initial_outputs.copy(),
             node_enabled=np.ones(graph.node_count, dtype=np.bool_),
             edge_enabled=np.ones(graph.edge_count, dtype=np.bool_),
+            node_failed=np.zeros(graph.node_count, dtype=np.bool_),
+            node_backpressured=np.zeros(graph.node_count, dtype=np.bool_),
+            edge_blocked=np.zeros(graph.edge_count, dtype=np.bool_),
             last_edge_flow=np.zeros(graph.edge_count, dtype=np.float64),
             initial_material=float(
                 graph.initial_inputs.sum(dtype=np.float64)
@@ -49,6 +55,9 @@ class FactoryState:
             outputs=self.outputs.copy(),
             node_enabled=self.node_enabled.copy(),
             edge_enabled=self.edge_enabled.copy(),
+            node_failed=self.node_failed.copy(),
+            node_backpressured=self.node_backpressured.copy(),
+            edge_blocked=self.edge_blocked.copy(),
             last_edge_flow=self.last_edge_flow.copy(),
             tick=self.tick,
             injected_total=self.injected_total,

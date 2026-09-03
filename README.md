@@ -37,6 +37,7 @@ will be retained.
 
 ## Status
 
-Deterministic healthy material-flow dynamics are implemented and covered by conservation and
-replay tests. Fault, action, reward, diagnostic-pair, and learning results are not yet established.
+Deterministic material-flow dynamics and three latent fault families are implemented with
+conservation, replay, and fault-causality tests. Action, reward, diagnostic-pair, and learning
+results are not yet established.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

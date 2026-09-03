@@ -28,10 +28,18 @@ def validate_state(graph: FactoryGraph, state: FactoryState) -> None:
     edge_shape = (graph.edge_count,)
     if state.inputs.shape != node_shape or state.outputs.shape != node_shape:
         raise ValueError("state node-array shape does not match graph")
-    if state.node_enabled.shape != node_shape:
-        raise ValueError("state node enablement shape does not match graph")
-    if state.edge_enabled.shape != edge_shape or state.last_edge_flow.shape != edge_shape:
-        raise ValueError("state edge-array shape does not match graph")
+    if (
+        state.node_enabled.shape != node_shape
+        or state.node_failed.shape != node_shape
+        or state.node_backpressured.shape != node_shape
+    ):
+        raise ValueError("state node-control shape does not match graph")
+    if (
+        state.edge_enabled.shape != edge_shape
+        or state.edge_blocked.shape != edge_shape
+        or state.last_edge_flow.shape != edge_shape
+    ):
+        raise ValueError("state edge-control shape does not match graph")
     if np.any(state.inputs < 0.0) or np.any(state.outputs < 0.0):
         raise ValueError("state contains negative material")
     if np.any(state.inputs > graph.input_capacities + _CONSERVATION_ATOL):
@@ -67,17 +75,21 @@ def step_tick(
         np.minimum(state.inputs[transform_indices], graph.rates[transform_indices]),
         transform_space,
     )
-    transformed_by_node *= state.node_enabled[transform_indices]
+    transformed_by_node *= (
+        state.node_enabled[transform_indices] & ~state.node_failed[transform_indices]
+    )
     state.inputs[transform_indices] -= transformed_by_node
     state.outputs[transform_indices] += transformed_by_node
     transformed = float(transformed_by_node.sum(dtype=np.float64))
 
     state.last_edge_flow.fill(0.0)
     for edge_index in range(graph.edge_count):
-        if not state.edge_enabled[edge_index]:
+        if not state.edge_enabled[edge_index] or state.edge_blocked[edge_index]:
             continue
         source = int(graph.edge_sources[edge_index])
         target = int(graph.edge_targets[edge_index])
+        if state.node_backpressured[target]:
+            continue
         target_space = graph.input_capacities[target] - state.inputs[target]
         flow = min(
             state.outputs[source],
@@ -92,7 +104,9 @@ def step_tick(
 
     sink_indices = graph.sink_indices
     delivered_by_sink = np.minimum(state.inputs[sink_indices], graph.rates[sink_indices])
-    delivered_by_sink *= state.node_enabled[sink_indices]
+    delivered_by_sink *= (
+        state.node_enabled[sink_indices] & ~state.node_backpressured[sink_indices]
+    )
     state.inputs[sink_indices] -= delivered_by_sink
     delivered = float(delivered_by_sink.sum(dtype=np.float64))
 
