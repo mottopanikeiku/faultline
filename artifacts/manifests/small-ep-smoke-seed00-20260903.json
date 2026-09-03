@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-09-03T20:41:08.116083+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "epistemic",
+      "max_decision_steps": 4,
+      "pool_offset": 5000,
+      "pool_size": 128,
+      "training_seed": 0
+    },
+    "evaluation": {
+      "base_pair_count": 32,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 64,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 2,
+      "minibatch_episodes": 32,
+      "parallel_envs": 16,
+      "rollout_min_steps": 256,
+      "target_kl": 0.03,
+      "torch_threads": 4,
+      "total_decision_steps": 2000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "3e780f0b52de8f073707be3389d9075c225058e1804552f6dbe6ae282e40f220",
+  "curriculum": {
+    "kind": "epistemic",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 1.0,
+      "condition_counts": {
+        "ambiguous": 1140,
+        "revealed": 0
+      },
+      "episode_index": 1140,
+      "failure_ema": {
+        "ambiguous": 0.5,
+        "revealed": 0.5
+      },
+      "kind": "epistemic"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "d64057ee8f9547f2a88077883d6a196b51045e1b",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/small-ep-smoke-seed00-20260903/policy.pt",
+    "checkpoint_sha256": "9f1b7ec1001593de786c25478eed74d8356a2245f6448a185601914de5bdf504",
+    "decision_steps": 2026,
+    "decision_steps_per_second": 976.8196530615537,
+    "elapsed_seconds": 2.0740778440012946,
+    "episode_count": 1140,
+    "final_update": {
+      "approximate_kl": 0.00028865771589418426,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.5029585798816568,
+      "decision_steps": 2026,
+      "entropy": 1.3779553522666295,
+      "episodes": 1140,
+      "informative_inspection_rate": 0.05325443786982249,
+      "loss": 17.53510046005249,
+      "mean_return": 1.4777810650887577,
+      "policy_loss": -0.05979042857264479,
+      "recovery_rate": 0.5029585798816568,
+      "simulator_ticks": 17448,
+      "update": 6,
+      "value_loss": 35.21734126408895
+    },
+    "result_path": "artifacts/results/small-ep-smoke-seed00-20260903.json",
+    "result_sha256": "0154ec563d9d8910387a716b675159e361741bee63c5822cedb3dec7a7c98ff2",
+    "simulator_ticks": 17448,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 0.5,
+        "episode_count": 128.0,
+        "experiment_then_correct_repair_rate": 0.0,
+        "false_repair_rate": 0.5,
+        "informative_inspection_rate": 0.0,
+        "mean_advance_count": 0.0,
+        "mean_decision_steps": 1.0,
+        "mean_inspect_count": 0.0,
+        "mean_return": 1.7117187500000017,
+        "recovery_rate": 0.5
+      },
+      "revealed": {
+        "correct_repair_rate": 0.5,
+        "episode_count": 64.0,
+        "experiment_then_correct_repair_rate": 0.0,
+        "false_repair_rate": 0.5,
+        "informative_inspection_rate": 0.0,
+        "mean_advance_count": 0.0,
+        "mean_decision_steps": 1.0,
+        "mean_inspect_count": 0.0,
+        "mean_return": 1.7117187500000017,
+        "recovery_rate": 0.5
+      },
+      "version": "small-policy-eval-v1"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 64,
+    "message_layers": 2,
+    "parameter_count": 51909,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "small-ep-smoke-seed00-20260903",
+  "schema_version": 1,
+  "seed": 0,
+  "split": "train+validation",
+  "started_at": "2026-09-03T20:41:06.041982+00:00",
+  "status": "completed"
+}

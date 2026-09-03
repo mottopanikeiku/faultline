@@ -51,6 +51,11 @@ arms for the same seed. Random samples ambiguous/revealed conditions 50/50, Diff
 probability from observed failure only, and Epistemic samples ambiguous conditions. The Difficulty
 arm is intentionally strong and may converge toward the same task mix as Epistemic.
 
+The first pipeline smoke used only 2,026 decision steps and a 52k-parameter reduced model. It
+collapsed to immediate fixed repair: 50% ambiguous validation recovery and no diagnostic sequence.
+This establishes end-to-end collection, optimization, checkpointing, and evaluation only. It is not
+evidence for or against the curriculum hypothesis and does not count as a tuned seed.
+
 ## Matched comparison
 
 Training arms receive equal environment steps, architecture, optimizer family, and comparable tuning

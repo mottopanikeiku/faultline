@@ -87,9 +87,12 @@ Passive difficulty still differs and remains an explicit control for the RL kill
 [`normalized-score analysis`](artifacts/manifests/gate2b-normalized-ep-v0.3-20260903.json), and
 [`matched-control audit`](artifacts/manifests/gate2c-matched-ep-control-v0.3-20260903.json).
 
-The first learned-agent path is implemented but not yet a result: a 0.9M-parameter
-permutation-aware graph encoder, GRU state, typed four-action head, recurrent PPO, matched Random /
-Difficulty / Epistemic samplers, immutable checkpoints, and paired validation evaluation. Policy
-reward is exclusively the simulator's production-minus-cost objective; no information-gain term is
-present.
+The learned-agent path is implemented: a 0.9M-parameter primary graph encoder/GRU, typed four-action
+head, recurrent PPO, matched Random / Difficulty / Epistemic samplers, immutable checkpoints, and
+paired validation. Policy reward is exclusively production minus operational cost. A deliberately
+small 2k-step Epistemic smoke run with a 52k-parameter model collapsed to immediate fixed repair:
+50% ambiguous recovery and 0% experiment-then-correct behavior. This negative result verifies the
+pipeline but is not the multi-seed kill test. Its immutable
+[`manifest`](artifacts/manifests/small-ep-smoke-seed00-20260903.json) records the checkpoint and
+validation traces.
 See [`CHANGELOG.md`](CHANGELOG.md) for verified milestones.

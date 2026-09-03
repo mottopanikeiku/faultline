@@ -1,0 +1,3506 @@
+{
+  "checkpoint": {
+    "path": "artifacts/runs/small-ep-smoke-seed00-20260903/policy.pt",
+    "policy_version": "graph-gru-v1",
+    "sha256": "9f1b7ec1001593de786c25478eed74d8356a2245f6448a185601914de5bdf504"
+  },
+  "curriculum": "epistemic",
+  "curriculum_state": {
+    "ambiguous_probability": 1.0,
+    "condition_counts": {
+      "ambiguous": 1140,
+      "revealed": 0
+    },
+    "episode_index": 1140,
+    "failure_ema": {
+      "ambiguous": 0.5,
+      "revealed": 0.5
+    },
+    "kind": "epistemic"
+  },
+  "decision_steps": 2026,
+  "elapsed_seconds": 2.0740778440012946,
+  "episode_count": 1140,
+  "evaluation": {
+    "ambiguous": {
+      "correct_repair_rate": 0.5,
+      "episode_count": 128.0,
+      "experiment_then_correct_repair_rate": 0.0,
+      "false_repair_rate": 0.5,
+      "informative_inspection_rate": 0.0,
+      "mean_advance_count": 0.0,
+      "mean_decision_steps": 1.0,
+      "mean_inspect_count": 0.0,
+      "mean_return": 1.7117187500000017,
+      "recovery_rate": 0.5
+    },
+    "base_pair_count": 32,
+    "evaluation_version": "small-policy-eval-v1",
+    "revealed": {
+      "correct_repair_rate": 0.5,
+      "episode_count": 64.0,
+      "experiment_then_correct_repair_rate": 0.0,
+      "false_repair_rate": 0.5,
+      "informative_inspection_rate": 0.0,
+      "mean_advance_count": 0.0,
+      "mean_decision_steps": 1.0,
+      "mean_inspect_count": 0.0,
+      "mean_return": 1.7117187500000017,
+      "recovery_rate": 0.5
+    },
+    "rows": [
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": true,
+        "total_reward": 11.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": true,
+        "total_reward": 11.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4240",
+        "pair_seed": 1000000,
+        "recovered": true,
+        "total_reward": 11.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": true,
+        "total_reward": 13.3,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": true,
+        "total_reward": 13.3,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4241",
+        "pair_seed": 1000001,
+        "recovered": true,
+        "total_reward": 13.3,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": true,
+        "total_reward": 8.45,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": true,
+        "total_reward": 8.45,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": false,
+        "total_reward": -6.299999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": false,
+        "total_reward": -6.299999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": true,
+        "total_reward": 8.45,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4242",
+        "pair_seed": 1000002,
+        "recovered": false,
+        "total_reward": -6.299999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": true,
+        "total_reward": 9.225,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": true,
+        "total_reward": 9.225,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": true,
+        "total_reward": 9.225,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4243",
+        "pair_seed": 1000003,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": true,
+        "total_reward": 6.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": true,
+        "total_reward": 6.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4244",
+        "pair_seed": 1000004,
+        "recovered": true,
+        "total_reward": 6.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": true,
+        "total_reward": 10.9,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": true,
+        "total_reward": 10.9,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4245",
+        "pair_seed": 1000005,
+        "recovered": true,
+        "total_reward": 10.9,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": true,
+        "total_reward": 11.200000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": true,
+        "total_reward": 11.200000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4246",
+        "pair_seed": 1000006,
+        "recovered": true,
+        "total_reward": 11.200000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": false,
+        "total_reward": -6.499999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": false,
+        "total_reward": -6.499999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": true,
+        "total_reward": 8.85,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": true,
+        "total_reward": 8.85,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": false,
+        "total_reward": -6.499999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4247",
+        "pair_seed": 1000007,
+        "recovered": true,
+        "total_reward": 8.85,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": false,
+        "total_reward": -9.50000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": false,
+        "total_reward": -9.50000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": true,
+        "total_reward": 7.800000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": true,
+        "total_reward": 7.800000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": false,
+        "total_reward": -9.50000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4248",
+        "pair_seed": 1000008,
+        "recovered": true,
+        "total_reward": 7.800000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": true,
+        "total_reward": 15.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": true,
+        "total_reward": 15.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4249",
+        "pair_seed": 1000009,
+        "recovered": true,
+        "total_reward": 15.65,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": true,
+        "total_reward": 12.024999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": true,
+        "total_reward": 12.024999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424a",
+        "pair_seed": 1000010,
+        "recovered": true,
+        "total_reward": 12.024999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": false,
+        "total_reward": -7.199999999999992,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": false,
+        "total_reward": -7.199999999999992,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": true,
+        "total_reward": 13.2,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": true,
+        "total_reward": 13.2,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": false,
+        "total_reward": -7.199999999999992,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424b",
+        "pair_seed": 1000011,
+        "recovered": true,
+        "total_reward": 13.2,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424c",
+        "pair_seed": 1000012,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": true,
+        "total_reward": 9.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": true,
+        "total_reward": 9.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": false,
+        "total_reward": -7.599999999999991,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424d",
+        "pair_seed": 1000013,
+        "recovered": true,
+        "total_reward": 9.899999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": true,
+        "total_reward": 15.8,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": true,
+        "total_reward": 15.8,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": true,
+        "total_reward": 15.8,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424e",
+        "pair_seed": 1000014,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": true,
+        "total_reward": 14.3,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": true,
+        "total_reward": 14.3,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": false,
+        "total_reward": -7.79999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": false,
+        "total_reward": -7.79999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": true,
+        "total_reward": 14.3,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f424f",
+        "pair_seed": 1000015,
+        "recovered": false,
+        "total_reward": -7.79999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": false,
+        "total_reward": -8.300000000000008,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": false,
+        "total_reward": -8.300000000000008,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": true,
+        "total_reward": 11.775,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": true,
+        "total_reward": 11.775,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": false,
+        "total_reward": -8.300000000000008,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4250",
+        "pair_seed": 1000016,
+        "recovered": true,
+        "total_reward": 11.775,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": false,
+        "total_reward": -5.899999999999997,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": false,
+        "total_reward": -5.899999999999997,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": true,
+        "total_reward": 11.149999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": true,
+        "total_reward": 11.149999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": false,
+        "total_reward": -5.899999999999997,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4251",
+        "pair_seed": 1000017,
+        "recovered": true,
+        "total_reward": 11.149999999999999,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": true,
+        "total_reward": 12.6,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": true,
+        "total_reward": 12.6,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": true,
+        "total_reward": 12.6,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4252",
+        "pair_seed": 1000018,
+        "recovered": false,
+        "total_reward": -5.9999999999999964,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": true,
+        "total_reward": 8.174999999999999,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": true,
+        "total_reward": 8.174999999999999,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": false,
+        "total_reward": -7.999999999999989,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": false,
+        "total_reward": -7.999999999999989,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": true,
+        "total_reward": 8.174999999999999,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4253",
+        "pair_seed": 1000019,
+        "recovered": false,
+        "total_reward": -7.999999999999989,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": true,
+        "total_reward": 10.725000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": true,
+        "total_reward": 10.725000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": true,
+        "total_reward": 10.725000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4254",
+        "pair_seed": 1000020,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": true,
+        "total_reward": 10.375,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": true,
+        "total_reward": 10.375,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": true,
+        "total_reward": 10.375,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4255",
+        "pair_seed": 1000021,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": true,
+        "total_reward": 11.975000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": true,
+        "total_reward": 11.975000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": true,
+        "total_reward": 11.975000000000001,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4256",
+        "pair_seed": 1000022,
+        "recovered": false,
+        "total_reward": -8.90000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4257",
+        "pair_seed": 1000023,
+        "recovered": true,
+        "total_reward": 11.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": true,
+        "total_reward": 6.975,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": true,
+        "total_reward": 6.975,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": true,
+        "total_reward": 6.975,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4258",
+        "pair_seed": 1000024,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": true,
+        "total_reward": 8.05,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": true,
+        "total_reward": 8.05,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": false,
+        "total_reward": -6.099999999999996,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f4259",
+        "pair_seed": 1000025,
+        "recovered": true,
+        "total_reward": 8.05,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": false,
+        "total_reward": -6.599999999999994,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": false,
+        "total_reward": -6.599999999999994,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": true,
+        "total_reward": 8.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": true,
+        "total_reward": 8.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": false,
+        "total_reward": -6.599999999999994,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425a",
+        "pair_seed": 1000026,
+        "recovered": true,
+        "total_reward": 8.25,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": true,
+        "total_reward": 7.95,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": true,
+        "total_reward": 7.95,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": false,
+        "total_reward": -9.20000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": false,
+        "total_reward": -9.20000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": true,
+        "total_reward": 7.95,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425b",
+        "pair_seed": 1000027,
+        "recovered": false,
+        "total_reward": -9.20000000000001,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": true,
+        "total_reward": 8.1,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": true,
+        "total_reward": 8.1,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": false,
+        "total_reward": -6.399999999999995,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425c",
+        "pair_seed": 1000028,
+        "recovered": true,
+        "total_reward": 8.1,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": true,
+        "total_reward": 10.75,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": true,
+        "total_reward": 10.75,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": true,
+        "total_reward": 10.75,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425d",
+        "pair_seed": 1000029,
+        "recovered": false,
+        "total_reward": -6.199999999999996,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": true,
+        "total_reward": 12.5,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": true,
+        "total_reward": 12.5,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": false,
+        "total_reward": -7.3999999999999915,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425e",
+        "pair_seed": 1000030,
+        "recovered": true,
+        "total_reward": 12.5,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 0,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": true,
+        "total_reward": 6.35,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": true,
+        "total_reward": 6.35,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": false,
+        "total_reward": -7.400000000000006,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "ambiguous",
+        "correct_repair": false,
+        "cue": 1,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": false,
+        "total_reward": -7.400000000000006,
+        "world_index": 1
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": true,
+        "cue": 1,
+        "false_repair_count": 0,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": true,
+        "total_reward": 6.35,
+        "world_index": 0
+      },
+      {
+        "actions": [
+          3
+        ],
+        "advance_count": 0,
+        "condition": "revealed",
+        "correct_repair": false,
+        "cue": 0,
+        "false_repair_count": 1,
+        "informative_inspection": false,
+        "inspect_count": 0,
+        "pair_id": "chain-v1-00000000000f425f",
+        "pair_seed": 1000031,
+        "recovered": false,
+        "total_reward": -7.400000000000006,
+        "world_index": 1
+      }
+    ],
+    "seeds": [
+      1000000,
+      1000001,
+      1000002,
+      1000003,
+      1000004,
+      1000005,
+      1000006,
+      1000007,
+      1000008,
+      1000009,
+      1000010,
+      1000011,
+      1000012,
+      1000013,
+      1000014,
+      1000015,
+      1000016,
+      1000017,
+      1000018,
+      1000019,
+      1000020,
+      1000021,
+      1000022,
+      1000023,
+      1000024,
+      1000025,
+      1000026,
+      1000027,
+      1000028,
+      1000029,
+      1000030,
+      1000031
+    ]
+  },
+  "history": [
+    {
+      "approximate_kl": 0.0001659456881384358,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.4819277108433735,
+      "decision_steps": 301,
+      "entropy": 1.3861327121655147,
+      "episodes": 166,
+      "informative_inspection_rate": 0.10843373493975904,
+      "loss": 15.217942873636881,
+      "mean_return": 1.3814457831325302,
+      "policy_loss": -0.019784924950120814,
+      "recovery_rate": 0.4819277108433735,
+      "simulator_ticks": 2528,
+      "update": 0,
+      "value_loss": 30.503178199132282
+    },
+    {
+      "approximate_kl": 0.00019838417348410075,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.4875,
+      "decision_steps": 599,
+      "entropy": 1.3854529142379761,
+      "episodes": 326,
+      "informative_inspection_rate": 0.09375,
+      "loss": 16.528809690475462,
+      "mean_return": 1.3654062500000004,
+      "policy_loss": -8.473824709653854e-05,
+      "recovery_rate": 0.4875,
+      "simulator_ticks": 4956,
+      "update": 1,
+      "value_loss": 33.08549766540527
+    },
+    {
+      "approximate_kl": 0.00013212379564038202,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.56875,
+      "decision_steps": 893,
+      "entropy": 1.384101402759552,
+      "episodes": 486,
+      "informative_inspection_rate": 0.0875,
+      "loss": 17.519040632247926,
+      "mean_return": 2.7891875000000006,
+      "policy_loss": 0.00291169211268425,
+      "recovery_rate": 0.56875,
+      "simulator_ticks": 7275,
+      "update": 2,
+      "value_loss": 35.05993986129761
+    },
+    {
+      "approximate_kl": 5.5398614610169264e-05,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.5128205128205128,
+      "decision_steps": 1182,
+      "entropy": 1.3828658580780029,
+      "episodes": 642,
+      "informative_inspection_rate": 0.10256410256410256,
+      "loss": 16.46654748916626,
+      "mean_return": 1.6980769230769237,
+      "policy_loss": 0.0034073441987857223,
+      "recovery_rate": 0.5128205128205128,
+      "simulator_ticks": 9651,
+      "update": 3,
+      "value_loss": 32.953937721252444
+    },
+    {
+      "approximate_kl": 0.00011991070996468049,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.4121212121212121,
+      "decision_steps": 1472,
+      "entropy": 1.3820884774128597,
+      "episodes": 807,
+      "informative_inspection_rate": 0.048484848484848485,
+      "loss": 17.03797908624013,
+      "mean_return": 0.0474545454545463,
+      "policy_loss": -0.032512954358632364,
+      "recovery_rate": 0.4121212121212121,
+      "simulator_ticks": 12360,
+      "update": 4,
+      "value_loss": 34.16862551371256
+    },
+    {
+      "approximate_kl": 0.00025702194995839517,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.5,
+      "decision_steps": 1764,
+      "entropy": 1.3816540986299515,
+      "episodes": 971,
+      "informative_inspection_rate": 0.07926829268292683,
+      "loss": 17.09419111410777,
+      "mean_return": 1.321310975609756,
+      "policy_loss": -0.021044768323918106,
+      "recovery_rate": 0.5,
+      "simulator_ticks": 14899,
+      "update": 5,
+      "value_loss": 34.25810488065084
+    },
+    {
+      "approximate_kl": 0.00028865771589418426,
+      "clip_fraction": 0.0,
+      "correct_repair_rate": 0.5029585798816568,
+      "decision_steps": 2026,
+      "entropy": 1.3779553522666295,
+      "episodes": 1140,
+      "informative_inspection_rate": 0.05325443786982249,
+      "loss": 17.53510046005249,
+      "mean_return": 1.4777810650887577,
+      "policy_loss": -0.05979042857264479,
+      "recovery_rate": 0.5029585798816568,
+      "simulator_ticks": 17448,
+      "update": 6,
+      "value_loss": 35.21734126408895
+    }
+  ],
+  "resolved_config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "epistemic",
+      "max_decision_steps": 4,
+      "pool_offset": 5000,
+      "pool_size": 128,
+      "training_seed": 0
+    },
+    "evaluation": {
+      "base_pair_count": 32,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 64,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 2,
+      "minibatch_episodes": 32,
+      "parallel_envs": 16,
+      "rollout_min_steps": 256,
+      "target_kl": 0.03,
+      "torch_threads": 4,
+      "total_decision_steps": 2000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "run_id": "small-ep-smoke-seed00-20260903",
+  "schema_version": 1,
+  "simulator_ticks": 17448,
+  "training_seed": 0
+}

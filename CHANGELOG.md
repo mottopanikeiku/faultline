@@ -85,5 +85,7 @@ listed only when backed by immutable artifacts.
   every structural/cost nuisance and equal fault/cue marginals. Ambiguous cue–fault dependence had
   mean EP 8.86 and 50% passive recovery; revealed dependence had EP 0 and 100% passive recovery.
   Reference: `gate2c-matched-ep-control-v0.3-20260903`.
-- The learned-agent code path is implemented and semantically tested; no curriculum comparison has
-  yet been run or interpreted.
+- First 2k-decision-step Epistemic CPU smoke run completed at commit `d64057e`. The 52k-parameter
+  smoke policy chose immediate fixed repair, yielding 50% ambiguous recovery, 50% false repairs, and
+  0% experiment-then-correct behavior. This is a preserved negative pipeline smoke, not the
+  multi-seed kill test. Reference: `small-ep-smoke-seed00-20260903`.
