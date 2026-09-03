@@ -54,13 +54,26 @@ def git_state(repo: Path) -> tuple[str, bool]:
     return commit, bool(status.strip())
 
 
+def _processor_name() -> str:
+    reported = platform.processor().strip()
+    if reported:
+        return reported
+    cpuinfo = Path("/proc/cpuinfo")
+    if cpuinfo.is_file():
+        for line in cpuinfo.read_text(encoding="utf-8").splitlines():
+            key, separator, value = line.partition(":")
+            if separator and key.strip() in {"model name", "Hardware"} and value.strip():
+                return value.strip()
+    return "unknown"
+
+
 def hardware_metadata() -> dict[str, object]:
     uname = platform.uname()
     return {
         "system": uname.system,
         "release": uname.release,
         "machine": uname.machine,
-        "processor": uname.processor,
+        "processor": _processor_name(),
         "cpu_count": os.cpu_count(),
         "python": sys.version.split()[0],
         "numpy": np.__version__,

@@ -41,5 +41,6 @@ def test_manifest_records_git_state_and_cannot_be_overwritten(tmp_path: Path) ->
     assert len(restored["git_commit"]) == 40
     assert isinstance(restored["git_dirty"], bool)
     assert restored["config_sha256"] == canonical_sha256({"seed": 7})
+    assert restored["hardware"]["processor"]
     with pytest.raises(FileExistsError):
         write_manifest(destination, manifest)
