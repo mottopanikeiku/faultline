@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-09-03T21:12:20.555366+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "random",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 104
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 6,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "34e7761c3b99555a3c226861b6ec10672f925e2e5915018db88b8aaadfa168e4",
+  "curriculum": {
+    "kind": "random",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 0.5,
+      "condition_counts": {
+        "ambiguous": 10198,
+        "revealed": 10267
+      },
+      "episode_index": 20465,
+      "failure_ema": {
+        "ambiguous": 0.5,
+        "revealed": 0.5
+      },
+      "kind": "random"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "0e93741f2f34919c64621ff9e58178248a217cc7",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 12,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "AMD Ryzen AI 5 PRO 340 w/ Radeon 840M",
+    "python": "3.13.15",
+    "release": "7.1.7-200.fc44.x86_64",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/small-kill-v1-random-seed-104/policy.pt",
+    "checkpoint_sha256": "ef9927e1c2e7c426f34bc585bb6ae8a51647c5481040c5bc17a854989bcc0f06",
+    "decision_steps": 30088,
+    "decision_steps_per_second": 799.527685620455,
+    "elapsed_seconds": 37.63221779699961,
+    "episode_count": 20465,
+    "final_update": {
+      "approximate_kl": 0.011195195527524565,
+      "clip_fraction": 0.0667267146155886,
+      "correct_repair_rate": 0.9067796610169492,
+      "decision_steps": 30088,
+      "entropy": 0.2438830500063689,
+      "episodes": 20465,
+      "informative_inspection_rate": 0.7627118644067796,
+      "loss": 8.030699273814326,
+      "mean_return": 8.555155367231638,
+      "policy_loss": -0.0023066770973736825,
+      "recovery_rate": 0.9067796610169492,
+      "simulator_ticks": 286723,
+      "update": 27,
+      "value_loss": 16.07088972174603
+    },
+    "result_path": "artifacts/results/small-kill-v1-random-seed-104.json",
+    "result_sha256": "90f1deff3679ab9278ebe1e46aba07a9d0ac63ae024a79f723afcfca0efca552",
+    "simulator_ticks": 286723,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 512.0,
+        "experiment_then_correct_repair_rate": 1.0,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 10.589765625,
+        "recovery_rate": 1.0
+      },
+      "revealed": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 256.0,
+        "experiment_then_correct_repair_rate": 1.0,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 10.589765625,
+        "recovery_rate": 1.0
+      },
+      "version": "small-policy-eval-v1"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "small-kill-v1-random-seed-104",
+  "schema_version": 1,
+  "seed": 104,
+  "split": "train+validation",
+  "started_at": "2026-09-03T21:11:42.923121+00:00",
+  "status": "completed"
+}
