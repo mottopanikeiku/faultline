@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520" role="img" aria-labelledby="title description">
+<title id="title">Diagnostic success by curriculum and training seed</title>
+<desc id="description">Each point is recomputed from ambiguous evaluation episode rows in artifacts/results/small-kill-v1-*-seed-*.json. Colored lines connect the same training seed across curricula, not a trajectory over time. Black bars are means. Diagnostic success requires advance, informative inspection and correct repair. These are validation results, not new training runs.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#172033">
+<text x="430" y="30" text-anchor="middle" font-size="20">Diagnostic success by training seed</text>
+<text x="430" y="52" text-anchor="middle" font-size="13">Validation ambiguous tasks · matched seeds · black bars: means</text>
+<line x1="95" y1="395.00" x2="800" y2="395.00" stroke="#e0e4e8"/>
+<text x="83" y="399.00" text-anchor="end" font-size="12">0.0</text>
+<line x1="95" y1="330.00" x2="800" y2="330.00" stroke="#e0e4e8"/>
+<text x="83" y="334.00" text-anchor="end" font-size="12">0.2</text>
+<line x1="95" y1="265.00" x2="800" y2="265.00" stroke="#e0e4e8"/>
+<text x="83" y="269.00" text-anchor="end" font-size="12">0.4</text>
+<line x1="95" y1="200.00" x2="800" y2="200.00" stroke="#e0e4e8"/>
+<text x="83" y="204.00" text-anchor="end" font-size="12">0.6</text>
+<line x1="95" y1="135.00" x2="800" y2="135.00" stroke="#e0e4e8"/>
+<text x="83" y="139.00" text-anchor="end" font-size="12">0.8</text>
+<line x1="95" y1="70.00" x2="800" y2="70.00" stroke="#e0e4e8"/>
+<text x="83" y="74.00" text-anchor="end" font-size="12">1.0</text>
+<line x1="95" y1="70" x2="95" y2="395" stroke="#172033"/>
+<polyline points="188.00,232.50 423.00,70.00 658.00,70.00" fill="none" stroke="#0072b2" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="188.00" cy="232.50" r="4" fill="#0072b2"><title>random seed 100: 0.50000000</title></circle>
+<circle cx="423.00" cy="70.00" r="4" fill="#0072b2"><title>difficulty seed 100: 1.00000000</title></circle>
+<circle cx="658.00" cy="70.00" r="4" fill="#0072b2"><title>epistemic seed 100: 1.00000000</title></circle>
+<polyline points="195.00,70.00 430.00,70.00 665.00,185.53" fill="none" stroke="#d55e00" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="195.00" cy="70.00" r="4" fill="#d55e00"><title>random seed 101: 1.00000000</title></circle>
+<circle cx="430.00" cy="70.00" r="4" fill="#d55e00"><title>difficulty seed 101: 1.00000000</title></circle>
+<circle cx="665.00" cy="185.53" r="4" fill="#d55e00"><title>epistemic seed 101: 0.64453125</title></circle>
+<polyline points="202.00,395.00 437.00,70.00 672.00,81.43" fill="none" stroke="#009e73" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="202.00" cy="395.00" r="4" fill="#009e73"><title>random seed 102: 0.00000000</title></circle>
+<circle cx="437.00" cy="70.00" r="4" fill="#009e73"><title>difficulty seed 102: 1.00000000</title></circle>
+<circle cx="672.00" cy="81.43" r="4" fill="#009e73"><title>epistemic seed 102: 0.96484375</title></circle>
+<polyline points="209.00,75.71 444.00,320.10 679.00,70.00" fill="none" stroke="#cc79a7" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="209.00" cy="75.71" r="4" fill="#cc79a7"><title>random seed 103: 0.98242188</title></circle>
+<circle cx="444.00" cy="320.10" r="4" fill="#cc79a7"><title>difficulty seed 103: 0.23046875</title></circle>
+<circle cx="679.00" cy="70.00" r="4" fill="#cc79a7"><title>epistemic seed 103: 1.00000000</title></circle>
+<polyline points="216.00,70.00 451.00,73.81 686.00,70.00" fill="none" stroke="#8c510a" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="216.00" cy="70.00" r="4" fill="#8c510a"><title>random seed 104: 1.00000000</title></circle>
+<circle cx="451.00" cy="73.81" r="4" fill="#8c510a"><title>difficulty seed 104: 0.98828125</title></circle>
+<circle cx="686.00" cy="70.00" r="4" fill="#8c510a"><title>epistemic seed 104: 1.00000000</title></circle>
+<polyline points="223.00,77.62 458.00,70.00 693.00,70.00" fill="none" stroke="#6a51a3" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="223.00" cy="77.62" r="4" fill="#6a51a3"><title>random seed 105: 0.97656250</title></circle>
+<circle cx="458.00" cy="70.00" r="4" fill="#6a51a3"><title>difficulty seed 105: 1.00000000</title></circle>
+<circle cx="693.00" cy="70.00" r="4" fill="#6a51a3"><title>epistemic seed 105: 1.00000000</title></circle>
+<polyline points="230.00,70.00 465.00,70.00 700.00,70.00" fill="none" stroke="#59636e" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="230.00" cy="70.00" r="4" fill="#59636e"><title>random seed 106: 1.00000000</title></circle>
+<circle cx="465.00" cy="70.00" r="4" fill="#59636e"><title>difficulty seed 106: 1.00000000</title></circle>
+<circle cx="700.00" cy="70.00" r="4" fill="#59636e"><title>epistemic seed 106: 1.00000000</title></circle>
+<polyline points="237.00,70.00 472.00,70.00 707.00,70.00" fill="none" stroke="#b59b00" stroke-width="1.2" stroke-opacity="0.45"/>
+<circle cx="237.00" cy="70.00" r="4" fill="#b59b00"><title>random seed 107: 1.00000000</title></circle>
+<circle cx="472.00" cy="70.00" r="4" fill="#b59b00"><title>difficulty seed 107: 1.00000000</title></circle>
+<circle cx="707.00" cy="70.00" r="4" fill="#b59b00"><title>epistemic seed 107: 1.00000000</title></circle>
+<line x1="177.50" y1="132.60" x2="247.50" y2="132.60" stroke="#172033" stroke-width="3"/>
+<text x="212.50" y="419" text-anchor="middle" font-size="14">Random</text>
+<text x="212.50" y="438" text-anchor="middle" font-size="12">mean 0.807</text>
+<line x1="412.50" y1="101.74" x2="482.50" y2="101.74" stroke="#172033" stroke-width="3"/>
+<text x="447.50" y="419" text-anchor="middle" font-size="14">Difficulty</text>
+<text x="447.50" y="438" text-anchor="middle" font-size="12">mean 0.902</text>
+<line x1="647.50" y1="85.87" x2="717.50" y2="85.87" stroke="#172033" stroke-width="3"/>
+<text x="682.50" y="419" text-anchor="middle" font-size="14">Epistemic</text>
+<text x="682.50" y="438" text-anchor="middle" font-size="12">mean 0.951</text>
+<circle cx="135" cy="468" r="4" fill="#0072b2"/>
+<text x="147" y="472" font-size="12">seed 100</text>
+<circle cx="315" cy="468" r="4" fill="#d55e00"/>
+<text x="327" y="472" font-size="12">seed 101</text>
+<circle cx="495" cy="468" r="4" fill="#009e73"/>
+<text x="507" y="472" font-size="12">seed 102</text>
+<circle cx="675" cy="468" r="4" fill="#cc79a7"/>
+<text x="687" y="472" font-size="12">seed 103</text>
+<circle cx="135" cy="493" r="4" fill="#8c510a"/>
+<text x="147" y="497" font-size="12">seed 104</text>
+<circle cx="315" cy="493" r="4" fill="#6a51a3"/>
+<text x="327" y="497" font-size="12">seed 105</text>
+<circle cx="495" cy="493" r="4" fill="#59636e"/>
+<text x="507" y="497" font-size="12">seed 106</text>
+<circle cx="675" cy="493" r="4" fill="#b59b00"/>
+<text x="687" y="497" font-size="12">seed 107</text>
+<text x="25" y="233" text-anchor="middle" font-size="14" transform="rotate(-90 25 233)">Diagnostic success fraction</text>
+</g></svg>
