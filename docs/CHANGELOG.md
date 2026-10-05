@@ -5,6 +5,15 @@ listed only when backed by immutable artifacts.
 
 ## Unreleased
 
+### Presentation and trace figure
+
+- Replaced the README chronology with the completed three-curriculum result and its uncertainty.
+- Added a CPU-only script that recomputes diagnostic success from committed episode traces and
+  draws paired training-seed results, with behavior tests.
+- Preserved the earlier README in `docs/history.md` and moved this log under `docs/`.
+- Proposed observable cue reliability and costs for a selective-probing experiment, plus a
+  checkpoint Release migration without rewriting history, in `docs/NEXT.md`.
+
 ### Added
 
 - Initial research thesis, environment semantics, epistemic-pressure specification, literature map,
