@@ -110,7 +110,9 @@ def analyze_kill_test(repo: Path, protocol: KillTestProtocol) -> dict[str, Any]:
                 raise ValueError(f"evaluation protocol mismatch for {run_id}")
             if manifest["git_dirty"]:
                 raise ValueError(f"dirty source run {run_id}")
-            results[arm][seed] = result
+            # Bootstrap only needs aggregates; full episode traces stay in the result files.
+            result["evaluation"].pop("rows", None)
+            results[arm][seed] = {"evaluation": result["evaluation"]}
             source_runs.append(
                 {
                     "run_id": run_id,
