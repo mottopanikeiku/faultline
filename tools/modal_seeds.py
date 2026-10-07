@@ -81,10 +81,17 @@ def train(job: dict) -> dict:
     with tempfile.TemporaryDirectory() as directory:
         repo = Path(directory) / "faultline"
         subprocess.run(
-            ["git", "clone", "--quiet", "--depth", "1", "--no-checkout",
+            ["git", "clone", "--quiet", "--depth", "1", "--no-checkout", "--filter=blob:none",
              "https://github.com/mottopanikeiku/faultline.git", str(repo)], check=True,
         )
-        subprocess.run(["git", "fetch", "--quiet", "origin", commit], cwd=repo, check=True)
+        subprocess.run(
+            ["git", "fetch", "--quiet", "--filter=blob:none", "origin", commit],
+            cwd=repo, check=True,
+        )
+        subprocess.run(
+            ["git", "sparse-checkout", "set", "--no-cone", "/*", "!/artifacts/"],
+            cwd=repo, check=True,
+        )
         subprocess.run(["git", "checkout", "--quiet", "--detach", commit], cwd=repo, check=True)
         environment = {**os.environ, "PYTHONPATH": str(repo / "src"),
                        "OMP_NUM_THREADS": str(job["threads"]),
@@ -105,15 +112,18 @@ def train(job: dict) -> dict:
             digest = hashlib.file_digest(source, "sha256").hexdigest()
         if digest != result["checkpoint"]["sha256"]:
             raise ValueError("checkpoint digest does not match training result")
-        stored.mkdir(parents=True, exist_ok=True)
-        with checkpoint.open("rb") as source, (stored / "policy.pt").open("xb") as output:
-            shutil.copyfileobj(source, output)
-        for kind, name in (("results", "result.json"), ("manifests", "manifest.json")):
-            (stored / name).write_bytes(files[f"artifacts/{kind}/{run_id}.json"])
-        metadata = {"run_id": run_id, "job_seconds": perf_counter() - started,
-                    "checkpoint": {"volume": VOLUME_NAME, "path": relative,
-                                   "sha256": digest, "bytes": checkpoint.stat().st_size}}
-        (stored / "job.json").write_text(json.dumps(metadata, sort_keys=True) + "\n")
+        stored.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix=f".{run_id}-", dir=stored.parent) as staging:
+            stage = Path(staging)
+            with checkpoint.open("rb") as source, (stage / "policy.pt").open("xb") as output:
+                shutil.copyfileobj(source, output)
+            for kind, name in (("results", "result.json"), ("manifests", "manifest.json")):
+                (stage / name).write_bytes(files[f"artifacts/{kind}/{run_id}.json"])
+            metadata = {"run_id": run_id, "job_seconds": perf_counter() - started,
+                        "checkpoint": {"volume": VOLUME_NAME, "path": relative,
+                                       "sha256": digest, "bytes": checkpoint.stat().st_size}}
+            (stage / "job.json").write_text(json.dumps(metadata, sort_keys=True) + "\n")
+            stage.rename(stored)
         volume.commit()
     return {**metadata, "files": files}
 

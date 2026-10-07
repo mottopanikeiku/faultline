@@ -1,0 +1,51 @@
+{
+  "attempt_errors": [],
+  "client_wall_seconds": 282.8820004360168,
+  "expected_run_ids": [
+    "seed-confirmation-random-seed-499",
+    "seed-confirmation-difficulty-seed-499",
+    "seed-confirmation-epistemic-seed-499"
+  ],
+  "hardware": {
+    "cpu_cores": 1,
+    "gpu": "none",
+    "max_containers": 8,
+    "memory_gib": 1.0
+  },
+  "runs": [
+    {
+      "checkpoint": {
+        "bytes": 3728969,
+        "path": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c/seed-confirmation-difficulty-seed-499/policy.pt",
+        "sha256": "f874c1a59fa7fa87231d722e119272c8db6a7805bf6a02bb1a0a0b0143ff15b7",
+        "volume": "faultline-seed-comparison"
+      },
+      "job_seconds": 163.240665519,
+      "run_id": "seed-confirmation-difficulty-seed-499"
+    },
+    {
+      "checkpoint": {
+        "bytes": 3728969,
+        "path": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c/seed-confirmation-epistemic-seed-499/policy.pt",
+        "sha256": "6f3f4eaca997bff6ab353e8af7a5edd808527977749715aa149b3f0ae2ee47a4",
+        "volume": "faultline-seed-comparison"
+      },
+      "job_seconds": 272.719380839,
+      "run_id": "seed-confirmation-epistemic-seed-499"
+    },
+    {
+      "checkpoint": {
+        "bytes": 3728969,
+        "path": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c/seed-confirmation-random-seed-499/policy.pt",
+        "sha256": "236f8859f7607d83275f6d10af2e865857161d2bc9d9c76940691d9a683c6374",
+        "volume": "faultline-seed-comparison"
+      },
+      "job_seconds": 177.37142517400002,
+      "run_id": "seed-confirmation-random-seed-499"
+    }
+  ],
+  "source_commit": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c",
+  "torch_threads": 1,
+  "training_config": "configs/training/seed-confirmation.toml",
+  "window_minutes": 5
+}

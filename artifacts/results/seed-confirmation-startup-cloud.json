@@ -1,0 +1,176 @@
+{
+  "client_wall_seconds": 71.78669774002628,
+  "distinct_containers": 32,
+  "hardware": {
+    "cpu_cores": 1,
+    "gpu": "none",
+    "memory_gib": 1.0
+  },
+  "last_start_after_client_seconds": 11.695913791656494,
+  "requested_containers": 32,
+  "rows": [
+    {
+      "container_key": "ta-01M4B0QABBWWNYD85M4RKPT2HR",
+      "index": 0,
+      "started_unix_seconds": 1791371227.6337454
+    },
+    {
+      "container_key": "ta-01M4B0QAGZQFFC88CNG54M3BVR",
+      "index": 1,
+      "started_unix_seconds": 1791371227.6506631
+    },
+    {
+      "container_key": "ta-01M4B0QABB0NGV32VMV5ZM76SR",
+      "index": 2,
+      "started_unix_seconds": 1791371228.4918067
+    },
+    {
+      "container_key": "ta-01M4B0QBERWVW53PNJH5KCP4FR",
+      "index": 3,
+      "started_unix_seconds": 1791371228.5273972
+    },
+    {
+      "container_key": "ta-01M4B0QAT8DB7F9QHENGK0MGVR",
+      "index": 4,
+      "started_unix_seconds": 1791371228.5882616
+    },
+    {
+      "container_key": "ta-01M4B0QATMT1CZTXQJXFMA9NQR",
+      "index": 5,
+      "started_unix_seconds": 1791371228.751591
+    },
+    {
+      "container_key": "ta-01M4B0QBMKEH83DGJEGF7PZF3R",
+      "index": 6,
+      "started_unix_seconds": 1791371228.920576
+    },
+    {
+      "container_key": "ta-01M4B0QATM9ZJ1M5H9P0BFCFZR",
+      "index": 7,
+      "started_unix_seconds": 1791371229.2340624
+    },
+    {
+      "container_key": "ta-01M4B0QC7VZWVHACXYW1Z90RER",
+      "index": 8,
+      "started_unix_seconds": 1791371229.2676158
+    },
+    {
+      "container_key": "ta-01M4B0QBXXR5D0WFFJAX6FAJNR",
+      "index": 9,
+      "started_unix_seconds": 1791371229.488324
+    },
+    {
+      "container_key": "ta-01M4B0QCYD3Z19P8RPJVR8SVDR",
+      "index": 10,
+      "started_unix_seconds": 1791371230.5295563
+    },
+    {
+      "container_key": "ta-01M4B0QCF7W1R7MBF8Q8SKH1TR",
+      "index": 11,
+      "started_unix_seconds": 1791371230.5734794
+    },
+    {
+      "container_key": "ta-01M4B0QD757ED84HF70RGE0V7R",
+      "index": 12,
+      "started_unix_seconds": 1791371230.8132641
+    },
+    {
+      "container_key": "ta-01M4B0QC3YEBH9FAQB4X4JRM3R",
+      "index": 13,
+      "started_unix_seconds": 1791371230.9974518
+    },
+    {
+      "container_key": "ta-01M4B0QDBBY1X8KP8PZBPHKTER",
+      "index": 14,
+      "started_unix_seconds": 1791371231.159006
+    },
+    {
+      "container_key": "ta-01M4B0QDRWGFQZQR34FJ3H01JR",
+      "index": 15,
+      "started_unix_seconds": 1791371231.5563936
+    },
+    {
+      "container_key": "ta-01M4B0QDKGTW6K6J1CGT7PEVQR",
+      "index": 16,
+      "started_unix_seconds": 1791371231.6134808
+    },
+    {
+      "container_key": "ta-01M4B0QE64Z44G4DRMWMFKB7FR",
+      "index": 17,
+      "started_unix_seconds": 1791371231.681055
+    },
+    {
+      "container_key": "ta-01M4B0QD2E6GS58NCXPRQC27RR",
+      "index": 18,
+      "started_unix_seconds": 1791371232.079787
+    },
+    {
+      "container_key": "ta-01M4B0QEKCGQPZXRAVCE67HRHR",
+      "index": 19,
+      "started_unix_seconds": 1791371232.730043
+    },
+    {
+      "container_key": "ta-01M4B0QF5SF9W4NXEVK4BT2XXR",
+      "index": 20,
+      "started_unix_seconds": 1791371233.5186765
+    },
+    {
+      "container_key": "ta-01M4B0QFFW3WYZGVN7471KM80R",
+      "index": 21,
+      "started_unix_seconds": 1791371233.4463367
+    },
+    {
+      "container_key": "ta-01M4B0QFVNNDGKY87P6215JG3R",
+      "index": 22,
+      "started_unix_seconds": 1791371233.7273889
+    },
+    {
+      "container_key": "ta-01M4B0QG1C4RAT8WRJK509RGSR",
+      "index": 23,
+      "started_unix_seconds": 1791371233.764079
+    },
+    {
+      "container_key": "ta-01M4B0QFSHW4BX71BCH8V7DK6R",
+      "index": 24,
+      "started_unix_seconds": 1791371234.0699954
+    },
+    {
+      "container_key": "ta-01M4B0QGAFBYRBMMDHQ099RHZR",
+      "index": 25,
+      "started_unix_seconds": 1791371234.5052145
+    },
+    {
+      "container_key": "ta-01M4B0QGEK6NZ0XRKY3V8H5H3R",
+      "index": 26,
+      "started_unix_seconds": 1791371234.859014
+    },
+    {
+      "container_key": "ta-01M4B0QHFZSRJJV08HHZ8XNPBR",
+      "index": 27,
+      "started_unix_seconds": 1791371235.284641
+    },
+    {
+      "container_key": "ta-01M4B0QH23M9D6TXXVS0W9F8MR",
+      "index": 28,
+      "started_unix_seconds": 1791371235.6168432
+    },
+    {
+      "container_key": "ta-01M4B0QHMQ18F3849REKAMEKRR",
+      "index": 29,
+      "started_unix_seconds": 1791371235.7593744
+    },
+    {
+      "container_key": "ta-01M4B0QJ7ZFKB6YEMCPH2R3FSR",
+      "index": 30,
+      "started_unix_seconds": 1791371235.819284
+    },
+    {
+      "container_key": "ta-01M4B0QJC9728GTZHV91CP6Q5R",
+      "index": 31,
+      "started_unix_seconds": 1791371236.4867475
+    }
+  ],
+  "source_commit": "321e4ccf247aca0a9b442f1236bac6ffbcb4c60c",
+  "startup_span_seconds": 8.853002071380615,
+  "window_minutes": 2
+}

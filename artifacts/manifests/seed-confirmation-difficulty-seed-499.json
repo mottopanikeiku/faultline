@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-10-07T10:58:54.539177+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "difficulty",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 499
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 1,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "4eef86e156162dd20863edaa2bfde0e2e3cb1e8077c26469e7e39639abb0550f",
+  "curriculum": {
+    "kind": "difficulty",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 0.7000477256927369,
+      "condition_counts": {
+        "ambiguous": 16714,
+        "revealed": 7738
+      },
+      "episode_index": 24452,
+      "failure_ema": {
+        "ambiguous": 0.40204567217165404,
+        "revealed": 0.16310172530418196
+      },
+      "kind": "difficulty"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 17,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "unknown",
+    "python": "3.11.12",
+    "release": "4.19.0-gvisor",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/seed-confirmation-difficulty-seed-499/policy.pt",
+    "checkpoint_sha256": "f874c1a59fa7fa87231d722e119272c8db6a7805bf6a02bb1a0a0b0143ff15b7",
+    "decision_steps": 30045,
+    "decision_steps_per_second": 204.8170475862065,
+    "elapsed_seconds": 146.691890905,
+    "episode_count": 24452,
+    "final_update": {
+      "approximate_kl": 0.01380453950696392,
+      "clip_fraction": 0.12092535709962249,
+      "correct_repair_rate": 0.5803571428571429,
+      "decision_steps": 30045,
+      "entropy": 0.7072199583053589,
+      "episodes": 24452,
+      "informative_inspection_rate": 0.03571428571428571,
+      "loss": 19.927976608276367,
+      "mean_return": 3.086339285714286,
+      "policy_loss": 0.02057271683588624,
+      "recovery_rate": 0.5803571428571429,
+      "simulator_ticks": 362055,
+      "update": 28,
+      "value_loss": 39.828951835632324
+    },
+    "result_path": "artifacts/results/seed-confirmation-difficulty-seed-499.json",
+    "result_sha256": "af773e8434170f62660994f1a178387a91dab8ba9a5c00e3177f40be24341e95",
+    "simulator_ticks": 362055,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 0.5,
+        "episode_count": 512,
+        "experiment_then_correct_repair_rate": 0.0,
+        "false_repair_rate": 0.5,
+        "informative_inspection_rate": 0.0,
+        "mean_advance_count": 0.0,
+        "mean_decision_steps": 1.0,
+        "mean_inspect_count": 0.0,
+        "mean_return": 1.7466796875000008,
+        "recovery_rate": 0.5
+      },
+      "revealed": {
+        "correct_repair_rate": 1.0,
+        "episode_count": 256,
+        "experiment_then_correct_repair_rate": 0.0,
+        "false_repair_rate": 0.0,
+        "informative_inspection_rate": 0.0,
+        "mean_advance_count": 0.0,
+        "mean_decision_steps": 1.0,
+        "mean_inspect_count": 0.0,
+        "mean_return": 10.787890625,
+        "recovery_rate": 1.0
+      },
+      "version": "small-policy-eval-v2"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "seed-confirmation-difficulty-seed-499",
+  "schema_version": 1,
+  "seed": 499,
+  "split": "train+validation",
+  "started_at": "2026-10-07T10:56:27.847229+00:00",
+  "status": "completed"
+}

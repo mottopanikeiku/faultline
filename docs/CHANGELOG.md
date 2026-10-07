@@ -9,12 +9,14 @@ listed only when backed by immutable artifacts.
 
 - I committed the paired training-seed bootstrap, five-point mean-effect threshold and decision
   rule before the new pilot, then fixed 32 new matched seeds before their training began.
-- I measured one excluded pilot per curriculum on Modal CPU and kept the total compute allowance
-  at $2. The analysis plan records the resource-sizing amendment explicitly.
+- I measured one excluded pilot per curriculum on Modal CPU with an initial $2 allowance.
+  The analysis plan records the resource-sizing amendment explicitly.
 - I added compressed raw-result packaging, episode-level score recomputation, source/configuration
   hash checks, an SVG comparison and a remote checkpoint inventory.
 - I made the standalone cloud runner save partial progress and enforce its original cumulative
   time allowance across resumed attempts, with regression tests for both behaviors.
+- I then specified an independent one-thread, 375-seed confirmation with a $5.90 allowance,
+  separate direction and five-point equivalence rules, and no pooling of earlier cohorts.
 
 
 ### Presentation and trace figure
