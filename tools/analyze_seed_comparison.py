@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import tarfile
 import tempfile
 import tomllib
@@ -72,7 +73,7 @@ def analyze(repo: Path) -> dict:
                 }
                 if loaded[0]["resolved_config"] != expected_config:
                     raise ValueError(f"training configuration differs from plan: {run_id}")
-                if len(loaded[0]["evaluation"]["rows"]) != 4 * protocol.evaluation_base_pair_count:
+                if len(loaded[0]["evaluation"]["rows"]) != 6 * protocol.evaluation_base_pair_count:
                     raise ValueError(f"evaluation episode count differs from plan: {run_id}")
         analysis = analyze_kill_test(extracted, protocol)
     analysis["target_decision"] = classify(analysis["paired_comparisons"],
@@ -123,11 +124,14 @@ def render_svg(analysis: dict) -> str:
         ])
     elements.append('<text x="80" y="358" font-size="15">'
                     'Ambiguous-only minus baseline: paired difference (percentage points)</text>')
+    span = max(0.1, *(abs(item[bound]) for item in comparisons.values()
+                      for bound in ("lower", "upper")))
+    limit = math.ceil(span * 10) * 10
 
     def x(value: float) -> float:
-        return 250 + (value + 0.3) / 0.6 * 580
+        return 250 + (value * 100 + limit) / (2 * limit) * 580
 
-    for tick in range(-30, 31, 10):
+    for tick in range(-limit, limit + 1, max(10, limit // 3)):
         elements.append(f'<text x="{x(tick / 100):.3f}" y="506" text-anchor="middle">'
                         f'{tick:+d}</text>')
     elements.append(f'<path d="M{x(0):.3f} 370 V483" stroke="#9ba5b1"/>')
