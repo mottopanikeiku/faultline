@@ -33,3 +33,9 @@ I amend the runtime-sizing calculation before the independent cohort starts to `
 
 This fixes **375 matched seeds, 500–874**, or **1,125 trained policies**, in a **152-minute** window. The booking is **$4.91808768**, and the total including all earlier runs is at most **$5.86978768** before the spare reserve. A 376-seed cohort needs 153 minutes and would not fit that reserve. The predicted 95% half-widths are **4.9534 points** versus Random and **4.4301 points** versus Difficulty, meeting the planning target for both. These predictions are not the observed confidence intervals and do not guarantee practical equivalence or superiority.
 
+## Observed outcome after training
+
+All 1,125 policies completed. The [independent analysis](../artifacts/results/seed-confirmation-analysis.json) gives Epistemic−Random +10.1042 points, 95% interval [4.6755, 15.5323], and Epistemic−Difficulty −5.9333 points, interval [−10.2929, −1.6661]. Both directions are resolved in opposite directions; the target advantage over both alternatives is ruled out. Neither contrast establishes practical equivalence within ±5 points.
+
+The observed interval half-widths are 5.4284 points versus Random and 4.3134 versus Difficulty. The Random precision prediction missed the five-point target. I report that miss without extending the already-observed cohort. The [compute estimates](../artifacts/results/seed-compute-costs.json) total $4.2829, including $3.3312 for this confirmation; these are not invoice totals.
+

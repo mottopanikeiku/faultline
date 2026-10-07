@@ -17,6 +17,15 @@ listed only when backed by immutable artifacts.
   time allowance across resumed attempts, with regression tests for both behaviors.
 - I then specified an independent one-thread, 375-seed confirmation with a $5.90 allowance,
   separate direction and five-point equivalence rules, and no pooling of earlier cohorts.
+- I completed all 1,125 policies: ambiguous-only training beats Random by 10.10 points
+  [4.68, 15.53] and loses to Difficulty by 5.93 points [1.67, 10.29], using individual
+  paired 95% intervals. The original superiority-over-both claim is ruled out.
+- I report that the Random interval's 5.43-point half-width missed the five-point
+  planning target; Difficulty's half-width is 4.31 points. Neither contrast establishes
+  practical equivalence within the specified five-point margin.
+- I retained the complete evaluation traces in an 11.82 MB compressed archive and all
+  checkpoint hashes with remote locations. Conservative compute totals $4.2829,
+  including $3.3312 for the independent confirmation; these are not invoice totals.
 
 
 ### Presentation and trace figure

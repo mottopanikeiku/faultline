@@ -1,0 +1,21 @@
+{
+  "currency": "USD",
+  "estimate_type": "conservative compute upper estimate, not an invoice",
+  "method": "Maximum requested containers multiplied by client wall duration and requested CPU/memory rates, with a 10 percent buffer. This overcounts idle capacity; storage, egress and taxes are not included.",
+  "cpu_core_hour_usd": 0.047160,
+  "memory_gib_hour_usd": 0.007992,
+  "buffer_multiplier": 1.10,
+  "allocation_usd": 5.90,
+  "runs": [
+    {"purpose": "initial pilot invocation failure before training", "run_id": "faultline-1791366467378", "containers": 4, "cpu_cores_per_container": 4, "memory_gib_per_container": 2, "wall_minutes": 1.08, "compute_upper_usd": 0.0161, "exit_code": 1},
+    {"purpose": "excluded seed 199 pilot", "run_id": "faultline-1791366591764", "containers": 4, "cpu_cores_per_container": 4, "memory_gib_per_container": 2, "wall_minutes": 3.56, "compute_upper_usd": 0.0535, "exit_code": 0},
+    {"purpose": "32 matched seeds, 200-231", "run_id": "faultline-1791366902875", "containers": 4, "cpu_cores_per_container": 4, "memory_gib_per_container": 2, "wall_minutes": 53.46, "compute_upper_usd": 0.8022, "exit_code": 0},
+    {"purpose": "excluded seed 499 pilot", "run_id": "faultline-1791370564381", "containers": 8, "cpu_cores_per_container": 1, "memory_gib_per_container": 1, "wall_minutes": 4.83, "compute_upper_usd": 0.0390, "exit_code": 0},
+    {"purpose": "32-container startup capacity check", "run_id": "faultline-1791371222623", "containers": 32, "cpu_cores_per_container": 1, "memory_gib_per_container": 1, "wall_minutes": 1.27, "compute_upper_usd": 0.0409, "exit_code": 0},
+    {"purpose": "375 independent matched seeds, 500-874", "run_id": "faultline-1791371822650", "containers": 32, "cpu_cores_per_container": 1, "memory_gib_per_container": 1, "wall_minutes": 102.95, "compute_upper_usd": 3.3312, "exit_code": 0}
+  ],
+  "total_compute_upper_usd": 4.2829,
+  "unspent_allocation_usd": 1.6171,
+  "confirmation_source_commit": "550766e2cb5b47832527bdca3745c85912c0d7b5",
+  "confirmation_cloud_metadata": "seed-confirmation-cohort-cloud.json"
+}
