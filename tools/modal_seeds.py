@@ -16,6 +16,8 @@ from time import perf_counter
 import modal
 
 app = modal.App("faultline-seed-comparison")
+VOLUME_NAME = "faultline-seed-comparison"
+volume = modal.Volume.from_name(VOLUME_NAME, create_if_missing=True)
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .apt_install("git")
@@ -26,7 +28,7 @@ WINDOW_MINUTES = int(os.environ.get("FAULTLINE_WINDOW_MINUTES", "5"))
 
 
 @app.function(image=image, cpu=4, memory=2048, timeout=WINDOW_MINUTES * 60,
-              max_containers=4, retries=0)
+              max_containers=4, retries=0, volumes={"/checkpoints": volume})
 def train(job: dict) -> dict:
     import hashlib
     import tempfile
@@ -37,7 +39,7 @@ def train(job: dict) -> dict:
     with tempfile.TemporaryDirectory() as directory:
         repo = Path(directory) / "faultline"
         subprocess.run(
-            ["git", "clone", "--quiet", "--depth", "1", "--branch", "night2-seeds",
+            ["git", "clone", "--quiet", "--depth", "1", "--no-checkout",
              "https://github.com/mottopanikeiku/faultline.git", str(repo)], check=True,
         )
         subprocess.run(["git", "fetch", "--quiet", "origin", commit], cwd=repo, check=True)
@@ -53,14 +55,26 @@ def train(job: dict) -> dict:
         )
         files = {}
         for relative in (f"artifacts/results/{run_id}.json",
-                         f"artifacts/manifests/{run_id}.json",
-                         f"artifacts/runs/{run_id}/policy.pt"):
+                         f"artifacts/manifests/{run_id}.json"):
             files[relative] = (repo / relative).read_bytes()
         result = json.loads(files[f"artifacts/results/{run_id}.json"])
-        checkpoint = files[f"artifacts/runs/{run_id}/policy.pt"]
-        if hashlib.sha256(checkpoint).hexdigest() != result["checkpoint"]["sha256"]:
+        checkpoint = repo / result["checkpoint"]["path"]
+        with checkpoint.open("rb") as source:
+            digest = hashlib.file_digest(source, "sha256").hexdigest()
+        if digest != result["checkpoint"]["sha256"]:
             raise ValueError("checkpoint digest does not match training result")
-    return {"run_id": run_id, "job_seconds": perf_counter() - started, "files": files}
+        relative = f"{commit}/{run_id}/policy.pt"
+        destination = Path("/checkpoints") / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        with checkpoint.open("rb") as source, destination.open("xb") as output:
+            import shutil
+
+            shutil.copyfileobj(source, output)
+        volume.commit()
+        checkpoint_metadata = {"volume": VOLUME_NAME, "path": relative, "sha256": digest,
+                               "bytes": checkpoint.stat().st_size}
+    return {"run_id": run_id, "job_seconds": perf_counter() - started, "files": files,
+            "checkpoint": checkpoint_metadata}
 
 
 @app.local_entrypoint()
@@ -83,6 +97,20 @@ def main(pilot: bool = False, protocol: str = "configs/evaluation/seed-compariso
                 "memory_gib": 2, "max_containers": 4}, "window_minutes": WINDOW_MINUTES,
                 "runs": []}
     started = perf_counter()
+    pilot_cloud = repo / "artifacts/results/seed-comparison-pilot-cloud.json"
+    if not pilot and pilot_cloud.exists():
+        pilot_metadata = json.loads(pilot_cloud.read_text())
+        uploaded = []
+        with volume.batch_upload() as upload:
+            for run in pilot_metadata["runs"]:
+                result = json.loads((repo / "artifacts/results" / f"{run['run_id']}.json").read_text())
+                checkpoint = repo / result["checkpoint"]["path"]
+                relative = f"{pilot_metadata['source_commit']}/{run['run_id']}/policy.pt"
+                upload.put_file(checkpoint, f"/{relative}")
+                uploaded.append({"run_id": run["run_id"], "volume": VOLUME_NAME,
+                                 "path": relative, "sha256": result["checkpoint"]["sha256"],
+                                 "bytes": checkpoint.stat().st_size})
+        metadata["pilot_checkpoints_uploaded"] = uploaded
     for completed in train.map(jobs, order_outputs=False):
         for relative, content in completed.pop("files").items():
             destination = repo / relative
