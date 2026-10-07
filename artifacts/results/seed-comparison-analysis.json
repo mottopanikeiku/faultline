@@ -1,0 +1,1406 @@
+{
+  "all_arms_saturated": false,
+  "analysis_version": "small-kill-analysis-v1",
+  "arms": {
+    "difficulty": {
+      "individual_seeds": [
+        {
+          "seed": 200,
+          "value": 0.0
+        },
+        {
+          "seed": 201,
+          "value": 1.0
+        },
+        {
+          "seed": 202,
+          "value": 1.0
+        },
+        {
+          "seed": 203,
+          "value": 1.0
+        },
+        {
+          "seed": 204,
+          "value": 0.0
+        },
+        {
+          "seed": 205,
+          "value": 0.974609375
+        },
+        {
+          "seed": 206,
+          "value": 1.0
+        },
+        {
+          "seed": 207,
+          "value": 0.0
+        },
+        {
+          "seed": 208,
+          "value": 1.0
+        },
+        {
+          "seed": 209,
+          "value": 0.962890625
+        },
+        {
+          "seed": 210,
+          "value": 1.0
+        },
+        {
+          "seed": 211,
+          "value": 1.0
+        },
+        {
+          "seed": 212,
+          "value": 1.0
+        },
+        {
+          "seed": 213,
+          "value": 1.0
+        },
+        {
+          "seed": 214,
+          "value": 0.982421875
+        },
+        {
+          "seed": 215,
+          "value": 1.0
+        },
+        {
+          "seed": 216,
+          "value": 1.0
+        },
+        {
+          "seed": 217,
+          "value": 0.935546875
+        },
+        {
+          "seed": 218,
+          "value": 0.947265625
+        },
+        {
+          "seed": 219,
+          "value": 1.0
+        },
+        {
+          "seed": 220,
+          "value": 1.0
+        },
+        {
+          "seed": 221,
+          "value": 1.0
+        },
+        {
+          "seed": 222,
+          "value": 1.0
+        },
+        {
+          "seed": 223,
+          "value": 1.0
+        },
+        {
+          "seed": 224,
+          "value": 1.0
+        },
+        {
+          "seed": 225,
+          "value": 1.0
+        },
+        {
+          "seed": 226,
+          "value": 1.0
+        },
+        {
+          "seed": 227,
+          "value": 0.0
+        },
+        {
+          "seed": 228,
+          "value": 1.0
+        },
+        {
+          "seed": 229,
+          "value": 1.0
+        },
+        {
+          "seed": 230,
+          "value": 1.0
+        },
+        {
+          "seed": 231,
+          "value": 0.984375
+        }
+      ],
+      "primary": {
+        "confidence_level": 0.95,
+        "estimate": 0.86834716796875,
+        "lower": 0.744140625,
+        "resamples": 10000,
+        "unit_count": 32,
+        "upper": 0.96417236328125
+      },
+      "secondary_means": {
+        "ambiguous.false_repair_rate": 0.068603515625,
+        "ambiguous.mean_return": 9.381229553222656,
+        "ambiguous.recovery_rate": 0.931396484375,
+        "revealed.informative_inspection_rate": 0.8739013671875,
+        "revealed.mean_return": 10.489696655273438
+      }
+    },
+    "epistemic": {
+      "individual_seeds": [
+        {
+          "seed": 200,
+          "value": 0.96484375
+        },
+        {
+          "seed": 201,
+          "value": 1.0
+        },
+        {
+          "seed": 202,
+          "value": 0.966796875
+        },
+        {
+          "seed": 203,
+          "value": 0.0
+        },
+        {
+          "seed": 204,
+          "value": 0.0
+        },
+        {
+          "seed": 205,
+          "value": 1.0
+        },
+        {
+          "seed": 206,
+          "value": 1.0
+        },
+        {
+          "seed": 207,
+          "value": 1.0
+        },
+        {
+          "seed": 208,
+          "value": 1.0
+        },
+        {
+          "seed": 209,
+          "value": 1.0
+        },
+        {
+          "seed": 210,
+          "value": 0.0
+        },
+        {
+          "seed": 211,
+          "value": 1.0
+        },
+        {
+          "seed": 212,
+          "value": 0.955078125
+        },
+        {
+          "seed": 213,
+          "value": 0.0
+        },
+        {
+          "seed": 214,
+          "value": 1.0
+        },
+        {
+          "seed": 215,
+          "value": 1.0
+        },
+        {
+          "seed": 216,
+          "value": 1.0
+        },
+        {
+          "seed": 217,
+          "value": 0.9296875
+        },
+        {
+          "seed": 218,
+          "value": 0.98828125
+        },
+        {
+          "seed": 219,
+          "value": 1.0
+        },
+        {
+          "seed": 220,
+          "value": 1.0
+        },
+        {
+          "seed": 221,
+          "value": 1.0
+        },
+        {
+          "seed": 222,
+          "value": 0.73828125
+        },
+        {
+          "seed": 223,
+          "value": 1.0
+        },
+        {
+          "seed": 224,
+          "value": 1.0
+        },
+        {
+          "seed": 225,
+          "value": 1.0
+        },
+        {
+          "seed": 226,
+          "value": 0.9296875
+        },
+        {
+          "seed": 227,
+          "value": 0.96484375
+        },
+        {
+          "seed": 228,
+          "value": 1.0
+        },
+        {
+          "seed": 229,
+          "value": 1.0
+        },
+        {
+          "seed": 230,
+          "value": 1.0
+        },
+        {
+          "seed": 231,
+          "value": 1.0
+        }
+      ],
+      "primary": {
+        "confidence_level": 0.95,
+        "estimate": 0.857421875,
+        "lower": 0.7334518432617189,
+        "resamples": 10000,
+        "unit_count": 32,
+        "upper": 0.95751953125
+      },
+      "secondary_means": {
+        "ambiguous.false_repair_rate": 0.080078125,
+        "ambiguous.mean_return": 9.176480407714845,
+        "ambiguous.recovery_rate": 0.919921875,
+        "revealed.informative_inspection_rate": 0.875,
+        "revealed.mean_return": 9.186641235351562
+      }
+    },
+    "random": {
+      "individual_seeds": [
+        {
+          "seed": 200,
+          "value": 1.0
+        },
+        {
+          "seed": 201,
+          "value": 0.94921875
+        },
+        {
+          "seed": 202,
+          "value": 1.0
+        },
+        {
+          "seed": 203,
+          "value": 1.0
+        },
+        {
+          "seed": 204,
+          "value": 0.0
+        },
+        {
+          "seed": 205,
+          "value": 0.953125
+        },
+        {
+          "seed": 206,
+          "value": 0.18359375
+        },
+        {
+          "seed": 207,
+          "value": 0.0
+        },
+        {
+          "seed": 208,
+          "value": 1.0
+        },
+        {
+          "seed": 209,
+          "value": 0.98828125
+        },
+        {
+          "seed": 210,
+          "value": 0.0
+        },
+        {
+          "seed": 211,
+          "value": 1.0
+        },
+        {
+          "seed": 212,
+          "value": 1.0
+        },
+        {
+          "seed": 213,
+          "value": 1.0
+        },
+        {
+          "seed": 214,
+          "value": 1.0
+        },
+        {
+          "seed": 215,
+          "value": 1.0
+        },
+        {
+          "seed": 216,
+          "value": 0.970703125
+        },
+        {
+          "seed": 217,
+          "value": 0.52734375
+        },
+        {
+          "seed": 218,
+          "value": 0.94921875
+        },
+        {
+          "seed": 219,
+          "value": 0.978515625
+        },
+        {
+          "seed": 220,
+          "value": 0.0
+        },
+        {
+          "seed": 221,
+          "value": 1.0
+        },
+        {
+          "seed": 222,
+          "value": 1.0
+        },
+        {
+          "seed": 223,
+          "value": 1.0
+        },
+        {
+          "seed": 224,
+          "value": 1.0
+        },
+        {
+          "seed": 225,
+          "value": 0.0
+        },
+        {
+          "seed": 226,
+          "value": 0.984375
+        },
+        {
+          "seed": 227,
+          "value": 1.0
+        },
+        {
+          "seed": 228,
+          "value": 1.0
+        },
+        {
+          "seed": 229,
+          "value": 1.0
+        },
+        {
+          "seed": 230,
+          "value": 0.0
+        },
+        {
+          "seed": 231,
+          "value": 0.0
+        }
+      ],
+      "primary": {
+        "confidence_level": 0.95,
+        "estimate": 0.73388671875,
+        "lower": 0.5842254638671875,
+        "resamples": 10000,
+        "unit_count": 32,
+        "upper": 0.8720718383789062
+      },
+      "secondary_means": {
+        "ambiguous.false_repair_rate": 0.13641357421875,
+        "ambiguous.mean_return": 8.175996093750001,
+        "ambiguous.recovery_rate": 0.86358642578125,
+        "revealed.informative_inspection_rate": 0.7406005859375,
+        "revealed.mean_return": 10.569215087890624
+      }
+    }
+  },
+  "decision": "no_preregistered_curriculum_effect",
+  "minimum_relevant_effect": 0.05,
+  "paired_comparisons": {
+    "epistemic-difficulty": {
+      "confidence_level": 0.95,
+      "estimate": -0.01092529296875,
+      "lower": -0.16156158447265623,
+      "resamples": 10000,
+      "unit_count": 32,
+      "upper": 0.13592834472656246
+    },
+    "epistemic-random": {
+      "confidence_level": 0.95,
+      "estimate": 0.12353515625,
+      "lower": -0.042608642578124946,
+      "resamples": 10000,
+      "unit_count": 32,
+      "upper": 0.28869781494140623
+    }
+  },
+  "primary_metric": "ambiguous.experiment_then_correct_repair_rate",
+  "protocol": {
+    "arms": [
+      "random",
+      "difficulty",
+      "epistemic"
+    ],
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20261007,
+    "confidence_level": 0.95,
+    "evaluation_base_pair_count": 128,
+    "evaluation_offset": 0,
+    "evaluation_split": "validation",
+    "minimum_relevant_effect": 0.05,
+    "primary_comparisons": [
+      "epistemic-random",
+      "epistemic-difficulty"
+    ],
+    "primary_metric": "ambiguous.experiment_then_correct_repair_rate",
+    "protocol_id": "seed-comparison",
+    "run_id_template": "seed-comparison-{arm}-seed-{seed}",
+    "saturation_threshold": 0.95,
+    "secondary_metrics": [
+      "ambiguous.recovery_rate",
+      "ambiguous.mean_return",
+      "ambiguous.false_repair_rate",
+      "revealed.informative_inspection_rate",
+      "revealed.mean_return"
+    ],
+    "status": "specified-before-seed-200-runs",
+    "training_config": "configs/training/seed-comparison.toml",
+    "training_decision_steps": 30000,
+    "training_seeds": [
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231
+    ]
+  },
+  "raw_archive": {
+    "path": "artifacts/results/seed-comparison-runs.tar.gz",
+    "sha256": "06d5ddd9ad563e52351cb0e41b1adc004e95cb2948a28107ba22286eb6bbaeb4"
+  },
+  "source_runs": [
+    {
+      "actual_decision_steps": 30087,
+      "arm": "random",
+      "checkpoint_sha256": "fb5034e94d93f17d879006dbb633b8704edf7620c452904028ab172d269bd675",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "aa2adb07acd5f7ba0ea041d55833cb6f1c1f5fb326ca39bc4cd8f18812b4974f",
+      "run_id": "seed-comparison-random-seed-200",
+      "seed": 200
+    },
+    {
+      "actual_decision_steps": 30080,
+      "arm": "random",
+      "checkpoint_sha256": "b4b721e4e250a84817f4cd48e3b9b68fde58083f93e9407bc1ba1c3a3f030049",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "1abf33fc7530cd7698c6131b6194e7cb48104c36911f3dde7efeadcfe52d595e",
+      "run_id": "seed-comparison-random-seed-201",
+      "seed": 201
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "1e5ed1b20eba750a7808b0f469b776f4a6973f790c6ae5bc606132e206f392fd",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3dc0badd543132528311edf6b5b66d0fad586fdf9e4d7d048796b8936f59788c",
+      "run_id": "seed-comparison-random-seed-202",
+      "seed": 202
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "cadf3b5a07e1b062240d48c4611c5e910001c0628a905dc4c84f752672516726",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "7a7acc0fe0c1693d11fc92056a1834140373cc3e84b1c7d2dd8817488ea0adbd",
+      "run_id": "seed-comparison-random-seed-203",
+      "seed": 203
+    },
+    {
+      "actual_decision_steps": 30033,
+      "arm": "random",
+      "checkpoint_sha256": "39e3c7faa59c5c8a1d641d85bced6c86392dba79b75aba9f3e4ae729c940965f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "ef02beaf3bffc05219b45d65c58ddec3574d8a4cc6b3016b530cd71f4780dda5",
+      "run_id": "seed-comparison-random-seed-204",
+      "seed": 204
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "random",
+      "checkpoint_sha256": "307fec33768345129ea151ef1cd0a08f2b209ee4e5ccbb198d6c0c1fd724354c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "6fb48091db7b09aff9c45fdc1a12e5614dcc53ebc8bdc535368748b554aa3414",
+      "run_id": "seed-comparison-random-seed-205",
+      "seed": 205
+    },
+    {
+      "actual_decision_steps": 30026,
+      "arm": "random",
+      "checkpoint_sha256": "9b01b73a42fdbefc00be27841fb107d58c922a3f4b6a553042c7c10264b82916",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "706af8865c941e56836fd925c5911670af420c8357259bc5bedad807a32b51d0",
+      "run_id": "seed-comparison-random-seed-206",
+      "seed": 206
+    },
+    {
+      "actual_decision_steps": 30035,
+      "arm": "random",
+      "checkpoint_sha256": "aaa3c31d9ce3e036ec68cf1216daf4d17ee6dab45c4b134833ee01dd24ebfe9e",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "0c1b8a800b384876d4c8b3ef642e8f2618a85e3cfcbda2867776b1f71ad3d9fe",
+      "run_id": "seed-comparison-random-seed-207",
+      "seed": 207
+    },
+    {
+      "actual_decision_steps": 30086,
+      "arm": "random",
+      "checkpoint_sha256": "cd13768d9b83b92db2f978ecd8eccd59010bb0beb28a12741e649a6060d07659",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "4075a7cb617e76229c9dc70fe4a30486e2fcbbd1c169bbc15ffe0d66e19a450d",
+      "run_id": "seed-comparison-random-seed-208",
+      "seed": 208
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "41486fd8b410eb2316f1c0ca075dcbc6535cc0157718ceeb208f77ee70e30945",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "145a790c8bebdfc30d9bba076b8e28cfb725fe8e5be613348ce3d59664109187",
+      "run_id": "seed-comparison-random-seed-209",
+      "seed": 209
+    },
+    {
+      "actual_decision_steps": 30056,
+      "arm": "random",
+      "checkpoint_sha256": "c037ce900b2d21d2dbb6424ee4ae041a467980398eba28c1a5caae9906532043",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "599fc315c67edddc929be7794ac331b48505aab4ad5abd81b1f45db7e42207de",
+      "run_id": "seed-comparison-random-seed-210",
+      "seed": 210
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "ed6f6a0a7061512e44914096c4f5137ee4433d4aeaf16a1083c742fda32f5e05",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "7e4a229017bddf7c85d728350b3311ea1d4c0cfbdffe08a8b388539f413cb51b",
+      "run_id": "seed-comparison-random-seed-211",
+      "seed": 211
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "3f3476d80c75634484f4ab13e9d4409ade613fd487a7fa45b7e937f7b70e551c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9b717330f95e6062952baec666c46bd44b01e1e36bd1a4d3022030a78e645141",
+      "run_id": "seed-comparison-random-seed-212",
+      "seed": 212
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "febabc6dc44abfe9e5a8ea16078db045ff66668f2e4210e2bbad7baa69b336a0",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3a0f72ae739143c7b1660e4a39fb9608a40a2fa7f5e8cd20243ed47e92dac8b5",
+      "run_id": "seed-comparison-random-seed-213",
+      "seed": 213
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "e0e63c91f77fc68f68107e69c63912d66a60bac1412b287a20e8ac2a9cd79798",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "f66a9a1a17837cbf6beff7c78c809582e3897c4dd33b28d9150df50155fcae1e",
+      "run_id": "seed-comparison-random-seed-214",
+      "seed": 214
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "d7ce69c3533585f9f8ace9b581cf7306703c18b395a4dbdcc8c5f7f17e1e86ab",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "a564a3d141a6eab6ebcbceee6ba9863dd655e0d0fd13cb488a896e2c736f9201",
+      "run_id": "seed-comparison-random-seed-215",
+      "seed": 215
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "5cc32848f5d159297acab5c179c37550f1e31d453102ed20cf74ed028c7d381c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "28802677d02a8d098a2543e12e0615dbeb50e1c361c9b31722181133483369b5",
+      "run_id": "seed-comparison-random-seed-216",
+      "seed": 216
+    },
+    {
+      "actual_decision_steps": 30056,
+      "arm": "random",
+      "checkpoint_sha256": "03b43b98bf98b6de51741a8caf45e474251d2c29dedc0f808bf778aa30835ee5",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "2decac303c10f1b8af110049c7f1091ff733b4b23ee468f34070fb67f96cb13d",
+      "run_id": "seed-comparison-random-seed-217",
+      "seed": 217
+    },
+    {
+      "actual_decision_steps": 30084,
+      "arm": "random",
+      "checkpoint_sha256": "5ec2854d5d8d90b4745dbde5392d35ec142ac661e1b6d14232ab1508417cdc7e",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "16e49d832abc81fae8a08a232cc7cbf6e8f667718eb510b8f82251ce07735b9a",
+      "run_id": "seed-comparison-random-seed-218",
+      "seed": 218
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "random",
+      "checkpoint_sha256": "ff83b216daed1dccff2479b2dcb163ff97943514214ab7740c1624af0dda6247",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "79cf7a61f06728b83ae9f385148f1388ba69b621d5317b8099b852ddca373b48",
+      "run_id": "seed-comparison-random-seed-219",
+      "seed": 219
+    },
+    {
+      "actual_decision_steps": 30049,
+      "arm": "random",
+      "checkpoint_sha256": "fac7897d28823b5f11fdc6ecd91b6168712696fb096290778c80bce4bbe89548",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "bb7c0d265dfc885312a26851f78e0d9e40c7ac3034213729eb9bb3b382c532b4",
+      "run_id": "seed-comparison-random-seed-220",
+      "seed": 220
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "7e13c4a74e02b99052efdbb566e51a9083f6bb8e3db53d9c7dc470227b11843a",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9651fbd8524bb19274b72e0e1cc2e1304784c7c1888d3829b73d8c34fcee5b4f",
+      "run_id": "seed-comparison-random-seed-221",
+      "seed": 221
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "b239a3a4c42e3de439530354eed16b40343b8132b849db73f0e1c5eea56a356f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9ab70b2518bb1469c7cec145a3742eba58fa3137dc9a843406a4e79ad6f05f8d",
+      "run_id": "seed-comparison-random-seed-222",
+      "seed": 222
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "c5e73e395c1f038dcb791cd084644d585a5466c4117ea26f365e339dad99a48a",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "2e444bfd7c057e9afa3115adec1bbed9c3d8bb7cd3eb7d7e57bd1e73337b6b12",
+      "run_id": "seed-comparison-random-seed-223",
+      "seed": 223
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "99b08e3b4fa71969110824e99e8f5e3d662ae09fa22cb7ffa74cc0bbe553d74b",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "8391841cdaa68c32516d4859d2d97a14d4aeae88fb408f5eb92389490f1c0bc3",
+      "run_id": "seed-comparison-random-seed-224",
+      "seed": 224
+    },
+    {
+      "actual_decision_steps": 30065,
+      "arm": "random",
+      "checkpoint_sha256": "3095a6b51fe87599d0c2d0a132e09b4a226af381a31ba9572512133b4835bf62",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "b40d72d7e0e2642c469948af4c149c047a380c6259d5bf3fc79e100f38f731a1",
+      "run_id": "seed-comparison-random-seed-225",
+      "seed": 225
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "329c1c63b4111955492d144dae303cf16915889a1ef7bc705c9862e57a18714b",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "1f387ac377d7eb4f4999bd078a98cd28f63456fe07a6967abc94a6d5bb0b6b56",
+      "run_id": "seed-comparison-random-seed-226",
+      "seed": 226
+    },
+    {
+      "actual_decision_steps": 30092,
+      "arm": "random",
+      "checkpoint_sha256": "cb2486b33fe0ce66915fc05d56ff6543e20740e3fc3d377e5f9913eba2b41323",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "a29205b7780697ea4c2762eb4da6dbeedd81d80a23b5e97abbeff82e864733ae",
+      "run_id": "seed-comparison-random-seed-227",
+      "seed": 227
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "random",
+      "checkpoint_sha256": "67480343dff1b7e65a598bf5daa93ca200e675fc98d5eba05512b74ec126eb26",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "23e1cb61f9560d4c9d75417602de3cf0444a6945a4db85eae41a1ee454736177",
+      "run_id": "seed-comparison-random-seed-228",
+      "seed": 228
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "random",
+      "checkpoint_sha256": "6be44386f9b1caf121d511ff9fb83782170cd48e2e2d94f766a515732e5d5e45",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "64a5af8ea5f6216564face338a3fee35ca632756096ee9b60f31288872da0a0e",
+      "run_id": "seed-comparison-random-seed-229",
+      "seed": 229
+    },
+    {
+      "actual_decision_steps": 30049,
+      "arm": "random",
+      "checkpoint_sha256": "cca5c9e4121f279a5ae61db968f123d34117aa3ff17418ecb744fcff67795d54",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3d80f270ff846a44fe6e880a42553b36771a0470d2ab2b581bf68d8edccb2190",
+      "run_id": "seed-comparison-random-seed-230",
+      "seed": 230
+    },
+    {
+      "actual_decision_steps": 30044,
+      "arm": "random",
+      "checkpoint_sha256": "1e8dadbc365d09510bff00988771ee2c532c5f1fcc65e9bc7d5c9bf24d929bf7",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "e384e0d669845567a33e133e35c70289ac62909d1889563660169f02ba8cc651",
+      "run_id": "seed-comparison-random-seed-231",
+      "seed": 231
+    },
+    {
+      "actual_decision_steps": 30049,
+      "arm": "difficulty",
+      "checkpoint_sha256": "bdcdf2f11dfae73c40fcd925cc16277dec54faa831ac39b2b5e7eeaf71341615",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3ca4e41dfe2920414023f215627ad73939937e0b2fa7a02221f81cc9fc22f469",
+      "run_id": "seed-comparison-difficulty-seed-200",
+      "seed": 200
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "difficulty",
+      "checkpoint_sha256": "9ef036660f4e1d4441061649dc0eae32798423592649b88e3e31f776a01fba77",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "950138b287821234c7680baf6ea13d650709ee7d14fda5bb26a90e6cd70812b0",
+      "run_id": "seed-comparison-difficulty-seed-201",
+      "seed": 201
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "3b3c497115809f51b8516e79449e35806ada1e0ab827d624d7f3a2fe1c34b11c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "a6d90e74fd07b942bd6dd306db17b0be71e1cf888c3ba3370dd75dd1d00f92cb",
+      "run_id": "seed-comparison-difficulty-seed-202",
+      "seed": 202
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "0b38501becccbde13fb4b64654073d38b0026479d4fa76aefb25a9ee8b0b5ec5",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "7ac04f5e3ebd3036ce4575d0c3c1e384d74c3ea73f3ca88c29f61c7d34abf755",
+      "run_id": "seed-comparison-difficulty-seed-203",
+      "seed": 203
+    },
+    {
+      "actual_decision_steps": 30043,
+      "arm": "difficulty",
+      "checkpoint_sha256": "a96dc0667d0bfcfe482349c62955e4cc67d75840d7a1d8bfbd92ea6d4b29a5ff",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "ebc28ee10c02c1a6b7fed2980febe85fb0b2cfec6fdf1f798c720db3629f6d0a",
+      "run_id": "seed-comparison-difficulty-seed-204",
+      "seed": 204
+    },
+    {
+      "actual_decision_steps": 30041,
+      "arm": "difficulty",
+      "checkpoint_sha256": "dcd0398731c62bafd4c23dab1615ba8e55a1d83730d1969b4ab58e2bf23beeb3",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3018eaa46d5c71d13c92b790c6d3538b3df9734679976f9a7273cd06c5d67cc4",
+      "run_id": "seed-comparison-difficulty-seed-205",
+      "seed": 205
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "c4498dfc2b15f3f4ca98efdb7440cdb9314945577f29a757a8e663a26c037417",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "7dcf9bfa7d2a66ca87c822320f3bfa9c2bc83105907a2f19f9c8a114b3692c07",
+      "run_id": "seed-comparison-difficulty-seed-206",
+      "seed": 206
+    },
+    {
+      "actual_decision_steps": 30036,
+      "arm": "difficulty",
+      "checkpoint_sha256": "bbb60695dd338ba286f9a65e88ba522cedba4197567ab0d94c6d003ee53d8ac8",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "8462926deca6b52b228d7e191417d0235007753c3722eb524ca2f8a860b602fd",
+      "run_id": "seed-comparison-difficulty-seed-207",
+      "seed": 207
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "d43b95b263013da3d1653e290d4d5d8132855de7367f0c71970d1178239af1a2",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "625db36bfdf55a6a808e5bc051b6f4db48ec12537052f76ee31fd1c20de60b04",
+      "run_id": "seed-comparison-difficulty-seed-208",
+      "seed": 208
+    },
+    {
+      "actual_decision_steps": 30091,
+      "arm": "difficulty",
+      "checkpoint_sha256": "c278681184e6ee09b0c5d9b154186e617cedbd550e9bcccd47f3289fedb95c43",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "b13abe67307493bd6dc2235339255b18c2a9b6ea134442899c59b7c32b4fbf3f",
+      "run_id": "seed-comparison-difficulty-seed-209",
+      "seed": 209
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "886fb56ec2e0871dfa85165e13d4c92ad4c1746bb878ac4f9e99cfff1b840c9f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3d66df41459dd8ca93f7bc75bc6f9e0da8588fba532d6b892e7d0f2e15167f84",
+      "run_id": "seed-comparison-difficulty-seed-210",
+      "seed": 210
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "5b081a204a5f169a6a65e18ec81997b0d9c0cd28e433a08e7dfac2e14e1c3a32",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "074b81523a3c0260b90e8a8c0c545e984958f0b3211e8d099583b59dd71f6907",
+      "run_id": "seed-comparison-difficulty-seed-211",
+      "seed": 211
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "2ec48c7f106a3ee9bb8af7d8ff80d7450adda7cd10d919833a298d4514176fd9",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "baad93f5f89980c28ea775fea97cb6ab3f8acc4de269c13f60fe2e3f8cd26474",
+      "run_id": "seed-comparison-difficulty-seed-212",
+      "seed": 212
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "61118e4fddf7f60ad548d8d1187ea76451dc2c7c628eee82eff2aea94402a4af",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "14ac6ca9defd99261881a08785e73aefae17c7e472de2591895c2095710381ee",
+      "run_id": "seed-comparison-difficulty-seed-213",
+      "seed": 213
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "c41aa84f7957b2c4bb888b9fbd99fa9b9f40e2004275ee24b560139640131503",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "574d5287c6764e42cfb2a7daa04321d02c37ccbe5a4d6ff36d2dbc1d6440bca7",
+      "run_id": "seed-comparison-difficulty-seed-214",
+      "seed": 214
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "f636824f78f8c950fcb94847e1fdae8e762200a530e8bb5557947d07b4b423e8",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "5decb284495feb3491c7ab7e96c56318667c54226b4d62677dd6cdb1bdbc9023",
+      "run_id": "seed-comparison-difficulty-seed-215",
+      "seed": 215
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "difficulty",
+      "checkpoint_sha256": "95ef4f5c1c21917021d5357630217d7495f23d3c752acb95dd6582025fb67e4e",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "f57846fdfea14125eb1fc169c56f66167ad043d820d851646ba3631690ef3eb0",
+      "run_id": "seed-comparison-difficulty-seed-216",
+      "seed": 216
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "a15ba687d1872d1a4c3d402e99e48d97069404feedc5c3da69b3082d5197e7ec",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "1d10838328299a3716010933e41eff61f011d0929e43304118c8f1d5fb26e51b",
+      "run_id": "seed-comparison-difficulty-seed-217",
+      "seed": 217
+    },
+    {
+      "actual_decision_steps": 30075,
+      "arm": "difficulty",
+      "checkpoint_sha256": "a224472904cc160ef895edc10c8054d2d3c70f0c631e74e7a2da2e2d49c32cd9",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "d19de107b7a5371cf04ff591445f40e1f1c2cff0a5cad5b4145773389fa0eec6",
+      "run_id": "seed-comparison-difficulty-seed-218",
+      "seed": 218
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "7d58a7e0e1db6c88c53d118667909bf17a2137de37b9744fa91d1e0f7852a122",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3b978345bdfdc5e06fba1beec97062ae56a3945a0091dddf70ed1557d4eb8f63",
+      "run_id": "seed-comparison-difficulty-seed-219",
+      "seed": 219
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "9d04f4126285022caf0b19e2cc47d392200d5aa2de4c845c205031d0366be850",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "970af6afede187e525e8a3decdf629d8e933b48735a3432d7cdb4fc1231ef154",
+      "run_id": "seed-comparison-difficulty-seed-220",
+      "seed": 220
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "9326e791faa268494f12e6ae8bf04b91d1b35b13cb3ea20f65345a7a6060879d",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "54bba7c1f30e52c063ea06f1ec12f1676eb432ca3661637e30bfa11c74409bdb",
+      "run_id": "seed-comparison-difficulty-seed-221",
+      "seed": 221
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "1d4f018b9482c197f58dc7baaffa21a8179bd8d82ca511f76bb4fb05060f88e5",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "c86a3c836cdbf4c26f8c93e1fb6b8c5d3f7069e6eb9e65da5115e5bf88d254e4",
+      "run_id": "seed-comparison-difficulty-seed-222",
+      "seed": 222
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "difficulty",
+      "checkpoint_sha256": "dbc0065135373400db6f9717630e485ff3661f99d3337fa8bbd5f340a3b0883c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "801af9dc7d527d88cbb9afe662ff252efcf4950efe87508fe77605298445fbd7",
+      "run_id": "seed-comparison-difficulty-seed-223",
+      "seed": 223
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "5da8d1745e4801e62a16d0196b94fc4e1c51df17600d8119d6201add2f3f9fff",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "29ba5cc7047c0d4037ad38ea6f5d78abad110d309f31cd4e451f7601a4d78ac4",
+      "run_id": "seed-comparison-difficulty-seed-224",
+      "seed": 224
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "5d4327793af3c9f02d2404a1dcf887707e15976c060de02d0991504171af34cc",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "5dad0232d8dd6349f9547b63d59cc33e6bc52e88a03bbd297fc97c0ebc2980f7",
+      "run_id": "seed-comparison-difficulty-seed-225",
+      "seed": 225
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "6afbc020ca55870d4a2de2d0a83333d2bc467a6654170872026946c282702f3c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "b76c18be82d5e148b6318c4c5df393b35c0892377a07f10d718de28d765705aa",
+      "run_id": "seed-comparison-difficulty-seed-226",
+      "seed": 226
+    },
+    {
+      "actual_decision_steps": 30045,
+      "arm": "difficulty",
+      "checkpoint_sha256": "200121b4a77ba78c3a50723a2f8ffc2e70d9d27bb3150997c4b58179db27d132",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "07627f18c80f3a0e358cfe3cfc89bcfd904a7a95791316b99bab5ce6ea21dfd9",
+      "run_id": "seed-comparison-difficulty-seed-227",
+      "seed": 227
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "ccb378338306daa56762964b51cfd0605f8c5fd02c18249a84f071b383069cee",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "43743d307b5ce1f060ee963a74377aaaaf1a61963cc343caf40834efced79639",
+      "run_id": "seed-comparison-difficulty-seed-228",
+      "seed": 228
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "difficulty",
+      "checkpoint_sha256": "f057381eaa006ea000ce684344c2a63c9a1f4d74bfd59737ce0e776715aaaf85",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "1567e7c7a51e62e1bee6e5575b0c843b8990f1074f4023c8a0d6b9f833d3865a",
+      "run_id": "seed-comparison-difficulty-seed-229",
+      "seed": 229
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "difficulty",
+      "checkpoint_sha256": "987980a9d2447a9627761d2222cee98571b75cccd297a1051d06bc05dc5f2772",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "370197f4a861dd34942ac41eb1804d9df98c1ad621b8985c4201674d2359168a",
+      "run_id": "seed-comparison-difficulty-seed-230",
+      "seed": 230
+    },
+    {
+      "actual_decision_steps": 30091,
+      "arm": "difficulty",
+      "checkpoint_sha256": "7dec6c980a32721fa4aea082d27cc55a27fdb9a3b216dfe6d2f9569c44c30479",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9fd8c1b5e94a24aa42986239f4518a8d00156c5a575fdf55637c803c286c7997",
+      "run_id": "seed-comparison-difficulty-seed-231",
+      "seed": 231
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "fbfab5bb329e8b0ae77f677ce96038e1f72adfea1798eda374778cfb47135231",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "029c8ac61886bc31ecccc31bc08aef66c63aaf868c3397b249b11a2f3f288c4b",
+      "run_id": "seed-comparison-epistemic-seed-200",
+      "seed": 200
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "4b641151c838645ebac223287f5215fc64b4af1db83890eb31fa5a98221fc973",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "6ca84c4c4ee3541a7ffbfdba3a8fa50df481976ef914694ad41c2911689e81be",
+      "run_id": "seed-comparison-epistemic-seed-201",
+      "seed": 201
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "1c988c5d8ff317abfa7b66de4c9dec9a63ea7cab4b9707e2b0a039e64ed2e246",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "05f08c8f777695c829a270303718821dcb4fb5b543efb7ae05473593f88e5dd6",
+      "run_id": "seed-comparison-epistemic-seed-202",
+      "seed": 202
+    },
+    {
+      "actual_decision_steps": 30009,
+      "arm": "epistemic",
+      "checkpoint_sha256": "e6ce6b0c42b5b7e7a450168c20bce66e52f8ef8c252c65b4bc57ac84a0d60d4f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "5371e405ca278aa15d4d9780efdb168296de225ab002fb44ef95c91f35d9b658",
+      "run_id": "seed-comparison-epistemic-seed-203",
+      "seed": 203
+    },
+    {
+      "actual_decision_steps": 30044,
+      "arm": "epistemic",
+      "checkpoint_sha256": "3a95548adb9bd61d1624bbed91217f4417ea55858dedad67705e529ca8fbfb3b",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "a1f9ddf603712aad37aa4f923e91aec38e7b25ab4d8f5374b87103c90edfbc33",
+      "run_id": "seed-comparison-epistemic-seed-204",
+      "seed": 204
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "2d2a37871a493aca8044f555febda6b53673ad1300a29f83090e2e944450cfcb",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "dc11eab3cc31c6bd8c8acf394ce212fe6db66fc5092fa08d4b8a472b72260817",
+      "run_id": "seed-comparison-epistemic-seed-205",
+      "seed": 205
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "432dd3f83a2b7079d782eda23299a5189821be1bd7bc4d07cafdfbcf31ea96b6",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "c945f109a53455de15be7a388fd8d27d6018ce2cb71c868720699c0dca7f6358",
+      "run_id": "seed-comparison-epistemic-seed-206",
+      "seed": 206
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "78d15d3f91093f1b05da98740bea4130846feb2b887cac7f3afa96902b83bd4a",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "d3f9bf705d3107ebe14a1d254bb82be70761d1afae0b01bda3f68ca28e685bfc",
+      "run_id": "seed-comparison-epistemic-seed-207",
+      "seed": 207
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "06ba3d6e067d19287d5901a2a0fb3ef388676608b1e1714070e4f8fda47932a7",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "5be2126e9dfe3dfdb1e9bafeb883c00940df09bfba84562b733eb0394193af72",
+      "run_id": "seed-comparison-epistemic-seed-208",
+      "seed": 208
+    },
+    {
+      "actual_decision_steps": 30091,
+      "arm": "epistemic",
+      "checkpoint_sha256": "6599d837527af34c7d612f42d71963db4f2196f2c1847c5591afd7c4a658c248",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "154faa22369601ae1abaeb7002c169d425630e0b2266af3b4c395f862e5275eb",
+      "run_id": "seed-comparison-epistemic-seed-209",
+      "seed": 209
+    },
+    {
+      "actual_decision_steps": 30047,
+      "arm": "epistemic",
+      "checkpoint_sha256": "bb5c68565768b24056ca25b823716d26b1ccbb1d307aaa714ba3db64fdbd0c60",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "fa54d05653b44e898fac4ca15ccdead0cefb07b1970980e8453b505288ce2b76",
+      "run_id": "seed-comparison-epistemic-seed-210",
+      "seed": 210
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "86b1f12d1326dd93ce5291f47db9b347681d705a8c03d7bd4e5537507a12fb85",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "17b6b19502f99f1700e89b69b430e3453138b83ddbf88c34ed413119ff5b8124",
+      "run_id": "seed-comparison-epistemic-seed-211",
+      "seed": 211
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "9ea7e6995b593eb4d047aa76cf90fb2bd8d4ea415d05bee913bcf31e15d6cce2",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "f47a18cb5c192a637c3a6ac9ed571e46e218f13b63abcb57a3d143a4916c2ed4",
+      "run_id": "seed-comparison-epistemic-seed-212",
+      "seed": 212
+    },
+    {
+      "actual_decision_steps": 30038,
+      "arm": "epistemic",
+      "checkpoint_sha256": "3939afeae9f3b791026909c2ec6a84a6774b269c836eb8c0997e84db4f860e88",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "83498f3331510ba8fb62ab2b793b20bb5a1c9c6ca870a07d5988f9de6ef0a40e",
+      "run_id": "seed-comparison-epistemic-seed-213",
+      "seed": 213
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "7342532e13bb41b98703d468e3f875589f48145a24084a53d022398ce8068c0f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9fa20e05da3d0292b12a44f17e61a8a8666e4c0e696f3afae56a4322862c8420",
+      "run_id": "seed-comparison-epistemic-seed-214",
+      "seed": 214
+    },
+    {
+      "actual_decision_steps": 30091,
+      "arm": "epistemic",
+      "checkpoint_sha256": "b013d2f8fce8834fd88b732c6cfdf0c734fff1a1c633bafc165e7438c8745d02",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "5c2de84895fd1a40d84ca4fec5213607058c2ee13e0e23d1b233f26e4d4db59a",
+      "run_id": "seed-comparison-epistemic-seed-215",
+      "seed": 215
+    },
+    {
+      "actual_decision_steps": 30091,
+      "arm": "epistemic",
+      "checkpoint_sha256": "b29eadf502b0aadb660a6731dc45a592fa293300fec73cb6e8f0877fa64fd073",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "cf5c7a2e8ab29b96cd612ad1a4beaa4e2fe3fba881b128e2f6cd546fd98d38be",
+      "run_id": "seed-comparison-epistemic-seed-216",
+      "seed": 216
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "85495224612e1a5e160b5ce3dbe1f24743b138e955a5dcdf81fc31f8f9bc682e",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3e362d2c2c7046ab816baf5c545d0ec63020291504a7db8f08532598b5a66aad",
+      "run_id": "seed-comparison-epistemic-seed-217",
+      "seed": 217
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "8017980f42e39c719a629a6aedeb6726b02a801918798465c86fdce7e560815f",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "754259ded472de8bed1b4d7e6d09bfbda3e961056486ce38837e2cc56fd374f7",
+      "run_id": "seed-comparison-epistemic-seed-218",
+      "seed": 218
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "db4b76abcb64aba7dfcf5c28d55f361c1c049241b42575fe2927dbb06e2d09c9",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "d490d12e0cdcc565623bf3c06a5fb07de3169c6caa4caee1e67893b37335abdc",
+      "run_id": "seed-comparison-epistemic-seed-219",
+      "seed": 219
+    },
+    {
+      "actual_decision_steps": 30093,
+      "arm": "epistemic",
+      "checkpoint_sha256": "7ea1a5bead9f66e9305a8e63d2cc6e3df2c7d7b412020762396de114751a581a",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "ac1726cb1c68fe686c743112cba99e4a2a2c9b41388969cc0aa30375a56ce22d",
+      "run_id": "seed-comparison-epistemic-seed-220",
+      "seed": 220
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "7408c45e5c806b6e762755540093e70f7325ae409bab78df23326b2662f075b3",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "32755b5ba9e834f87cf99f52ac801437d7e58ec869b97182e5a62d97b8bd8655",
+      "run_id": "seed-comparison-epistemic-seed-221",
+      "seed": 221
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "98c5c1d838198cdc56c7ba1f97e2275ed24264471f4cac838b03453355618a7b",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "91638f0a80fe50ad93613ad266cb89c0391e42eda42da72e126223b4ceafef47",
+      "run_id": "seed-comparison-epistemic-seed-222",
+      "seed": 222
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "dab3c258ef0c8c7dfb92546721f0791d422ba163a58f221af8027a8e5119c5fd",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "ec7d07543648944e12466be2730f75cfd4b1c3fb2c024d04e8f6c1f9d6013ce5",
+      "run_id": "seed-comparison-epistemic-seed-223",
+      "seed": 223
+    },
+    {
+      "actual_decision_steps": 30039,
+      "arm": "epistemic",
+      "checkpoint_sha256": "0cc7f51d6dc0b7d3ef8f8a162f16ee5b7a795126b7276ffb818a76472aa6d45d",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "e132018f06a258693c279c72a297eea8a9f809283ab6db36452f3d8fb4fd57df",
+      "run_id": "seed-comparison-epistemic-seed-224",
+      "seed": 224
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "afd98f6846321f65124012793a92b2d60a5bd89c5d6282b92ada085e0f467594",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "c398b912e17504c18c91b3df2582fcc4eac80028ec17de06d249c7616c68396c",
+      "run_id": "seed-comparison-epistemic-seed-225",
+      "seed": 225
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "5fa72506ff1c25c87f11f5d1f8a4a151ef3b593aad8cb6a7dc664ec082ba8a28",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "655efd4f2e6d00cd13c937d6f69a9db8f900a1d66e7b9e55eb3ca917b0aa4e37",
+      "run_id": "seed-comparison-epistemic-seed-226",
+      "seed": 226
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "ecbe7bdaf0ebe79bdbfb8f5886ea645bf5a457dfae8de0a69af4ad7c5c6f3e9e",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "9cbf8ba38ead9a874fd2721d8298a0072a4c5408f0a345fa02c5e68726851544",
+      "run_id": "seed-comparison-epistemic-seed-227",
+      "seed": 227
+    },
+    {
+      "actual_decision_steps": 30095,
+      "arm": "epistemic",
+      "checkpoint_sha256": "471850ee93fdd4cb3455c199f8c57b75aa92d950f55105e929ba654de124945a",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "6bb868e4f8dcbf42a3650ba8d944dc3b1ee29e3bd47d1275e9e01a1c1f2f5525",
+      "run_id": "seed-comparison-epistemic-seed-228",
+      "seed": 228
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "a8211a4209bb3b6a712945f4fcad8e2ea2b425e4dedaab5ec9451d1560d4204c",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "44da2fc708ce1ccd70819c5301089efa945afe0dca187769095913ef1db1bdf2",
+      "run_id": "seed-comparison-epistemic-seed-229",
+      "seed": 229
+    },
+    {
+      "actual_decision_steps": 30092,
+      "arm": "epistemic",
+      "checkpoint_sha256": "64f9f07e94bff7d04d35df26c7bd2ffecd7c65d6f34ce4c4c19594546a0fc6ec",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "e5810ea2be5c5625ba2e750efccc2ae4cbd05c414daadd25d8d62c32b991476b",
+      "run_id": "seed-comparison-epistemic-seed-230",
+      "seed": 230
+    },
+    {
+      "actual_decision_steps": 30094,
+      "arm": "epistemic",
+      "checkpoint_sha256": "2d5f09c5c662177ab790326ffbb2d78e6578ae2cf9ab4fedf78e248f676b08fc",
+      "git_commit": "c846e000dd7a7249fe3840a027473c1c0d1d703d",
+      "result_sha256": "3d686a18cb9017db53200c5617a412437a1fceaafdd4179cfda08c88874377f0",
+      "run_id": "seed-comparison-epistemic-seed-231",
+      "seed": 231
+    }
+  ],
+  "supports_curriculum_specific_effect": false,
+  "target_decision": "inconclusive_about_target_advantage"
+}

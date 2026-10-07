@@ -44,12 +44,15 @@ def load_runner(monkeypatch, tmp_path: Path):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     module.__file__ = str(tmp_path / "tools/modal_seeds.py")
+    config = tmp_path / "configs/training/seed-comparison.toml"
+    config.parent.mkdir(parents=True)
+    config.write_bytes((Path(__file__).parents[2] / "configs/training/seed-comparison.toml").read_bytes())
     monkeypatch.setattr(module.subprocess, "check_output", lambda *args, **kwargs: "a" * 40)
     return module
 
 
 def completed(job: dict) -> dict:
-    run_id = f"seed-comparison-{job['arm']}-seed-{job['seed']}"
+    run_id = job["run_id"]
     return {"run_id": run_id, "job_seconds": 1.0,
             "checkpoint": {"volume": "test", "path": run_id, "sha256": "a" * 64, "bytes": 1},
             "files": {f"artifacts/results/{run_id}.json": b"{}\n",

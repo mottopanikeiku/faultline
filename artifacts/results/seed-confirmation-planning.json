@@ -1,0 +1,20 @@
+{
+  "source_analysis": "artifacts/results/seed-comparison-analysis.json",
+  "source_cohort_is_excluded_from_confirmation": true,
+  "planning_formula": "ceil((1.96 * paired_sd / 0.05)^2)",
+  "target_half_width": 0.05,
+  "contrasts": {
+    "epistemic-random": {
+      "paired_sd": 0.4894001796419198,
+      "required_seed_count": 369
+    },
+    "epistemic-difficulty": {
+      "paired_sd": 0.4376948357875039,
+      "required_seed_count": 295
+    }
+  },
+  "cost_before_confirmation_pilot_upper_usd": 0.8718,
+  "remaining_compute_allowance_usd": 1.1282,
+  "reserve_usd": 0.03,
+  "candidate_seed_counts": [64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 480, 512]
+}
