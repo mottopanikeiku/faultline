@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550" role="img" aria-labelledby="title desc">
+<title id="title">Matched training-seed curriculum comparison</title>
+<desc id="desc">Every point is one training seed. Black bars show means. The lower panel shows paired differences and 95% training-seed bootstrap intervals; the dashed line marks the five-percentage-point target.</desc>
+<rect width="900" height="550" fill="white"/>
+<g font-family="sans-serif" fill="#172033">
+<text x="450" y="30" text-anchor="middle" font-size="20">Does ambiguous-only training improve diagnosis?</text>
+<text x="450" y="54" text-anchor="middle" font-size="13">32 matched training seeds per curriculum · validation tasks</text>
+<path d="M80 270 H850" stroke="#e4e8ec"/>
+<text x="65" y="274" text-anchor="end">0%</text>
+<path d="M80 234 H850" stroke="#e4e8ec"/>
+<text x="65" y="238" text-anchor="end">20%</text>
+<path d="M80 198 H850" stroke="#e4e8ec"/>
+<text x="65" y="202" text-anchor="end">40%</text>
+<path d="M80 162 H850" stroke="#e4e8ec"/>
+<text x="65" y="166" text-anchor="end">60%</text>
+<path d="M80 126 H850" stroke="#e4e8ec"/>
+<text x="65" y="130" text-anchor="end">80%</text>
+<path d="M80 90 H850" stroke="#e4e8ec"/>
+<text x="65" y="94" text-anchor="end">100%</text>
+<circle cx="165.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 200: 1.000000</title></circle>
+<circle cx="171.0" cy="99.141" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 201: 0.949219</title></circle>
+<circle cx="177.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 202: 1.000000</title></circle>
+<circle cx="183.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 203: 1.000000</title></circle>
+<circle cx="189.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 204: 0.000000</title></circle>
+<circle cx="195.0" cy="98.438" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 205: 0.953125</title></circle>
+<circle cx="201.0" cy="236.953" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 206: 0.183594</title></circle>
+<circle cx="207.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 207: 0.000000</title></circle>
+<circle cx="213.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 208: 1.000000</title></circle>
+<circle cx="219.0" cy="92.109" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 209: 0.988281</title></circle>
+<circle cx="225.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 210: 0.000000</title></circle>
+<circle cx="231.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 211: 1.000000</title></circle>
+<circle cx="237.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 212: 1.000000</title></circle>
+<circle cx="243.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 213: 1.000000</title></circle>
+<circle cx="249.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 214: 1.000000</title></circle>
+<circle cx="255.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 215: 1.000000</title></circle>
+<circle cx="165.0" cy="95.273" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 216: 0.970703</title></circle>
+<circle cx="171.0" cy="175.078" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 217: 0.527344</title></circle>
+<circle cx="177.0" cy="99.141" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 218: 0.949219</title></circle>
+<circle cx="183.0" cy="93.867" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 219: 0.978516</title></circle>
+<circle cx="189.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 220: 0.000000</title></circle>
+<circle cx="195.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 221: 1.000000</title></circle>
+<circle cx="201.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 222: 1.000000</title></circle>
+<circle cx="207.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 223: 1.000000</title></circle>
+<circle cx="213.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 224: 1.000000</title></circle>
+<circle cx="219.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 225: 0.000000</title></circle>
+<circle cx="225.0" cy="92.812" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 226: 0.984375</title></circle>
+<circle cx="231.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 227: 1.000000</title></circle>
+<circle cx="237.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 228: 1.000000</title></circle>
+<circle cx="243.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 229: 1.000000</title></circle>
+<circle cx="249.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 230: 0.000000</title></circle>
+<circle cx="255.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>random seed 231: 0.000000</title></circle>
+<path d="M155 137.900 H265" stroke="#172033" stroke-width="3"/>
+<text x="210" y="295" text-anchor="middle">Random</text>
+<text x="210" y="316" text-anchor="middle">mean 73.4%</text>
+<circle cx="415.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 200: 0.000000</title></circle>
+<circle cx="421.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 201: 1.000000</title></circle>
+<circle cx="427.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 202: 1.000000</title></circle>
+<circle cx="433.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 203: 1.000000</title></circle>
+<circle cx="439.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 204: 0.000000</title></circle>
+<circle cx="445.0" cy="94.570" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 205: 0.974609</title></circle>
+<circle cx="451.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 206: 1.000000</title></circle>
+<circle cx="457.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 207: 0.000000</title></circle>
+<circle cx="463.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 208: 1.000000</title></circle>
+<circle cx="469.0" cy="96.680" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 209: 0.962891</title></circle>
+<circle cx="475.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 210: 1.000000</title></circle>
+<circle cx="481.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 211: 1.000000</title></circle>
+<circle cx="487.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 212: 1.000000</title></circle>
+<circle cx="493.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 213: 1.000000</title></circle>
+<circle cx="499.0" cy="93.164" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 214: 0.982422</title></circle>
+<circle cx="505.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 215: 1.000000</title></circle>
+<circle cx="415.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 216: 1.000000</title></circle>
+<circle cx="421.0" cy="101.602" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 217: 0.935547</title></circle>
+<circle cx="427.0" cy="99.492" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 218: 0.947266</title></circle>
+<circle cx="433.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 219: 1.000000</title></circle>
+<circle cx="439.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 220: 1.000000</title></circle>
+<circle cx="445.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 221: 1.000000</title></circle>
+<circle cx="451.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 222: 1.000000</title></circle>
+<circle cx="457.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 223: 1.000000</title></circle>
+<circle cx="463.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 224: 1.000000</title></circle>
+<circle cx="469.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 225: 1.000000</title></circle>
+<circle cx="475.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 226: 1.000000</title></circle>
+<circle cx="481.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 227: 0.000000</title></circle>
+<circle cx="487.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 228: 1.000000</title></circle>
+<circle cx="493.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 229: 1.000000</title></circle>
+<circle cx="499.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 230: 1.000000</title></circle>
+<circle cx="505.0" cy="92.812" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>difficulty seed 231: 0.984375</title></circle>
+<path d="M405 113.698 H515" stroke="#172033" stroke-width="3"/>
+<text x="460" y="295" text-anchor="middle">Difficulty</text>
+<text x="460" y="316" text-anchor="middle">mean 86.8%</text>
+<circle cx="665.0" cy="96.328" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 200: 0.964844</title></circle>
+<circle cx="671.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 201: 1.000000</title></circle>
+<circle cx="677.0" cy="95.977" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 202: 0.966797</title></circle>
+<circle cx="683.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 203: 0.000000</title></circle>
+<circle cx="689.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 204: 0.000000</title></circle>
+<circle cx="695.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 205: 1.000000</title></circle>
+<circle cx="701.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 206: 1.000000</title></circle>
+<circle cx="707.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 207: 1.000000</title></circle>
+<circle cx="713.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 208: 1.000000</title></circle>
+<circle cx="719.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 209: 1.000000</title></circle>
+<circle cx="725.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 210: 0.000000</title></circle>
+<circle cx="731.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 211: 1.000000</title></circle>
+<circle cx="737.0" cy="98.086" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 212: 0.955078</title></circle>
+<circle cx="743.0" cy="270.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 213: 0.000000</title></circle>
+<circle cx="749.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 214: 1.000000</title></circle>
+<circle cx="755.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 215: 1.000000</title></circle>
+<circle cx="665.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 216: 1.000000</title></circle>
+<circle cx="671.0" cy="102.656" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 217: 0.929688</title></circle>
+<circle cx="677.0" cy="92.109" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 218: 0.988281</title></circle>
+<circle cx="683.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 219: 1.000000</title></circle>
+<circle cx="689.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 220: 1.000000</title></circle>
+<circle cx="695.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 221: 1.000000</title></circle>
+<circle cx="701.0" cy="137.109" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 222: 0.738281</title></circle>
+<circle cx="707.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 223: 1.000000</title></circle>
+<circle cx="713.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 224: 1.000000</title></circle>
+<circle cx="719.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 225: 1.000000</title></circle>
+<circle cx="725.0" cy="102.656" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 226: 0.929688</title></circle>
+<circle cx="731.0" cy="96.328" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 227: 0.964844</title></circle>
+<circle cx="737.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 228: 1.000000</title></circle>
+<circle cx="743.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 229: 1.000000</title></circle>
+<circle cx="749.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 230: 1.000000</title></circle>
+<circle cx="755.0" cy="90.000" r="2.8" fill="#0072b2" fill-opacity="0.5"><title>epistemic seed 231: 1.000000</title></circle>
+<path d="M655 115.664 H765" stroke="#172033" stroke-width="3"/>
+<text x="710" y="295" text-anchor="middle">Epistemic</text>
+<text x="710" y="316" text-anchor="middle">mean 85.7%</text>
+<text x="80" y="358" font-size="15">Ambiguous-only minus baseline: paired difference (percentage points)</text>
+<text x="250.000" y="506" text-anchor="middle">-30</text>
+<text x="346.667" y="506" text-anchor="middle">-20</text>
+<text x="443.333" y="506" text-anchor="middle">-10</text>
+<text x="540.000" y="506" text-anchor="middle">+0</text>
+<text x="636.667" y="506" text-anchor="middle">+10</text>
+<text x="733.333" y="506" text-anchor="middle">+20</text>
+<text x="830.000" y="506" text-anchor="middle">+30</text>
+<path d="M540.000 370 V483" stroke="#9ba5b1"/>
+<path d="M588.333 370 V483" stroke="#d55e00" stroke-dasharray="5 4"/>
+<text x="80" y="404">random</text>
+<path d="M498.812 400 H819.075" stroke="#0072b2" stroke-width="3"/>
+<circle cx="659.417" cy="400" r="5" fill="#172033"/>
+<text x="830" y="386" text-anchor="end" font-size="12">+12.4 [-4.3, +28.9]</text>
+<text x="80" y="464">difficulty</text>
+<path d="M383.824 460 H671.397" stroke="#0072b2" stroke-width="3"/>
+<circle cx="529.439" cy="460" r="5" fill="#172033"/>
+<text x="830" y="446" text-anchor="end" font-size="12">-1.1 [-16.2, +13.6]</text>
+<text x="450" y="537" text-anchor="middle" font-size="12">Dots may overlap; individual values are in the analysis JSON.</text>
+</g></svg>

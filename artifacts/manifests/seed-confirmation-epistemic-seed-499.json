@@ -1,0 +1,144 @@
+{
+  "completed_at": "2026-10-07T11:00:45.911196+00:00",
+  "config": {
+    "curriculum": {
+      "difficulty_ema": 0.05,
+      "difficulty_exploration": 0.1,
+      "difficulty_temperature": 0.25,
+      "kind": "epistemic",
+      "max_decision_steps": 4,
+      "pool_offset": 10000,
+      "pool_size": 512,
+      "training_seed": 499
+    },
+    "evaluation": {
+      "base_pair_count": 128,
+      "offset": 0,
+      "split": "validation"
+    },
+    "ppo": {
+      "clip_ratio": 0.2,
+      "device": "cpu",
+      "entropy_coefficient": 0.01,
+      "gae_lambda": 0.95,
+      "gamma": 0.99,
+      "hidden_size": 256,
+      "learning_rate": 0.0003,
+      "max_gradient_norm": 0.5,
+      "message_layers": 3,
+      "minibatch_episodes": 64,
+      "parallel_envs": 32,
+      "rollout_min_steps": 1024,
+      "target_kl": 0.03,
+      "torch_threads": 1,
+      "total_decision_steps": 30000,
+      "update_epochs": 4,
+      "value_coefficient": 0.5
+    }
+  },
+  "config_sha256": "b685f890dcc7e58be614822c36aa58075848ad36e44068850e2de92d56577dd7",
+  "curriculum": {
+    "kind": "epistemic",
+    "matched_base_schedule": true,
+    "state": {
+      "ambiguous_probability": 1.0,
+      "condition_counts": {
+        "ambiguous": 23015,
+        "revealed": 0
+      },
+      "episode_index": 23015,
+      "failure_ema": {
+        "ambiguous": 0.5,
+        "revealed": 0.5
+      },
+      "kind": "epistemic"
+    }
+  },
+  "experiment": "small-recurrent-ppo",
+  "generator_version": "diagnostic-chain-v1",
+  "git_commit": "c9d9b1b7b3db4b0e9d0f76a51e7ce7498d28795c",
+  "git_dirty": false,
+  "hardware": {
+    "cpu_count": 17,
+    "machine": "x86_64",
+    "numpy": "2.4.6",
+    "processor": "unknown",
+    "python": "3.11.12",
+    "release": "4.19.0-gvisor",
+    "system": "Linux"
+  },
+  "metric_version": "small-policy-training-v1",
+  "metrics": {
+    "checkpoint_path": "artifacts/runs/seed-confirmation-epistemic-seed-499/policy.pt",
+    "checkpoint_sha256": "6f3f4eaca997bff6ab353e8af7a5edd808527977749715aa149b3f0ae2ee47a4",
+    "decision_steps": 30029,
+    "decision_steps_per_second": 118.05743692545731,
+    "elapsed_seconds": 254.35924057000003,
+    "episode_count": 23015,
+    "final_update": {
+      "approximate_kl": 0.016165581890328958,
+      "clip_fraction": 0.2145159521676374,
+      "correct_repair_rate": 0.6116504854368932,
+      "decision_steps": 30029,
+      "entropy": 0.7630663839253512,
+      "episodes": 23015,
+      "informative_inspection_rate": 0.3074433656957929,
+      "loss": 17.141407244133227,
+      "mean_return": 3.482726537216829,
+      "policy_loss": -0.03137711455664513,
+      "recovery_rate": 0.6116504854368932,
+      "simulator_ticks": 356519,
+      "update": 27,
+      "value_loss": 34.36083024920839
+    },
+    "result_path": "artifacts/results/seed-confirmation-epistemic-seed-499.json",
+    "result_sha256": "37fa37528765969f51ee575674ecd5bdb23ac7a0221d3218eabbe114f1210a55",
+    "simulator_ticks": 356519,
+    "validation": {
+      "ambiguous": {
+        "correct_repair_rate": 0.96484375,
+        "episode_count": 512,
+        "experiment_then_correct_repair_rate": 0.96484375,
+        "false_repair_rate": 0.03515625,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 9.9977734375,
+        "recovery_rate": 0.96484375
+      },
+      "revealed": {
+        "correct_repair_rate": 0.96484375,
+        "episode_count": 256,
+        "experiment_then_correct_repair_rate": 0.96484375,
+        "false_repair_rate": 0.03515625,
+        "informative_inspection_rate": 1.0,
+        "mean_advance_count": 1.0,
+        "mean_decision_steps": 3.0,
+        "mean_inspect_count": 1.0,
+        "mean_return": 9.9977734375,
+        "recovery_rate": 0.96484375
+      },
+      "version": "small-policy-eval-v2"
+    }
+  },
+  "policy": {
+    "device": "cpu",
+    "hidden_size": 256,
+    "message_layers": 3,
+    "parameter_count": 929541,
+    "torch_version": "2.14.0+cpu",
+    "version": "graph-gru-v1"
+  },
+  "reward": {
+    "information_gain_term": false,
+    "operational_only": true,
+    "varies_by_base_pair_but_matches_conditions": true
+  },
+  "run_id": "seed-confirmation-epistemic-seed-499",
+  "schema_version": 1,
+  "seed": 499,
+  "split": "train+validation",
+  "started_at": "2026-10-07T10:56:31.551893+00:00",
+  "status": "completed"
+}

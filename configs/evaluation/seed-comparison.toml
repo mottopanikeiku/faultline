@@ -1,0 +1,43 @@
+protocol_id = "seed-comparison"
+status = "specified-before-seed-200-runs"
+training_config = "configs/training/seed-comparison.toml"
+training_decision_steps = 30000
+arms = ["random", "difficulty", "epistemic"]
+training_seeds = [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231]
+run_id_template = "seed-comparison-{arm}-seed-{seed}"
+evaluation_split = "validation"
+evaluation_offset = 0
+evaluation_base_pair_count = 128
+primary_metric = "ambiguous.experiment_then_correct_repair_rate"
+primary_comparisons = ["epistemic-random", "epistemic-difficulty"]
+minimum_relevant_effect = 0.05
+confidence_level = 0.95
+bootstrap_resamples = 10000
+bootstrap_seed = 20261007
+
+[interpretation]
+saturation_threshold = 0.95
+support_requires_both_baselines = true
+support_requires_minimum_mean_effect = true
+rule_out_target_if_any_upper_below_minimum = true
+
+[secondary_metrics]
+metrics = [
+  "ambiguous.recovery_rate",
+  "ambiguous.mean_return",
+  "ambiguous.false_repair_rate",
+  "revealed.informative_inspection_rate",
+  "revealed.mean_return"
+]
+
+[exclusions]
+pilot_training_seeds = [199]
+earlier_training_seeds = [100, 101, 102, 103, 104, 105, 106, 107]
+failed_learning_runs_are_retained = true
+sealed_test_split_used = false
+
+[compute]
+window_minutes = 125
+containers = 4
+cores_per_container = 4
+memory_gib_per_container = 2

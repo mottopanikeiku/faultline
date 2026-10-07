@@ -1,0 +1,38 @@
+{
+  "contrasts": {
+    "epistemic-difficulty": {
+      "paired_sd": 0.4376948357875039,
+      "planned_half_width": 0.04430082969417261,
+      "required_seed_count": 295
+    },
+    "epistemic-random": {
+      "paired_sd": 0.4894001796419198,
+      "planned_half_width": 0.04953413254603712,
+      "required_seed_count": 369
+    }
+  },
+  "initial_allocation_usd": 2.0,
+  "planning_formula": "ceil((1.96 * paired_sd / 0.05)^2)",
+  "remaining_allowance_before_cohort_usd": 4.948300000000001,
+  "reserve_usd": 0.03,
+  "selection": {
+    "candidate_max": 512,
+    "candidate_min": 64,
+    "containers": 32,
+    "cpu_cores_per_container": 1,
+    "memory_gib_per_container": 1,
+    "pilot_job_seconds_sum": 613.331471532,
+    "requested_window_minutes": 152,
+    "selected_seed_count": 375,
+    "total_with_booking_upper_usd": 5.86978768,
+    "training_seed_end": 874,
+    "training_seed_start": 500,
+    "upper_booking_usd": 4.91808768,
+    "window_formula": "ceil(1.25 * N * sum_pilot_job_seconds / (32 * 60) + 2)"
+  },
+  "source_analysis": "artifacts/results/seed-comparison-analysis.json",
+  "source_cohort_is_excluded_from_confirmation": true,
+  "spend_before_confirmation_cohort_upper_usd": 0.9517000000000001,
+  "target_half_width": 0.05,
+  "total_allocation_usd": 5.9
+}

@@ -1,53 +1,43 @@
 # Faultline
 
-Faultline is a small synthetic factory-diagnosis simulator for studying when reinforcement-learning agents investigate before repairing.
+I built a small synthetic factory simulator to study whether reinforcement-learning agents investigate before repairing. **Training only on ambiguous faults beats random task sampling, but loses to difficulty-adaptive sampling** in my independent 375-seed comparison. The proposed advantage over both alternatives is ruled out—not merely left inconclusive.
 
-**Question:** Does training only on tasks that need an experiment teach better diagnosis than random or difficulty-adaptive curricula?
+Two hidden faults produce identical initial symptoms but need opposite repairs; advancing the factory and inspecting it distinguishes them ([generator](src/faultline/generation/diagnostic_pairs.py)). My graph encoder and recurrent policy learn with PPO and GAE, rewarded for production minus operating costs, not information gain ([trainer](src/faultline/training/ppo.py)). The [sampler](src/faultline/training/curriculum.py) compares three training distributions.
 
-Two hidden faults produce identical initial symptoms but need opposite repairs; advancing the factory and inspecting it distinguishes them ([task generator](src/faultline/generation/diagnostic_pairs.py)). A graph encoder and recurrent policy learn with PPO, GAE and clipped objectives, rewarded for production minus operating costs, not information gain ([trainer](src/faultline/training/ppo.py)). The [curriculum sampler](src/faultline/training/curriculum.py) compares random ambiguous/revealed tasks, adaptive sampling based on failure, and all-ambiguous training.
+## Result: 1,125 trained policies
 
-**Result: the completed study did not establish a curriculum-specific benefit.** Policies often learned to diagnose, but seed variability leaves the curriculum comparison unresolved.
-
-## Results
-
-The [committed analysis](artifacts/results/small-kill-v1-analysis.json) covers 24 runs: eight paired training seeds per curriculum, a target budget of 30,000 decision steps per run, and 128 validation base pairs. Diagnostic success means advancing, obtaining informative inspection evidence, then choosing the correct repair on ambiguous tasks—not merely recovering by guessing. Intervals are 95% bootstraps over training seeds, not individual episodes.
+I fixed **375 matched training seeds, 500–874**, before training. Each run targets 30,000 decision steps and evaluates the same 128 validation base pairs. Diagnostic success requires advancing, obtaining informative inspection evidence, then making the correct repair on ambiguous tasks; guessing a repair is insufficient. The [analysis](artifacts/results/seed-confirmation-analysis.json) uses 10,000 bootstrap resamples over training seeds, not episodes. Poor learning runs remain included.
 
 | Curriculum | Training tasks | Mean diagnostic success [95% interval] |
 | --- | --- | --- |
-| Random | 50/50 ambiguous/revealed | 0.807 [0.557, 0.995] |
-| Difficulty | Failure-EMA adaptive mix | 0.902 [0.710, 1.000] |
-| Epistemic | All ambiguous | 0.951 [0.862, 1.000] |
+| Random | 50/50 ambiguous/revealed | 73.8% [69.6%, 78.0%] |
+| Difficulty | Failure-EMA adaptive mix | 89.9% [87.1%, 92.4%] |
+| Epistemic | All ambiguous | 83.9% [80.3%, 87.4%] |
 
-The paired Epistemic−Difficulty difference is **+0.049 [−0.133, 0.286]**; Epistemic−Random is **+0.144 [−0.084, 0.430]**. Neither passed the specified effect criterion. This is not evidence of equivalence.
+The paired Epistemic−Random difference is **+10.1 percentage points [ +4.7, +15.5 ]**; Epistemic−Difficulty is **−5.9 points [ −10.3, −1.7 ]**. Both intervals exclude zero in opposite directions. These are individual 95% intervals, not simultaneous intervals for a full curriculum ranking. Neither lies inside the specified ±5-point equivalence margin: I do not claim practical equivalence, or that either interval establishes a minimum five-point effect.
 
-![Diagnostic success by training seed and curriculum](artifacts/results/small-kill-v1-seeds.svg)
+![Every training seed and paired curriculum differences](artifacts/results/seed-confirmation.svg)
 
-The [figure script](tools/plot_diagnostic_success.py) recomputes each point from committed episode traces. Colored lines connect the same training seed across curricula; black bars show means. Poor runs remain visible.
+Each dot is one seed; overlapping dots are retained. Bars show means and paired intervals; the dashed line marks the +5-point superiority target. The [analysis script](tools/analyze_seed_comparison.py) checks result/configuration hashes, training budgets and full episode traces before recomputing scores.
 
-**Do policies use what they inspect?** The [counterfactual check](artifacts/results/counterfactual-v1-analysis.json) holds a policy's pre-inspection history and recurrent state fixed, replaces inspection telemetry with the paired opposite-fault outcome, and checks whether its repair follows that evidence. Conditional evidence-use rates are 99.1% Random, 99.6% Difficulty and 90.2% Epistemic; these exclude episodes without an evidence decision (and one Random seed with none). Counting those failures gives 80.5%, 89.8% and 90.2%. Randomizing evidence reduces correct repair to about 50%. Thus probing policies usually use observations, but this does not show that Epistemic training uniquely causes evidence use or teaches when to probe.
+My [pre-training plan](docs/seed-confirmation-plan.md) estimated half-widths below five points from an earlier replication. Observed half-widths were **5.43 points versus Random** and **4.31 versus Difficulty**: I missed the precision target for Random. I did not extend the cohort after seeing outcomes. The [earlier eight-seed study](artifacts/results/small-kill-v1-analysis.json) and [32-seed replication](artifacts/results/seed-comparison-analysis.json) were inconclusive and are not pooled here. This confirmation uses one PyTorch thread; earlier cohorts used more threads, so I do not assume identical arithmetic or trajectories across cohorts.
 
-## Reproduce
+The confirmation used at most 32 Modal containers, each requesting one CPU core and 1 GiB, with no GPU. Its [conservative compute estimate](artifacts/results/seed-compute-costs.json) is **$3.3312**, or **$4.2829** including the earlier replication, pilots, capacity check and failed initial invocation. These are buffered compute estimates, not invoices; storage and egress are excluded. I retain all checkpoints remotely, with [hashes and locations](artifacts/results/seed-confirmation-checkpoints.json), available on request; no new cohort weights are added to Git.
 
-From a fresh checkout, regenerate the figure and run simulator and analysis checks:
+## Reproduce the analysis
 
 ```bash
-nice -n 19 uv sync --locked --extra dev
-nice -n 19 python3 tools/plot_diagnostic_success.py
-nice -n 19 uv run pytest -q -x tests/env tests/oracle tests/generation tests/visualization tests/evaluation/test_statistics.py tests/evaluation/test_study.py tests/tools
+uv sync --python 3.11 --locked --extra dev --extra learning-cpu
+uv run python tools/analyze_seed_comparison.py --protocol configs/evaluation/seed-confirmation.toml
+uv run pytest
 ```
 
-These commands use local CPU only, require no model download or checkpoint loading, and cost $0 paid compute. They reconstruct the figure, not a new training study. Retraining requires the CPU PyTorch extra; exact configurations and the earlier command sequence are retained with the [protocol, development history and changelog](docs/history.md).
+These CPU-only commands use the [compressed original results and manifests](artifacts/results/seed-confirmation-runs.tar.gz); they do not retrain models or download checkpoints. Retraining requires a Modal account and separately installed client; the [runner](tools/modal_seeds.py), pinned configuration and plan retain the training procedure.
 
-## Limitations
+## Limits and prior work
 
-- One synthetic task family and a small recurrent policy; no LLM or Factorio results.
-- Validation-only study: the held-out test split has not been evaluated.
-- Wide seed intervals prevent a reliable curriculum ranking.
-- Cue reliability and reward coefficients are absent from policy inputs, so selective probing and cost adaptation cannot be inferred.
-- Action masks simplify the diagnostic grammar; this is not unrestricted experiment design.
+This is one synthetic task family, not an LLM or Factorio result. I evaluated validation only; the held-out test split remains untouched. Action masks simplify experiment design. Cue reliability and reward coefficients are absent from policy inputs, so this does not establish selective probing or cost adaptation. The earlier [counterfactual telemetry tests](artifacts/results/counterfactual-v1-analysis.json) concern older policies, not these new checkpoints.
 
-The [next experiment and checkpoint-storage proposal](docs/NEXT.md) address the observation limitation and propose Release assets without rewriting Git history.
+I build on [Learning to Acquire Information](https://arxiv.org/abs/1704.06131), [causal meta-reinforcement learning](https://arxiv.org/abs/1901.08162), and [PAIRED](https://arxiv.org/abs/2012.02096); active diagnosis and value of information are established ideas. The useful contribution here is a reproducible comparison that rejects my original preferred curriculum claim.
 
-## Prior work
-
-The question builds on [Learning to Acquire Information](https://arxiv.org/abs/1704.06131), [Causal Reasoning from Meta-reinforcement Learning](https://arxiv.org/abs/1901.08162), and [PAIRED environment design](https://arxiv.org/abs/2012.02096). Active diagnosis and value of information are established ideas, not inventions of this repository. See the [literature review](docs/literature.md) for the broader comparison.
+Written with AI coding assistance.

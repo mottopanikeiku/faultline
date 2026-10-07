@@ -1,0 +1,25 @@
+{
+  "client_wall_seconds": 209.8981029659917,
+  "hardware": {
+    "cpu_cores": 4,
+    "gpu": "none",
+    "max_containers": 4,
+    "memory_gib": 2
+  },
+  "runs": [
+    {
+      "job_seconds": 168.16139383799998,
+      "run_id": "seed-comparison-difficulty-seed-199"
+    },
+    {
+      "job_seconds": 199.630892805,
+      "run_id": "seed-comparison-epistemic-seed-199"
+    },
+    {
+      "job_seconds": 129.819474935,
+      "run_id": "seed-comparison-random-seed-199"
+    }
+  ],
+  "source_commit": "e3acb532bf679ab2a1b1e534647fb6c4fc6f2234",
+  "window_minutes": 5
+}
