@@ -45,7 +45,8 @@ def train(job: dict) -> dict:
         environment = {**os.environ, "PYTHONPATH": str(repo / "src"),
                        "OMP_NUM_THREADS": "4", "MKL_NUM_THREADS": "4"}
         subprocess.run(
-            ["python", "-m", "faultline", "train", "--config",
+            ["python", "-c", "from faultline.cli import main; raise SystemExit(main())",
+             "train", "--config",
              "configs/training/seed-comparison.toml", "--curriculum", arm,
              "--seed", str(seed), "--run-id", run_id],
             cwd=repo, env=environment, check=True,
