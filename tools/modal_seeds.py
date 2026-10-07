@@ -39,6 +39,18 @@ def write_progress(destination: Path, metadata: dict) -> None:
 
 
 @app.function(image=image, cpu=CPU_CORES, memory=MEMORY_MIB, timeout=WINDOW_MINUTES * 60,
+              max_containers=MAX_CONTAINERS, retries=0)
+def startup_probe(index: int) -> dict:
+    import socket
+    import time
+
+    timestamp = time.time()
+    key = os.environ.get("MODAL_TASK_ID", socket.gethostname())
+    time.sleep(60)
+    return {"index": index, "container_key": key, "started_unix_seconds": timestamp}
+
+
+@app.function(image=image, cpu=CPU_CORES, memory=MEMORY_MIB, timeout=WINDOW_MINUTES * 60,
               max_containers=MAX_CONTAINERS, retries=0, volumes={"/checkpoints": volume})
 def train(job: dict) -> dict:
     import hashlib
@@ -75,7 +87,8 @@ def train(job: dict) -> dict:
         subprocess.run(["git", "fetch", "--quiet", "origin", commit], cwd=repo, check=True)
         subprocess.run(["git", "checkout", "--quiet", "--detach", commit], cwd=repo, check=True)
         environment = {**os.environ, "PYTHONPATH": str(repo / "src"),
-                       "OMP_NUM_THREADS": str(job["threads"]), "MKL_NUM_THREADS": str(job["threads"])}
+                       "OMP_NUM_THREADS": str(job["threads"]),
+                       "MKL_NUM_THREADS": str(job["threads"])}
         subprocess.run(
             ["python", "-c", "from faultline.cli import main; raise SystemExit(main())",
              "train", "--config", job["training_config"],
@@ -108,13 +121,42 @@ def train(job: dict) -> dict:
 @app.local_entrypoint()
 async def main(pilot: bool = False, protocol: str = "configs/evaluation/seed-comparison.toml",
                study: str = "seed-comparison", pilot_seed: int = 199,
-               training_config: str = "configs/training/seed-comparison.toml"):
+               training_config: str = "configs/training/seed-comparison.toml",
+               startup_check: bool = False):
     import tomllib
 
     started = perf_counter()
     repo = Path(__file__).resolve().parents[1]
     directory = repo / "artifacts/results"
     directory.mkdir(parents=True, exist_ok=True)
+    if startup_check:
+        import time
+
+        started_wall = time.time()
+        async with asyncio.timeout(WINDOW_MINUTES * 60):
+            rows = [row async for row in startup_probe.map.aio(range(MAX_CONTAINERS))]
+        count = len({row["container_key"] for row in rows})
+        result = {
+            "requested_containers": MAX_CONTAINERS, "distinct_containers": count,
+            "hardware": {"cpu_cores": CPU_CORES, "memory_gib": MEMORY_MIB / 1024, "gpu": "none"},
+            "window_minutes": WINDOW_MINUTES,
+            "startup_span_seconds": max(row["started_unix_seconds"] for row in rows)
+            - min(row["started_unix_seconds"] for row in rows),
+            "last_start_after_client_seconds": max(row["started_unix_seconds"] for row in rows)
+            - started_wall,
+            "client_wall_seconds": perf_counter() - started,
+            "rows": sorted(rows, key=lambda row: row["index"]),
+            "source_commit": subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=repo, text=True,
+            ).strip(),
+        }
+        with (directory / f"{study}-startup-cloud.json").open("x") as output:
+            json.dump(result, output, indent=2, sort_keys=True)
+            output.write("\n")
+        print(f"Started {count} distinct containers")
+        if count != MAX_CONTAINERS:
+            raise RuntimeError("the requested container concurrency was not reached")
+        return
     if pilot:
         seeds, arms, label = [pilot_seed], ["random", "difficulty", "epistemic"], "pilot"
         template = f"{study}-{{arm}}-seed-{{seed}}"
@@ -136,6 +178,10 @@ async def main(pilot: bool = False, protocol: str = "configs/evaluation/seed-com
         metadata = json.loads(progress.read_text())
         if metadata["expected_run_ids"] != expected:
             raise ValueError("resume cohort differs from the saved run set")
+        hardware = {"gpu": "none", "cpu_cores": CPU_CORES,
+                    "memory_gib": MEMORY_MIB / 1024, "max_containers": MAX_CONTAINERS}
+        if metadata["hardware"] != hardware:
+            raise ValueError("resume resource request differs from the saved hardware")
     else:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
         metadata = {"source_commit": commit, "hardware": {"gpu": "none", "cpu_cores": CPU_CORES,

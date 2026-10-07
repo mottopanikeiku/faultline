@@ -25,6 +25,22 @@ def classify(comparisons: dict, margin: float) -> str:
     return "inconclusive_about_target_advantage"
 
 
+def contrast_decision(interval: dict, margin: float) -> dict:
+    if interval["lower"] > 0:
+        direction = "ambiguous_only_better"
+    elif interval["upper"] < 0:
+        direction = "ambiguous_only_worse"
+    else:
+        direction = "unresolved"
+    return {
+        "direction": direction,
+        "no_difference_larger_than_five_points": (
+            interval["lower"] > -margin and interval["upper"] < margin
+        ),
+        "rules_out_five_point_advantage": interval["upper"] < margin,
+    }
+
+
 def verify_run(result: dict, manifest: dict) -> None:
     if canonical_sha256(result) != manifest["metrics"]["result_sha256"]:
         raise ValueError("result digest mismatch")
@@ -43,11 +59,13 @@ def verify_run(result: dict, manifest: dict) -> None:
         raise ValueError("primary score disagrees with episode traces")
 
 
-def analyze(repo: Path) -> dict:
-    protocol = load_kill_test_protocol(repo / "configs/evaluation/seed-comparison.toml")
+def analyze(
+    repo: Path, protocol_path: Path = Path("configs/evaluation/seed-comparison.toml"),
+) -> dict:
+    protocol = load_kill_test_protocol(repo / protocol_path)
     with (repo / protocol.training_config).open("rb") as source:
         training_config = tomllib.load(source)
-    archive_path = repo / "artifacts/results/seed-comparison-runs.tar.gz"
+    archive_path = repo / "artifacts/results" / f"{protocol.protocol_id}-runs.tar.gz"
     with tempfile.TemporaryDirectory() as directory, tarfile.open(archive_path) as archive:
         extracted = Path(directory)
         for arm in protocol.arms:
@@ -78,6 +96,10 @@ def analyze(repo: Path) -> dict:
         analysis = analyze_kill_test(extracted, protocol)
     analysis["target_decision"] = classify(analysis["paired_comparisons"],
                                           protocol.minimum_relevant_effect)
+    analysis["contrast_decisions"] = {
+        name: contrast_decision(interval, protocol.minimum_relevant_effect)
+        for name, interval in analysis["paired_comparisons"].items()
+    }
     analysis["raw_archive"] = {"path": str(archive_path.relative_to(repo)),
                                "sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest()}
     return analysis
@@ -157,15 +179,20 @@ def render_svg(analysis: dict) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--protocol", type=Path, default=Path("configs/evaluation/seed-comparison.toml"),
+    )
     args = parser.parse_args()
-    analysis = analyze(args.repo)
+    analysis = analyze(args.repo, args.protocol)
+    study = analysis["protocol"]["protocol_id"]
     directory = args.repo / "artifacts/results"
-    (directory / "seed-comparison-analysis.json").write_text(
+    (directory / f"{study}-analysis.json").write_text(
         json.dumps(analysis, indent=2, sort_keys=True) + "\n", encoding="utf-8",
     )
-    (directory / "seed-comparison.svg").write_text(render_svg(analysis), encoding="utf-8")
+    (directory / f"{study}.svg").write_text(render_svg(analysis), encoding="utf-8")
     print(json.dumps({"decision": analysis["target_decision"],
-                      "comparisons": analysis["paired_comparisons"]}, indent=2))
+                      "comparisons": analysis["paired_comparisons"],
+                      "contrast_decisions": analysis["contrast_decisions"]}, indent=2))
 
 
 if __name__ == "__main__":

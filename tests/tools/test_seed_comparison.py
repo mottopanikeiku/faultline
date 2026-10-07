@@ -48,6 +48,24 @@ def test_target_advantage_is_ruled_out_not_equivalence() -> None:
     )
 
 
+@pytest.mark.parametrize(
+    ("lower", "upper", "direction", "equivalent"),
+    [
+        (-0.04, 0.04, "unresolved", True),
+        (0.01, 0.04, "ambiguous_only_better", True),
+        (-0.04, -0.01, "ambiguous_only_worse", True),
+        (0.01, 0.10, "ambiguous_only_better", False),
+        (-0.10, -0.01, "ambiguous_only_worse", False),
+        (-0.05, 0.05, "unresolved", False),
+    ],
+)
+def test_direction_and_equivalence_are_distinct(lower, upper, direction, equivalent) -> None:
+    result = MODULE.contrast_decision({"lower": lower, "upper": upper}, 0.05)
+    assert result["direction"] == direction
+    assert result["no_difference_larger_than_five_points"] == equivalent
+    assert result["rules_out_five_point_advantage"] == (upper < 0.05)
+
+
 def valid_run() -> tuple[dict, dict]:
     config = {"ppo": {"total_decision_steps": 30000}}
     result = {

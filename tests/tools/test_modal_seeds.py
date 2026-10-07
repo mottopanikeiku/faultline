@@ -46,7 +46,8 @@ def load_runner(monkeypatch, tmp_path: Path):
     module.__file__ = str(tmp_path / "tools/modal_seeds.py")
     config = tmp_path / "configs/training/seed-comparison.toml"
     config.parent.mkdir(parents=True)
-    config.write_bytes((Path(__file__).parents[2] / "configs/training/seed-comparison.toml").read_bytes())
+    source_config = Path(__file__).parents[2] / "configs/training/seed-comparison.toml"
+    config.write_bytes(source_config.read_bytes())
     monkeypatch.setattr(module.subprocess, "check_output", lambda *args, **kwargs: "a" * 40)
     return module
 
@@ -76,6 +77,11 @@ def test_map_failure_preserves_completed_runs_and_resumes_only_missing(monkeypat
     assert len(saved["runs"]) == 1
     assert len(saved["attempt_errors"]) == 2
     assert saved["source_commit"] == "a" * 40
+    original_cores = runner.CPU_CORES
+    runner.CPU_CORES = original_cores + 1
+    with pytest.raises(ValueError, match="resume resource request differs"):
+        asyncio.run(runner.main(pilot=True))
+    runner.CPU_CORES = original_cores
 
     async def remainder(jobs, **kwargs):
         assert [job["arm"] for job in jobs] == ["difficulty", "epistemic"]
