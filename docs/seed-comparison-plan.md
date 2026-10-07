@@ -1,0 +1,21 @@
+# More training seeds for the curriculum comparison
+
+I wrote this plan before the new pilot or training runs. I want to know whether training only on ambiguous cases improves diagnosis over both random and difficulty-adaptive task sampling. The earlier eight-seed study is background, not part of the new confirmatory cohort.
+
+## Fixed measurements and comparisons
+
+I keep the existing graph-GRU policy, PPO settings, 30,000-decision-step target (including the existing rollout overshoot), training task pool, and validation evaluation of 128 base pairs. I change only CPU thread count from six to four. Each new integer training seed is used once in each of the three curricula. The primary score remains `ambiguous.experiment_then_correct_repair_rate`: advance, informative inspection, and correct repair, averaged within a training run. Training seeds, not episodes, are the independent units. I retain every completed run, including failed-learning seeds.
+
+I compare Epistemic minus Random and Epistemic minus Difficulty using the existing percentile bootstrap of paired training-seed differences: 10,000 resamples, 95% two-sided intervals, random seed 20261007 plus 100 and the comparison index. The existing minimum relevant mean advantage is five percentage points. I support the claim that ambiguous-only training beats both alternatives only if both paired mean advantages are at least 0.05 and both interval lower endpoints are above zero. This conjunction tests the claim against both alternatives; I will not select the easier comparison after seeing results. A lower endpoint above zero but a mean below 0.05 is a smaller-than-target advantage, not a pass.
+
+If either comparison's upper endpoint is below 0.05, I can rule out a five-point advantage over that alternative at the reported interval level; this is not a proof of identical performance. Otherwise a failed superiority rule remains inconclusive about the target effect. I report both intervals and do not describe a nonsignificant difference as equivalence. Arm means and their training-seed bootstrap intervals are descriptive. Secondary recovery, return, false repair and revealed-task inspection metrics follow the existing protocol and do not change the decision.
+
+## Pilot and sample size
+
+I run seed 199 once in each curriculum on Modal CPU containers, with four CPU cores and 2 GiB requested per container. These three pilots are excluded from inference. I use durations, never their scores, to choose a fixed new cohort from 32, 64, 96 or 128 matched seeds, starting at 200. I choose the largest candidate whose estimated run window fits the remaining $2 allowance after a $0.15 reserve. The window is `ceil(1.5 * 3 * N * max_pilot_job_seconds / (4 * 60) + 5)` minutes, allowing for four containers, variation and startup. The booked upper bound is window minutes / 60 × 4 × (4 × $0.047160 + 2 × $0.007992) × 1.10. I commit the selected seeds and window before starting that cohort.
+
+There is one final analysis after all selected seeds finish, without interim score checks or outcome-dependent stopping. An infrastructure failure may be rerun with the same identity and recorded, never replaced by another seed; training failures with valid output stay in the study. If the resource cap prevents a complete cohort, I report the incomplete run set and do not call it the planned analysis. No finite sample size can guarantee a conclusive answer.
+
+## Artifacts and costs
+
+I use the existing training command, result JSON, source-commit manifests, and versioned CPU-portable checkpoints with SHA-256 hashes. Results include episode traces. I retain checkpoints outside Git and publish a separate downloadable archive with an inventory rather than add hundreds of binary files to history. The runner returns all files from ephemeral containers. I report cloud runtime, requested hardware and a conservative dollar estimate including startup, with no laptop timing claims. I leave the held-out test split untouched.
