@@ -1,7 +1,12 @@
-# Faultline: train on ambiguity, not difficulty
+# Faultline: does training on ambiguity beat training on difficulty?
 
-Status: working research report. The final test set has not been opened; this is not a confirmatory
-paper.
+Status: working research report on the eight-seed study. The final test set has not been opened;
+this is not a confirmatory paper.
+
+Later result: an independent [375-seed comparison](../README.md) found that ambiguous-only
+(Epistemic) training beats Random by 10.1 points [4.7, 15.5] but loses to Difficulty by 5.9 points
+[1.7, 10.3] ([analysis](../artifacts/results/seed-confirmation-analysis.json)). An Epistemic
+advantage over both alternatives is ruled out. The eight-seed numbers below are retained as reported.
 
 ## Abstract
 

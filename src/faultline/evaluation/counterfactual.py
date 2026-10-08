@@ -17,9 +17,11 @@ from faultline.training.rl_env import (
     DiagnosticAction,
     DiagnosticEpisode,
     PolicyObservation,
+    telemetry_scale,
 )
 
-COUNTERFACTUAL_VERSION = "evidence-swap-v1"
+# v2 rescales the stale control into telemetry units; counterfactual-v1 artifacts used v1.
+COUNTERFACTUAL_VERSION = "evidence-swap-v2"
 _TELEMETRY_COLUMNS = slice(9, 12)
 
 
@@ -105,13 +107,17 @@ def remove_diagnostic_observation(observation: PolicyObservation) -> PolicyObser
     )
 
 
-def stale_diagnostic_observation(observation: PolicyObservation) -> PolicyObservation:
+def stale_diagnostic_observation(
+    observation: PolicyObservation,
+    pair: DiagnosticPair,
+) -> PolicyObservation:
     """Replace telemetry by the public pre-dynamics target input and zero output."""
     nodes = observation.nodes.copy()
-    target = int(np.argmax(nodes[:, 8]))
+    target = pair.graph.node_index[pair.evidence_node]
     nodes[:, _TELEMETRY_COLUMNS] = 0.0
     nodes[target, 9] = 1.0
-    nodes[target, 10] = nodes[target, 7]
+    # Static feature 7 uses a different divisor; rescale into inspected-telemetry units.
+    nodes[target, 10] = float(pair.graph.initial_inputs[target]) / telemetry_scale(pair)
     return PolicyObservation(
         nodes=nodes,
         adjacency=observation.adjacency,
@@ -223,7 +229,7 @@ def evaluate_evidence_interventions(
                 )
                 stale, _ = _policy_action(
                     policy,
-                    stale_diagnostic_observation(evidence.observation),
+                    stale_diagnostic_observation(evidence.observation, pair),
                     evidence.hidden,
                     torch_device,
                 )

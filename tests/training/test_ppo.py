@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+from dataclasses import replace
 
 import numpy as np
 import torch
@@ -11,7 +12,14 @@ from faultline.training.curriculum import (
     CurriculumKind,
     CurriculumSampler,
 )
-from faultline.training.ppo import PPOConfig, collect_rollout, ppo_update, train_ppo
+from faultline.training.ppo import (
+    EpisodeTrajectory,
+    PPOConfig,
+    _finish_trajectory,
+    collect_rollout,
+    ppo_update,
+    train_ppo,
+)
 
 
 def ppo_config(*, total_steps: int = 96) -> PPOConfig:
@@ -54,6 +62,21 @@ def test_rollout_contains_complete_recurrent_episodes() -> None:
         assert len(trajectory.actions) == len(trajectory.advantages)
         assert len(trajectory.actions) == len(trajectory.returns)
         assert 1 <= len(trajectory.actions) <= 4
+
+
+def test_gae_matches_hand_computed_advantages_with_terminal_bootstrap_zero() -> None:
+    trajectory = EpisodeTrajectory(rewards=[1.0, 0.0, 2.0], old_values=[0.5, 1.0, 1.5])
+    _finish_trajectory(trajectory, replace(ppo_config(), gamma=0.5, gae_lambda=0.5))
+
+    assert trajectory.advantages == [0.96875, -0.125, 0.5]
+    assert trajectory.returns == [1.46875, 0.875, 2.0]
+
+
+def test_gae_with_unit_lambda_returns_discounted_episode_returns() -> None:
+    trajectory = EpisodeTrajectory(rewards=[1.0, 0.0, 2.0], old_values=[7.0, -3.0, 0.25])
+    _finish_trajectory(trajectory, replace(ppo_config(), gamma=0.5, gae_lambda=1.0))
+
+    assert trajectory.returns == [1.5, 1.0, 2.0]
 
 
 def test_ppo_update_is_finite_and_changes_policy_parameters() -> None:

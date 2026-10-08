@@ -5,6 +5,22 @@ listed only when backed by immutable artifacts.
 
 ## Unreleased
 
+### Fixes and checks
+
+- `import faultline.oracle` no longer fails in a fresh interpreter; the oracle/generation import
+  cycle is broken and covered by a subprocess test.
+- The exact active oracle stops expanding branches that a diagnostic action has terminated instead
+  of raising `episode_terminated`. Previously solvable problems are unchanged.
+- The stale-evidence counterfactual control now uses telemetry units. Rerunning the 24
+  `counterfactual-v1` checkpoints with the fix leaves every stale change rate unchanged but changes
+  individual stale actions; the evaluator is now `evidence-swap-v2`, and the committed
+  `counterfactual-v1` artifact remains the v1 output.
+- CI pins actions to commit SHAs and checks that both committed matched-seed analyses reproduce
+  byte-for-byte from their archives. The 32-seed analysis JSON was regenerated to include
+  `contrast_decisions`; no estimate changed.
+- GAE has hand-computed unit tests. The working paper, thesis and protocol now point to the
+  375-seed result.
+
 ### Matched-seed curriculum comparison
 
 - I committed the paired training-seed bootstrap, five-point mean-effect threshold and decision

@@ -3,10 +3,20 @@ from __future__ import annotations
 import subprocess
 import sys
 
+import pytest
 
-def test_fault_package_imports_before_environment_package() -> None:
+
+@pytest.mark.parametrize(
+    "statement",
+    [
+        "from faultline.faults import BlockedEdge",
+        "import faultline.oracle",
+        "import faultline.generation",
+    ],
+)
+def test_package_imports_in_a_fresh_interpreter(statement: str) -> None:
     completed = subprocess.run(
-        [sys.executable, "-c", "from faultline.faults import BlockedEdge"],
+        [sys.executable, "-c", statement],
         check=False,
         capture_output=True,
         text=True,

@@ -444,6 +444,18 @@
       }
     }
   },
+  "contrast_decisions": {
+    "epistemic-difficulty": {
+      "direction": "unresolved",
+      "no_difference_larger_than_five_points": false,
+      "rules_out_five_point_advantage": false
+    },
+    "epistemic-random": {
+      "direction": "unresolved",
+      "no_difference_larger_than_five_points": false,
+      "rules_out_five_point_advantage": false
+    }
+  },
   "decision": "no_preregistered_curriculum_effect",
   "minimum_relevant_effect": 0.05,
   "paired_comparisons": {

@@ -29,10 +29,11 @@ The confirmation used at most 32 Modal containers, each requesting one CPU core 
 ```bash
 uv sync --python 3.11 --locked --extra dev --extra learning-cpu
 uv run python tools/analyze_seed_comparison.py --protocol configs/evaluation/seed-confirmation.toml
+git diff --exit-code artifacts/results  # no output: the committed analysis and figure reproduce
 uv run pytest
 ```
 
-These CPU-only commands use the [compressed original results and manifests](artifacts/results/seed-confirmation-runs.tar.gz); they do not retrain models or download checkpoints. Retraining requires a Modal account and separately installed client; the [runner](tools/modal_seeds.py), pinned configuration and plan retain the training procedure.
+These CPU-only commands use the [compressed original results and manifests](artifacts/results/seed-confirmation-runs.tar.gz); they do not retrain models or download checkpoints. The analysis took 43 seconds on a shared ARM64 server, and CI repeats it on every push. Retraining requires a Modal account and separately installed client; the [runner](tools/modal_seeds.py), pinned configuration and plan retain the training procedure.
 
 ## Limits and prior work
 

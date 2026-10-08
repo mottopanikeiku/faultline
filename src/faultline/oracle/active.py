@@ -91,6 +91,11 @@ def action_partitions(
     return tuple(partitions)
 
 
+def _terminated(branch: WorldBranch) -> bool:
+    tracker = branch.env.reward_tracker
+    return tracker is not None and tracker.terminated
+
+
 def _solve(
     problem: DiagnosticProblem,
     branches: tuple[WorldBranch, ...],
@@ -103,7 +108,8 @@ def _solve(
         kind=DecisionKind.COMMIT,
         terminal_plan=terminal.plan,
     )
-    if remaining_diagnostic_actions == 0:
+    # Termination is part of the public outcome key, so a partition is uniformly terminated.
+    if remaining_diagnostic_actions == 0 or any(_terminated(branch) for branch in branches):
         return best
 
     for action in problem.diagnostic_actions:
