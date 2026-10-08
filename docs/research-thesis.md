@@ -52,6 +52,11 @@ seeds per curriculum. Epistemic mean diagnostic success was higher than Random a
 both paired bootstrap intervals included zero and the Difficulty mean difference fell below the
 predeclared five-point threshold. H1 is therefore not supported by this kill test.
 
+An independent 375-seed validation comparison then resolved both directions: Epistemic training
+beats Random by 10.1 points [4.7, 15.5] and loses to Difficulty by 5.9 points [1.7, 10.3]. H1's
+advantage over both baselines is ruled out on this diagnostic-success endpoint, not merely
+unsupported ([analysis](../artifacts/results/seed-confirmation-analysis.json)).
+
 Learned policies can execute `advance -> inspect -> conditional repair`, so representational
 inability is not the immediate explanation. Counterfactual swaps show that most probing policies
 change to the repair supported by the swapped world; randomized evidence reduces repair accuracy to
