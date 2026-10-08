@@ -28,6 +28,11 @@ class DiagnosticAction(IntEnum):
     REPLACE_PROCESSOR = 3
 
 
+def telemetry_scale(pair: DiagnosticPair) -> float:
+    """Divisor that puts inspected buffer levels into policy telemetry units."""
+    return max(float(pair.graph.rates.max()), 1.0)
+
+
 @dataclass(frozen=True, slots=True)
 class PolicyObservation:
     nodes: Float32Array
@@ -202,7 +207,7 @@ class DiagnosticEpisode:
             reward += result.reward
             self.inspect_count += 1
             node_index = self.pair.graph.node_index[self.pair.evidence_node]
-            scale = max(float(self.pair.graph.rates.max()), 1.0)
+            scale = telemetry_scale(self.pair)
             self._telemetry_mask[node_index] = True
             self._telemetry_inputs[node_index] = (
                 float(result.observation["input_buffer"]) / scale

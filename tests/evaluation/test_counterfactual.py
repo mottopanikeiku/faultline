@@ -6,13 +6,19 @@ import numpy as np
 import torch
 
 from faultline.agents.recurrent import GraphRecurrentPolicy
+from faultline.env import Inspect
 from faultline.evaluation.counterfactual import (
     evaluate_evidence_interventions,
     remove_diagnostic_observation,
+    stale_diagnostic_observation,
     swap_diagnostic_observation,
 )
 from faultline.evaluation.counterfactual_study import load_counterfactual_protocol
-from faultline.generation import CueCondition, build_generated_diagnostic_pair
+from faultline.generation import (
+    CueCondition,
+    build_generated_diagnostic_pair,
+    create_world_env,
+)
 from faultline.training.checkpoint import load_policy_checkpoint
 from faultline.training.rl_env import (
     DiagnosticAction,
@@ -49,6 +55,24 @@ def test_swap_changes_only_revealed_telemetry_columns() -> None:
     np.testing.assert_array_equal(swapped.action_mask, left.action_mask)
     removed = remove_diagnostic_observation(left)
     assert not removed.nodes[:, 9:12].any()
+
+
+def test_stale_evidence_matches_a_pre_dynamics_inspection_in_telemetry_units() -> None:
+    pair = build_generated_diagnostic_pair(88)
+    left, _ = evidence_observations()
+    target = pair.graph.node_index[pair.evidence_node]
+    assert pair.graph.input_capacities.max() > pair.graph.rates.max()
+    before_dynamics = create_world_env(pair, pair.worlds[0]).act(Inspect(pair.evidence_node))
+
+    stale = stale_diagnostic_observation(left, pair)
+
+    np.testing.assert_array_equal(stale.nodes[:, :9], left.nodes[:, :9])
+    assert stale.nodes[:, 9].sum() == stale.nodes[target, 9] == 1.0
+    assert stale.nodes[target, 10] == np.float32(
+        float(before_dynamics.observation["input_buffer"]) / pair.graph.rates.max()
+    )
+    assert not stale.nodes[:, 11].any()
+
 
 
 def test_saved_diagnostic_policy_switches_to_swapped_world_repair() -> None:
