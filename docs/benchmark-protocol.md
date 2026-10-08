@@ -1,6 +1,8 @@
 # Benchmark protocol
 
 Status: small-policy kill-test v1 frozen on validation; final held-out test protocol remains unfrozen.
+The later matched-seed cohorts follow the [32-seed](seed-comparison-plan.md) and
+[375-seed](seed-confirmation-plan.md) plans.
 
 ## Split discipline
 
