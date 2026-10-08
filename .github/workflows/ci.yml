@@ -19,3 +19,8 @@ jobs:
       - run: uv run ruff check .
       - run: uv run mypy
       - run: uv run pytest
+      - name: Reproduce committed seed analyses
+        run: |
+          uv run python tools/analyze_seed_comparison.py --protocol configs/evaluation/seed-comparison.toml
+          uv run python tools/analyze_seed_comparison.py --protocol configs/evaluation/seed-confirmation.toml
+          git diff --exit-code artifacts/results
