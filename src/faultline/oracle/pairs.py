@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from faultline.env import Advance, ClearBlockage, Inspect, Isolate, MeasureFlow
-from faultline.generation.diagnostic_pairs import (
-    DiagnosticPair,
-    RepairAction,
-    create_world_env,
-)
 from faultline.oracle.model import DiagnosticProblem, TerminalPlan
+
+if TYPE_CHECKING:
+    from faultline.generation.diagnostic_pairs import DiagnosticPair, RepairAction
 
 
 def _repair_name(repair: RepairAction) -> str:
@@ -19,6 +19,9 @@ def _repair_name(repair: RepairAction) -> str:
 
 def diagnostic_pair_problem(pair: DiagnosticPair) -> DiagnosticProblem:
     """Create the exact bounded action model shared by manual and generated pairs."""
+    # Imported here because faultline.generation imports this package at module load.
+    from faultline.generation.diagnostic_pairs import create_world_env
+
     horizon = pair.reward.max_ticks
     repairs = tuple(dict.fromkeys(world.correct_repair for world in pair.worlds))
     blocked_edge = next(
