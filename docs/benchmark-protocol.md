@@ -190,6 +190,9 @@ Swapped outcomes induced the donor repair at rates 0.996 Random, 0.998 Difficult
 Epistemic among eligible decisions. Randomized valid evidence produced correct repair rates of
 approximately 0.496–0.499. Removing, staling, or averaging evidence changed roughly half of repair
 choices, as expected when each manipulation drives a deterministic fallback in balanced worlds.
+The v1 stale control fed the pre-dynamics input in the wrong units; rerunning it correctly
+(`evidence-swap-v2`) changes some individual stale repair choices but leaves every run's stale
+change rate unchanged.
 
 Conclusion: most policies that learn the diagnostic sequence do use its result causally; they are not
 merely performing an ignored ritual. The Epistemic arm probes every revealed-cue case and has no
