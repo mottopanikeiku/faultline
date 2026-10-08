@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import replace
+
 import pytest
 
 from faultline.env import Advance, ClearBlockage, Inspect, Replace
@@ -76,6 +78,20 @@ def test_active_solver_finds_optimal_two_action_diagnostic_policy() -> None:
     assert depth_two.expected_return == pytest.approx(8.58)
     assert depth_three.expected_return == depth_two.expected_return
     assert depth_two.expected_return - passive.expected_return == pytest.approx(7.33)
+
+
+def test_active_solver_stops_diagnosing_once_a_diagnostic_action_ends_the_episode() -> None:
+    pair = build_manual_diagnostic_pair(42)
+    problem = replace(
+        diagnostic_pair_problem(pair),
+        diagnostic_actions=(Advance(pair.reward.max_ticks),),
+    )
+
+    depth_one = solve_active(problem, 1)
+    depth_two = solve_active(problem, 2)
+
+    assert depth_two.expected_return == depth_one.expected_return
+    assert depth_two.recovery_probability == depth_one.recovery_probability
 
 
 def test_solver_value_matches_direct_enumeration_of_discovered_policy() -> None:
